@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>UpdateCustomer</title>
+<style>
+body{
+background-image: url("img/image1.png");
+font-family:poppins;
+}
+
+.center {
+  margin-left: auto;
+  margin-right:auto;
+  margin-top:150px;
+  width: 700px;
+  height:500px;
+  border: 3px solid #090a0c;
+  padding: 0.5px;
+}
+
+.column {
+    float: left;
+    size:50px;
+    padding: 5px;
+  }
+  
+  /* Clearfix (clear floats) */
+  .row::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+
+  .circle {
+    background-color:#edf1f7;
+    border:2px solid  #4289fb; 
+    float:right;	
+    height:30px;
+    -moz-border-radius:50%;
+    -webkit-border-radius:50%;
+    width:30px;
+}
+
+.circle1 {
+    background-color:#edf1f7;
+    border:2px solid #090a0c; 
+    float:right;	
+    height:30px;
+    -moz-border-radius:50%;
+    -webkit-border-radius:50%;
+    width:30px;
+}
+
+
+.hr { 
+  display: block;
+  border-style: inset;
+  border-width: 1px;
+} 
+
+#rcorner {
+margin-left:100px;
+margin-top:50px;
+  border-radius: 25px;
+  border: 2px solid #090a0c;
+  padding: 20px; 
+  width: 450px;
+  height: 230px;
+  box-shadow:5px 5px lightgrey;  
+  
+}
+
+.property{
+text-align:right;
+height:20px;
+font-size:15px;
+}
+
+.input{
+align:center;
+padding-left:60px;
+padding-bottom:10px;
+height:20px;
+font-size:15px;
+}
+
+.container{
+justify-content: center;  
+align-items: center;  
+display: flex; 
+}
+
+#btn{  
+border:2px solid #090a0c;
+background-color: #4289fb;
+width:120px;
+height:40px;
+font-size: 15px;
+font-family:poppins;
+color:#edf1f7;
+ border-radius: 15px;  
+ box-shadow: 3px 3px lightgrey;
+}  
+</style>
+</head>
+
+<body>
+<div style="border:10px solid  #4289fb;height:770px;">
+<div class="center">
+<div class="row">
+     <div class="column" style="font-size:20px">Update Customer</div>
+     <div class="column" style="float:right">
+       <div class="circle"></div>
+       <div class="circle"></div>
+	   <div class="circle1"></div>
+     </div>
+     </div><hr>
+
+  <div id="rcorner">
+  <b>
+  <table>
+<tr>
+<td class="property">Customer ID</td>
+<td></td>
+</tr>
+<tr>
+<td class="property">Full Name</td>
+<td class="input"><input type="name" name="name" placeholder="">
+</tr>
+<tr>
+<td class="property">Address</td>
+<td class="input"><input type="address" name="address" placeholder="">
+</tr>
+<tr>
+<td class="property">Contact Number</td>
+<td class="input"><input type="ContactNum" name="ContactNum" placeholder="">
+</tr>
+<tr>
+<td class="property">Gender</td>
+<td class="input"><input type="Gender" name="Gender" placeholder="">
+</tr>
+<tr>
+<td class="property">Email</td>
+<td class="input"><input type="email" name="email" placeholder="">
+</tr>
+</table>
+  </b>
+</div></br>
+<div class="container">  
+<button id ="btn" > Submit </button>  
+</div>  
+</div>
+</body>
+</html>
