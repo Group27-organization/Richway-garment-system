@@ -1,0 +1,198 @@
+@font-face {
+    font-family: Poppins-Regular;
+    src: url('../fonts/poppins/Poppins-Regular.ttf');
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100%;
+    font-family: Poppins-Regular, serif;
+    background-color: #f4f4f8;
+    overflow-y: hidden;
+}
+
+.content {
+    border-radius: 12px;
+    box-shadow: 0 0 19px 5px rgba(0, 0, 0, 0.19);
+    width: 920px;
+    height: 510px;
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+}
+
+.left-container {
+    flex: 1;
+    background: url('../img/image1.jpg') no-repeat center;
+    background-size: cover;
+    box-shadow: 0 12px 15px 0 rgba(0, 0, 0, .24), 0 17px 50px 0 rgba(0, 0, 0, .19);
+}
+
+.left-container-alpha {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background: rgba(3, 3, 3, .8);
+    display: flex;
+    flex-direction: column;
+    /* new */
+    align-items: center;
+    /* new */
+    justify-content: center;
+    /* new */
+}
+
+.left-container-alpha img {
+    width: 90%;
+    height: auto;
+}
+
+.footer {
+    text-align: center;
+    font-size: 10px;
+    color: white;
+    position: absolute;
+    bottom: 0;
+}
+
+.right-container {
+    font-family: Poppins-Regular, serif;
+    flex: 1;
+    display: flex;
+    /* new */
+    align-items: center;
+    /* new */
+    justify-content: center;
+    background-color: white;
+}
+
+.right-container-flex {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.top {
+    font-family: Poppins-Regular, serif;
+    font-size: 50px;
+    margin-bottom: 20px;
+    font-weight: bolder !important;
+}
+
+.loginfield input {
+    margin-top: 20px;
+    width: 290px;
+    height: 45px;
+    font-family: Poppins-Regular, FontAwesome, serif;
+    font-size: 15px;
+    margin-bottom: 5px;
+    border-style: none;
+    padding: 0 15px;
+    border-radius: 25px;
+    background-color: rgba(3, 3, 3, .1);
+}
+
+*:focus {
+    outline: none;
+}
+
+.loginfield input::placeholder {
+    color: #BCC1CF;
+    font-size: 15px;
+    font-family: Poppins-Regular, FontAwesome, serif;
+}
+
+.error {
+    color: red;
+    font-size: 12px;
+    padding-left: 15px;
+}
+
+.rememberme {
+    margin-top: 10px;
+    margin-bottom: 80px;
+    padding-left: 15px;
+    font-size: 12px;
+}
+
+.checks {
+    float: left;
+}
+
+.checks input {
+    margin-left: 0;
+    margin-right: 5px;
+    float: left;
+}
+
+.checks label {
+    float: left;
+    margin-right: 30px;
+}
+
+.flexredio {
+    margin: 0 auto;
+}
+
+.forget {
+    text-align: center;
+    margin-top: 15px;
+    font-size: 12px;
+}
+
+.btn {
+    font-family: Poppins-Regular, serif;
+    position: relative;
+    display: block;
+    width: 100%;
+    margin-top: 15px;
+    height: 45px;
+    border-radius: 37px;
+    border-style: none;
+    background: #030303;
+    color: white;
+    font-size: 15px;
+}
+
+
+/***  
+
+input[type="submit"]:hover {
+    border: 1px solid #030303 !important;
+    text-decoration: none !important;
+    background: white;
+    color: #030303 !important;
+}
+
+.loginfield input:hover {
+    border-bottom: 1px solid #030303;
+}
+
+.checks:hover {
+    color: #030303;
+}
+
+.froget a:hover {
+    color: #030303;
+}
+
+****/
+
+@media screen and (max-width: 850px) {
+    div.left-container {
+        display: none;
+    }
+    div.right-container {
+        max-width: 500px;
+        min-width: 400px;
+    }
+}
