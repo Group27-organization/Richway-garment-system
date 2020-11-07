@@ -39,7 +39,7 @@ body {
     width: 100%;
     height: 100%;
     position: relative;
-    background: rgba(3, 3, 3, .8);
+    background: RGBA(29,45,80,0.8);
     display: flex;
     flex-direction: column;
     /* new */
@@ -85,6 +85,7 @@ body {
     font-family: Poppins-Regular, serif;
     font-size: 50px;
     margin-bottom: 20px;
+    color: #1d2d50;
     font-weight: bolder !important;
 }
 
@@ -158,7 +159,7 @@ body {
     height: 45px;
     border-radius: 37px;
     border-style: none;
-    background: #030303;
+    background: #1d2d50;
     color: white;
     font-size: 15px;
 }

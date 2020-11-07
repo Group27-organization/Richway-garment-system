@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 13, 2020 at 10:09 AM
+-- Generation Time: Oct 27, 2020 at 12:48 PM
 -- Server version: 10.1.36-MariaDB
 -- PHP Version: 7.2.11
 
@@ -68,11 +68,18 @@ CREATE TABLE `attendence` (
 --
 
 CREATE TABLE `bank_account` (
-  `emp_ID` varchar(50) NOT NULL,
+  `bank_ID` varchar(50) NOT NULL,
   `name` varchar(100) NOT NULL,
   `branch` varchar(100) NOT NULL,
   `ac_number` int(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `bank_account`
+--
+
+INSERT INTO `bank_account` (`bank_ID`, `name`, `branch`, `ac_number`) VALUES
+('bnk1', 'Tempory Name', 'Tempory Branch', 100000000);
 
 -- --------------------------------------------------------
 
@@ -96,17 +103,29 @@ CREATE TABLE `customer` (
 
 CREATE TABLE `employee` (
   `emp_ID` varchar(50) NOT NULL,
-  `contact_no` int(10) NOT NULL,
+  `contact_no` char(10) NOT NULL,
   `name` varchar(100) NOT NULL,
   `job_start_date` date NOT NULL,
   `address` varchar(100) NOT NULL,
   `salary_basic` varchar(100) NOT NULL,
   `blood_group` varchar(20) NOT NULL,
-  `payment_ID` varchar(50) NOT NULL,
   `bank_account_name` varchar(100) NOT NULL,
   `bank_branch` varchar(100) NOT NULL,
-  `account_no` varchar(50) NOT NULL
+  `account_no` varchar(50) NOT NULL,
+  `bank_ID` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `employee`
+--
+
+INSERT INTO `employee` (`emp_ID`, `contact_no`, `name`, `job_start_date`, `address`, `salary_basic`, `blood_group`, `bank_account_name`, `bank_branch`, `account_no`, `bank_ID`) VALUES
+('emp1', '0708042314', 'Yasiru Ayeshmantha', '2020-10-01', 'No 12, Matara road,Matara.', '45000', 'O', 'K. Y. Ayeshmanatha', 'Matara', '10102564526', 'bnk1'),
+('emp2', '0705826482', 'Mahela Jayewardene', '2020-10-03', 'No 12, Matara road,Matara.', '35000', 'A+', 'M. Jayewardene', 'Matara', '10402344719', 'bnk1'),
+('emp3', '0765123482', 'Angelo Mathews', '2020-10-03', 'No 12, Matara road,Matara.', '35000', 'B-', 'M. Jayewardene', 'Matara', '104053123459', 'bnk1'),
+('emp4', '0708042314', 'Kasun Lakshitha', '2020-10-22', 'No 12, Matara road,Matara.', '35000', 'O', 'K. L. Rajapaksa', 'Matara', '10102564526', 'bnk1'),
+('emp5', '0705826482', 'Kusal Mendis', '2020-10-15', 'No 12, Matara road,Matara.', '35000', 'A+', 'K. Mendis', 'Matara', '10402344719', 'bnk1'),
+('emp6', '0765123482', 'Dimuth Karunarattna', '2020-10-03', 'No 12, Matara road,Matara.', '35000', 'B-', 'D. Karunarattna', 'Matara', '104053123459', 'bnk1');
 
 -- --------------------------------------------------------
 
@@ -144,16 +163,20 @@ CREATE TABLE `line` (
 CREATE TABLE `login` (
   `login_ID` int(10) NOT NULL,
   `user_name` varchar(100) NOT NULL,
-  `password` varchar(255) CHARACTER SET latin1 NOT NULL
+  `password` varchar(255) CHARACTER SET latin1 NOT NULL,
+  `role_id` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `login`
 --
 
-INSERT INTO `login` (`login_ID`, `user_name`, `password`) VALUES
-(1, 'uishara98@gmail.com', '$2y$10$eW5JH9xeD6txXi8HcPKTYeqhUGNlz5X3OErD52QorR.sLX5Vvm6FS'),
-(2, 'yasiruayesh97@gmail.com', '$2y$10$eW5JH9xeD6txXi8HcPKTYeqhUGNlz5X3OErD52QorR.sLX5Vvm6FS');
+INSERT INTO `login` (`login_ID`, `user_name`, `password`, `role_id`) VALUES
+(1, 'uishara98@gmail.com', '$2y$10$eW5JH9xeD6txXi8HcPKTYeqhUGNlz5X3OErD52QorR.sLX5Vvm6FS', 1),
+(2, 'yasiruayesh97@gmail.com', '$2y$10$eW5JH9xeD6txXi8HcPKTYeqhUGNlz5X3OErD52QorR.sLX5Vvm6FS', 3),
+(34, 'mahela@richwaygarment.com', '$2y$10$GRi0opBurVCZ5vvo5fpWOuRVCEK3H483ET04uY5nuonm80Wp5opbG', 6),
+(35, 'angelo@richwaygarment.com', '$2y$10$CXMzKCYkX61.5gBgu01SrOhsLgAPkvJd9vq/7ZKzMwY6LskiT9BpW', 4),
+(41, 'kumar@richwaygarment.com', '$2y$10$yrwgtNBkYcnliz1t70/HlevARdz/q2iptyuopMLMtjby2aGdLdGOa', 2);
 
 -- --------------------------------------------------------
 
@@ -228,10 +251,21 @@ CREATE TABLE `order_item` (
 
 CREATE TABLE `owner` (
   `owner_ID` varchar(50) NOT NULL,
-  `email` varchar(50) NOT NULL,
   `name` varchar(100) NOT NULL,
-  `log_ID` int(10) NOT NULL
+  `login_ID` int(10) DEFAULT NULL,
+  `address` varchar(50) NOT NULL,
+  `contact_no` char(10) NOT NULL,
+  `blood_group` char(2) NOT NULL,
+  `bank_ID` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `owner`
+--
+
+INSERT INTO `owner` (`owner_ID`, `name`, `login_ID`, `address`, `contact_no`, `blood_group`, `bank_ID`) VALUES
+('own1', 'Kumar Sangakkara', 41, 'No 21, Colombo road, Colombo 7.', '0715064213', 'A+', 'bnk1'),
+('own2', 'Upul Tharanga', NULL, 'No 21, Colombo road, Colombo 7.', '0705826482', 'A+', 'bnk1');
 
 -- --------------------------------------------------------
 
@@ -270,8 +304,7 @@ CREATE TABLE `permission` (
 
 CREATE TABLE `per_role_login` (
   `login_ID` int(10) NOT NULL,
-  `permission_ID` varchar(50) NOT NULL,
-  `role_ID` varchar(50) NOT NULL
+  `permission_ID` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -319,17 +352,12 @@ CREATE TABLE `production_manager` (
   `login_ID` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- --------------------------------------------------------
-
 --
--- Table structure for table `role`
+-- Dumping data for table `production_manager`
 --
 
-CREATE TABLE `role` (
-  `role_ID` varchar(50) NOT NULL,
-  `title` varchar(50) NOT NULL,
-  `description` varchar(200) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+INSERT INTO `production_manager` (`emp_ID`, `login_ID`) VALUES
+('emp3', 35);
 
 -- --------------------------------------------------------
 
@@ -354,6 +382,13 @@ CREATE TABLE `sales_manager` (
   `emp_ID` varchar(50) NOT NULL,
   `login_ID` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `sales_manager`
+--
+
+INSERT INTO `sales_manager` (`emp_ID`, `login_ID`) VALUES
+('emp1', 2);
 
 -- --------------------------------------------------------
 
@@ -389,8 +424,15 @@ CREATE TABLE `stock` (
 
 CREATE TABLE `stock_keeper` (
   `emp_ID` varchar(50) NOT NULL,
-  `login_D` int(10) NOT NULL
+  `login_ID` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `stock_keeper`
+--
+
+INSERT INTO `stock_keeper` (`emp_ID`, `login_ID`) VALUES
+('emp2', 34);
 
 -- --------------------------------------------------------
 
@@ -449,7 +491,8 @@ CREATE TABLE `t-shirt` (
 
 CREATE TABLE `tailor` (
   `emp_ID` varchar(50) NOT NULL,
-  `line_ID` varchar(50) NOT NULL
+  `line_ID` varchar(50) NOT NULL,
+  `t_id` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -462,6 +505,31 @@ CREATE TABLE `tool` (
   `stock_ID` varchar(50) NOT NULL,
   `manufacture` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_role`
+--
+
+CREATE TABLE `user_role` (
+  `role_ID` int(10) NOT NULL,
+  `title` varchar(50) NOT NULL,
+  `description` varchar(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `user_role`
+--
+
+INSERT INTO `user_role` (`role_ID`, `title`, `description`) VALUES
+(1, 'admin', 'Administrator of the system.'),
+(2, 'owner', 'Owner of the company.'),
+(3, 'sales_manager', 'Sales Manager of the company.'),
+(4, 'production_manager', 'Production Manager of the company.'),
+(5, 'supervisor', 'Supervisor of the company.'),
+(6, 'stock_keeper', 'Stock Keeper of the company.'),
+(7, 'accountant', 'Accountant of the company.');
 
 -- --------------------------------------------------------
 
@@ -483,7 +551,7 @@ CREATE TABLE `workload` (
 -- Indexes for table `accountant`
 --
 ALTER TABLE `accountant`
-  ADD PRIMARY KEY (`emp_ID`),
+  ADD PRIMARY KEY (`emp_ID`,`login_ID`) USING BTREE,
   ADD KEY `acc_l` (`login_ID`);
 
 --
@@ -505,7 +573,7 @@ ALTER TABLE `attendence`
 -- Indexes for table `bank_account`
 --
 ALTER TABLE `bank_account`
-  ADD PRIMARY KEY (`emp_ID`);
+  ADD PRIMARY KEY (`bank_ID`);
 
 --
 -- Indexes for table `customer`
@@ -518,7 +586,7 @@ ALTER TABLE `customer`
 --
 ALTER TABLE `employee`
   ADD PRIMARY KEY (`emp_ID`),
-  ADD KEY `t15` (`payment_ID`);
+  ADD KEY `bank_ID` (`bank_ID`);
 
 --
 -- Indexes for table `job`
@@ -536,7 +604,8 @@ ALTER TABLE `line`
 -- Indexes for table `login`
 --
 ALTER TABLE `login`
-  ADD PRIMARY KEY (`login_ID`);
+  ADD PRIMARY KEY (`login_ID`),
+  ADD KEY `l_r` (`role_id`);
 
 --
 -- Indexes for table `machine`
@@ -573,7 +642,8 @@ ALTER TABLE `order_item`
 --
 ALTER TABLE `owner`
   ADD PRIMARY KEY (`owner_ID`),
-  ADD KEY `ow_l` (`log_ID`);
+  ADD KEY `ow_l` (`login_ID`),
+  ADD KEY `bank_ID` (`bank_ID`);
 
 --
 -- Indexes for table `payment`
@@ -593,7 +663,6 @@ ALTER TABLE `permission`
 -- Indexes for table `per_role_login`
 --
 ALTER TABLE `per_role_login`
-  ADD KEY `t18` (`role_ID`),
   ADD KEY `t20` (`permission_ID`),
   ADD KEY `prl_l` (`login_ID`);
 
@@ -614,14 +683,8 @@ ALTER TABLE `produce`
 -- Indexes for table `production_manager`
 --
 ALTER TABLE `production_manager`
-  ADD PRIMARY KEY (`emp_ID`),
+  ADD PRIMARY KEY (`emp_ID`,`login_ID`) USING BTREE,
   ADD KEY `p_l` (`login_ID`);
-
---
--- Indexes for table `role`
---
-ALTER TABLE `role`
-  ADD PRIMARY KEY (`role_ID`);
 
 --
 -- Indexes for table `row_material`
@@ -634,7 +697,7 @@ ALTER TABLE `row_material`
 -- Indexes for table `sales_manager`
 --
 ALTER TABLE `sales_manager`
-  ADD PRIMARY KEY (`emp_ID`),
+  ADD PRIMARY KEY (`emp_ID`,`login_ID`) USING BTREE,
   ADD KEY `sl` (`login_ID`);
 
 --
@@ -654,14 +717,14 @@ ALTER TABLE `stock`
 -- Indexes for table `stock_keeper`
 --
 ALTER TABLE `stock_keeper`
-  ADD PRIMARY KEY (`emp_ID`),
-  ADD KEY `st_l` (`login_D`);
+  ADD PRIMARY KEY (`emp_ID`,`login_ID`) USING BTREE,
+  ADD KEY `st_l` (`login_ID`);
 
 --
 -- Indexes for table `supervisor`
 --
 ALTER TABLE `supervisor`
-  ADD PRIMARY KEY (`emp_ID`),
+  ADD PRIMARY KEY (`emp_ID`,`login_ID`) USING BTREE,
   ADD KEY `su_l` (`login_ID`);
 
 --
@@ -686,14 +749,21 @@ ALTER TABLE `t-shirt`
 -- Indexes for table `tailor`
 --
 ALTER TABLE `tailor`
-  ADD PRIMARY KEY (`emp_ID`),
-  ADD KEY `line_ID` (`line_ID`);
+  ADD PRIMARY KEY (`t_id`) USING BTREE,
+  ADD KEY `line_ID` (`line_ID`),
+  ADD KEY `emp_ID` (`emp_ID`);
 
 --
 -- Indexes for table `tool`
 --
 ALTER TABLE `tool`
   ADD PRIMARY KEY (`stock_ID`);
+
+--
+-- Indexes for table `user_role`
+--
+ALTER TABLE `user_role`
+  ADD PRIMARY KEY (`role_ID`);
 
 --
 -- Indexes for table `workload`
@@ -710,7 +780,19 @@ ALTER TABLE `workload`
 -- AUTO_INCREMENT for table `login`
 --
 ALTER TABLE `login`
-  MODIFY `login_ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `login_ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+
+--
+-- AUTO_INCREMENT for table `tailor`
+--
+ALTER TABLE `tailor`
+  MODIFY `t_id` int(10) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `user_role`
+--
+ALTER TABLE `user_role`
+  MODIFY `role_ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Constraints for dumped tables
@@ -720,7 +802,8 @@ ALTER TABLE `login`
 -- Constraints for table `accountant`
 --
 ALTER TABLE `accountant`
-  ADD CONSTRAINT `acc_l` FOREIGN KEY (`login_ID`) REFERENCES `login` (`login_ID`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `acc_l` FOREIGN KEY (`login_ID`) REFERENCES `login` (`login_ID`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `accountant_ibfk_1` FOREIGN KEY (`emp_ID`) REFERENCES `employee` (`emp_ID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `assign`
@@ -740,7 +823,13 @@ ALTER TABLE `attendence`
 -- Constraints for table `employee`
 --
 ALTER TABLE `employee`
-  ADD CONSTRAINT `t15` FOREIGN KEY (`payment_ID`) REFERENCES `payment` (`payment_ID`);
+  ADD CONSTRAINT `employee_ibfk_1` FOREIGN KEY (`bank_ID`) REFERENCES `bank_account` (`bank_ID`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `login`
+--
+ALTER TABLE `login`
+  ADD CONSTRAINT `l_r` FOREIGN KEY (`role_id`) REFERENCES `user_role` (`role_ID`) ON UPDATE CASCADE;
 
 --
 -- Constraints for table `machine`
@@ -772,7 +861,8 @@ ALTER TABLE `order_item`
 -- Constraints for table `owner`
 --
 ALTER TABLE `owner`
-  ADD CONSTRAINT `ow_l` FOREIGN KEY (`log_ID`) REFERENCES `login` (`login_ID`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `ow_l` FOREIGN KEY (`login_ID`) REFERENCES `login` (`login_ID`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `owner_ibfk_1` FOREIGN KEY (`bank_ID`) REFERENCES `bank_account` (`bank_ID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `payment`
@@ -786,7 +876,6 @@ ALTER TABLE `payment`
 --
 ALTER TABLE `per_role_login`
   ADD CONSTRAINT `prl_l` FOREIGN KEY (`login_ID`) REFERENCES `login` (`login_ID`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `t18` FOREIGN KEY (`role_ID`) REFERENCES `role` (`role_ID`),
   ADD CONSTRAINT `t20` FOREIGN KEY (`permission_ID`) REFERENCES `permission` (`permission_ID`);
 
 --
@@ -800,7 +889,8 @@ ALTER TABLE `produce`
 -- Constraints for table `production_manager`
 --
 ALTER TABLE `production_manager`
-  ADD CONSTRAINT `p_l` FOREIGN KEY (`login_ID`) REFERENCES `login` (`login_ID`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `p_l` FOREIGN KEY (`login_ID`) REFERENCES `login` (`login_ID`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `production_manager_ibfk_1` FOREIGN KEY (`emp_ID`) REFERENCES `employee` (`emp_ID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `row_material`
@@ -812,6 +902,7 @@ ALTER TABLE `row_material`
 -- Constraints for table `sales_manager`
 --
 ALTER TABLE `sales_manager`
+  ADD CONSTRAINT `sales_manager_ibfk_1` FOREIGN KEY (`emp_ID`) REFERENCES `employee` (`emp_ID`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `sl` FOREIGN KEY (`login_ID`) REFERENCES `login` (`login_ID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
@@ -824,19 +915,22 @@ ALTER TABLE `stock`
 -- Constraints for table `stock_keeper`
 --
 ALTER TABLE `stock_keeper`
-  ADD CONSTRAINT `st_l` FOREIGN KEY (`login_D`) REFERENCES `login` (`login_ID`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `st_l` FOREIGN KEY (`login_ID`) REFERENCES `login` (`login_ID`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `stock_keeper_ibfk_1` FOREIGN KEY (`emp_ID`) REFERENCES `employee` (`emp_ID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `supervisor`
 --
 ALTER TABLE `supervisor`
-  ADD CONSTRAINT `su_l` FOREIGN KEY (`login_ID`) REFERENCES `login` (`login_ID`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `su_l` FOREIGN KEY (`login_ID`) REFERENCES `login` (`login_ID`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `supervisor_ibfk_1` FOREIGN KEY (`emp_ID`) REFERENCES `employee` (`emp_ID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `tailor`
 --
 ALTER TABLE `tailor`
-  ADD CONSTRAINT `t_line` FOREIGN KEY (`line_ID`) REFERENCES `line` (`line_ID`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `t_line` FOREIGN KEY (`line_ID`) REFERENCES `line` (`line_ID`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `tailor_ibfk_1` FOREIGN KEY (`emp_ID`) REFERENCES `employee` (`emp_ID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `workload`
