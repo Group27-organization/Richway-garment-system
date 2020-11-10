@@ -1,0 +1,279 @@
+@font-face {
+    font-family: Poppins-Regular;
+    src: url('../../fonts/poppins/Poppins-Regular.ttf');
+}
+
+* {
+    margin: 0px;
+    padding: 0px;
+    font-family: Poppins-Regular;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #f4f4f8;
+    justify-content: center;
+    font-family: Poppins-Regular;
+}
+
+
+/************************************navigation********/
+
+.header {
+    background-color: #fff;
+    box-shadow: 1px 1px 4px 0 rgba(0, 0, 0, .1);
+    position: fixed;
+    width: 100%;
+    z-index: 3;
+    top: 0;
+    height: 8vh;
+}
+
+.header ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    overflow: hidden;
+    background-color: #fff;
+}
+
+.header li a {
+    color: #030303;
+    display: block;
+    padding: 50px 20px;
+    border-right: 1px solid #f4f4f4;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.header li a:hover,
+.header .menu-btn:hover {
+    background-color: #f4f4f4;
+}
+
+.header .logo {
+    display: block;
+    float: left;
+    font-size: 2em;
+    padding: 2px 20px;
+    text-decoration: none;
+}
+
+.header img {
+    width: 150px;
+    height: 6vh;
+}
+
+
+/* menu */
+
+.header .menu {
+    clear: both;
+    max-height: 0;
+    transition: max-height .2s ease-out;
+}
+
+
+/* menu icon */
+
+.header .menu-icon {
+    cursor: pointer;
+    display: inline-block;
+    padding: 28px 20px;
+    position: relative;
+    user-select: none;
+}
+
+.header .menu-icon .navicon {
+    background: #333;
+    display: block;
+    height: 2px;
+    position: relative;
+    transition: background .2s ease-out;
+    width: 18px;
+}
+
+.header .menu-icon .navicon:before,
+.header .menu-icon .navicon:after {
+    background: #333;
+    content: '';
+    display: block;
+    height: 100%;
+    position: absolute;
+    transition: all .2s ease-out;
+    width: 100%;
+}
+
+.header .menu-icon .navicon:before {
+    top: 5px;
+}
+
+.header .menu-icon .navicon:after {
+    top: -5px;
+}
+
+
+/* menu btn */
+
+.header .menu-btn {
+    display: none;
+}
+
+.header .menu-btn:checked~.menu {
+    max-height: 240px;
+}
+
+.header .menu-btn:checked~.menu-icon .navicon {
+    background: transparent;
+}
+
+.header .menu-btn:checked~.menu-icon .navicon:before {
+    transform: rotate(-45deg);
+}
+
+.header .menu-btn:checked~.menu-icon .navicon:after {
+    transform: rotate(45deg);
+}
+
+.header .menu-btn:checked~.menu-icon:not(.steps) .navicon:before,
+.header .menu-btn:checked~.menu-icon:not(.steps) .navicon:after {
+    top: 0;
+}
+
+
+/* 48em = 768px */
+
+@media (min-width: 48em) {
+    .header li {
+        float: left;
+    }
+    .header li a {
+        padding: 10px 30px;
+    }
+    .header .menu {
+        clear: none;
+        float: right;
+        max-height: none;
+    }
+    .header .menu-icon {
+        display: none;
+    }
+}
+
+
+/***************************************************************************************************************************/
+
+.grid-container {
+    margin-top: 10vh;
+    display: grid;
+    position: relative;
+    grid-gap: 2vw;
+    grid-template-columns: 275px auto ;
+    margin-right: 10px;
+}
+
+.sidebar-flex-box-container {
+
+    z-index: 0;
+
+}
+
+
+/***********************************************************/
+
+
+/******************************************/
+
+.right{
+     border: 2px solid blue; 
+    margin-top: 8vh;
+    border-radius: 15px;
+    grid-column-start: 2;
+    justify-items: center;
+    height: 1000px;
+}
+
+.flex-row{
+    margin: 20px;
+    display: flex;
+
+    justify-content:flex-end;
+
+}
+
+.updbtn{
+
+    flex:2;
+}
+.wrapbtn{
+
+    flex:5;
+}
+
+
+
+.search {
+    width: 100%;
+    position: relative;
+    display: flex;
+}
+
+.searchTerm {
+    width: 100%;
+    border: 3px solid #2680EB;
+    border-right: none;
+    padding: 5px;
+    height: 36px;
+    border-radius: 5px 0 0 5px;
+    outline: none;
+    color: #2680EB;
+    box-shadow: 0px 0px 5px -1px rgba(0,0,0,0.75);
+}
+
+.searchTerm:focus{
+    color: #2680EB;
+    border-color:#2680EB;
+    font-weight: bold;
+}
+
+.searchButton {
+    width: 40px;
+    height: 36px;
+    border: 1px solid #00B4CC;
+    background: linear-gradient(to right, #37A0F6 , #2680EB);
+    text-align: center;
+    color: #fff;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    font-size: 20px;
+    box-shadow: 0px 0px 5px -1px rgba(0,0,0,0.75);
+}
+
+/*Resize the wrap to see the search bar change!*/
+.updateButton {
+    width: 150px;
+    height: 36px;
+    border: 1px solid #00B4CC;
+    background: linear-gradient(to right, #37A0F6 , #2680EB);
+    text-align: center;
+    color: #fff;
+    border-radius:  5px 5px;
+    cursor: pointer;
+    font-size: 20px;
+    box-shadow: 0px 0px 5px -1px rgba(0,0,0,0.75);
+}
+.searchButton:focus{
+    outline:0;
+}
+.updateButton:focus{
+    outline:0;
+}
+
+
+
+
+/****************************************************************************************************************/
+
+
+
+

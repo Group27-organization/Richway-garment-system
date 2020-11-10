@@ -7,7 +7,7 @@ class loginModel extends database {
 
         if($this->Query("SELECT * FROM login WHERE user_name = ? ", [$email])){
             
-            if($this->rowCount() > 0 ){
+            if($this->rowCount() > 0){
 
                 $row = $this->fetch();
                 $dbPassword = $row->password;
@@ -20,7 +20,7 @@ class loginModel extends database {
                     return ['status' => 'passwordNotMacthed'];
                 }
 
-            } else {
+            }else{
                 return ['status' => 'emailNotFound'];
             }
 
@@ -28,6 +28,9 @@ class loginModel extends database {
 
 
     }
+
+
+
 
 }
 

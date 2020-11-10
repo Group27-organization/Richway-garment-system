@@ -1,0 +1,135 @@
+.dynamic-tableInForm{
+    width: 90%;
+    text-align: center;
+}
+
+
+.formTable {
+    border: 0;
+    border-collapse: collapse;
+    /*margin: 20px;*/
+    padding: 0;
+    width: 100%;
+    background-color: #E8F0FE;
+    table-layout: fixed;
+    /*display: block;*/
+}
+.formTable  caption {
+    text-align: center;
+    font-size: 0.5em;
+    margin: .5em 0 .75em;
+}
+.formTable  thead {
+    /*display: block;*/
+    display: none;
+    border: 1px solid #ffffff;
+}
+.formTable  tbody {
+    /*display: block;*/
+
+}
+
+.formTable  tr {
+    display: block;
+    border: 1px solid #ffffff;
+    /*padding: 1em 1em .5em;*/
+}
+.formTable  tr + tr {
+    margin-top: .625em;
+}
+
+.formTable  td {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #ffffff;
+    font-size: .6em;
+    line-height: 1.35em;
+    /*padding: 10px;*/
+}
+.formTable  td:before {
+    content: attr(data-label);
+    /*font-size: .90em;*/
+    text-align: center;
+    font-weight: bold;
+    text-transform: uppercase;
+    max-width: 45%;
+    color: #545454;
+}
+.formTable  td + td {
+    margin-top: .8em;
+}
+.formTable  td:last-child {
+    border-bottom: 0;
+}
+th, td {
+    padding: 1.25rem 2rem;
+}
+.formTable  th, table td {
+    text-align: center;
+}
+@media screen and (min-width: 600px) {
+    .formTable  caption {
+        font-size: 1.5em;
+    }
+    .formTable  thead {
+        display: table-header-group;
+    }
+    .formTable  tr {
+        display: table-row;
+        border: 0;
+    }
+    .formTable  th, table td {
+        text-align: center;
+    }
+    .formTable  th {
+        font-size: .85em;
+        text-transform: uppercase;
+    }
+    .formTable  td {
+        display: table-cell;
+    }
+    .formTable  td:before {
+        display: none;
+    }
+    .formTable  td:last-child {
+        border-bottom: 1px solid #eee;
+    }
+}
+/********************************************/
+.table__button-group {
+    padding: 0;
+    margin: 0;
+    visibility: hidden;
+    display: block;
+
+    -webkit-transition: visibility 0.06s ease-in;
+    transition: visibility 0.06s ease-in;
+}
+
+.table__button-group a {
+    margin: 0;
+    text-decoration: none;
+    color: #0989ab;
+    font-size: 0.6rem;
+
+
+}
+.table__button-group a:hover {
+    color: #0989ab;
+    opacity: 0.75;
+}
+.table__button-group a ~ a:before {
+    content: " | ";
+
+}
+
+tr:hover > td .table__button-group {
+    visibility: visible;
+}
+
+@media (max-width: 800px) {
+    .table__button-group {
+        visibility: visible;
+    }
+}

@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:feature" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:feature" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="BRANCH:origin/feature/add-new-item-to-the-stock" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </select>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="ed45f67b-98b2-4113-afe1-45cec5210557" name="Default Changelist" comment="add new item to stock method completed.">
+      <change afterPath="$PROJECT_DIR$/.idea/Richway-garment-system.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/application/controllers/StockNavigationController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/application/controllers/addRawMaterialController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/application/controllers/manageSupplierController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/application/controllers/stockIssueController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/application/models/ViewStockTableModel.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/application/models/addRawMaterialModel.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/application/models/createOrderModel.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/application/models/mangeSupplierModel.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/application/views/Stock/add-raw materials-item-form.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/application/views/Stock/add-supllier.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/application/views/Stock/components/RTM-TabPane.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/application/views/Stock/components/last.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/application/views/Stock/components/nav.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/application/views/Stock/components/rightsidecontent.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/application/views/Stock/components/sidebar_navigation.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/application/views/Stock/components/stock-issue-table-in-card.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/application/views/Stock/components/supplier-table-in-card.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/application/views/Stock/forms/add-raw-material-item-popup.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/application/views/Stock/forms/order-item-table-popup-window.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/application/views/Stock/forms/raw-material-add-form.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/application/views/Stock/forms/stock-issue-form.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/application/views/Stock/img/Group 2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/application/views/Stock/index.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/application/views/Stock/manageStock.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/application/views/Stock/manageSupplier.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/application/views/Stock/stock-issue-Form.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/application/views/Stock/stockIssue.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/css/Form.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/css/dynamically-add-item-table.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/css/middle-table-load-card.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/css/popup-window-form.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/css/popup-window-table.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/css/popup-window.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/css/stock-css/additem-dashbord.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/css/stock-css/all-stock-form.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/css/stock-css/content-table-middle.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/css/stock-css/dynamically-item-add-table.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/css/stock-css/gridculms3.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/css/stock-css/nav.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/css/stock-css/pop-window-add-raw-matiral-item.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/css/stock-css/popup-window-order-item-table.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/css/stock-css/sidebar.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/css/stock-css/style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/css/stock-css/table.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/css/stock-css/tabpane.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/img/user.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/js/jquery.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/js/select-raw-highlighted.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/js/stock-keeper-js/button-fabric-nool-dynamically-add-table.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/js/stock-keeper-js/manageSupplier.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/js/stock-keeper-js/pop-window-add-raw-matiral-item.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/js/stock-keeper-js/popup-window-order-item-table-form.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/js/stock-keeper-js/raw-material-form.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/js/stock-keeper-js/stockIssue.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/js/tabpane.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/controllers/loginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/controllers/loginController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/models/loginModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/models/loginModel.php" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="CSS File" />
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="showPreview" value="true" />
+  </component>
+  <component name="ProjectId" id="1iozaf5zjPzmMcRKOVuI1keWKyW" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="E:/Pure Web/Uvindu Part" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\Richway-garment-system\application\views\Stock" />
+      <recent name="C:\xampp\htdocs\Richway-garment-system\application\views\Stock\forms" />
+      <recent name="C:\xampp\htdocs\Richway-garment-system\public\assets\js\stock-keeper-js" />
+      <recent name="C:\xampp\htdocs\Richway-garment-system\public\assets\img" />
+      <recent name="C:\xampp\htdocs\Richway-garment-system\public\assets\css\stock-css" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\Richway-garment-system\application\controllers\stock-controller" />
+      <recent name="C:\xampp\htdocs\Richway-garment-system\public\assets\css" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="ed45f67b-98b2-4113-afe1-45cec5210557" name="Default Changelist" comment="" />
+      <created>1602588798301</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1602588798301</updated>
+      <workItem from="1602588803152" duration="244000" />
+      <workItem from="1602589105762" duration="364000" />
+      <workItem from="1602589475598" duration="2955000" />
+      <workItem from="1602658112757" duration="221000" />
+      <workItem from="1602671857228" duration="16618000" />
+      <workItem from="1602733764198" duration="9856000" />
+      <workItem from="1602755840753" duration="14714000" />
+      <workItem from="1602817780224" duration="7608000" />
+      <workItem from="1602863400600" duration="22652000" />
+      <workItem from="1603537744458" duration="2877000" />
+      <workItem from="1603604789457" duration="6750000" />
+      <workItem from="1603623396466" duration="11302000" />
+      <workItem from="1603707032085" duration="3592000" />
+      <workItem from="1603712039109" duration="13166000" />
+      <workItem from="1603771064672" duration="35201000" />
+      <workItem from="1603859806254" duration="20662000" />
+      <workItem from="1603947468755" duration="40878000" />
+      <workItem from="1604032504305" duration="31219000" />
+      <workItem from="1604114502911" duration="34728000" />
+      <workItem from="1604162837772" duration="8560000" />
+      <workItem from="1604204716368" duration="30533000" />
+      <workItem from="1604294317779" duration="33035000" />
+      <workItem from="1604377579952" duration="9390000" />
+      <workItem from="1604411563889" duration="10802000" />
+      <workItem from="1604493918404" duration="10980000" />
+      <workItem from="1604544380024" duration="31104000" />
+      <workItem from="1604633931372" duration="26180000" />
+      <workItem from="1604725799720" duration="11683000" />
+      <workItem from="1604740621957" duration="15953000" />
+      <workItem from="1604759180914" duration="9866000" />
+      <workItem from="1604803775925" duration="36741000" />
+      <workItem from="1604909488904" duration="835000" />
+      <workItem from="1604934909358" duration="10209000" />
+      <workItem from="1604982103630" duration="26657000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="origin/feature/add-new-item-to-the-stock" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="add new item to stock method completed." />
+    <option name="LAST_COMMIT_MESSAGE" value="add new item to stock method completed." />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="309" y="42" key="#Inspections" timestamp="1603787496234">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="309" y="42" key="#Inspections/0.0.1366.728@0.0.1366.728" timestamp="1603787496234" />
+    <state x="59" y="205" key="#SQL_Dialects" timestamp="1603734644188">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="59" y="205" key="#SQL_Dialects/0.0.1366.728@0.0.1366.728" timestamp="1603734644188" />
+    <state x="0" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1604741719566">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="0" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1366.728@0.0.1366.728" timestamp="1604741719566" />
+    <state x="413" y="111" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1604743468341">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="413" y="111" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1366.728@0.0.1366.728" timestamp="1604743468341" />
+    <state x="463" y="119" key="FileChooserDialogImpl" timestamp="1604771368650">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="463" y="119" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1604771368650" />
+    <state x="479" y="48" width="651" height="496" key="NewPhpClassDialog" timestamp="1604739787446">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="479" y="48" width="651" height="496" key="NewPhpClassDialog/0.0.1366.728@0.0.1366.728" timestamp="1604739787446" />
+    <state x="643" y="96" key="NewPhpFileDialog" timestamp="1604768299263">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="643" y="96" key="NewPhpFileDialog/0.0.1366.728@0.0.1366.728" timestamp="1604768299263" />
+    <state x="-423" y="752" width="672" height="678" key="search.everywhere.popup" timestamp="1604639984001">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="-423" y="752" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1604639984001" />
+  </component>
+</project>

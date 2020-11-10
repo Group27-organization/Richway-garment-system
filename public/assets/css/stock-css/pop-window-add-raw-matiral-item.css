@@ -1,0 +1,258 @@
+.bg-modal{
+    background-color: rgba(0, 0, 0, 0.7);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    display: none;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    z-index: 3;
+}
+
+.modal-contents {
+    min-height: 500px;
+    height: 90vh;
+    width: 800px;
+    background-color: white;
+    text-align: center;
+    padding: 30px;
+    position: relative;
+    border-radius: 5px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.close {
+    position: absolute;
+    top: 0;
+    right: 10px;
+    font-family: Poppins-Regular, serif;
+    font-size: 28px;
+    color: #333;
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+    cursor: pointer;
+}
+.close:hover {
+    color: #666;
+}
+
+/*********************************/
+.flexbox-container-popup{
+    font-family:Poppins-Regular ;
+    height:75%;
+    width: 60%;
+    margin: auto;
+    background-color: white;
+    padding: 10px;
+   // box-shadow: 1px 1px 8px -4px rgba(128, 0, 0, 0.6);
+    border-radius: 15px;
+    overflow-y: auto;
+
+}
+
+.flexbox-container-popup  .inputfield2 .form-contrall{
+    font-family:Poppins-Regular ;
+    width: 100%;
+    border: 1px solid #d5dbd9;
+    padding: 4px;
+    border-radius: 5px;
+    margin-top: 4px;
+
+}
+.inputfield2{
+    margin-bottom: 5px;
+    margin-top: 5px;
+    font-family:Poppins-Regular ;
+
+
+}
+.inputfield2 label{
+    margin-bottom: 4px;
+    margin-top: 4px;
+    opacity: 0.8;
+    padding-left: 0;
+    font-family:Poppins-Regular ;
+    display: flex;
+    justify-content: flex-start;
+
+
+}
+
+.flexbox-container-popup  .inputfield2 .form-contrall:focus {
+    border-color:#37A0F6;
+    background-color: #F5F5F5;
+}
+
+/*******************************************/
+
+.input2 {
+    margin-left: 20%;
+    width: 43% !important;
+
+}
+.inputbutton{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.inputbutton .txtsupp{
+    font-family:Poppins-Regular ;
+    width: 100%;
+    border: 1px solid #d5dbd9;
+    /*padding: 5px;*/
+    border-radius: 5px;
+    /*margin-top: 5px;*/
+}
+
+.inputbutton .txtsupp :focus{
+    border-color:#37A0F6;
+    background-color: #F5F5F5;
+}
+.inputbutton .btn{
+
+    background-color: #37A0F6;
+    font-size: 12px;
+    border: none;
+    height: 25px;
+    width: 50%;
+
+    background: linear-gradient(to right, #37A0F6 , #2680EB);
+    text-align: center;
+    color: #fff;
+    border-radius:  5px 5px;
+    cursor: pointer;
+    box-shadow: 0 0 5px -1px rgba(0,0,0,0.75);
+
+}
+
+
+/*model content styles*/
+
+.LastBtnWap{
+    width: 100%;
+    display: flex;
+    margin-top: 25px;
+
+    flex-direction: row;
+    justify-content: center;
+
+
+
+
+}
+.BtnWap{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    margin-right: 40px;
+    position: absolute;
+    bottom: 30px;
+
+}
+
+/*Resize the wrap to see the search bar change!*/
+.audButton{
+    width: 100px;
+    height: 30px;
+    margin-left: 10px;
+    border: 1px solid #00B4CC;
+    background: linear-gradient(to right, #37A0F6 , #2680eb);
+    text-align: center;
+    color: #fff;
+    border-radius:  5px 5px;
+    cursor: pointer;
+    font-size: 18px;
+    box-shadow: 0px 0px 5px -1px rgba(0,0,0,0.75);
+    margin-bottom: 5px;
+
+
+}
+
+.audButton2 {
+    width: 100px;
+    height: 30px;
+    margin-left: 10px;
+    border: 1px solid #00B4CC;
+    background: #708090;
+    text-align: center;
+    color: #fff;
+    border-radius:  5px 5px;
+    cursor: pointer;
+    font-size: 18px;
+    box-shadow: 0px 0px 5px -1px rgba(0,0,0,0.75);
+    margin-bottom: 5px;
+}
+
+.searchButton:focus{
+    outline:0;
+}
+.audButton:focus{
+    outline:0;
+}
+
+.model-footer{
+    color: red;
+}
+
+#tableParent-suppliresTable {
+    width: 100%;
+
+}
+#tableParent-suppliresTable .content-table {
+    margin: 0;
+    padding: 0;
+}
+
+/*Create ripple effec*/
+
+.cripple {
+    position: relative;
+    overflow: hidden;
+    transform: translate3d(0, 0, 0);
+}
+
+.cripple:after {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    background-image: radial-gradient(circle, #fff 10%, transparent 10.01%);
+    background-repeat: no-repeat;
+    background-position: 50%;
+    transform: scale(10, 10);
+    opacity: 0;
+    transition: transform .5s, opacity 1s;
+}
+.cripple:hover {
+    opacity: .7;
+    transition: 1s;
+}
+
+.cripple:active:after {
+    transform: scale(0, 0);
+    opacity: .3;
+    transition: 0s;
+}
+
+/*************************************************/
+
+*:focus {
+    outline: none;
+
+}
+

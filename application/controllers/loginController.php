@@ -11,7 +11,7 @@ class loginController extends framework {
     public function __construct(){
 
         if($this->getSession('userId')){
-            $this->redirect("dashboardController");
+            $this->redirect("stockNavigationController");
         }
         $this->helper("link");
         $this->loginModel = $this->model('loginModel');
@@ -57,7 +57,7 @@ class loginController extends framework {
                 $this->view("login", $user);
             } else if($result['status'] === "ok"){
                 $this->setSession("userId", $result['data']);
-                $this->redirect("dashboardController");
+                $this->redirect("stockNavigationController");
             }
 ;
         } else {
