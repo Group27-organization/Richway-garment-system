@@ -13,20 +13,21 @@
 }
 
 .wrapper {
-    box-shadow: 1px 1px 4px 0 rgba(0, 0, 0, .1);
+    box-shadow: 0 0 10px rgba(0,0,0,.15);
     position: fixed;
-    width: 100%;
+    width: calc(100% - 275px);
     z-index: 3;
     top: 0;
+    margin-left: -2vh;
 }
 
 .wrapper .navbar {
-    background: #fff;
+    background: #ffffff;
     display: flex;
     justify-content: space-between;
     padding: 0px 25px;
     align-items: center;
-    height: 8vh;
+    height: 7vh;
 }
 
 .wrapper .navbar .left img {
@@ -35,7 +36,7 @@
 }
 
 .wrapper .navbar ul li a {
-    color: #030303;
+    color: #32325d;
 }
 
 .wrapper .navbar .nav_right ul li a {
@@ -65,7 +66,7 @@
     position: absolute;
     top: 9vh;
     right: 0;
-    background: #1d2d50;
+    background: #172B4D;
     padding: 10px 25px;
     border-radius: 12px;
     box-shadow: 0 0 20px rgba(0, 0, 0, .15);
@@ -84,10 +85,10 @@
     content: "";
     position: absolute;
     top: -20px;
-    left: 70%;
+    left: 75%;
     transform: translateX(-50%);
     border: 10px solid;
-    border-color: transparent transparent #1d2d50 transparent;
+    border-color: transparent transparent #172B4D transparent;
 }
 
 .wrapper .navbar .nav_right ul li.active .dropdown {

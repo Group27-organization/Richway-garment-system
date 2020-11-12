@@ -12,17 +12,64 @@
 }
 
 body {
-    background-color: #f4f4f8;
+    /*background-color: #f8f9fe;*/
+    overflow-x: hidden;
+    color: #333;
     justify-content: center;
+    background: linear-gradient(to bottom, #5e72e4 450px, #f8f9fe 0%);
+}
+
+.bg-gradient-primary {
+    background: linear-gradient(87deg,#5e72e4 0,#825ee4 100%)!important;
+}
+
+.fill-default {
+    fill: #f8f9fe;
+}
+
+.separator-skew {
+        height: 70px;
+    }
+.separator-skew {
+    height: 60px;
+}
+.separator-bottom {
+    top: auto;
+    bottom: 0;
+}
+.separator {
+    position: absolute;
+    top: 350px;
+    right: 0;
+    left: 275px;
+    overflow: hidden;
+    width: calc(100% + 2vh);
+    height: 150px;
+    transform: translateZ(0);
+    pointer-events: none;
+    z-index: 0;
+    background-color: #5e72e4;
+}
+
+.separator-bottom svg {
+    bottom: 0;
+}
+.separator svg {
+    position: absolute;
+    pointer-events: none;
+}
+svg {
+    overflow: hidden;
+    vertical-align: middle;
 }
 
 /***************************************************************************************************************************/
 
 .grid-container {
-    margin-top: 10vh;
+    margin-top: 0;
     display: grid;
     position: relative;
-    grid-gap: 2vw;
+    grid-gap: 0;
     grid-template-columns: 275px auto;
 }
 
@@ -45,7 +92,6 @@ body {
 .navigation-container {
     position: fixed;
     width: 275px;
-    margin-left: 10px;
 }
 
 .navigation-collapse-trigger {
@@ -107,16 +153,16 @@ body {
 }
 
 .navigation {
-    background-color: #1d2d50;
+    background-color: #172B4D;
     color: #ffffff;
-    height: 88vh;
-    padding: 16px;
+    height: 100vh;
+    padding: 10vh 16px 16px 16px;
     display: -webkit-box;
     display: flex;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
     flex-direction: column;
-    border-radius: 10px;
+    box-shadow: 0 0 2rem 0 rgba(136, 152, 170, 0.15);
 }
 
 .navigation ul {
@@ -225,12 +271,12 @@ body {
 }
 
 .navigation-link:hover {
-    background-color: #1e5f74;
+    background-color: rgba(94, 114, 228,0.5);
     color: #ffffff;
 }
 
 .navigation-link.active {
-    background-color: #1e5f74;
+    background-color: rgba(94, 114, 228,0.5);
     color: #ffffff;
 }
 
@@ -254,12 +300,14 @@ body {
 
 .right {
     margin-top: 0;
-    padding-top: 20px;
+    padding-top: 10vh;
+    padding-left: 2vh;
     grid-column-start: 2;
     justify-items: center;
     align-content: center;
     display: flex;
     flex-direction: column;
+    margin-left: 0;
 }
 
 /*********************************************************************************************************************/
@@ -296,23 +344,24 @@ body {
 /*inside of dashboard css*/
 .box-container-top {
     position: relative;
-    margin-top: 20px;
-    padding-bottom: 35px;
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: space-between;
+    margin: 20px 4vw;
 }
 
 .box-top {
     height: 150px;
     width: 16vw;
     padding: 10px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0,0,0,.15);
+    background-color: #fff;
+    word-wrap: break-word;
+    border: 1px solid rgba(0,0,0,.05);
+    border-radius: .375rem;
+    background-clip: border-box;
+    box-shadow: 0 0 2rem 0 rgba(136,152,170,.15);
     transition: 0.3s;
     display: flex;
-
-    background: white;
 }
 .box-top .image-l{
     color: #f4f4f8;
@@ -327,13 +376,14 @@ body {
 }
 .box-top .content-r .cr1{
     font-size: 16px;
-    color: #5A607F;
+    color: #8898aa;
     display: block;
     justify-content: left;
     justify-items: left;
 }
 
 .box-top .content-r .cr2{
+    color: #32325d ;
     font-size: 28px;
     font-weight: 45;
     display: block;
@@ -351,7 +401,7 @@ body {
 
 }
 .box-top .content-r .gr{
-    color: #3DD598;
+    color: #2dce89;
     font-size: 16px;
     margin-right: 2px;
 
@@ -375,15 +425,20 @@ body {
 
 */
 
-.box-container-revenue-growth{
-    padding: 20px;
-    background-color: white;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0,0,0,.15);
+.box-container-monthly-sales{
+    display: flex;
+    margin: 25px 4vw;
+    padding: 25px;
+    background-color: #fff;
+    word-wrap: break-word;
+    border: 1px solid rgba(0,0,0,.05);
+    border-radius: .375rem;
+    background-clip: border-box;
+    box-shadow: 0 0 2rem 0 rgba(136,152,170,.15);
+    overflow: hidden;
     transition: 0.3s;
-    width: 80%;
-    align-self: center;
-    font-size: 18px;
+    height: 450px;
+    font-size: 12px;
 }
 
 .flex-box-reanue-chart{
@@ -391,7 +446,6 @@ body {
     display: flex;
     flex-direction: row;
     font-size: 12px;
-    margin-top: 30px;
 }
 .flex-box-reanue-chart >div{
     flex: 1;
@@ -418,28 +472,40 @@ body {
     gap: 35px;
     height: 500px;
     margin: 35px 4vw;
+    z-index: 1;
 }
 .fbtt-two{
     flex:2;
-    padding: 10px;
-    background-color: white;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0,0,0,.15);
+    padding: 40px;
+    background-color: #172B4D;
+    word-wrap: break-word;
+    border: 1px solid rgba(0,0,0,.05);
+    border-radius: .375rem;
+    background-clip: border-box;
+    box-shadow: 0 0 2rem 0 rgba(136,152,170,.15);
     transition: 0.3s;
+    display: flex;
+
     overflow: hidden;
 }
 .fbtt-three{
     flex:3;
-    padding: 10px;
-    background-color: white;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0,0,0,.15);
+    padding: 25px;
+    background-color: #fff;
+    word-wrap: break-word;
+    border: 1px solid rgba(0,0,0,.05);
+    border-radius: .375rem;
+    background-clip: border-box;
+    box-shadow: 0 0 2rem 0 rgba(136,152,170,.15);
     transition: 0.3s;
-    margin-right: 10px;
+    font-family: Poppins-Regular, serif ;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     overflow: hidden;
 }
 .fbtt-three p{
-    font-size: 16px;
+    font-size: 14px;
     font-weight: bold;
 }
 /**********************************/
@@ -487,18 +553,26 @@ body {
 }
 /*********************************************************************************************************************/
 
+.calendar-title{
+    margin-left: 4vw;
+    margin-top: 15px;
+}
+
 .flex-container-calender {
     width: 800px;
-    margin-top: 20px;
+    margin-top: 25px;
     display: flex;
     flex-wrap: nowrap;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    background-color: #fff;
+    word-wrap: break-word;
+    border: 1px solid rgba(0,0,0,.05);
+    border-radius: .375rem;
+    background-clip: border-box;
+    box-shadow: 0 0 2rem 0 rgba(136,152,170,.15);
     transition: 0.3s;
-    background-color: #ffffff;
     justify-content: center;
-    font-family: Poppins-Regular;
+    font-family: Poppins-Regular, serif;
     margin-left: 20px;
-    border-radius: 15px;
     margin-bottom: 50px;
 }
 
@@ -531,4 +605,97 @@ body {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     transition: 0.3s;
 
+}
+
+.page-header.card {
+    position: relative;
+    margin: 20px 35px 15px;
+    background-color: transparent;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    padding: 0;
+}
+
+.page-header-title{
+    display: flex;
+    align-items: center;
+}
+
+.page-header-routetext{
+    display: flex;
+    align-items: center;
+}
+
+.align-items-end {
+    -ms-flex-align: end!important;
+    align-items: flex-end!important;
+}
+.row {
+    display: flex;
+    margin-right: -15px;
+    margin-left: -15px;
+}
+
+.page-header.card .page-header-title img {
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    float: left;
+    width: 40px;
+    height: 40px;
+    border-radius: 5px;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    vertical-align: middle;
+    color: #fff;
+    -webkit-box-shadow: 0 2px 12px -3px rgba(0,0,0,0.5);
+    box-shadow: 0 2px 12px -3px rgba(0,0,0,0.5);
+    margin-right: 20px;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    padding: 7px;
+    overflow: hidden;
+}
+
+.h5, h5 {
+    font-size: 1.25rem;
+    color: white;
+}
+
+.d-inline {
+    display: inline!important;
+}
+
+.roudtetext {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    padding: .75rem 1rem;
+    margin-bottom: 1rem;
+    list-style: none;
+    border-radius: .25rem;
+}
+
+.right2 img{
+   height: 16px;
+    width: 16px;
+    margin-right: 10px;
+}
+
+.page-header.card .left2{
+    flex: 80%;
+}
+
+.page-header.card .right2{
+    flex: 20%;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}
+
+.bg-blue{
+    background: #4099ff;
 }
