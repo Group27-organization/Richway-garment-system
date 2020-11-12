@@ -13,6 +13,7 @@ class loginController extends framework {
         if($this->getSession('userId')){
             $this->redirect("dashboardController");
         }
+
         $this->helper("link");
         $this->loginModel = $this->model('loginModel');
         
@@ -57,9 +58,16 @@ class loginController extends framework {
                 $this->view("login", $user);
             } else if($result['status'] === "ok"){
                 $this->setSession("userId", $result['data']);
+
+//                if($result['data']['role'] == 'admin'){
+//                    $this->redirect("adminDashboardController");
+//                }else {
+//                    $this->redirect("dashboardController");
+//                }
+
                 $this->redirect("dashboardController");
+
             }
-;
         } else {
             $this->view("login", $user);
         }
