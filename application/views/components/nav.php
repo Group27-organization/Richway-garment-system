@@ -13,7 +13,7 @@
             <ul>
                 <li class="dp">
                     <a href="#" class="1">
-                        <p><?php echo $this->getSession('userId')['user_name'] ?><br> <span><?php echo ucwords($this->getSession('userId')['role']); ?></span></p><img src="<?php echo BASEURL; ?>/public/assets/img/contacts_n.svg" height="32" width="32"><i class="fas fa-angle-down"></i>
+                        <p><?php echo $this->getSession('userId')['user_name'] ?><br> <span><?php echo ucwords(str_replace("_"," ",$this->getSession('userId')['role'])); ?></span></p><img src="<?php echo BASEURL; ?>/public/assets/img/contacts_n.svg" height="32" width="32"><i class="fas fa-angle-down"></i>
                     </a>
 
                     <div class="dropdown">

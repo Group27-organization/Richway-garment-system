@@ -1,7 +1,7 @@
 var chart = new CanvasJS.Chart("lineChart", {
     animationEnabled: true,
     title:{
-        text: "Music Album Sales by Year"
+        text: "Productivity & Line Efficiency"
     },
     theme: "dark2",
     backgroundColor: "#172B4D",
