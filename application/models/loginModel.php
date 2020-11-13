@@ -11,10 +11,32 @@ class loginModel extends database {
 
                 $row = $this->fetch();
                 $dbPassword = $row->password;
-                $userId = $row->login_ID;
+
                 if(password_verify($password, $dbPassword)){
 
-                    return ['status' => 'ok', 'data' => $userId];
+                    $userId = $row->login_ID;
+
+                    $user_name = $row->user_name;
+
+                    $sql1 = "SELECT role_ID FROM per_role_login WHERE login_ID = $userId";
+                    if($this->Query("SELECT title FROM user_role WHERE role_ID in ($sql1)")){
+                        $roles = $this->fetchall();
+
+                        $rolesarr = [];
+                        foreach ($roles as $r){
+                            array_push($rolesarr, $r->title);
+                        }
+
+                        $user_data = [
+                            'user_id' => $userId,
+                            'user_name' => $user_name,
+                            'role' => $rolesarr[0],
+                            'all_roles' => $rolesarr
+                        ];
+
+                        return ['status' => 'ok', 'data' => $user_data];
+
+                    }
 
                 } else {
                     return ['status' => 'passwordNotMacthed'];
