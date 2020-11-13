@@ -1,0 +1,28 @@
+<svg width="62" height="62" xmlns="http://www.w3.org/2000/svg">
+ <defs>
+  <linearGradient y2="0" x2="1" y1="0" x1="0" id="svg_5">
+   <stop offset="0" stop-color="#11cdef "/>
+   <stop offset="1" stop-color="#1171ef  "/>
+  </linearGradient>
+ </defs>
+ <g>
+  <title>background</title>
+  <rect fill="none" id="canvas_background" height="602" width="802" y="-1" x="-1"/>
+ </g>
+ <g>
+  <title>Layer 1</title>
+  <g id="ic-sessions">
+   <g stroke-miterlimit="10" stroke="none" fill=" none" id="Oval">
+    <circle fill="url(#svg_5)" id="svg_1" r="31" cy="31" cx="31"/>
+    <circle id="svg_2" fill="url(#svg_5)" r="30.5" cy="31" cx="31"/>
+   </g>
+   <g id="users" transform="translate(19 19)">
+    <path id="Path_450" d="M0,0H24V24H0Z" fill="none"/>
+    <circle id="Ellipse_11" cx="4" cy="4" r="4" transform="translate(5 3)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+    <path id="Path_451" d="M3,21V19a4,4,0,0,1,4-4h4a4,4,0,0,1,4,4v2" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+    <path id="Path_452" d="M16,3.13a4,4,0,0,1,0,7.75" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+    <path id="Path_453" d="M21,21V19a4,4,0,0,0-3-3.85" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+   </g>
+  </g>
+ </g>
+</svg>
