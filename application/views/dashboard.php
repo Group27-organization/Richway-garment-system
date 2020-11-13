@@ -446,7 +446,7 @@
                         echo "style=\"display:block;\"";
                     } ?> >
 
-                        <a class="navigation-link" href="#">
+                        <a class="navigation-link" href="<?php echo BASEURL; ?>/StockNavigationController">
                             <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
                                  width="24" height="24"
                                  viewBox="0 0 172 172"
@@ -638,24 +638,7 @@
         </div>
 
 
-<!--        <div class="flex-box-two-three">-->
-<!--            <div class="fbtt-two" >-->
-<!--                <p class="dev-hed-para">Payment Status</p>-->
-<!--                <div id="donutchart" style="width: 100%; height: 100%;"></div>-->
-<!--                <script type="text/javascript" src="chartLibrary/http_www.gstatic.com_charts_loader.js"></script>-->
-<!--                --><?php //linkJS("assets/js/js-chart/piechart_3d.js") ?>
-<!---->
-<!--            </div>-->
-<!--            <div class="fbtt-three">-->
-<!--                <p class="dev-hed-para">Last 3 Month Payment</p>-->
-<!--                <div id="chart_div" style="width: 100%; height: 100%;"></div>-->
-<!--                <script type="text/javascript" src="chartLibrary/http_www.gstatic.com_charts_loader.js"></script>-->
-<!--                --><?php //linkJS("assets/js/js-chart/corechart.js") ?>
-<!--            </div>-->
-<!---->
-<!---->
-<!--        </div>-->
-<!--flex-box-two-three-->
+
 
         <h3 class="calendar-title">Order Calender</h3>
         <div class="flex-container-calender">

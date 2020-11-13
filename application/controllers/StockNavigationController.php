@@ -19,7 +19,7 @@ class stockNavigationController extends framework {
     }
 
     public function index(){
-        $this->view("Stock/index");
+        $this->view("Stock/manageStock");
     }
 
     public function stockIssue(){

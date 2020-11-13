@@ -14,7 +14,7 @@ class addRawMaterialModel extends database {
             $rmData[4] =intval($stockId);
 
             //raw_material_ID	type	quantity	unit_price	order_item_ID	stock_ID
-    echo(json_encode($rmData));
+
             if($this->Query("INSERT INTO raw_material (type, quantity, unit_price, order_item_ID, stock_ID) VALUES (?,?,?,?,?)", $rmData) ){
 
                 $rmID=$this->getCurrentLoginID();
@@ -23,20 +23,20 @@ class addRawMaterialModel extends database {
 
                 if($rmData[0]=='button'){
                     $subTableData[2]=intval($rmID);
-                    echo(json_encode($subTableData));
+
                     if($this->Query("INSERT INTO button ( style, color_code, raw_material_id) VALUES (?,?,?)", $subTableData) ){
                         return true;
                     }
 
                 }elseif ($rmData[0]=='fabric'){
                     $subTableData[3]=intval($rmID);
-                    echo(json_encode($subTableData));
+
                     if($this->Query("INSERT INTO fabric (type, style, color_code, raw_material_ID ) VALUES (?,?,?,?)", $subTableData) ){
                         return true;
                     }
                 }elseif ($rmData[0]=='nool'){
                     $subTableData[2]=intval($rmID);
-                    echo(json_encode($subTableData));
+
                     if($this->Query("INSERT INTO nool  (type, color_code, raw_material_ID ) VALUES (?,?,?)", $subTableData) ){
                         return true;
                     }
@@ -109,9 +109,7 @@ class addRawMaterialModel extends database {
             foreach ($result as $row ){
                 if($this->Query("SELECT type FROM predefine WHERE p_ID=?",[$row->p_ID])){
                     $row->material = $this->fetch()->type;
-//                    echo("<script>console.log('PHP in getOrderItemTable Model: " . json_encode(  $this->fetch()->type) . "');</script>");
-//                    echo("<script>console.log('PHP in getOrderItemTable Model: " . json_encode( $row) . "');</script>");
-                }
+               }
               if($this->Query("SELECT size from strtolower($row->type) where strtolower($row->type).p_ID =$row->p_ID ")){
                   $row->material_design = $this->fetch()->type;
               }
@@ -130,14 +128,12 @@ class addRawMaterialModel extends database {
 
     public function getOrderedFabricStyle($order_item_ID){
         if($this->Query("SELECT material,material_design,material_color FROM order_item WHERE order_item_ID=?",[$order_item_ID])){
-           // echo("<script>console.log('PHP in getOrderItemTable Model: " . json_encode( $this->fetchall()) . "');</script>");
-            return $this->fetchall();
+           return $this->fetchall();
         }
     }
     public function getOrderedNoolColor($order_item_ID){
         if($this->Query("SELECT material , nool_color FROM order_item WHERE order_item_ID=?",[$order_item_ID])){
-            // echo("<script>console.log('PHP in getOrderItemTable Model: " . json_encode( $this->fetchall()) . "');</script>");
-            return $this->fetchall();
+           return $this->fetchall();
         }
     }
 
@@ -150,12 +146,9 @@ class addRawMaterialModel extends database {
     }
     public function getEstimateQuantity($order_item_ID){
         if($this->Query("SELECT quantity,nool_color,p_ID  FROM order_item WHERE order_item_ID=?",[$order_item_ID])){
-            // echo("<script>console.log('PHP in getOrderItemTable Model: " . json_encode( $this->fetchall()) . "');</script>");
-            $result = $this->fetch();
+           $result = $this->fetch();
             if($this->Query("SELECT button_quantity FROM predefine WHERE p_ID=?",[$result->p_ID])){
                 $result->nool_color = $this->fetch()->button_quantity;
-//                    echo("<script>console.log('PHP in getOrderItemTable Model: " . json_encode(  $this->fetch()->type) . "');</script>");
-//                    echo("<script>console.log('PHP in getOrderItemTable Model: " . json_encode( $row) . "');</script>");
                 return $result;
             }
 

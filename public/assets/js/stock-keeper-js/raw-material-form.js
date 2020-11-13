@@ -81,12 +81,19 @@ $(document).ready(function(){
                     url: "http://localhost/Richway-garment-system/addRawMaterialController/addItemToStock",
                     data: {RawMaterial:StockItemList, key: "ButtonDetails"},
                     success: function (data) {
-                        // console.log("ARRAY"+data);
-                        alert(data);
-                        // location.reload();
+                        console.log("dta :"+data.toString());
+                        if(!data.toString().includes("404")){
+                            if(!alert("Raw Materials Successfully Added.")) {
+                                window.location.href = "http://localhost/Richway-garment-system/StockNavigationController";
+                            }
+
+
+                        }
+                        // alert(data);
+
                     },
                     error: function () {
-                        // console.log("Session no created");
+
                     }
                 });
             }

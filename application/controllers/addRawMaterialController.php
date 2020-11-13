@@ -21,7 +21,7 @@ class addRawMaterialController extends framework {
 
     public function index(){
         $orderids = $this->addItemModel->getData();
-        echo("<script>console.log('PHP order ids: " . json_encode($orderids) . "');</script>");
+
         $this->view("Stock/add-raw materials-item-form",$orderids);
     }
 
@@ -50,7 +50,7 @@ class addRawMaterialController extends framework {
                          $quantity = intval($array[4]);
                          $unitPrice = floatval($array[5]);
                          $supplierId =intval($array[6]);
-                        // $loginID = $this->getSession('userId')['user_id']; newdashbord
+
                         $loginID = $this->getSession('userId');
 
                         $stockKeeperId = intval($this->addItemModel->getStockKeeperId($loginID));
@@ -67,14 +67,14 @@ class addRawMaterialController extends framework {
 
                             $type =$stylePart[0];
                             $colorCode =$stylePart[1];
-                             //button_ID	style	color_code	raw_material_ID
+
                             $subTableData=[$type,$colorCode,0];
 
-                            echo(json_encode($stockData));
+
                             if($this->addItemModel->addNewItem($stockData,$rmData,$subTableData)){
-                                echo("Your has been added successfully");
+                                echo("200");
                             }else{
-                                echo("No");
+                                echo("404");
                             }
 
                         }else if($mainThreeType=="fabric"){
@@ -86,9 +86,9 @@ class addRawMaterialController extends framework {
                             $subTableData = [$type,$typeStyle,$colorCode,0];
 
                             if($this->addItemModel->addNewItem($stockData,$rmData,$subTableData)){
-                                echo("Your has been added successfully");
+                                echo("200");
                             }else{
-                                echo("No");
+                                echo("404");
                             }
 
                         }else if($mainThreeType=="nool"){
@@ -98,9 +98,9 @@ class addRawMaterialController extends framework {
                             $subTableData = [$type,$colorCode,0];
 
                             if($this->addItemModel->addNewItem($stockData,$rmData,$subTableData)){
-                                echo("Your has been added successfully");
+                                echo("200");
                             }else{
-                                echo("No");
+                                echo("404");
                             }
                         }
                     }
@@ -125,7 +125,6 @@ class addRawMaterialController extends framework {
 
 
                 $result = $this->addItemModel->getOrderItemTable($_POST['role']);
-                echo("<script>console.log('PHP in loadOrderItemsTable contoller: " . json_encode($result) . "');</script>");
 
                 echo "
 
@@ -183,12 +182,10 @@ class addRawMaterialController extends framework {
             if ($_POST['key'] == "orderItemId") {
 
                 $result = $this->addItemModel->getOrderedButtonStyle($_POST['role']);
-            //    echo("<script>console.log('PHP in loadOrderItemsTable contoller-result: " . json_encode($result) . "');</script>");
-                echo ' <option value="0" selected="" disabled="">--SELECT--</option>';
+               echo ' <option value="0" selected="" disabled="">--SELECT--</option>';
 
 
                 foreach($result as $row){
-                 //   echo("<script>console.log('PHP in loadOrderItemsTable contoller: " . json_encode($row->button_shape) . "');</script>");
                     echo '<option value="100" data-value="'.$row->button_shape.'-'.$row->button_color.'">'.$row->button_shape.'-'.$row->button_color.'</option>';
                 }
 
@@ -202,15 +199,12 @@ class addRawMaterialController extends framework {
     {
         if (isset($_POST['key'])) {
             if ($_POST['key'] == "orderItemId") {
-                echo("<script>console.log('PHP in loadOrderItemsTable contoller-result post: " . json_encode($_POST['role']) . "');</script>");
-                $result = $this->addItemModel->getOrderedFabricStyle($_POST['role']);
-               // echo("<script>console.log('PHP in loadOrderItemsTable contoller-result: " . json_encode($this->addRawMaterialModel->getOrderedFabricStyle($_POST['role'])) . "');</script>");
-                echo ' <option value="0" selected="" disabled="">--SELECT--</option>';
+               $result = $this->addItemModel->getOrderedFabricStyle($_POST['role']);
+                 echo ' <option value="0" selected="" disabled="">--SELECT--</option>';
 
 
                 foreach($result as $row){
-                    //   echo("<script>console.log('PHP in loadOrderItemsTable contoller: " . json_encode($row->button_shape) . "');</script>");
-                    echo '<option>'.$row->material.'-'.$row->material_design.'-'.$row->material_color.'</option>';
+                   echo '<option>'.$row->material.'-'.$row->material_design.'-'.$row->material_color.'</option>';
                 }
 
             }
