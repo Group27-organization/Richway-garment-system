@@ -31,7 +31,7 @@ class stockNavigationController extends framework {
     }
 
     public function manageSupplier(){
-        $this->view("Stock/manageSupplier");
+        $this->view("/manageSupplier");
     }
 
     public  function loadRTMTable(){

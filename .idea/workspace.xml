@@ -1,31 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="febc9fdf-aaf7-440c-bd74-1804261164f2" name="Default Changelist" comment="connect with common dashboard and fix issues">
+      <change afterPath="$PROJECT_DIR$/application/controllers/addSupplierController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/application/controllers/manageSupplierController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/application/models/mangeSupplierModel.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/application/models/supplierModel.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/application/views/addSupplier.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/application/views/manageSupplier.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/css/managesupplier.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/js/manageSupplier.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/js/table.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/js/tabview.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/application/controllers/StockNavigationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/controllers/StockNavigationController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/controllers/addRawMaterialController.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/controllers/addRawMaterialController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/controllers/manageSupplierController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/controllers/stockIssueController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/models/addRawMaterialModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/models/addRawMaterialModel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/models/createOrderModel.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/models/mangeSupplierModel.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/Stock/add-supllier.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/Stock/forms/stock-issue-form.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/Stock/img/Group 2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/Stock/index.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/Stock/manageSupplier.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/Stock/stock-issue-Form.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/Stock/stockIssue.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/dashboard.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/dashboard.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/assets/css/Form.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/Form.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/stock-css/dynamically-item-add-table.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/js/js-chart/corechart.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/js/js-chart/line_top_x.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/js/stock-keeper-js/button-fabric-nool-dynamically-add-table.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/js/stock-keeper-js/manageSupplier.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/js/stock-keeper-js/raw-material-form.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/js/stock-keeper-js/raw-material-form.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/js/stock-keeper-js/stockIssue.js" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,6 +26,9 @@
   </component>
   <component name="ComposerSettings">
     <execution />
+  </component>
+  <component name="Git.Pull.Settings">
+    <option name="BRANCH" value="feature/add-new-item-to-the-stock" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
@@ -44,6 +39,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1kEVJ92VfIVjvVzUIPr08Ww2Mv0" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -51,7 +47,22 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/assets/js" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\Richway-garment-system\public\assets\js" />
+      <recent name="C:\xampp\htdocs\Richway-garment-system\public\assets\css" />
+      <recent name="C:\xampp\htdocs\Richway-garment-system\application\views" />
+      <recent name="C:\xampp\htdocs\Richway-garment-system\application\models" />
+      <recent name="C:\xampp\htdocs\Richway-garment-system\application\controllers" />
+    </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -62,11 +73,16 @@
       <option name="presentableId" value="Default" />
       <updated>1605265664235</updated>
       <workItem from="1605265665590" duration="8277000" />
+      <workItem from="1605429504089" duration="43000" />
+      <workItem from="1605462186666" duration="15061000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="connect with common dashboard and fix issues" />
@@ -81,5 +97,13 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="321" y="125" key="MultipleFileMergeDialog/0.0.1366.728@0.0.1366.728" timestamp="1605265917495" />
+    <state x="463" y="77" key="git4idea.branch.GitSmartOperationDialog" timestamp="1605462342635">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="463" y="77" key="git4idea.branch.GitSmartOperationDialog/0.0.1366.728@0.0.1366.728" timestamp="1605462342635" />
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1605428423668">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1605428423668" />
   </component>
 </project>
