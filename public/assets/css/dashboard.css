@@ -16,53 +16,8 @@ body {
     overflow-x: hidden;
     color: #333;
     justify-content: center;
-    background: linear-gradient(to bottom, #5e72e4 450px, #f8f9fe 0%);
+    background: linear-gradient(to bottom, #5e72e4 420px, #f8f9fe 0%);
 }
-
-.bg-gradient-primary {
-    background: linear-gradient(87deg,#5e72e4 0,#825ee4 100%)!important;
-}
-
-.fill-default {
-    fill: #f8f9fe;
-}
-
-.separator-skew {
-        height: 70px;
-    }
-.separator-skew {
-    height: 60px;
-}
-.separator-bottom {
-    top: auto;
-    bottom: 0;
-}
-.separator {
-    position: absolute;
-    top: 350px;
-    right: 0;
-    left: 275px;
-    overflow: hidden;
-    width: calc(100% + 2vh);
-    height: 150px;
-    transform: translateZ(0);
-    pointer-events: none;
-    z-index: 0;
-    background-color: #5e72e4;
-}
-
-.separator-bottom svg {
-    bottom: 0;
-}
-.separator svg {
-    position: absolute;
-    pointer-events: none;
-}
-svg {
-    overflow: hidden;
-    vertical-align: middle;
-}
-
 /***************************************************************************************************************************/
 
 .grid-container {
@@ -70,13 +25,10 @@ svg {
     display: grid;
     position: relative;
     grid-gap: 0;
-    grid-template-columns: 275px auto;
+    grid-template-columns: 250px auto;
 }
 
 .sidebar-flex-box-container {
-    background-color: #f4f4f8;
-    font-family: "Noto Sans TC", sans-serif;
-    font-weight: 400;
     display: -webkit-box;
     display: flex;
     -webkit-box-align: center;
@@ -86,12 +38,11 @@ svg {
     line-height: 1.5;
     font-size: 16px;
     z-index: 0;
-    margin-left: 10px;
 }
 
 .navigation-container {
     position: fixed;
-    width: 275px;
+    width: 250px;
 }
 
 .navigation-collapse-trigger {
@@ -156,7 +107,7 @@ svg {
     background-color: #172B4D;
     color: #ffffff;
     height: 100vh;
-    padding: 10vh 16px 16px 16px;
+    padding: 10vh 10px 16px 10px;
     display: -webkit-box;
     display: flex;
     -webkit-box-orient: vertical;
@@ -232,6 +183,7 @@ svg {
     -webkit-transition: all 0.2s ease-out;
     transition: all 0.2s ease-out;
     white-space: nowrap;
+    margin-bottom: 5px;
 }
 
 .navigation-link__icon {
@@ -301,7 +253,6 @@ svg {
 .right {
     margin-top: 0;
     padding-top: 10vh;
-    padding-left: 2vh;
     grid-column-start: 2;
     justify-items: center;
     align-content: center;
@@ -322,7 +273,7 @@ svg {
     background-color: #ffffff;
     justify-content: center;
     font-family: Poppins-Regular, serif;
-    margin-left: 4vw !important;
+    margin-left: 2vw !important;
     border-radius: 10px;
 }
 
@@ -347,13 +298,12 @@ svg {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    margin: 20px 4vw;
+    margin: 20px 2vw;
 }
 
 .box-top {
-    height: 150px;
-    width: 16vw;
-    padding: 10px;
+    height: 120px;
+    min-width: 19vw;
     background-color: #fff;
     word-wrap: break-word;
     border: 1px solid rgba(0,0,0,.05);
@@ -427,7 +377,7 @@ svg {
 
 .box-container-monthly-sales{
     display: flex;
-    margin: 25px 4vw;
+    margin: 25px 2vw;
     padding: 25px;
     background-color: #fff;
     word-wrap: break-word;
@@ -471,7 +421,7 @@ svg {
     display: flex;
     gap: 35px;
     height: 500px;
-    margin: 35px 4vw;
+    margin: 15px 2vw;
     z-index: 1;
 }
 .fbtt-two{
@@ -554,7 +504,7 @@ svg {
 /*********************************************************************************************************************/
 
 .calendar-title{
-    margin-left: 4vw;
+    margin-left: 2vw;
     margin-top: 15px;
 }
 
@@ -585,117 +535,40 @@ svg {
     align-items: center;
     justify-content: center;
 }
-/*******************************************/
-.box-container2 {
+
+/*page header*/
+
+.page-header {
     position: relative;
-    margin-top: 20px;
-    padding-bottom: 25px;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, 440px);
-    grid-gap: 2vw;
-    justify-content: space-evenly;
-}
-
-.box1 {
-    height: 280px;
-    text-align: center;
-    background-color: white;
-    padding: 5px;
-    border-radius: 15px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    transition: 0.3s;
-
-}
-
-.page-header.card {
-    position: relative;
-    margin: 20px 35px 15px;
+    margin: 10px 0 10px 2vw ;
+    align-self: flex-start;
     background-color: transparent;
     -webkit-box-shadow: none;
     box-shadow: none;
     padding: 0;
 }
 
-.page-header-title{
+.page-header .block{
     display: flex;
-    align-items: center;
+    flex-direction: row;
+    border-radius: .375rem;
+    background-color: #e9ecef;
+    padding: 6px 10px 6px 10px;
 }
 
 .page-header-routetext{
     display: flex;
+    flex-direction: row;
     align-items: center;
 }
 
-.align-items-end {
-    -ms-flex-align: end!important;
-    align-items: flex-end!important;
-}
-.row {
-    display: flex;
-    margin-right: -15px;
-    margin-left: -15px;
-}
-
-.page-header.card .page-header-title img {
-    display: -ms-inline-flexbox;
-    display: inline-flex;
-    float: left;
-    width: 40px;
-    height: 40px;
-    border-radius: 5px;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    justify-content: center;
-    vertical-align: middle;
-    color: #fff;
-    -webkit-box-shadow: 0 2px 12px -3px rgba(0,0,0,0.5);
-    box-shadow: 0 2px 12px -3px rgba(0,0,0,0.5);
-    margin-right: 20px;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-    padding: 7px;
-    overflow: hidden;
-}
-
-.h5, h5 {
-    font-size: 1.25rem;
-    color: white;
+.page-header-routetext img{
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    margin-top: 5px;
 }
 
 .d-inline {
     display: inline!important;
-}
-
-.roudtetext {
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-wrap: wrap;
-    flex-wrap: wrap;
-    padding: .75rem 1rem;
-    margin-bottom: 1rem;
-    list-style: none;
-    border-radius: .25rem;
-}
-
-.right2 img{
-   height: 16px;
-    width: 16px;
-    margin-right: 10px;
-}
-
-.page-header.card .left2{
-    flex: 80%;
-}
-
-.page-header.card .right2{
-    flex: 20%;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    flex-direction: row;
-}
-
-.bg-blue{
-    background: #4099ff;
 }

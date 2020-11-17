@@ -1,7 +1,4 @@
 .sidebar-flex-box-container {
-    background-color: #f4f4f8;
-    font-family: "Noto Sans TC", sans-serif;
-    font-weight: 400;
     display: -webkit-box;
     display: flex;
     -webkit-box-align: center;
@@ -11,13 +8,11 @@
     line-height: 1.5;
     font-size: 16px;
     z-index: 0;
-    margin-left: 10px;
 }
 
 .navigation-container {
     position: fixed;
-    width: 275px;
-    margin-left: 10px;
+    width: 250px;
 }
 
 .navigation-collapse-trigger {
@@ -79,16 +74,16 @@
 }
 
 .navigation {
-    background-color: #1d2d50;
+    background-color: #172B4D;
     color: #ffffff;
-    height: 88vh;
-    padding: 16px;
+    height: 100vh;
+    padding: 10vh 10px 16px 10px;
     display: -webkit-box;
     display: flex;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
     flex-direction: column;
-    border-radius: 10px;
+    box-shadow: 0 0 2rem 0 rgba(136, 152, 170, 0.15);
 }
 
 .navigation ul {
@@ -96,7 +91,6 @@
     padding: 0;
     margin: 0;
 }
-
 
 .navigation::before {
     background: -webkit-gradient(linear, left top, left bottom, from(rgba(64, 139, 255, 0)), color-stop(5%, #408bff), color-stop(95%, #408bff), to(rgba(64, 139, 255, 0)));
@@ -155,6 +149,7 @@
     -webkit-transition: all 0.2s ease-out;
     transition: all 0.2s ease-out;
     white-space: nowrap;
+    margin-bottom: 5px;
 }
 
 .navigation-link__icon {
@@ -194,12 +189,12 @@
 }
 
 .navigation-link:hover {
-    background-color: #1e5f74;
+    background-color: rgba(94, 114, 228,0.5);
     color: #ffffff;
 }
 
 .navigation-link.active {
-    background-color: #1e5f74;
+    background-color: rgba(94, 114, 228,0.5);
     color: #ffffff;
 }
 
