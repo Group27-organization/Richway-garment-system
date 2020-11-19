@@ -26,10 +26,8 @@
             <a class="navigation-logo" href="#">
                 <img src="<?php echo BASEURL; ?>/public/assets/img/Contacts.svg" height="38" width="38">
                 <span class="navigation-logo__name js_navigation-item-name">
-                    <?php
-                     echo ucwords(str_replace("_"," ",$data['data']->title));
-                    ?>
-        </span>
+                    <?php echo ucwords(str_replace("_"," ",$this->getSession('userId')['role'])); ?>
+                </span>
             </a>
 
             <!-- NAVIGATION -->
@@ -83,7 +81,7 @@
                     <li <?php if($data['data']->manage_customer){
                         echo "style=\"display:block;\"";
                     } ?> >
-                        <a class="navigation-link" href="#">
+                        <a class="navigation-link" href="<?php echo BASEURL; ?>/manageCustomerController">
                             <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
                                  width="24" height="24"
                                  viewBox="0 0 172 172"
@@ -98,7 +96,7 @@
                     <li <?php if($data['data']->manage_suppliers){
                         echo "style=\"display:block;\"";
                     } ?> >
-                        <a class="navigation-link" href="#">
+                        <a class="navigation-link" href="<?php echo BASEURL; ?>/manageSupplierController">
                             <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
                                  width="24" height="24"
                                  viewBox="0 0 172 172"
@@ -145,7 +143,7 @@
                         echo "style=\"display:block;\"";
                     } ?> >
 
-                        <a class="navigation-link" href="#">
+                        <a class="navigation-link" href="<?php if($this->getSession('userId')) { echo BASEURL."/manageUserController"; } ?>">
                             <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
                                  width="24" height="24"
                                  viewBox="0 0 172 172"
@@ -446,7 +444,7 @@
                         echo "style=\"display:block;\"";
                     } ?> >
 
-                        <a class="navigation-link" href="<?php echo BASEURL; ?>/StockNavigationController">
+                        <a class="navigation-link" href="#">
                             <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
                                  width="24" height="24"
                                  viewBox="0 0 172 172"
@@ -515,21 +513,11 @@
 
 
 
-        <div class="page-header card">
-            <div class="row align-items-end">
-                <div class="left2">
-                    <div class="page-header-title">
-                        <img src="<?php echo BASEURL; ?>/public/assets/img/home%20(1).svg" class="bg-blue">
-                        <div class="d-inline">
-                            <h5>Dashboard Analytics</h5>
-                        </div>
-                    </div>
-                </div>
-                <div class="right2">
-                    <div class="page-header-routetext">
-                        <a href="#"><img src="<?php echo BASEURL; ?>/public/assets/img/home%20(2).svg" ></i></a>
-                        <a href="#!" style="color:white;"> / Dashboard Analytics</a>
-                    </div>
+        <div class="page-header">
+            <div class="block">
+                <div class="page-header-routetext">
+                    <a href="#"><img src="<?php echo BASEURL; ?>/public/assets/img/home%20(2).svg" ></i></a>
+                    <a href="#!" style="color:#5e72e4;"> / Dashboard Analytics</a>
                 </div>
             </div>
         </div>
@@ -599,12 +587,6 @@
 
         </div><!--box container-->
 
-        <div class="separator separator-bottom separator-skew zindex-100">
-            <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
-                <polygon class="fill-default" points="2560 0 2560 100 0 100"></polygon>
-            </svg>
-        </div>
-
         <div class="flex-box-two-three">
             <div class="fbtt-two" >
                 <div id="lineChart" style="height: auto; width: 100%;"></div>
@@ -636,7 +618,6 @@
 
             <div id="barChart" style="height: auto; width: 100%;"></div>
         </div>
-
 
 
 

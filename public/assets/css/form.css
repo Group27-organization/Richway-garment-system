@@ -1,283 +1,146 @@
 
-
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box; font-family: 'Montserrat', sans-serif;
-}
-@font-face {
-    font-family: Poppins-Regular;
-    src: url('../fonts/poppins/Poppins-Regular.ttf');
-}
-body{
-    background-color:#F5F5F5;
-    font-family: Poppins-Regular;
-}
-
 .flexbox-container {
-    font-family:Poppins-Regular ;
-    max-width: 600px;
-    margin: auto;
-    background-color: white;
-    padding: 30px;
-    overflow:auto;
-    /*box-shadow: 0px -1px 5px 0px rgba(0,0,0,0.75);*/
+    display: flex;
+    position: absolute;
+    top: 28vh;
+    left: calc(50% - 14vw);
+    flex-direction: column;
+    align-items: center;
+    width: 28vw;
+    padding: 25px;
+    border-radius: .375rem;
+    background-clip: border-box;
+    border: 0;
+    box-shadow: 0 0 2rem 0 rgba(136,152,170,.15);
+    background-color: #F7FAFC;
+    overflow: hidden;
 
 }
 
 .flexbox-container  .inputfield .form-contrall{
-    font-family:Poppins-Regular ;
     width: 100%;
-    border: 1px solid #d5dbd9;
-    padding: 5px;
-    border-radius: 5px;
-    margin-top: 5px;
-
+    padding: 12px;
+    transition: box-shadow .15s ease;
+    border: 0;
+    box-shadow: 0 1px 3px rgba(50,50,93,.15), 0 1px 0 rgba(0,0,0,.02);
+    border-radius: .25rem;
 }
-/**********************two button same div******************************/
-.flexbox-container  .inputfield .btn2-contrall{
-    font-family:Poppins-Regular ;
-    width: 100%;
-    border: none;
-    padding: 10px;
 
-
-}
 /********************** no change text box value ******************************/
 .flexbox-container  .inputfield .form-contrall-readonly{
-    font-family:Poppins-Regular ;
     width: 100%;
-    border: 1px solid #37A0F6;
-    padding: 5px;
-    border-radius: 5px;
-    color:#37A0F6 ;
-
+    background-color: #E8F0FE;
+    padding: 12px;
+    cursor: default;
+    transition: box-shadow .15s ease;
+    border: 0;
+    box-shadow: 0 1px 3px rgba(50,50,93,.15), 0 1px 0 rgba(0,0,0,.02);
+    border-radius: .25rem;
 }
 
 
 .flexbox-container  .inputfield .imgebox-contrall{
-    font-family:Poppins-Regular ;
     border: 1px solid #37A0F6;
     padding: 5px;
     margin-top: 10px;
 
 }
 .flexbox-container  .inputfield .imgebox-contrall label{
-    font-family:Poppins-Regular ;
     border: 1px solid #37A0F6;
     padding: 5px;
     margin-top: 10px;
-
 }
 
 .inputfield{
+    width: 90%;
     margin-bottom: 15px;
     margin-top: 10px;
-    font-family:Poppins-Regular ;
-
-
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
+
+.inputbutton{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
 .inputfield label{
     margin-bottom: 5px;
     margin-top: 5px;
     opacity: 0.8;
-    font-family:Poppins-Regular ;
+    color: #8898aa;
 
 
 
 }
-.txtFieldLabel{
-    font-family:Poppins-Regular ;
-    font-size: inherit;
-    width:100%;
-    margin-right: 5%;
-    height:32.22px ;
-    border: 1px solid #d5dbd9;
-    border-radius: 5px;
 
-}
-
-
-.inputfield h2{
-    font-family:Poppins-Regular ;
-    text-align: center;
-    background-color: #030303;
-    color: white;
-    padding: 20px;
-}
-.inputfield .btn{
-    font-family:Poppins-Regular ;
-    background-color: #37A0F6;
-    font-size: 17px;
-    border: none;
-    padding: 12px;
-    /*height: 30px;*/
-    width: 43%;
-
-    justify-items: center;
-    margin-left: 15px;
+.form-header{
+    margin-top: 30px;
+    width: 90%;
     margin-bottom: 15px;
-
-    background: linear-gradient(to right, #37A0F6 , #2680EB);
-    text-align: center;
-    color: #fff;
-    border-radius:  5px 5px;
-    cursor: pointer;
-    box-shadow: 0px 0px 5px -1px rgba(0,0,0,0.75);
-
-}
-
-.flexbox-container  .inputfield .form-contrall:focus {
-    border-color:#37A0F6;
-    background-color: #F5F5F5;
-}
-
-*:focus {
-    outline: none;
-
-}
-/**********input  and button ***************/
-.flexbox-container  .LastBtnWap{
-    margin-top: 25px;
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-
-
-
-
-}
-.input-button{
-    font-size: 1em;
-    padding: 0.5em;
-    margin-bottom: 0;
-    height: auto;
-    display: flex;
-    flex-direction: row;
-
-
-}
-
-.input-button .txtOIField{
-    font-family:Poppins-Regular ;
-    font-size: inherit;
-    width:80%;
-    margin-right: 5%;
-    height:32.22px ;
-    border: 1px solid #d5dbd9;
     border-radius: 5px;
-
-}
-
-
-.txtFieldReadonly{
-    font-family:Poppins-Regular ;
-    font-size: inherit;
-    width:100%;
-    margin-right: 5%;
-    height:32.22px ;
-    border: 1px solid #d5dbd9;
-    border-radius: 5px;
-
-}
-
-
-
-
-
-
-
-
-
-.input-button .txtOIField :focus{
-    border-color:#37A0F6;
-    background-color: #F5F5F5;
-}
-.input-button .txtWBtn{
-    margin-top: 4px;
-    height: 28px;
-
-    background-color: #37A0F6;
-    font-size: inherit;
-
-    width: 15%;
-    border: 1px solid #d5dbd9;
-    border-radius: 5px;
-
-    background: linear-gradient(to right, #37A0F6 , #2680EB);
-    /*padding: 10px;*/
-    text-align: center;
-    justify-content: center;
-    justify-items: center;
-    color: #fff;
-
-    cursor: pointer;
-    box-shadow: 0 0 5px -1px rgba(0,0,0,0.75);
-
-}
-
-
-/**********submit cancel button ***************/
-.submitButton {
-    width: 100px;
-    height: 36px;
-    margin-left: 10px;
-    border: 1px solid #00B4CC;
-    background: linear-gradient(to right, #37A0F6 , #2680eb);
-    text-align: center;
-    color: #fff;
-    border-radius:  5px 5px;
-    cursor: pointer;
-    font-size: 18px;
-    box-shadow: 0px 0px 5px -1px rgba(0,0,0,0.75);
-}
-
-.cancelButton {
-    width: 100px;
-    height: 36px;
-    margin-left: 10px;
-    border: 1px solid #00B4CC;
-    background: #708090;
-    text-align: center;
-    color: #fff;
-    border-radius:  5px 5px;
-    cursor: pointer;
-    font-size: 18px;
-    box-shadow: 0px 0px 5px -1px rgba(0,0,0,0.75);
-}
-/********************** ****************************/
-
-/****************************Create ripple effec******************************************/
-
-.cripple {
-    position: relative;
     overflow: hidden;
-    transform: translate3d(0, 0, 0);
 }
 
-.cripple:after {
-    content: "";
-    display: block;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    pointer-events: none;
-    background-image: radial-gradient(circle, #fff 10%, transparent 10.01%);
-    background-repeat: no-repeat;
-    background-position: 50%;
-    transform: scale(10, 10);
-    opacity: 0;
-    transition: transform .5s, opacity 1s;
-}
-.cripple:hover {
-    opacity: .7;
-    transition: 1s;
+
+.form-header h3{
+    text-align: center;
+    background-color: #1d2d50;
+    color: #ffffff;
+    padding: 10px;
+
 }
 
-.cripple:active:after {
-    transform: scale(0, 0);
-    opacity: .3;
-    transition: 0s;
+.input2 {
+    margin-left: 20%;
+    width: 43% !important;
 }
+
+.inputbutton .btn{
+    padding: 10px;
+    font-size: .875rem;
+    position: relative;
+    transition: all .15s ease;
+    letter-spacing: .025em;
+    text-transform: none;
+    will-change: transform;
+    text-align: center;
+    cursor: pointer;
+    border-radius: .25rem;
+    color: #fff;
+    border: 1px solid #5e72e4;
+    background-color: #5e72e4;
+    box-shadow: 0 4px 6px rgba(50,50,93,0.11), 0 1px 3px rgba(0,0,0,0.08);
+    line-height: 1.5;
+
+}
+
+.inputbutton .btn2{
+    padding: 8px;
+    font-size: .875rem;
+    position: relative;
+    transition: all .15s ease;
+    letter-spacing: .025em;
+    text-transform: none;
+    will-change: transform;
+    text-align: center;
+    color: #5e72e4;
+    cursor: pointer;
+    border: 1px solid #5e72e4;
+    background-color: #fff;
+    box-shadow: 0 4px 6px rgba(50,50,93,0.11), 0 1px 3px rgba(0,0,0,0.08);
+    border-radius: .25rem;
+    line-height: 1.5;
+
+}
+
+
+/*************************/
+
+
+
+
+

@@ -49,11 +49,11 @@ function openEmp(evt,elementID) {
             data: { tableName: elementID,  key: "manageUserData"},
             dataType: 'html',
             success: function(data){
-                $("#tableParent").html(data);
+                $("#table-responsive").html(data);
 
             },
             error       : function() {
-                $("#tableParent").html('<br><p>Something went wrong.</p>');
+                $("#table-responsive").html('<br><p>Something went wrong.</p>');
             }
         });
 
