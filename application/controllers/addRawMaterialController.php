@@ -125,18 +125,17 @@ class addRawMaterialController extends framework {
 
 
                 $result = $this->addItemModel->getOrderItemTable($_POST['role']);
-
+                echo("<script>console.log('PHP: " . json_encode($result) . "');</script>");
                 echo "
 
-                <table class=content-table>
-                        <thead>
+                 <table class=\"table align-items-center table-flush\">
+                        <thead class=\"thead-light\">
                         <tr>
-                        
-                            <th>order Item ID</th>
-                            <th>Item type</th>
-                            <th>Predefine Id</th>
-                            <th>Type</th>
-                            <th>Size</th>
+                            <th scope=col>order Item ID</th>
+                            <th scope=col>Item type</th>
+                            <th scope=col>Predefine Id</th>
+                            <th scope=col>Type</th>
+                            <th scope=col>Size</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -235,17 +234,16 @@ class addRawMaterialController extends framework {
            if(isset($_POST['key'])) {
                if ($_POST['key'] == "supliertablepop") {
                    $result = $this->addItemModel->getsuplliersDetails();
-                 //  echo("<script>console.log('PHP in loadOrderItemsTable contoller: " . json_encode($result) . "');</script>");
 
                    echo "
 
-                <table class=content-table>
-                        <thead>
+                <table class=\"table align-items-center table-flush\">
+                        <thead class=\"thead-light\">
                         <tr>
                         
-                            <th>Supplier ID</th>
-                            <th>Name</th>
-                            <th>Contact Number</th>
+                            <th scope=col>Supplier ID</th>
+                            <th scope=col>Name</th>
+                            <th scope=col>Contact Number</th>
                            
                         </tr>
                         </thead>

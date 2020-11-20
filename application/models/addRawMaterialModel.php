@@ -103,19 +103,19 @@ class addRawMaterialModel extends database {
 
     public function getOrderItemTable($order_ID){
         $final="";
-        if($this->Query("SELECT order_item_ID,Item_type,p_ID,material,material_design  FROM order_item WHERE order_ID=?",[$order_ID])){
+        if($this->Query("SELECT order_item_ID,p_ID,material,material_design  FROM order_item WHERE order_ID=?",[$order_ID])){
             $result = $this->fetchall();
 
             foreach ($result as $row ){
                 if($this->Query("SELECT type FROM predefine WHERE p_ID=?",[$row->p_ID])){
                     $row->material = $this->fetch()->type;
-               }
-              if($this->Query("SELECT size from strtolower($row->type) where strtolower($row->type).p_ID =$row->p_ID ")){
-                  $row->material_design = $this->fetch()->type;
-              }
+                }
+                if($this->Query("SELECT size from strtolower($row->type) where strtolower($row->type).p_ID =$row->p_ID ")){
+                    $row->material_design = $this->fetch()->type;
+                }
 
             }
-        return $result;
+            return $result;
         }
 
     }
@@ -154,6 +154,7 @@ class addRawMaterialModel extends database {
 
         }
     }
+
 
 
 

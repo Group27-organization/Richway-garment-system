@@ -18,9 +18,29 @@ class stockNavigationController extends framework {
         $this->ViewStockTableModel = $this->model('ViewStockTableModel');
     }
 
+    public function setNewSession(){
+        if(isset($_POST['key'])) {
+            if ($_POST['key'] == "selectOrderId") {
+                $this->setSession("selected_orderforstock", $_POST['order_ID']);
+                return "Successfully set the session.";
+            }
+        }
+        return "error";
+    }
+
+
+
     public function index(){
         $this->view("Stock/manageStock");
     }
+    public function loadaddstockform(){
+        $order_ID = $this->getSession('selected_orderforstock');
+        $this->view("Stock/add-raw materials-item-form",$order_ID);
+
+    }
+
+
+
 
     public function stockIssue(){
         $this->view("Stock/stockIssue");
@@ -30,30 +50,94 @@ class stockNavigationController extends framework {
         $this->view("Stock/manageStock");
     }
 
-    public function manageSupplier(){
-        $this->view("/manageSupplier");
+    public function addSupplier(){
+        $this->view("Stock/addSupplier");
     }
 
-    public  function loadRTMTable(){
-        if(isset($_POST['key'])) {
-            if ($_POST['key'] == "ItemType") {
+//    public  function loadRTMTable(){
+//        if(isset($_POST['key'])) {
+//            if ($_POST['key'] == "ItemType") {
+//
+//                if($_POST['tableName']=="RawMaterial"){
+//                    $result = $this->ViewStockTableModel->getRawMaterialData();
+//
+//                    echo "
+//                        <table class=\"table align-items-center table-flush\">
+//                        <thead class=\"thead-light\">
+//                        <tr>
+//                            <th scope=col>Stock ID</th>
+//                            <th scope=col>Order ID</th>
+//                            <th scope=col>Raw Material ID</th>
+//                            <th scope=col>order_item_ID</th>
+//                            <th scope=col>type</th>
+//                            <th scope=col>quantity</th>
+//                            <th scope=col>unit_price</th>
+//                            <th scope=col>Date</th>
+//                        </tr>
+//                        </thead>
+//                        <tbody>
+//
+//                ";
+//
+//
+//
+//                    foreach($result as $row){
+//
+//                        echo "
+//                            <tr class='tblrow' onclick='selectRow(event)'>
+//                                <td id='empid' >$row->stock_ID </td>
+//                                 <td>$row->order_ID</td>
+//                                <td>$row->raw_material_ID</td>
+//                                <td>$row->order_item_ID</td>
+//                                <td>$row->type</td>
+//                                <td>$row->quantity</td>
+//                                <td>$row->unit_price</td>
+//                                <td>$row->date</td>
+//
+//                            </tr>
+//                        ";
+//
+//                    }
+//
+//
+//
+//
+//
+//
+//                    echo "
+//                        </tbody>
+//                    </table>
+//
+//                    ";
+//
+//                }
+//                return "Successfully set the session.";
+//            }
+//        }
+//    }
 
-                if($_POST['tableName']=="RawMaterial"){
-                    $result = $this->ViewStockTableModel->getRawMaterialData();
+    public function loadOrderTable(){
+       if(isset($_POST['key'])) {
+                if ($_POST['key'] == "orderTable") {
 
-                    echo "
+                    if($_POST['tableName']=="RawMaterial"){
+                        $result = $this->ViewStockTableModel->orderTable();
 
-                <table class=content-table>
-                        <thead>
+                        echo "
+                        <table class=\"table align-items-center table-flush\">
+                        <thead class=\"thead-light\">
                         <tr>
-                            <th>Stock ID</th>
-                            <th>Order ID</th>
-                            <th>Raw Material ID</th>
-                            <th>order_item_ID</th>
-                            <th>type</th>
-                            <th>quantity</th>
-                            <th>unit_price</th>
-                            <th>Date</th>
+                            
+                            <th scope=col>Order ID</th>
+                            <th scope=col>Order Name</th>
+                            <th scope=col>Order Status</th>
+                            <th scope=col>Order Description</th>
+                            <th scope=col>Order Due Date</th>
+                            <th scope=col>estimate_time</th>
+                            <th scope=col>sales_manager_ID</th>
+                            <th scope=col>customer_ID</th>
+                            
+                            
                             
                         </tr>
                         </thead>
@@ -63,41 +147,41 @@ class stockNavigationController extends framework {
 
 
 
-                    foreach($result as $row){
+                        foreach($result as $row){
 
-                        echo "
+                            echo "
                             <tr class='tblrow' onclick='selectRow(event)'>
-                                <td id='empid' >$row->stock_ID </td>
-                                 <td>$row->order_ID</td>
-                                <td>$row->raw_material_ID</td>
-                                <td>$row->order_item_ID</td>
-                                <td>$row->type</td>
-                                <td>$row->quantity</td>
-                                <td>$row->unit_price</td>
-                                <td>$row->date</td>
+                                <td id='empid' >$row->order_ID </td>
+                                 <td>$row->order_name</td>
+                                <td>$row->order_status</td>
+                                <td>$row->order_description</td>
+                                <td>$row->order_due_date</td>
+                                <td>$row->estimate_time</td>
+                                
+                                 <td>$row->sales_manager_ID</td>
+                                 <td>$row->customer_ID</td>
                                 
                             </tr>
                         ";
 
-                    }
+                        }
 
 
 
 
 
 
-                    echo "
+                        echo "
                         </tbody>
                     </table>
                     
                     ";
 
+                    }
+                    return "Successfully set the session.";
                 }
-                return "Successfully set the session.";
             }
         }
-    }
-
 
 
 

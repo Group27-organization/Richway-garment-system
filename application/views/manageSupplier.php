@@ -9,8 +9,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <?php linkCSS("assets/css/nav.css") ?>
     <?php linkCSS("assets/css/managesupplier.css") ?>
-    <?php linkCSS("assets/css/stock-css/tabpane.css") ?>
-    <?php linkCSS("assets/css/stock-css/table.css") ?>
+    <?php linkCSS("assets/css/stock/tabpane.css") ?>
+    <?php linkCSS("assets/css/stock/table.css") ?>
     <?php linkJS("assets/js/manageSupplier.js"); ?>
 </head>
 <body>

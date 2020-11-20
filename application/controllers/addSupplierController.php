@@ -31,14 +31,15 @@
 
 
       public function addSupplier(){
+          echo("<script>console.log('PHP in addSupplier');</script>");
         
           $supplierData = [
             
             'supplierName'=> $this->input('suplierName'),
-            'emailAddress'=>$this->input('Eemailaddress'),
+            'emailAddress'=>$this->input('emailaddress'),
             'address'=>$this->input('address'),
             'contactNo'=>$this->input('contactno'),
-            
+            'active' =>1,
             ];
 
             foreach ($supplierData as $key => $value){
@@ -55,10 +56,11 @@
                     echo '
                       <script>
                                     if(!alert("Supplier added successfully")) {
+                                        alert("Supplier added successfully");
                                         window.location.href = "http://localhost/Richway-garment-system/manageSupplierController/index";
                                     }
                                 </script>
-                  
+
                     ';
 
                   }
@@ -66,10 +68,11 @@
                   else {
 
                     echo '
-    
+
                     <script>
                                 if(!alert("Something went wrong! please try again.")) {
-                                    window.location.href = "http://localhost/Richway-garment-system/addSupplierController/index";
+                                    alert("Something went wrong! please try again.")
+                                    window.location.href = "http://localhost/Richway-garment-system/addSupplierController";
                                 }
                     </script>
                     ';
@@ -81,6 +84,7 @@
                   echo '
                   <script>
                       if(!alert("Some required fields are missing!")) {
+                          alert("Some required fields are missing!")
                           window.location.href = "http://localhost/Richway-garment-system/addSupplierController/index";
                       }
                   </script>

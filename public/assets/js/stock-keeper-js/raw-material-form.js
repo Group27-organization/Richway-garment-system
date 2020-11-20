@@ -1,9 +1,9 @@
 
 $(document).ready(function(){
 
-    $("#StockId").prop('disabled', true);
-    $("#OrderItemsID").prop('disabled', true);
-    $("#slt-orderitems").prop('disabled', true);
+
+
+
 
     $("#cpydbtn").prop('disabled', true);
     $("#buttonbtn").prop('disabled', true);
@@ -18,32 +18,6 @@ $(document).ready(function(){
      $('#bg-modal-oI-Table').hide();
      $('#BFNAddTable').hide();
 
-
-    $("#OrderId").change(function() {
-        $("#slt-orderitems").prop('disabled', false);
-
-    });
-
-    ///////////////////////////////////////////order item table load/////////////////////////////////////////////////
-        $('#OrderId').on('change', function() {
-            $("label[for='FM1']").text("");
-             let orderId = $('option:selected',this).data("value");
-
-                $.ajax({
-                    type: 'POST',
-                    url: "http://localhost/Richway-garment-system/addRawMaterialController/loadOrderItemsTable",
-                     data: { role: orderId,  key: "OrderId"},
-                    success: function(data){
-                        $("#tableParent-oI-Table").html(data);
-
-
-                    },
-                    error       : function() {
-                        $("#tableParent-oI-Table").html('<br><p>Something went wrong.</p>');
-                    }
-                });
-        });
-/////////////////////////////////////////////////////////////////////////////////////////////
 
     $('#submitForm').on('click', function() {
 

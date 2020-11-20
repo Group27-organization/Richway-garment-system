@@ -2,13 +2,13 @@ $(document).ready(function(){
     let variable="";
     $(".cbn").click(function(){
         variable =  this.id;
-        let itemid =$("label[for='OrderItemsID']").html();
+        let itemid =$("#OrderItemsID").val();
         console.log("item id"+itemid);
 
         document.querySelector('.bg-modal').style.display = "flex";
         document.querySelector('body').style.overflow = "hidden";
         $("#supplierWap").css("display", "none");
-        $('.model-footer').hide();
+
 
         $("#Quantity").prop('disabled', true);
         $("#UnitPrice").prop('disabled', true);
@@ -173,7 +173,7 @@ $(document).ready(function(){
 
     $("#addBFNBtn2").click(function(){
 
-        let B=$("label[for='OrderItemsID']").html();
+        let B=$("#OrderItemsID").val();
         let A = $('#OrderId option:selected').val();
         let material = $('#slt1 option:selected').text();
         let quantity = $("#Quantity").val();
@@ -189,31 +189,33 @@ $(document).ready(function(){
             $("#cpydbtn").prop('disabled', true);
             $("#SuppliesId").prop('disabled', true);
             $('#Quantity').attr("placeholder", "");
-            $('.model-footer').hide();
-            $('.bg-modal').hide();
+
+
             $('body').css("overflow","auto");
 
             $('#BFNAddTable').show();
+            $('#rawmaterialformpopup').hide();
+
 
             if(variable=="buttonbtn"){
                 type="button";
                 $('input[type=text]').val('');
                 $("label[for='SuppliesIdLabel']").text("");
-                $("label[for='OrderItemsID']").text("");
+                $("#OrderItemsID").val("");
 
 
             }else if(variable=="fabricbtn"){
                 type="fabric";
                 $('input[type=text]').val('');
                 let sid =$("label[for='SuppliesIdLabel']").text("");
-                $("label[for='OrderItemsID']").text("");
+                $("#OrderItemsID").val("");
 
 
             }else if(variable=="noolbtn"){
                 type="nool";
                 $('input[type=text]').val('');
                 let sid =$("label[for='SuppliesIdLabel']").text("");
-                $("label[for='OrderItemsID']").text("");
+                $("#OrderItemsID").val("");
 
             }
 
@@ -233,24 +235,19 @@ $(document).ready(function(){
                 '</tr>\n'
             );
         }else{
+            document.querySelector('#rawmaterial-error').style.display = "block";
 
-            $('.model-footer').show();
-            console.log("can t add");
+
         }
     });
 
     $("#closePopup").click(function(){
-        $('.model-footer').hide();
-        $('.bg-modal').hide();
+        document.querySelector('#rawmaterial-error').style.display = "none ";
+        $("#rawmaterialformpopup").hide();
         $('body').css("overflow","auto");
         $('input[type=text]').val('');
     });
-    $("#close").click(function(){
-        $('.model-footer').hide();
-        $('.bg-modal').hide();
-        $('body').css("overflow","auto");
-        $('input[type=text]').val('');
-    });
+
 
 });
 
@@ -266,7 +263,7 @@ function selectSupplier() {
         }
     }
     if(empID.length>0){
-        $("label[for='SuppliesIdLabel']").text(empID);
+        $("#SuppliesId").val(empID);
         // document.getElementById("SuppliesId").value = empID;
 
     }

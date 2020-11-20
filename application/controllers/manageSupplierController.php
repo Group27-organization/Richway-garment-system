@@ -42,19 +42,18 @@ private $manageSupplierModel;
         if(isset($_POST['key'])) {
             if ($_POST['key'] == "supplierTableInDash") {
                 $result = $this->manageSupplierModel->loadSupplierTable();
-                ("<script>console.log('PHP in loadSupplierTable contoller: " . json_encode($result) . "');</script>");
 
                 echo "
 
-                <table class=content-table>
-                        <thead>
+                 <table class=\"table align-items-center table-flush\">
+                        <thead class=\"thead-light\">
                         <tr>
                         
-                            <th>Supplier ID</th>
-                            <th>Name</th>
-                            <th>Email Address</th>
-                            <th>Address</th>
-                            <th>Contact Number</th>
+                            <th scope=col>Supplier ID</th>
+                            <th scope=col>Name</thl>
+                            <th scope=col>Email Address</th>
+                            <th scope=col>Address</th>
+                            <th scope=col>Contact Number</th>
                            
                         </tr>
                         </thead>
@@ -85,10 +84,10 @@ private $manageSupplierModel;
 
     }
 
-    public function addSupplierform(){
+    public function addSupplierForm(){
 
 
-        $this->view("admin/addSupplier");
+        $this->view("Stock/addSupplierForm");
 
 
         

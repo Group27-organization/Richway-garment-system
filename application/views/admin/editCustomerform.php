@@ -222,7 +222,7 @@
     <br><div class="inputfield inputbutton"> 
             <input type="submit" value="Update" class="btn cripple">
     </div> 
-
+</div>
 </div>
 </div>
 </form> 

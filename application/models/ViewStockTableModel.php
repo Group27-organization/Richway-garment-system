@@ -16,4 +16,11 @@ class ViewStockTableModel extends database{
     public function getMachinesData(){
 
     }
+
+    public function orderTable(){
+        if($this->Query("SELECT * FROM orders ")){
+
+            return $this->fetchall();
+        }
+    }
 }
