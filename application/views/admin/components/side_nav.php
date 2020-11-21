@@ -54,7 +54,7 @@
                 </li>
 
                 <li>
-                    <a class="navigation-link" href="ManageCustomer.html">
+                    <a class="navigation-link" href="<?php echo BASEURL; ?>/manageCustomerController">
                         <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
                              width="24" height="24"
                              viewBox="0 0 172 172"
@@ -67,7 +67,7 @@
                 </li>
 
                 <li>
-                    <a class="navigation-link" href="ManageSupplier.html">
+                    <a class="navigation-link" href="<?php echo BASEURL; ?>/manageSupplierController">
                         <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
                              width="24" height="24"
                              viewBox="0 0 172 172"
@@ -80,7 +80,7 @@
                 </li>
 
                 <li >
-                    <a class="navigation-link" href="ManageEmployee.html">
+                    <a class="navigation-link" href="<?php echo BASEURL; ?>/manageEmployeeController">
                         <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
                              width="24" height="24"
                              viewBox="0 0 172 172"
@@ -108,7 +108,7 @@
 
                 <li>
 
-                    <a class="navigation-link active" href="<?php echo BASEURL; ?>/manageUserController">
+                    <a class="navigation-link" href="<?php echo BASEURL; ?>/manageUserController">
                         <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
                              width="24" height="24"
                              viewBox="0 0 172 172"

@@ -40,17 +40,16 @@ echo("<script>console.log('PHP in index');</script>");
                  echo("<script>console.log('PHP in loadCustomerTable contoller: " . json_encode($result) . "');</script>");
 
                 echo "
-
-                <table class=content-table>
-                        <thead>
+                <table class=\"table align-items-center table-flush\">
+                        <thead class=\"thead-light\">                        
                         <tr>
                         
-                            <th>Customer ID</th>
-                            <th>Name</th>
-                            <th>Address</th>
-                            <th>Contact Number</th>
-                            <th>Gender</th>
-                            <th>Email</th>
+                            <th scope=col>Customer ID</th>
+                            <th scope=col>Name</th>
+                            <th scope=col>Address</th>
+                            <th scope=col>Contact Number</th>
+                            <th scope=col>Gender</th>
+                            <th scope=col>Email</th>
                             
                         </tr>
                         </thead>

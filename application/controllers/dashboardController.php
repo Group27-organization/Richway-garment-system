@@ -27,6 +27,7 @@ class dashboardController extends framework {
         $roleTitles = $this->getSession('userId')['all_roles'];
         $result = $this->dashboardModel->getUserRoleObject($roleTitles);
         $this->view("dashboard",$result);
+        echo("<script>console.log('PHP idex sup');</script>");
     }
 
 
