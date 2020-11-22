@@ -42,19 +42,19 @@ private $manageSupplierModel;
         if(isset($_POST['key'])) {
             if ($_POST['key'] == "supplierTableInDash") {
                 $result = $this->manageSupplierModel->loadSupplierTable();
-                ("<script>console.log('PHP in loadSupplierTable contoller: " . json_encode($result) . "');</script>");
+                echo("<script>console.log('PHP in loadSupplierTable contoller: " . json_encode($result) . "');</script>");
 
                 echo "
 
-                <table class=content-table>
-                        <thead>
+                 <table class=\"table align-items-center table-flush\">
+                        <thead class=\"thead-light\">
                         <tr>
                         
-                            <th>Supplier ID</th>
-                            <th>Name</th>
-                            <th>Email Address</th>
-                            <th>Address</th>
-                            <th>Contact Number</th>
+                            <th scope=col>Supplier ID</th>
+                            <th scope=col>Name</th>
+                            <th scope=col>Email Address</th>
+                            <th scope=col>Address</th>
+                            <th scope=col>Contact Number</th>
                            
                         </tr>
                         </thead>
@@ -114,9 +114,9 @@ private $manageSupplierModel;
 
 
     public function updateSupplier(){
-        $supplier_ID=$this->input('hiddenID');
+        $supplier_ID=intval($this->input('hiddenID'));
 
-        $supplierEdit=$this->supplierModel->updateSupplier( $supplier_ID);
+        $supplierEdit=$this->supplierModel->editSupplier( $supplier_ID);
         $supplierData = [
             'supplierName'=> $this->input('suplierName'),
             'emailAddress'=>$this->input('Eemailaddress'),
