@@ -5,7 +5,7 @@ class manageEmployeeModel extends database {
 
     public function loadTable($data){
 
-        if($this->Query("SELECT * FROM employee WHERE employee_role=?",[$data['role']])){
+        if($this->Query("SELECT * FROM employee WHERE employee_role=? AND active=1",[$data['role']])){
 
             return $this->fetchall();
 
@@ -20,6 +20,13 @@ class manageEmployeeModel extends database {
             return $this->fetch();
         }
         return -1;
+    }
+
+
+    public function insertemployee($Data){
+        if($this->Query("INSERT INTO employee(name,address,contact_no,blood_group,employee_role,bank_ID,bank_account_name,bank_branch,account_no,salary_basic,job_start_date,active) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)", $Data) ){
+            return true;
+        }
     }
 
     public function updateEmployee($empID){
@@ -38,6 +45,14 @@ class manageEmployeeModel extends database {
         }
     }
 
+
+
+public function deleteEmployee($id){
+
+    if($this->Query("UPDATE employee SET active = ? WHERE emp_ID=?", [0,$id])){
+        return true;
+    }
 }
 
+}
 

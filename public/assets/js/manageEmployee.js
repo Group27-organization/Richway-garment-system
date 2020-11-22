@@ -6,11 +6,11 @@ addEmployeeBtn.onclick = function() {
     $.ajax({
         type: 'POST',
         url: "http://localhost/Richway-garment-system/manageEmployeeController/setNewSession",
-        data: { role: 'sales_manager',  key: "manageEmployeeData"},
-        success: function(data,status){
+        data: {role: 'sales_manager', key: "manageEmployeeData"},
+        success: function (data, status) {
             location.href = "http://localhost/Richway-garment-system/manageEmployeeController/addEmployeeform";
         },
-        error       : function() {
+        error: function () {
         }
     });
 
@@ -62,6 +62,15 @@ function openEmp(evt,elementID) {
 
 }
 
+$("#addEmployee").click(function () {
+    location.href = "http://localhost/Richway-garment-system/manageEmployeeController/addEmployeeform";
+
+});
+
+$("#deleteEmployee").click(function () {
+    location.href = "http://localhost/Richway-garment-system/manageEmployeeController/deleteEmployee";
+
+});
 
 function updateEmployee() {
 
@@ -91,3 +100,40 @@ function updateEmployee() {
         }
     }
 }
+
+
+
+function deleteEmployee() {
+
+    let i, tblrows, em_ID = "";
+
+    tblrows = document.getElementsByClassName("tblrow");
+    for (i = 0; i < tblrows.length; i++) {
+        if (tblrows[i].className.includes('active-row')) {
+            em_ID = tblrows[i].firstElementChild.innerHTML;
+            jQuery(function ($) {
+
+
+
+                $.ajax({
+                    type: 'POST',
+                    url: "http://localhost/Richway-garment-system/manageEmployeeController/deleteEmployee",
+                    data: {emp_ID: em_ID, key: "employeeDelete"},
+                    dataType: 'html',
+                    success: function (data) {
+                        //alert(data);
+                        // console.log("Table data load"+data);
+
+                    },
+                    error: function () {
+                        // console.log("update data not  load")
+                        $("#tableParent").html('<br><p>Something went wrong.</p>');
+                    }
+                });
+
+
+            });
+        }
+    }
+}
+

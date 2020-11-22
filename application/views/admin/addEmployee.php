@@ -23,7 +23,7 @@
         <div class="header-container background-gradient">
             <div class="header-group">
                 <h1 class="text-white">Add Employee Form</h1>
-                <p class="text-lead text-white">Add employee</p>
+                <p class="text-lead text-white">Add Employee Details</p>
             </div>
             <div class="separator separator-bottom separator-skew zindex-100">
                 <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
@@ -88,8 +88,8 @@
         </div>
 
         <div class="inputfield">
-            <label for="startJobDate">Job Start Date</label>
-            <input type="text" id="startJobDate" name="startJobDate" class="form-contrall">
+            <label for="job_start_date">Job Start Date</label>
+            <input type="date" id="job_start_date" name="job_start_date" class="form-contrall">
         </div>
 
         <br><div class="inputfield inputbutton">
@@ -103,6 +103,9 @@
 </form>
 </div><!--    right-->
 </div>  <!--    grid container-->
+
+<?php linkJS("assets/js/admin-manageEmployee.js") ?>
+<?php linkJS("assets/js/table.js") ?>
 
 </body>
 </html>

@@ -62,7 +62,7 @@
 
                         <button id="updateEmployee" class="three-set-btn2" onclick="updateEmployee()">Update</button>
 
-                        <button class="three-set-btn3">Remove</button>
+                        <button id="deleteEmployee" class="three-set-btn3" onclick="deleteEmployee()">Remove</button>
                     </div>
                 </div><!--flex row-->
 

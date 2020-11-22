@@ -52,9 +52,9 @@
                     </div>
                     <div class="BtnWap">
 
-                        <button id="updateSupplier" onclick="updateCustomer()" class="three-set-btn2">Update</button>
+                        <button id="updateCustomer" onclick="updateCustomer()" class="three-set-btn2">Update</button>
 
-                        <button id="deleteSupplier" class="three-set-btn3" onclick="deleteCustomer()">Remove</button>
+                        <button id="deleteCustomer" class="three-set-btn3" onclick="deleteCustomer()">Remove</button>
 
                     </div>
                 </div><!--flex row-->

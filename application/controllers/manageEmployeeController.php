@@ -1,6 +1,7 @@
 <?php 
 
-class manageEmployeeController extends framework {
+class manageEmployeeController extends framework
+{
 
     /**
      * @var mixed
@@ -9,28 +10,30 @@ class manageEmployeeController extends framework {
 
     public function __construct()
     {
-      if(!$this->getSession('userId')){
+        if (!$this->getSession('userId')) {
 
-        $this->redirect("loginController/loginForm");
+            $this->redirect("loginController/loginForm");
 
-      }
-      elseif ($this->getSession('userId')['role'] != 'admin'){
-          //$this->redirect("somePage");
-          echo "You cannot access this page.";
-          die();
-      }
+        } elseif ($this->getSession('userId')['role'] != 'admin') {
+            //$this->redirect("somePage");
+            echo "You cannot access this page.";
+            die();
+        }
 
-       $this->helper("link");
-       $this->manageEmployeeModel = $this->model('manageEmployeeModel');
+        $this->helper("link");
+        $this->manageEmployeeModel = $this->model('manageEmployeeModel');
     }
 
-    public function index(){
-      $this->view("admin/manageEmployee");
+    public function index()
+    {
+        $this->view("admin/manageEmployee", $data);
+        echo("<script>console.log('PHP in index');</script>");
     }
 
-    public function setNewSession(){
+    public function setNewSession()
+    {
 
-        if(isset($_POST['key'])) {
+        if (isset($_POST['key'])) {
             if ($_POST['key'] == "manageEmployeeData") {
                 $this->setSession("selected_role", $_POST['role']);
                 return "Successfully set the session.";
@@ -39,8 +42,9 @@ class manageEmployeeController extends framework {
         return "error";
     }
 
-    public function NewSession(){
-        if(isset($_POST['key'])) {
+    public function NewSession()
+    {
+        if (isset($_POST['key'])) {
             if ($_POST['key'] == "employeeUpdate") {
                 $this->setSession("selected_employee", $_POST['emp_ID']);
                 return "Successfully set the session.";
@@ -50,18 +54,18 @@ class manageEmployeeController extends framework {
     }
 
 
-    public function loadTable(){
+    public function loadTable()
+    {
 
-        if(isset($_POST['key'])){
-            if($_POST['key'] == "manageEmployeeData2"){
+        if (isset($_POST['key'])) {
+            if ($_POST['key'] == "manageEmployeeData2") {
                 $role = $_POST['employeerole'];
                 $data = [
-                    'role' => ucwords(str_replace("_"," ",$role))
+                    'role' => ucwords(str_replace("_", " ", $role))
                 ];
                 echo("<script>console.log('PHP in role slect: " . json_encode($role) . "');</script>");
 
                 $result = $this->manageEmployeeModel->loadTable($data);
-
 
 
                 echo " 
@@ -84,9 +88,9 @@ class manageEmployeeController extends framework {
                 ";
 
 
-                    foreach ($result as $row) {
+                foreach ($result as $row) {
 
-                        echo "
+                    echo "
                             <tr class='tblrow' onclick='selectRow(event)'>
                                 <td id='empid'>$row->emp_ID</td>
                                 <td>$row->name</td>                               
@@ -103,8 +107,7 @@ class manageEmployeeController extends framework {
                             </tr>
                         ";
 
-                    }
-
+                }
 
 
                 echo "
@@ -118,97 +121,108 @@ class manageEmployeeController extends framework {
         }
     }
 
-    public function addEmployeeform(){
+    public function addEmployeeform()
+    {
 
         echo("<script>console.log('PHP: " . json_encode($result) . "');</script>");
-        $role =  $this->getSession('selected_role');
+        $role = $this->getSession('selected_role');
 
         $data = [
-            'role' => ucwords(str_replace("_"," ",$role))
+            'role' => ucwords(str_replace("_", " ", $role))
         ];
 
 
-        $this->view("admin/addEmployee",$data);
+        $this->view("admin/addEmployee", $data);
     }
 
 
-    public function loadEmployeeTable(){
-
-        if(isset($_POST['key'])){
-            if($_POST['key'] == "manageUserData"){
-
-                $role = $this->getSession('selected_role');
-
-                $result = $this->manageEmployeeModel->getEmployeeData($role);
-
-                echo "
-                        <table class=\"table align-items-center table-flush\">
-                        <thead class=\"thead-light\">
-                        <tr>
-                            <th scope=col>".(($role=='owner')?'Owner ID':'Employee ID')."</th>
-                            <th scope=col>".(($role=='owner')?'Owner Name':'Employee Name')."</th>
-                            ".(($role=='owner')?'':'<th>Employee Role</th>')."
-                            <th scope=col>".(($role=='owner')?'Address':'Job Start Date')."</th>
-                            <th scope=col>Contact</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-
-                ";
-
-                if($result['status'] === 'ok'){
-
-                    foreach($result['data'] as $row){
-
-                        //echo("<script>console.log('PHP: " . json_encode($row) . "');</script>");
-
-                        echo "
-                            <tr class='tblrow' onclick='selectRow(event)'>
-                                <td id='empid'>".(($role=='owner')?$row->owner_ID:$row->emp_ID)."</td>
-                                <td>$row->name</td>
-                                 ".(($role=='owner')?'':"<td>$row->employee_role</td>")."
-                                <td>".(($role=='owner')?$row->address:$row->job_start_date)."</td>
-                                <td>$row->contact_no</td>
-                            </tr>
-                        ";
-
-                    }
-                }
-                else if($result['status'] === 'tableIsEmpty') {
-                    echo "
-                    <tr class=active-row>
-                        <td colspan=4 style=\"text-align: center;\">There are no employees without a login account.</td>
-                    </tr>
-                   ";
-                }
-                else if($result['status'] === 'error') {
-                    echo "
-                    <tr class=active-row>
-                        <td colspan=4 style=\"text-align: center;\">Something went wrong!</td>
-                    </tr>
-                   ";
-                }
 
 
 
-                echo "
-                        </tbody>
-                    </table>
-                    
-                    ";
+    public function addEmployee(){
+        $role = $this->getSession('selected_role');
+        $data = [
+            'role' => ucwords(str_replace("_", " ", $role))
+        ];
+
+
+
+        $employeeData = [
+
+            'FullName'=> $this->input('name'),
+            'Address'=>$this->input('address'),
+            'ContactNumber'=>$this->input('contact_no'),
+            'BloodGroup'=>$this->input('blood_group'),
+            'employeeRole'=>$data['role'],
+            'bank_ID'=>$this->input('bank_ID'),
+            'BankName'=>$this->input('bank_account_name'),
+            'BankBranch'=>$this->input('bank_branch'),
+            'AccountNumber'=>$this->input('account_no'),
+            'SalaryBasic'=>$this->input('salary_basic'),
+            'job_start_date'=>$this->input('job_start_date'),
+
+        ];
+
+        foreach ($employeeData as $key => $value) {
+            if (empty($value)) {
+                $isEmpty = true;
+            }
+        }
+
+
+        $Data=[$employeeData['FullName'],$employeeData['Address'],$employeeData['ContactNumber'],$employeeData['BloodGroup'],$employeeData['employeeRole'],$employeeData['bank_ID'],$employeeData['BankName'],$employeeData['BankBranch'],$employeeData['AccountNumber'],$employeeData['SalaryBasic'],$employeeData['job_start_date'],1];
+
+        if(!$isEmpty){
+
+            if($this->manageEmployeeModel->insertemployee($Data)){
+
+
+                echo '
+              <script>
+                            if(!alert("Employee added successfully")) {
+                                window.location.href = "http://localhost/Richway-garment-system/manageEmployeeController/index"
+                            }
+              </script>
+
+            ';
 
             }
 
+            else {
+                echo '
+
+            <script>
+                        if(!alert("Something went wrong! please try again.")) {
+                            window.location.href = "http://localhost/Richway-garment-system/
+                            manageEmployeeController/index"
+                        }
+            </script>
+            ';
+
+            }
+
+        }//if(!isempty)
+        else {
+            echo '
+            <script>
+                if(!alert("Some required fields are missing!")) {
+                    window.location.href = "http://localhost/Richway-garment-system/manageEmployeeController/addEmployeeform"
+                }
+            </script>
+            ';
+
 
         }
+
+
     }
 
-
-    public function loadupdateEmployeeform(){
+    public function loadupdateEmployeeform()
+    {
 
         $empID = $this->getSession('selected_employee');
         $data = $this->manageEmployeeModel->updateEmployee($empID);
-        $this->view("admin/editEmployeeform",$data);
+        $this->view("admin/editEmployeeform", $data);
     }
 
     public function updateEmployee()
@@ -282,4 +296,25 @@ class manageEmployeeController extends framework {
 
 
     }
+
+
+    public function deleteEmployee()
+    {
+        $id = $_POST['emp_ID'];
+
+        if ($this->manageEmployeeModel->deleteEmployee($id)) {
+            //echo "Employee Removed successfully";
+            echo '
+          <script>
+                        if(!alert("Employee removed successfully")) {
+                            window.location.href = "http://localhost/Richway-garment-system/manageEmployeeController/index"
+                        }
+                    </script>
+      
+        ';
+
+
+        }
+    }
 }
+?>
