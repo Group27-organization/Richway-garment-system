@@ -11,7 +11,7 @@
     <?php linkCSS("assets/css/admin-managecustomer.css") ?>
     <?php linkCSS("assets/css/admin-tabview.css") ?>
     <?php linkCSS("assets/css/admin-table.css") ?>
-     <?php linkJS("assets/js/manageCustomer.js"); ?>
+
 </head>
 <body>
 
@@ -211,7 +211,7 @@
 </div>
 
 
-<?php linkJS("assets/js/tabview.js") ?>
+<?php linkJS("assets/js/manageCustomer.js"); ?>
 <?php linkJS("assets/js/table.js") ?>
 
 </body>

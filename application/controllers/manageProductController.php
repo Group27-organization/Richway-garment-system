@@ -1,11 +1,11 @@
 <?php 
 
-class manageUserController extends framework {
+class manageProductController extends framework {
 
     /**
      * @var mixed
      */
-    private $manageUserModel;
+    private $manageProductModel;
 
     public function __construct()
     {
@@ -21,11 +21,12 @@ class manageUserController extends framework {
       }
 
        $this->helper("link");
-       $this->manageUserModel = $this->model('manageUserModel');
+       $this->manageProductModel = $this->model('manageProductModel');
     }
 
     public function index(){
-      $this->view("admin/manageUser");
+        $types = $this->manageProductModel->getProductTypes();
+        $this->view("admin/manageProducts",$types);
     }
 
     public function setNewSession(){
@@ -42,19 +43,21 @@ class manageUserController extends framework {
     public function loadTable(){
 
         if(isset($_POST['key'])){
-            if($_POST['key'] == "manageUserData"){
-
-                $result = $this->manageUserModel->loadTable($_POST['tableName']);
+            if($_POST['key'] == "manageProduct"){
+                $tblname = $_POST['tableName'];
+                $result = $this->manageProductModel->loadTable($tblname);
 
                 echo " 
                         <table class=\"table align-items-center table-flush\">
                         <thead class=\"thead-light\">
                         <tr>
-                            <th scope=col>Login ID</th>
-                            <th scope=col>".(($_POST['tableName']=='owner')?'Owner ID':'Employee ID')."</th>
-                            <th scope=col>".(($_POST['tableName']=='owner')?'Owner Name':'Employee Name')."</th>
-                            <th scope=col>User Name</th>
-                            <th scope=col>Extra Roles</th>
+                            <th scope=col>".ucwords(str_replace("_","-",$tblname))." ID</th>
+                            <th scope=col>Product ID</th>
+                            <th scope=col>Size</th>
+                            <th scope=col>Hand Type</th>
+                            <th scope=col>Collar Type</th>
+                            <th scope=col>Description</th>
+                            <th scope=col>Style</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -63,32 +66,28 @@ class manageUserController extends framework {
 
                 if($result['status'] === 'ok'){
 
+                    $first = true;
                     foreach($result['data'] as $row){
-
-                        $extraRoles = "";
-                        $tmparr = [];
-                        foreach ($row->extra_roles as $er){
-                            if(!empty($er->title)){
-                                array_push($tmparr,ucwords(str_replace("_"," ",$er->title)));
-                            }
-                        }
-                        if(!empty($tmparr)){
-                            $extraRoles = join(" | ",$tmparr);
+                        if($first){
+                            echo "
+                                <tr class='tblrow active-row' onclick=\"selectRow(event,'$row->image_url','$row->size')\">
+                            ";
+                            $first = false;
                         }
                         else{
-                            $extraRoles = "None";
+                           echo "
+                                <tr class='tblrow' onclick=\"selectRow(event,'$row->image_url','$row->size')\">
+                           ";
                         }
-
-
-                        $extraRoles = empty($extraRoles)? "None" : $extraRoles;
-
                         echo "
-                            <tr class='tblrow' onclick='selectRow(event)'>
-                                <td>LID$row->login_ID</td>
-                                <td>".(($_POST['tableName']=='owner')?'OWN'.$row->owner_ID:'EMP'.$row->emp_ID)."</td>
-                                <td>".(($_POST['tableName']=='owner')?$row->name:$row->emp_name)."</td>
-                                <td>$row->user_name</td>
-                                <td>$extraRoles</td>
+                                <td>ID$row->ID</td>
+                                <td>PID$row->p_ID</td>
+                                <td>$row->size</td>
+                                <td>$row->hand_type</td>
+                                <td>$row->collar_type</td>
+                                <td>$row->description</td>
+                                <td>$row->style</td>
+                                <td style='display:none;'>$row->image_url</td>
                             </tr>
                         ";
 
@@ -97,14 +96,14 @@ class manageUserController extends framework {
                 else if($result['status'] === 'tableIsEmpty') {
                     echo "
                     <tr class=active-row>
-                        <td colspan=5 style=\"text-align: center;\">There is no any data to the display!</td>
+                        <td colspan=7 style=\"text-align: center;\">There is no any data to the display!</td>
                     </tr>
                    ";
                 }
                 else if($result['status'] === 'error') {
                     echo "
                     <tr class=active-row>
-                        <td colspan=5 style=\"text-align: center;\">Something went wrong!</td>
+                        <td colspan=7 style=\"text-align: center;\">Something went wrong!</td>
                     </tr>
                    ";
                 }
@@ -151,7 +150,7 @@ class manageUserController extends framework {
             'username' => $this->input('UserName'),
             'password' => $this->input('Password'),
             'roleID' => $roleID->role_ID,
-            'empID' =>  preg_replace('/\D/', '', $this->input('EmployeeId')),
+            'empID' =>  $this->input('EmployeeId'),
         ];
 
         foreach ($loginTblData as $key => $value){
@@ -230,7 +229,7 @@ class manageUserController extends framework {
 
                         echo "
                             <tr class='tblrow' onclick='selectRow(event)'>
-                                <td id='empid'>".(($role=='owner')?'OWN'.$row->owner_ID:'EMP'.$row->emp_ID)."</td>
+                                <td id='empid'>".(($role=='owner')?$row->owner_ID:$row->emp_ID)."</td>
                                 <td>$row->name</td>
                                  ".(($role=='owner')?'':"<td>$row->employee_role</td>")."
                                 <td>".(($role=='owner')?$row->address:$row->job_start_date)."</td>

@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta id="nav_item" content="Manage User">
-    <title>Add User</title>
+    <meta id="nav_item" content="Manage Products">
+    <title>Add Sub Product</title>
     <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <?php linkCSS("assets/css/nav.css") ?>
@@ -158,7 +158,6 @@
 
 <?php linkJS("assets/js/admin-adduser.js") ?>
 <?php linkJS("assets/js/table.js") ?>
-
 
 </body>
 </html>

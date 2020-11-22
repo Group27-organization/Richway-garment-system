@@ -1,0 +1,96 @@
+
+.tabrow{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.create-button{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    background-color: #2dce89;
+    color: white;
+    align-items: center;
+    outline: none;
+    cursor: pointer;
+    padding: 17px 12px;
+    margin-bottom: 0;
+    font-size: 15px;
+    -webkit-transition: all 0.2s ease-out;
+    white-space: nowrap;
+    overflow: hidden;
+    word-wrap: break-word;
+    border: 0 solid transparent;
+    border-radius: .375rem;
+    background-clip: border-box;
+    box-shadow: 0 4px 6px rgba(50,50,93,.11), 0 1px 3px rgba(0,0,0,.08);
+    transition: 0.3s;
+
+}
+
+.tabcontent{
+    margin-top: 7px !important;
+}
+
+.tab button{
+    padding: 18px 25px !important;
+}
+
+.right-content{
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.tab-content{
+    width: 80%!important;
+}
+
+.side-cards-container{
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+    padding-top: 77px;
+    align-items: flex-end;
+    gap: 35px;
+}
+
+.cardview{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    font-family: Poppins-Regular, serif !important;
+    color: white;
+    width: calc(100% - 35px);
+    height: 281px;
+    padding: 0 10px;
+    /*padding: 25px 0 25px 0;*/
+    background-color: #525f7f;
+    word-wrap: break-word;
+    border: 1px solid rgba(0,0,0,.05);
+    border-radius: .375rem;
+    background-clip: border-box;
+    box-shadow: 0 0 2rem 0 rgba(136,152,170,.15);
+    overflow: hidden;
+    transition: 0.3s;
+    position: relative;
+}
+
+.size-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+}
+
+.easeload{
+    opacity: 0;
+    -webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -ms-transition: all 1s ease;
+    -o-transition: all 1s ease;
+}

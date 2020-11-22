@@ -1,44 +1,18 @@
 <?php
 
-class manageUserModel extends database {
+class manageProductModel extends database {
 
 
     public function loadTable($table){
 
+      // echo("<script>console.log('PHP: " . json_encode($table) . "');</script>");
 
-
-        if($this->Query("SELECT * FROM login INNER JOIN ($table INNER JOIN per_role_login ON $table.per_role_login_ID = per_role_login.ID AND per_role_login.default_role = 1) ON per_role_login.login_ID = login.login_ID")){
+        if($this->Query("SELECT * FROM $table INNER JOIN predefine ON $table.p_ID = predefine.p_ID")){
 
             if($this->rowCount() > 0 ){
 
                 $data = $this->fetchall();
-
-                if($table == 'owner') {
-                    return ['status' => 'ok', 'data' => $data];
-                }
-
-
-                foreach($data as $key => $row) {
-
-                    $row->password = "";
-
-                    $empId = $row->emp_ID;
-                    if ($this->Query("SELECT name FROM employee WHERE emp_ID = ? ", [$empId])) {
-                        $emp_name = $this->fetch()->name;
-                        $data[$key]->emp_name = $emp_name;
-                    }
-
-                    $loginId = $row->login_ID;
-                    $Sql1 = "SELECT role_ID FROM per_role_login WHERE login_ID = ".$loginId." AND default_role = 0";
-                    if ($this->Query("SELECT title FROM user_role WHERE role_ID in ($Sql1)")) {
-                        $rslt = $this->fetchall();
-                        $data[$key]->extra_roles = $rslt;
-                    }
-
-                }
-
-
-              // echo("<script>console.log('PHP: data: " . json_encode($data) . "');</script>");
+                echo("<script>console.log('PHP: " . json_encode($data) . "');</script>");
 
                 return ['status' => 'ok', 'data' => $data];
 
@@ -48,9 +22,17 @@ class manageUserModel extends database {
 
         }
 
-
         return ['status' => 'error'];
 
+    }
+
+
+    public function getProductTypes(){
+        if($this->Query("SELECT DISTINCT type FROM predefine")) {
+            return $this->fetchall();
+        }
+
+        return -1;
     }
 
 
@@ -65,7 +47,9 @@ class manageUserModel extends database {
 
         if($this->Query("INSERT INTO login (user_name, password) VALUES (?,?)", $loginData)){
 
-            $clogid = $this->getCurrentAIID();
+            $clogid = $this->getCurrentLoginID();
+
+            array_push($empData, $clogid);
 
             $role_login = [
                 $clogid,
@@ -76,17 +60,13 @@ class manageUserModel extends database {
 
             if ($this->Query("INSERT INTO per_role_login (login_ID, role_ID, assign_date, default_role) VALUES (?,?,?,?)", $role_login)){
 
-                $prlogid = $this->getCurrentAIID();
-
-                array_push($empData, $prlogid);
-
                 if($role == 'owner') {
-                    if($this->Query("UPDATE owner SET per_role_login_ID = $empData[1] WHERE owner_ID =  '$empData[0]' AND per_role_login_ID IS NULL")){
+                    if($this->Query("UPDATE owner SET login_ID = $empData[1] WHERE owner_ID =  '$empData[0]' AND login_ID IS NULL")){
                         return true;
                     }
                 }
 
-                if($this->Query("INSERT INTO $role (emp_ID, per_role_login_ID) VALUES (?,?)", $empData)){
+                if($this->Query("INSERT INTO $role (emp_ID, login_ID) VALUES (?,?)", $empData)){
                     return true;
                 }
 
@@ -97,7 +77,7 @@ class manageUserModel extends database {
     }
 
 
-    public function getCurrentAIID(){
+    public function getCurrentLoginID(){
 
         if($this->Query("SELECT last_insert_id() as lastid")) {
 
@@ -121,7 +101,7 @@ class manageUserModel extends database {
         $sql2 = "";
 
         if($role == 'owner'){
-            $sql2 = "select w.owner_ID, w.name, w.address, contact_no from owner w where per_role_login_ID is null";
+            $sql2 = "select w.owner_ID, w.name, w.address, contact_no from owner w where login_id is null";
         }
         else{
             $sql1 = "SELECT emp_ID FROM sales_manager Union SELECT emp_ID FROM production_manager UNION SELECT emp_ID FROM supervisor Union SELECT emp_ID FROM accountant Union SELECT emp_ID FROM stock_keeper Union SELECT emp_ID FROM tailor";
