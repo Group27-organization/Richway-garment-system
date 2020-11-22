@@ -53,53 +53,57 @@ class manageEmployeeController extends framework {
     public function loadTable(){
 
         if(isset($_POST['key'])){
-            if($_POST['key'] == "manageEmployeeData"){
+            if($_POST['key'] == "manageEmployeeData2"){
+                $role = $_POST['employeerole'];
+                $data = [
+                    'role' => ucwords(str_replace("_"," ",$role))
+                ];
+                echo("<script>console.log('PHP in role slect: " . json_encode($role) . "');</script>");
 
-                $result = $this->manageEmployeeModel->loadTable($_POST['tableName']);
+                $result = $this->manageEmployeeModel->loadTable($data);
+
+
 
                 echo " 
                         <table class=\"table align-items-center table-flush\">
                         <thead class=\"thead-light\">
                         <tr>
-                            <th scope=col>Login ID</th>
-                            <th scope=col>".(($_POST['tableName']=='owner')?'Owner ID':'Employee ID')."</th>
-                            <th scope=col>".(($_POST['tableName']=='owner')?'Owner Name':'Employee Name')."</th>
-                            <th scope=col>User Name</th>
+                            <th scope=col>Employee ID</th>
+                            <th scope=col>Full Name</th>                          
+                            <th scope=col>Contact Number</th>                         
+                            <th scope=col>Account Number</th> 
+                            <th scope=col>Salary Basic</th> 
+                            <th scope=col>Job Start Date</th>  
+                             <th scope=col></th>                            
+                            
+                             
                         </tr>
                         </thead>
                         <tbody>
                         
                 ";
 
-                if($result['status'] === 'ok'){
 
-                    foreach($result['data'] as $row){
+                    foreach ($result as $row) {
 
                         echo "
                             <tr class='tblrow' onclick='selectRow(event)'>
-                                <td>lid$row->login_ID</td>
-                                <td>".(($_POST['tableName']=='owner')?$row->owner_ID:$row->emp_ID)."</td>
-                                <td>".(($_POST['tableName']=='owner')?$row->name:$row->password)."</td>
-                                <td>$row->user_name</td>
+                                <td id='empid'>$row->emp_ID</td>
+                                <td>$row->name</td>                               
+                                <td>$row->contact_no</td>                         
+                                <td>$row->account_no</td>
+                                <td>$row->salary_basic</td>
+                                <td>$row->job_start_date</td>
+                                 <th>
+                                 <a href='#' class='viewBtn' style='margin: 4px;color: #00B4CC'> View </a>
+                                </th>
+                               
+                                
+                                
                             </tr>
                         ";
 
                     }
-                }
-                else if($result['status'] === 'tableIsEmpty') {
-                    echo "
-                    <tr class=active-row>
-                        <td colspan=4 style=\"text-align: center;\">There is no any data to the display!</td>
-                    </tr>
-                   ";
-                }
-                else if($result['status'] === 'error') {
-                    echo "
-                    <tr class=active-row>
-                        <td colspan=4 style=\"text-align: center;\">Something went wrong!</td>
-                    </tr>
-                   ";
-                }
 
 
 
@@ -116,12 +120,10 @@ class manageEmployeeController extends framework {
 
     public function addEmployeeform(){
 
-//        $result = $this->manageUserModel->getNextLoginID();
         echo("<script>console.log('PHP: " . json_encode($result) . "');</script>");
         $role =  $this->getSession('selected_role');
 
         $data = [
-//            'login_ID' => "lid".($result),
             'role' => ucwords(str_replace("_"," ",$role))
         ];
 
@@ -204,21 +206,80 @@ class manageEmployeeController extends framework {
 
     public function loadupdateEmployeeform(){
 
-        $role =  $this->getSession('selected_role');
         $empID = $this->getSession('selected_employee');
-        //$data = $this->supplierModel->updateSupplier($supID);
-      //  $this->view("admin/editSupplierform",$data);
-
-
-        $data = [
-//            'login_ID' => "lid".($result),
-            'role' => ucwords(str_replace("_"," ",$role))
-        ];
-
-
-        //$this->view("admin/editEmployeeform",$data);
+        $data = $this->manageEmployeeModel->updateEmployee($empID);
+        $this->view("admin/editEmployeeform",$data);
     }
 
+    public function updateEmployee()
+    {
+        $employee_ID = $this->input('hiddenID');
 
 
+        $employeeData = [
+
+            'FullName' => $this->input('name'),
+            'Address' => $this->input('address'),
+            'ContactNumber' => $this->input('contact_no'),
+            'BloodGroup' => $this->input('blood_group'),
+            'employeeRole' => $this->input('role'),
+            'bank_ID' => $this->input('bank_ID'),
+            'BankName' => $this->input('bank_account_name'),
+            'BankBranch' => $this->input('bank_branch'),
+            'AccountNumber' => $this->input('account_no'),
+            'SalaryBasic' => $this->input('salary_basic'),
+            'job_startdate' => $this->input('startJobDate'),
+            'hiddenID' => $this->input('hiddenID'),
+
+        ];
+        foreach ($employeeData as $key => $value) {
+            if (empty($value)) {
+                $isEmpty = true;
+            }
+        }
+
+
+        $updateData = [$employeeData['FullName'], $employeeData['Address'], $employeeData['ContactNumber'], $employeeData['BloodGroup'], $employeeData['bank_ID'], $employeeData['BankName'], $employeeData['BankBranch'], $employeeData['AccountNumber'], $employeeData['SalaryBasic'], $employeeData['job_startdate'], $employeeData['hiddenID']];
+
+        if (!$isEmpty) {
+
+            if ($this->manageEmployeeModel->editEmployee($updateData)) {
+
+
+                echo '
+              <script>
+                            if(!alert("Employee Updated successfully")) {
+                                window.location.href = "http://localhost/Richway-garment-system/manageEmployeeController/index"
+                            }
+              </script>
+
+            ';
+
+            } else {
+                echo '
+
+            <script>
+                        if(!alert("Something went wrong! please try again.")) {
+                            window.location.href = "http://localhost/Richway-garment-system/manageEmployeeController/loadupdateEmployeeform"
+                        }
+            </script>
+            ';
+
+            }
+
+        }//if(!isempty)
+        else {
+            echo '
+            <script>
+                if(!alert("Some required fields are missing!")) {
+                    window.location.href = "http://localhost/Richway-garment-system/manageEmployeeController/loadupdateEmployeeform"
+                }
+            </script>
+            ';
+
+
+        }
+
+
+    }
 }

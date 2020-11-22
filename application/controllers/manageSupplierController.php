@@ -42,7 +42,7 @@ private $manageSupplierModel;
         if(isset($_POST['key'])) {
             if ($_POST['key'] == "supplierTableInDash") {
                 $result = $this->manageSupplierModel->loadSupplierTable();
-                ("<script>console.log('PHP in loadSupplierTable contoller: " . json_encode($result) . "');</script>");
+                echo("<script>console.log('PHP in loadSupplierTable contoller: " . json_encode($result) . "');</script>");
 
                 echo "
 
@@ -114,9 +114,9 @@ private $manageSupplierModel;
 
 
     public function updateSupplier(){
-        $supplier_ID=$this->input('hiddenID');
+        $supplier_ID=intval($this->input('hiddenID'));
 
-        $supplierEdit=$this->supplierModel->updateSupplier( $supplier_ID);
+        $supplierEdit=$this->supplierModel->editSupplier( $supplier_ID);
         $supplierData = [
             'supplierName'=> $this->input('suplierName'),
             'emailAddress'=>$this->input('Eemailaddress'),

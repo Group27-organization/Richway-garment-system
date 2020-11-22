@@ -31,7 +31,7 @@ class manageUserModel extends database {
                     $loginId = $row->login_ID;
                     if ($this->Query("SELECT role_ID FROM per_role_login WHERE login_ID = ? ", [$loginId])) {
                         $rslt = $this->fetchall();
-                        echo("<script>console.log('PHP: " . json_encode($rslt) . "');</script>");
+                        echo("<script>console.log('PHP role: " . json_encode($rslt) . "');</script>");
 
                     }
                     array_push($final_data, $row);

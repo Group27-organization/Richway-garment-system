@@ -2,8 +2,6 @@
 
 class customerModel extends database {
 
-	
-
    
     public function updateCustomer($id){
 	    if($this->Query("SELECT * FROM customer WHERE customer_ID=?",[$id])){

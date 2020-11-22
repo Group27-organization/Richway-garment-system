@@ -58,9 +58,9 @@
                         </div>
                     </div>
                     <div class="BtnWap">
-                        <button id="adduser" class="three-set-btn1" onclick="location.href"  >Add</button>
+                        <button id="addEmployee" class="three-set-btn1" onclick="location.href"  >Add</button>
 
-                        <button class="three-set-btn2" onclick="updateEmployee()">Update</button>
+                        <button id="updateEmployee" class="three-set-btn2" onclick="updateEmployee()">Update</button>
 
                         <button class="three-set-btn3">Remove</button>
                     </div>

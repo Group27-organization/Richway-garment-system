@@ -1,12 +1,12 @@
 
 openEmp(null,'sales_manager');
-addUserBtn = document.getElementById("adduser");
-addUserBtn.onclick = function() {
+addEmployeeBtn = document.getElementById("addEmployee");
+addEmployeeBtn.onclick = function() {
 
     $.ajax({
         type: 'POST',
         url: "http://localhost/Richway-garment-system/manageEmployeeController/setNewSession",
-        data: { role: 'sales_manager',  key: "manageUserData"},
+        data: { role: 'sales_manager',  key: "manageEmployeeData"},
         success: function(data,status){
             location.href = "http://localhost/Richway-garment-system/manageEmployeeController/addEmployeeform";
         },
@@ -17,8 +17,9 @@ addUserBtn.onclick = function() {
 }
 
 
+
 function openEmp(evt,elementID) {
-    let i, tablinks, addUserBtn;
+    let i, tablinks, addEmployeeBtn;
 
     if(evt != null){
         tablinks = document.getElementsByClassName("tablinks");
@@ -26,8 +27,8 @@ function openEmp(evt,elementID) {
             tablinks[i].className = tablinks[i].className.replace(" active", "");
         }
         evt.currentTarget.className += " active";
-        addUserBtn = document.getElementById("adduser");
-        addUserBtn.onclick = function() {
+        addEmployeeBtn = document.getElementById("addEmployee");
+        addEmployeeBtn.onclick = function() {
 
             $.ajax({
                 type: 'POST',
@@ -42,23 +43,21 @@ function openEmp(evt,elementID) {
 
         }
     }
-
+        console.log("RRR :"+elementID);
         $.ajax({
             type: 'POST',
             url: "http://localhost/Richway-garment-system/manageEmployeeController/loadTable",
-            data: { tableName: elementID,  key: "manageEmployeeData"},
+            data: { employeerole: elementID,  key: "manageEmployeeData2"},
             dataType: 'html',
             success: function(data){
                 $("#table-responsive").html(data);
+
 
             },
             error       : function() {
                 $("#table-responsive").html('<br><p>Something went wrong.</p>');
             }
         });
-
-
-
 
 
 }
