@@ -1,60 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e9cf3daf-da73-4605-917b-565163328057" name="Default Changelist" comment="manage stock css updated">
-      <change afterPath="$PROJECT_DIR$/application/controllers/stockIssueController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/application/models/stockIssueModel.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/application/views/Stock/addSupplier.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/application/views/Stock/addSupplierForm.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/application/views/Stock/components/side_nav.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/application/views/Stock/stockIssue.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/application/views/Stock/stockIssueForm.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/css/stock-addsupplier.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/css/stock/add-rawmaterial-form.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/css/stock/pop-window-add-raw-matiral-item.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/css/stock/stock-managestock.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/js/stockIssue.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/js/stockmanage-tabview.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/js/supplierAdd-tabview.js" afterDir="false" />
+    <list default="true" id="e9cf3daf-da73-4605-917b-565163328057" name="Default Changelist" comment="add raw material">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/controllers/StockNavigationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/controllers/StockNavigationController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/controllers/addRawMaterialController.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/controllers/addRawMaterialController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/controllers/addSupplierController.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/controllers/addSupplierController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/controllers/manageSupplierController.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/controllers/manageSupplierController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/models/ViewStockTableModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/models/ViewStockTableModel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/models/addRawMaterialModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/models/addRawMaterialModel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/models/supplierModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/models/supplierModel.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/application/views/Stock/add-raw materials-item-form.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/Stock/add-raw materials-item-form.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/Stock/components/RTM-TabPane.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/Stock/components/last.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/Stock/components/nav.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/Stock/components/nav.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/Stock/components/rightsidecontent.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/Stock/components/sidebar_navigation.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/Stock/forms/add-raw-material-item-popup.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/Stock/forms/add-raw-material-item-popup.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/Stock/forms/order-item-table-popup-window.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/Stock/forms/order-item-table-popup-window.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/Stock/forms/raw-material-add-form.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/Stock/manageStock.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/Stock/manageStock.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/addSupplier.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/addSupplier.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/admin/editCustomerform.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/admin/editCustomerform.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/dashboard.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/dashboard.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/manageSupplier.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/manageSupplier.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/views/Stock/addSupplier.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/Stock/addSupplier.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/assets/css/Form.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/Form.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/stock-css/additem-dashbord.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/stock-css/all-stock-form.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/stock-css/content-table-middle.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/stock-css/gridculms3.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/stock-css/nav.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/stock-css/pop-window-add-raw-matiral-item.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/stock-css/popup-window-order-item-table.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/stock/popup-window-order-item-table.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/stock-css/sidebar.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/stock-css/style.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/stock-css/table.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/stock-css/tabpane.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/js/manageSupplier.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/js/manageSupplier.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/js/stock-keeper-js/pop-window-add-raw-matiral-item.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/js/stock-keeper-js/pop-window-add-raw-matiral-item.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/js/stock-keeper-js/popup-window-order-item-table-form.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/js/stock-keeper-js/popup-window-order-item-table-form.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/js/stock-keeper-js/raw-material-form.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/js/stock-keeper-js/raw-material-form.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/js/tabpane.js" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,8 +19,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="CSS File" />
         <option value="JavaScript File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -88,12 +40,14 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/application/views/Stock/components" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/assets/css" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\Richway-garment-system\public\assets\css" />
+      <recent name="C:\xampp\htdocs\Richway-garment-system\application\views\Salesmanjor" />
       <recent name="C:\xampp\htdocs\Richway-garment-system\application\views\Stock\components" />
     </key>
   </component>
@@ -106,18 +60,32 @@
       <option name="presentableId" value="Default" />
       <updated>1605769731110</updated>
       <workItem from="1605769732675" duration="32658000" />
-      <workItem from="1605840929976" duration="8067000" />
+      <workItem from="1605840929976" duration="39677000" />
+      <workItem from="1605925974479" duration="19157000" />
+      <workItem from="1606029714081" duration="1353000" />
     </task>
+    <task id="LOCAL-00001" summary="manage stock css updated">
+      <created>1605852511911</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1605852511911</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="manage stock css updated" />
+    <option name="LAST_COMMIT_MESSAGE" value="manage stock css updated" />
+  </component>
   <component name="WindowStateProjectService">
-    <state x="256" y="0" key="CommitChangelistDialog2" timestamp="1605852273182">
+    <state x="256" y="0" width="827" height="523" key="CommitChangelistDialog2" timestamp="1606030782907">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="256" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1605852273182" />
+    <state x="256" y="0" width="827" height="523" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1606030782907" />
     <state x="463" y="105" key="FileChooserDialogImpl" timestamp="1605774433948">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -134,10 +102,18 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="517" y="287" key="NewPhpFileDialog/0.0.1366.728@0.0.1366.728" timestamp="1605799284734" />
+    <state x="275" y="96" key="Vcs.Push.Dialog.v2" timestamp="1605852551379">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="275" y="96" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1605852551379" />
     <state x="0" y="0" width="587" height="728" key="find.popup" timestamp="1605775235792">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="0" y="0" width="587" height="728" key="find.popup/0.0.1366.728@0.0.1366.728" timestamp="1605775235792" />
+    <state x="463" y="76" key="git4idea.branch.GitSmartOperationDialog" timestamp="1606030685540">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="463" y="76" key="git4idea.branch.GitSmartOperationDialog/0.0.1366.728@0.0.1366.728" timestamp="1606030685540" />
     <state x="470" y="262" key="git4idea.ui.GitStashDialog" timestamp="1605770057591">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -149,7 +125,6 @@
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/public/assets/js/manageCustomer.js</url>
           <line>40</line>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>

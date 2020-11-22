@@ -32,7 +32,7 @@
             <div class="block">
                 <div class="page-header-routetext">
                     <a href="#"><img src="<?php echo BASEURL; ?>/public/assets/img/home%20(2).svg" ></i></a>
-                    <a href="#!" style="color:#8898aa;"> / Manage User</a>
+                    <a href="#!" style="color:#8898aa;"> / Add Supplier</a>
                 </div>
             </div>
         </div>
