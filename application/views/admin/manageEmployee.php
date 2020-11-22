@@ -4,43 +4,47 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta id="nav_item" content="Manage Supplier">
-    <title>Manage Supplier</title>
+    <title>Admin Dashboard</title>
     <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <?php linkCSS("assets/css/nav.css") ?>
     <?php linkCSS("assets/css/side_nav.css") ?>
-
     <?php linkCSS("assets/css/admin-manageuser.css") ?>
-
     <?php linkCSS("assets/css/admin-tabview.css") ?>
     <?php linkCSS("assets/css/admin-table.css") ?>
-    <?php linkJS("assets/js/manageSupplier.js"); ?>
 </head>
 <body>
 
-
-
 <div class="grid-container">
+
     <?php include "components/side_nav.php"; ?>
 
     <div class="right" id="right">
+
         <?php include "components/nav.php"; ?>
+
+
+
         <div class="page-header">
             <div class="block">
                 <div class="page-header-routetext">
                     <a href="#"><img src="<?php echo BASEURL; ?>/public/assets/img/home%20(2).svg" ></i></a>
-                    <a href="#!" style="color:#8898aa;"> / Manage Supplier</a>
+                    <a href="#!" style="color:#8898aa;"> / Manage Employee</a>
                 </div>
             </div>
         </div>
 
+        <!----------------------------------tab pane start--------------------------------------------------------------------------------------- -->
+
         <div class="tab-content">
-<!--            <div class="tab">-->
-<!--                <button class="tablinks active" onclick="openEmp(event, 'RawMaterial')">Raw Material</button>-->
-<!--                <button class="tablinks" onclick="openEmp(event, 'Tools')">Tools</button>-->
-<!--                <button class="tablinks" onclick="openEmp(event, 'Machine')">Machine</button>-->
-<!--            </div>-->
+            <div class="tab">
+                <button class="tablinks active" onclick="openEmp(event,'sales_manager')">Sales Managers</button>
+                <button class="tablinks" onclick="openEmp(event,'production_manager')">Production Managers</button>
+                <button class="tablinks" onclick="openEmp(event,'supervisor')">Supervisors</button>
+                <button class="tablinks" onclick="openEmp(event,'accountant')">Accountants</button>
+                <button class="tablinks" onclick="openEmp(event,'stock_keeper')">Stock Keepers</button>
+                <button class="tablinks" onclick="openEmp(event,'tailor')">Tailors</button>
+            </div>
 
             <!--------------------------------------------Tab Content-------------------------------------------------------------------------------------- -->
             <div id="tabcontentid" class="tabcontent">
@@ -54,22 +58,23 @@
                         </div>
                     </div>
                     <div class="BtnWap">
+                        <button id="addEmployee" class="three-set-btn1" onclick="location.href"  >Add</button>
 
-                        <button id="updateSupplier" onclick="updateSupplier()" class="three-set-btn2">Update</button>
+                        <button id="updateEmployee" class="three-set-btn2" onclick="updateEmployee()">Update</button>
 
-                        <button id="deleteSupplier" class="three-set-btn3" onclick="deleteSupplier()">Remove</button>
+                        <button id="deleteEmployee" class="three-set-btn3" onclick="deleteEmployee()">Remove</button>
                     </div>
                 </div><!--flex row-->
 
-                <!--                table start-->
+<!--                table start-->
 
-                <div class="table-responsive" id="supplierTableForManageSupplier">
+                <div class="table-responsive" id="table-responsive">
 
                 </div>
                 <div class="card-footer">
 
                     <div class="model-footer">
-                        <h5>* Please select an order to get this action!</h5>
+                        <h5>* Please select an employee to get this action!</h5>
                     </div>
 
                     <div class="bottom-row">
@@ -114,10 +119,8 @@
 </div>
 
 
-
+<?php linkJS("assets/js/manageEmployee.js") ?>
 <?php linkJS("assets/js/table.js") ?>
-
-
 
 </body>
 </html>
