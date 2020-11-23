@@ -2,6 +2,7 @@ $(document).ready(function () {
     console.log("jqvary load");
     $("#createOrderForm2").hide();
     $("#bucketTable").hide();
+
     $("#NoolColorDiv").hide();
       // $("#PredefineModel").hide();
 
@@ -18,20 +19,20 @@ $(document).ready(function () {
 
 
 
-        $.ajax({
-            type: 'POST',
-            url: "http://localhost/Richway-garment-system/createOrderController/setPredefineHandType",
-            data: { ItemType: ItemType,  key: "ItemType"},
-            success: function(data){
-
-                $("#ItemStyle").html(data);
-
-
-            },
-            error       : function() {
-                console.log("error");
-            }
-        });
+        // $.ajax({
+        //     type: 'POST',
+        //     url: "http://localhost/Richway-garment-system/createOrderController/setPredefineHandType",
+        //     data: { ItemType: ItemType,  key: "ItemType"},
+        //     success: function(data){
+        //
+        //         $("#ItemStyle").html(data);
+        //
+        //
+        //     },
+        //     error       : function() {
+        //         console.log("error");
+        //     }
+        // });
 
         $.ajax({
             type: 'POST',
@@ -52,32 +53,37 @@ $(document).ready(function () {
     });
     //********************************************************//
     $("#ChooseTemplateID").on('click',function(){
-        $('html, body').animate({
-            scrollTop: $("#createOrderForm2").offset().top   //id of div to be scrolled
-        }, 1000);
-        console.log(" vvvvvvvvvvv");
-        document.querySelector('#PredefineModel').style.display = "flex";
-        document.querySelector('body').style.overflow = "hidden !important";
-        let Type =  $( "#ItemType option:selected" ).text();
-        let colorType =$( "#CollarSize option:selected" ).text();
-        let handType =$( "#ItemStyle option:selected" ).text();
+        
+            $('html, body').animate({
+                scrollTop: $("#createOrderForm2").offset().top   //id of div to be scrolled
+            }, 1000);
+            console.log(" vvvvvvvvvvv");
+            document.querySelector('#PredefineModel').style.display = "flex";
+            document.querySelector('body').style.overflow = "hidden !important";
+            let Type =  $( "#ItemType option:selected" ).text();
+            let colorType =$( "#CollarSize option:selected" ).text();
+            let handType =$( "#ItemStyle option:selected" ).text();
 
 
 
-        $.ajax({
-            type: 'POST',
-            url: "http://localhost/Richway-garment-system/createOrderController/templateCardGenarator",
-            data: { Type: Type, colorType:colorType, handType:handType,  key: "PredefinePopup"},
-            success: function(data){
+            $.ajax({
+                type: 'POST',
+                url: "http://localhost/Richway-garment-system/createOrderController/templateCardGenarator",
+                data: { Type: Type, colorType:colorType, handType:handType,  key: "PredefinePopup"},
+                success: function(data){
 
-                $("#template-container").html(data);
+                    $("#template-container").html(data);
 
 
-            },
-            error       : function() {
-                console.log("error");
-            }
-        });
+                },
+                error       : function() {
+                    console.log("error");
+                }
+            });
+
+
+
+
     });
 
     $("#closeTemplatePopup").click(function () {
@@ -160,17 +166,6 @@ let countQuantity=0;
 
 
 
-
-
-        console.log("addToBucket.");
-        count =count+1;
-        $("#header-gradant-form").hide();
-
-        //<p><a href="#">Item 1</a> <span class="price">$15</span></p>
-        $('html, body').animate({
-            scrollTop: $("#header-gradant-form").offset().top   //id of div to be scrolled
-        }, 1000);
-
         let PredefineId = $("label[for='ChooseTemplate']").html();
         let Template =  imgurltemp;
 
@@ -187,69 +182,68 @@ let countQuantity=0;
         let NoolColor = $("#NoolColor").val();
         let ButtonDesign =$('#ButtonDesign option:selected').val();
         let ButtonColor =$("#ButtonColor").val();
-
-
         let Quantity = $("#Quantity").val();
 
-        // let Material = $("#MaterialFD").val();
-        // let MaterialDesign = $("#MaterialDesign").val();
-        // let MaterialColor = $("#MaterialColor").val();
-        // let ButtonDesign = $("#ButtonDesign").val();
-        // let ButtonColor = $("#ButtonColor").val();
-        // let NoolColor = $("#NoolColor").val();
-        // let NoolDesign = $("#NoolDesign").val();
 
 
-        $("#cardP").append("<a href=\"#\">"+ItemType+" "+count+"</a> <span class=\"price\">"+Quantity+"</span><br>");
-        $("label[for='ItemCountCard']").text(count);
-        countQuantity =countQuantity+parseInt(Quantity);
-        $("label[for='ItemQuantityCount']").text(countQuantity);
-       console.log("Template :"+Template);
-        // let imgpath ="++";
-       // $("table").find("tr").eq(1).find("td").eq(1).append("<img src='https://kbob.github.io/images/sample-5.jpg' style='display:block;' width='100%' height='auto'/>");
-        $('#addItemBucketTable tbody tr:last').after(
+            /*******************************************************/
+            count =count+1;
+            alert("Item "+count+"Added!");
+            $('html, body').animate({
+                scrollTop: $("#header-gradant-form").offset().top   //id of div to be scrolled
+            }, 1000);
 
-            '<tr data-label="Pending Approval">' +
-            '<td data-label="" style="display: none">'+PredefineId+'</td>' +
-            '<td data-label=""><img src='+Template+'  style="width: 40px; height:40px; text-align:center;"/></td>' +
-            '<td data-label="" style="display: none">'+CollarSize+'</td>' +
-            '<td data-label="">'+FabricType+'</td>' +
-            '<td data-label="">'+FabricDesign+'</td>' +
-            '<td data-label="">'+FabricDesignImage+'</td>' +
-            '<td data-label="">'+FabricDesignCode+'</td>' +
-            '<td data-label="">'+FabricColor+'</td>' +
-            '<td data-label="">'+ButtonDesign+'</td>' +
-            '<td data-label="" style="display: none">'+ButtonColor+'</td>' +
-            '<td data-label="" style="display: none">'+NoolColor+'</td>' +
-            '<td data-label="" style="display: none">'+Quantity+'</td>' +
-            '<td><div class="table__button-group">' +
-            '<a href="#" class="viewBtn"style="margin: 2px;color: #00B4CC">View  |</a>' +
-            '<a href="#" class="viewBtn" style="margin: 2px;color: salmon" ;">Edit  |</a>' +
-            '<a href="#" style="margin: 2px; color: red;" onclick="productDelete(this);">Delete</a>' +
-            '</div></td>'+
-            '</tr>\n'
-        );
-        $('input[type=text]').val('');
-        // $('html, body').animate({
-        //     scrollTop: $("#rowTop").offset().top   //id of div to be scrolled
-        // }, 1000);
+
+            $("#cardP").append("<a href=\"#\">"+ItemType+" "+count+"</a> <span class=\"price\">"+Quantity+"</span><br>");
+            $("label[for='ItemCountCard']").text(count);
+            countQuantity =countQuantity+parseInt(Quantity);
+            $("label[for='ItemQuantityCount']").text(countQuantity);
+            console.log("Template :"+Template);
+            // let imgpath ="++";
+            // $("table").find("tr").eq(1).find("td").eq(1).append("<img src='https://kbob.github.io/images/sample-5.jpg' style='display:block;' width='100%' height='auto'/>");
+            $('#addItemBucketTable tbody tr:last').after(
+
+                '<tr data-label="Pending Approval">' +
+                '<td data-label="" style="display: none">'+PredefineId+'</td>' +
+                '<td data-label=""><img src='+Template+'  style="width: 40px; height:40px; text-align:center;"/></td>' +
+                '<td data-label="" >'+CollarSize+'</td>' +
+                '<td data-label="" >'+FabricType+'</td>' +
+                '<td data-label=""  >'+FabricDesign+'</td>' +
+                '<td data-label="" >'+FabricDesignImage+'</td>' +
+                '<td data-label="" >'+FabricDesignCode+'</td>' +
+                '<td data-label="" >'+FabricColor+'</td>' +
+                '<td data-label="" style="display: none">'+ButtonDesign+'</td>' +
+                '<td data-label="" style="display: none">'+ButtonColor+'</td>' +
+                '<td data-label="" style="display: none">'+NoolColor+'</td>' +
+                '<td data-label="" >'+Quantity+'</td>' +
+                '<td><div class="table__button-group">' +
+                '<a href="#" class="viewBtn"style="margin: 2px;color: #00B4CC">View  |</a>' +
+                '<a href="#" class="viewBtn" style="margin: 2px;color: salmon" ;">Edit  |</a>' +
+                '<a href="#" style="margin: 2px; color: red;" onclick="productDelete(this);">Delete</a>' +
+                '</div></td>'+
+                '</tr>\n'
+            );
+            $('input[type=text]').val('');
+            // $('html, body').animate({
+            //     scrollTop: $("#rowTop").offset().top   //id of div to be scrolled
+            // }, 1000);
+
+
 
     });
 
     $("#nextBtnf1").click(function(){
 
-        $('input[type=text]').val('');
-        $("#createOrderForm1").hide();
-        $("#header-gradant-form").hide();
-        $("#bucketTable").show();
+            $('input[type=text]').val('');
+            $("#createOrderForm1").hide();
+            $("#header-gradant-form").hide();
+            $("#bucketTable").show();
+
+            $('html, body').animate({
+                scrollTop: $("#addItemBucketTable").offset().top   //id of div to be scrolled
+            }, 1000);
 
 
-
-
-
-        $('html, body').animate({
-            scrollTop: $("#addItemBucketTable").offset().top   //id of div to be scrolled
-        }, 1000);
     });
 
     $("#itemTableNextTbn").click(function(){
@@ -376,32 +370,41 @@ let countQuantity=0;
         let CustomerContactNumber   = $("#CustomerContactNumber").val();
         let Email   = $("#Email").val();
         let CustomerAddress = $("#CustomerAddress").val();
-        let customerArr = [CustomerName,CustomerContactNumber,Email,CustomerAddress];
 
+        if( (CustomerName=="") || (CustomerContactNumber=="") || (Email=="") || (CustomerAddress=="") ){
+            document.querySelector('#model-footer-newcustomer').style.display = "flex";
+        }else {
+            let customerArr = [CustomerName,CustomerContactNumber,Email,CustomerAddress];
+            ///////////////////////////////////////////customer table load/////////////////////////////////////////////////
 
+            $.ajax({
+                type: 'POST',
+                url: "http://localhost/Richway-garment-system/createOrderController/addNewCustomer",
+                data: { newCustomer:customerArr ,  key: "NewCustomer"},
+                success: function(data){
+                    $("label[for='customerLabel']").text(data);
 
-        ///////////////////////////////////////////customer table load/////////////////////////////////////////////////
+                    $('#newCustomerForm').hide();
+                    // document.querySelector('#newCustomerForm').style.display = "none";
+                    document.querySelector('body').style.overflow = "auto";
 
-        $.ajax({
-            type: 'POST',
-            url: "http://localhost/Richway-garment-system/createOrderController/addNewCustomer",
-            data: { newCustomer:customerArr ,  key: "NewCustomer"},
-            success: function(data){
-                $("label[for='customerLabel']").text(data);
+                },
+                error       : function() {
 
-                $('#newCustomerForm').hide();
-                // document.querySelector('#newCustomerForm').style.display = "none";
-                document.querySelector('body').style.overflow = "auto";
+                }
+            });
+        }
 
-            },
-            error       : function() {
-
-            }
-        });
     });
 
 
     $("#excustomerCloseBtn").click(function () {
+        console.log("customerCloseBtn")
+        // document.querySelector('.model-footer-oI-Table').style.display = "none";
+        document.querySelector('.bg-modal').style.display = "none";
+        document.querySelector('body').style.overflow = "auto";
+    });
+    $(".close").click(function () {
         console.log("customerCloseBtn")
         // document.querySelector('.model-footer-oI-Table').style.display = "none";
         document.querySelector('.bg-modal').style.display = "none";
@@ -615,3 +618,7 @@ function addTemplate() {
     document.querySelector('body').style.overflow = "auto";
 }
 
+function closeNewCutomerPopup() {
+    document.querySelector('#newCustomerForm').style.display = "none";
+    document.querySelector('body').style.overflow = "auto";
+}
