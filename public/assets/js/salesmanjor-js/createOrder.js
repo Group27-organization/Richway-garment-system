@@ -4,7 +4,7 @@ $(document).ready(function () {
     $("#bucketTable").hide();
 
     $("#NoolColorDiv").hide();
-      // $("#PredefineModel").hide();
+    // $("#PredefineModel").hide();
 
 
     //****************************************create order form one *************************************************//
@@ -53,7 +53,9 @@ $(document).ready(function () {
     });
     //********************************************************//
     $("#ChooseTemplateID").on('click',function(){
+        if($("#ItemType").children("option:selected").val()=="0"){
 
+        }else{
             $('html, body').animate({
                 scrollTop: $("#createOrderForm2").offset().top   //id of div to be scrolled
             }, 1000);
@@ -80,7 +82,7 @@ $(document).ready(function () {
                     console.log("error");
                 }
             });
-
+        }
 
 
 
@@ -160,8 +162,8 @@ $(document).ready(function () {
     });
 //*****************************************order shirt or t shirt selected  hand type change************************************************//
 
-let count=0;
-let countQuantity=0;
+    let count=0;
+    let countQuantity=0;
     $("#addToBucket").on('click',function(){
 
 
@@ -184,7 +186,12 @@ let countQuantity=0;
         let ButtonColor =$("#ButtonColor").val();
         let Quantity = $("#Quantity").val();
 
+        if((PredefineId=="")||(CollarSize=="")||(PredefineId=="")||(FabricType=="") ||(FabricDesign=="") ||(Quantity=="") ){
+            alert("Some Field Are Missing!");
+        }else if((FabricDesignCode=="")||(FabricColor=="")){
+            alert("Some Field Are Missing!");
 
+        }else {
 
             /*******************************************************/
             count =count+1;
@@ -228,12 +235,14 @@ let countQuantity=0;
             //     scrollTop: $("#rowTop").offset().top   //id of div to be scrolled
             // }, 1000);
 
-
+        }
 
     });
 
     $("#nextBtnf1").click(function(){
-
+        if(count==0){
+            alert("You Did not Add any Item To Bucket!");
+        }else{
             $('input[type=text]').val('');
             $("#createOrderForm1").hide();
             $("#header-gradant-form").hide();
@@ -242,7 +251,7 @@ let countQuantity=0;
             $('html, body').animate({
                 scrollTop: $("#addItemBucketTable").offset().top   //id of div to be scrolled
             }, 1000);
-
+        }
 
     });
 
@@ -412,7 +421,7 @@ let countQuantity=0;
     });
 
     $("#saveOrder").click(function () {
-       //order id
+        //order id
         let order_name =$("#OrderName").val();
         let order_status =$('#OrderStatus option:selected').val();
         let order_description =$("#Description").val();
@@ -473,9 +482,9 @@ let countQuantity=0;
 
 
                 $(this).find('td').eq(3).text(),    //Fabric Type
-                 $(this).find('td').eq(4).text(), //Fabric Design
-                 $(this).find('td').eq(5).text(), //Fabric Design Image
-                 $(this).find('td').eq(6).text(), //Fabric Design Code
+                $(this).find('td').eq(4).text(), //Fabric Design
+                $(this).find('td').eq(5).text(), //Fabric Design Image
+                $(this).find('td').eq(6).text(), //Fabric Design Code
                 $(this).find('td').eq(7).text(), //Fabric Color
 
                 $(this).find('td').eq(8).text(),  //Button Design
@@ -587,7 +596,7 @@ function assignCustomer() {
 function selectedCard(ctl){
 
     $(".choice").removeClass("choice");
-     $(ctl).toggleClass("choice");
+    $(ctl).toggleClass("choice");
 
 
 
@@ -595,7 +604,7 @@ function selectedCard(ctl){
 let imgurltemp ="";
 function addTemplate() {
     if($(".option-card").hasClass("choice")){
-         let id =0;
+        let id =0;
 
 
         $(".choice .preID").each(function() {
@@ -613,7 +622,7 @@ function addTemplate() {
 
     }
 }
- function closeModel() {
+function closeModel() {
     document.querySelector('#PredefineModel').style.display = "none";
     document.querySelector('body').style.overflow = "auto";
 }
