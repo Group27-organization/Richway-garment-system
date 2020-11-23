@@ -53,7 +53,7 @@ $(document).ready(function () {
     });
     //********************************************************//
     $("#ChooseTemplateID").on('click',function(){
-        
+
             $('html, body').animate({
                 scrollTop: $("#createOrderForm2").offset().top   //id of div to be scrolled
             }, 1000);

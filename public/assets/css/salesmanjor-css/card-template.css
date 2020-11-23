@@ -1,0 +1,48 @@
+.template-container{
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    overflow-y: scroll;
+}
+
+
+/*.card {*/
+/*    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);*/
+/*    transition: 0.3s;*/
+/*    width: 30%;*/
+/*    margin-bottom: 20px;*/
+/*    display: inline-block;*/
+/*}*/
+
+
+
+.option-card {
+    width: 21.9%;
+    height: auto;
+    padding: 15px 15px 0;
+    margin: 0 10px 10px;
+    border: 2px #cfcfcf solid;
+    border-radius: 15px;
+    display: inline-block;
+}
+.option-card:first-of-type {
+    margin-left: 0;
+}
+.option-card:last-of-type {
+    margin-right: 0;
+}
+.option-card:hover,
+.option-card.choice {
+    border: 2px #0079c1 solid;
+    text-decoration: none;
+}
+a.option-card p:hover {
+    text-decoration: none;
+}
+.card-thumb {
+    width: 100%;
+    border-radius: 50%;
+    margin-bottom: 15px;
+}

@@ -1,0 +1,26 @@
+.btn3-flex{
+    display: flex;
+    flex-direction: row;
+    align-content: space-between;
+}
+
+.btn3{
+    width: 80px;
+    padding: 8px;
+    font-size: .875rem;
+    position: relative;
+    transition: all .15s ease;
+    letter-spacing: .025em;
+    text-transform: none;
+    will-change: transform;
+    text-align: center;
+    color: #5e72e4;
+    cursor: pointer;
+    border: 1px solid #5e72e4;
+    background-color: #fff;
+    box-shadow: 0 4px 6px rgba(50,50,93,0.11), 0 1px 3px rgba(0,0,0,0.08);
+    border-radius: .25rem;
+    line-height: 1.5;
+    margin-right: 15px;
+
+}
