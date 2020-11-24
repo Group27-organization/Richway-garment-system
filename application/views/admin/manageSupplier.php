@@ -68,8 +68,8 @@
                 </div>
                 <div class="card-footer">
 
-                    <div class="model-footer">
-                        <h5>* Please select an order to get this action!</h5>
+                    <div class="model-footer" id="SupplierMsgView" >
+                        <h5>* Please select a supplier to get this action!</h5>
                     </div>
 
                     <div class="bottom-row">

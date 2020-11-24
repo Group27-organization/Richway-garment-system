@@ -31,6 +31,7 @@ function updateSupplier() {
     tblrows = document.getElementsByClassName("tblrow");
     for (i = 0; i < tblrows.length; i++) {
         if (tblrows[i].className.includes('active-row')) {
+            document.querySelector('#SupplierMsgView').style.display = "none";
             supID = tblrows[i].firstElementChild.innerHTML;
             jQuery(function ($) {
 
@@ -50,6 +51,10 @@ function updateSupplier() {
 
             });
         }
+
+        else{
+            document.querySelector('#SupplierMsgView').style.display = "block";
+        }
     }
 }
 
@@ -60,6 +65,7 @@ function deleteSupplier() {
     tblrows = document.getElementsByClassName("tblrow");
     for (i = 0; i < tblrows.length; i++) {
         if (tblrows[i].className.includes('active-row')) {
+            document.querySelector('#SupplierMsgView').style.display = "none";
             suppID = tblrows[i].firstElementChild.innerHTML;
             jQuery(function ($) {
                 $.ajax({
@@ -83,5 +89,9 @@ function deleteSupplier() {
 
             });
         }
+        else{
+            document.querySelector('#SupplierMsgView').style.display = "block";
+        }
+
     }
 }
