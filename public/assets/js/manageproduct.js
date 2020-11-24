@@ -36,7 +36,7 @@ function openProduct(evt,product) {
         $.ajax({
             type: 'POST',
             url: "http://localhost/Richway-garment-system/manageProductController/loadTable",
-            data: { tableName: product,  key: "manageProduct"},
+            data: { tableName: product,  key: "manageProductData"},
             dataType: 'html',
             success: function(data){
                 $("#table-responsive").html(data);

@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta id="nav_item" content="Manage Employee">
+    <title>Add Employee</title>
     <?php linkCSS("assets/css/nav.css") ?>
     <?php linkCSS("assets/css/side_nav.css") ?>
     <?php linkCSS("assets/css/admin-manageuser.css") ?>

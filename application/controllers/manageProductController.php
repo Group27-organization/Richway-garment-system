@@ -31,8 +31,8 @@ class manageProductController extends framework {
 
     public function setNewSession(){
         if(isset($_POST['key'])) {
-            if ($_POST['key'] == "manageUserData") {
-                $this->setSession("selected_role", $_POST['role']);
+            if ($_POST['key'] == "manageProductData") {
+                $this->setSession("selected_product", $_POST['productName']);
                 return "Successfully set the session.";
             }
         }
@@ -43,7 +43,7 @@ class manageProductController extends framework {
     public function loadTable(){
 
         if(isset($_POST['key'])){
-            if($_POST['key'] == "manageProduct"){
+            if($_POST['key'] == "manageProductData"){
                 $tblname = $_POST['tableName'];
                 $result = $this->manageProductModel->loadTable($tblname);
 
@@ -122,21 +122,21 @@ class manageProductController extends framework {
     }
 
 
-    public function addUserView(){
+    public function addProductView(){
 
-        $result = $this->manageUserModel->getNextLoginID();
+        $product =  $this->getSession('selected_product');
 
-        //echo("<script>console.log('PHP: " . json_encode($result) . "');</script>");
+        //echo("<script>console.log('PHP: " . json_encode($product) . "');</script>");
 
-        $role =  $this->getSession('selected_role');
+        $result = $this->manageProductModel->getNextProductID($product);
 
         $data = [
-            'login_ID' => "lid".($result),
-            'role' => ucwords(str_replace("_"," ",$role))
+            'product_ID' => "ID".($result),
+            'product' => ucwords(str_replace("_","-",$product))
         ];
 
 
-        $this->view("admin/addUser",$data);
+        $this->view("admin/addProduct",$data);
     }
 
     public function addUser(){

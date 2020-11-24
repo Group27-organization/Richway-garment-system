@@ -28,8 +28,8 @@
 
         <div class="header-container background-gradient">
             <div class="header-group">
-                <h1 class="text-white">Create an user account</h1>
-                <p class="text-lead text-white">Create new account for employee.</p>
+                <h1 class="text-white">Create a sub product</h1>
+                <p class="text-lead text-white">Create new item related to the product "<?php echo $data['product']?>".</p>
             </div>
             <div class="separator separator-bottom separator-skew zindex-100">
                 <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
@@ -44,13 +44,13 @@
             <div class="flexbox-container">
 
                 <div class="inputfield">
-                    <label for="LoginId">Login ID</label>
-                    <input type="text" id="LoginId" name="LoginId" value= "<?php echo $data['login_ID']?>" class="form-contrall-readonly" readonly>
+                    <label for="ProductId"><?php echo $data['product']?> ID</label>
+                    <input type="text" id="ProductId" name="ProductId" value= "<?php echo $data['product_ID']?>" class="form-contrall-readonly" readonly>
                 </div>
 
                 <div class="inputfield">
-                    <label for="Role">Role</label>
-                    <input type="text" id="role" name="role" value="<?php echo $data['role']?>" class="form-contrall-readonly" readonly>
+                    <label for="Product">Product</label>
+                    <input type="text" id="Product" name="Product" value="<?php echo $data['product']?>" class="form-contrall-readonly" readonly>
                 </div>
 
                 <div class="inputfield">

@@ -87,9 +87,9 @@ class manageProductModel extends database {
     }
 
 
-    public function getNextLoginID(){
+    public function getNextProductID($product){
 
-        if($this->Query("SELECT AUTO_INCREMENT FROM  INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'richway_db' AND   TABLE_NAME   = 'login'")) {
+        if($this->Query("SELECT AUTO_INCREMENT FROM  INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'richway_db' AND   TABLE_NAME = ?",[$product])) {
 
             return $this->fetch()->AUTO_INCREMENT;
         }

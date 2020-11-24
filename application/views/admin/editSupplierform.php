@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta id="nav_item" content="Manage Supplier">
+    <title>Update Supplier</title>
 
     <?php linkCSS("assets/css/nav.css") ?>
     <?php linkCSS("assets/css/side_nav.css") ?>
