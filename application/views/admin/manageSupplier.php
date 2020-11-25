@@ -57,7 +57,7 @@
 
                         <button id="updateSupplier" onclick="updateSupplier()" class="three-set-btn2">Update</button>
 
-                        <button id="deleteSupplier" class="three-set-btn3" onclick="deleteSupplier()">Remove</button>
+                        <button id="deleteSupplier"  onclick="deleteSupplier()" class="three-set-btn3">Remove</button>
                     </div>
                 </div><!--flex row-->
 
@@ -68,8 +68,8 @@
                 </div>
                 <div class="card-footer">
 
-                    <div class="model-footer">
-                        <h5>* Please select an order to get this action!</h5>
+                    <div class="model-footer" id="SupplierMsgView" >
+                        <h5>* Please select a supplier to get this action!</h5>
                     </div>
 
                     <div class="bottom-row">

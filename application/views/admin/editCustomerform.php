@@ -28,8 +28,8 @@
 
         <div class="header-container background-gradient">
             <div class="header-group">
-                <h1 class="text-white">Update Customer Form</h1>
-                <p class="text-lead text-white">Update customer</p>
+                <h1 class="text-white">Update Customer</h1>
+                <p class="text-lead text-white">You can update customer's details in here</p>
             </div>
             <div class="separator separator-bottom separator-skew zindex-100">
                 <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">

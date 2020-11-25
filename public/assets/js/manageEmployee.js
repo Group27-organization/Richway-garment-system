@@ -67,10 +67,6 @@ $("#addEmployee").click(function () {
 
 });
 
-$("#deleteEmployee").click(function () {
-    location.href = "http://localhost/Richway-garment-system/manageEmployeeController/deleteEmployee";
-
-});
 
 function updateEmployee() {
 
@@ -79,6 +75,7 @@ function updateEmployee() {
     tblrows = document.getElementsByClassName("tblrow");
     for (i = 0; i < tblrows.length; i++) {
         if (tblrows[i].className.includes('active-row')) {
+            document.querySelector('#employeeMsgView').style.display = "none";
             empID = tblrows[i].firstElementChild.innerHTML;
             jQuery(function ($) {
 
@@ -98,32 +95,33 @@ function updateEmployee() {
 
             });
         }
+
+        else{
+            document.querySelector('#employeeMsgView').style.display = "block";
+        }
     }
 }
 
+function deleteEmployee(){
 
-
-function deleteEmployee() {
-
-    let i, tblrows, em_ID = "";
+    let i, tblrows, empID = "";
 
     tblrows = document.getElementsByClassName("tblrow");
     for (i = 0; i < tblrows.length; i++) {
         if (tblrows[i].className.includes('active-row')) {
-            em_ID = tblrows[i].firstElementChild.innerHTML;
+            document.querySelector('#employeeMsgView').style.display = "none";
+            empID = tblrows[i].firstElementChild.innerHTML;
             jQuery(function ($) {
-
-
-
                 $.ajax({
                     type: 'POST',
                     url: "http://localhost/Richway-garment-system/manageEmployeeController/deleteEmployee",
-                    data: {emp_ID: em_ID, key: "employeeDelete"},
-                    dataType: 'html',
+                    data: {emp_ID: empID, key: "employeeDelete"},
                     success: function (data) {
-                        //alert(data);
-                        // console.log("Table data load"+data);
-
+                        if(parseInt(data)===200){
+                            if(!alert("Employee removed successfully")) {
+                                window.location.href = "http://localhost/Richway-garment-system/manageEmployeeController/index"
+                            }
+                        }
                     },
                     error: function () {
                         // console.log("update data not  load")
@@ -134,6 +132,9 @@ function deleteEmployee() {
 
             });
         }
+        else{
+            document.querySelector('#employeeMsgView').style.display = "block";
+        }
+
     }
 }
-
