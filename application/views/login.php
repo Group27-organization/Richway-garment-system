@@ -32,13 +32,13 @@
 
                 <form action="<?php echo BASEURL; ?>/loginController/userLogin" method="POST">
                     <div class="loginfield">
-                        <input name="email" type="email" class="field" placeholder="&#xf0e0;  Email Address" value="<?php if(!empty($data['email'])): echo $data['email']; endif; ?>">
+                        <input name="email" required type="email" class="field" placeholder="&#xf0e0;  Email Address" value="<?php if(!empty($data['email'])): echo $data['email']; endif; ?>">
                     </div>
                     <div class="error">
                         <?php if(!empty($data['emailError'])): echo $data['emailError']; endif; ?>
                     </div>
                     <div class="loginfield">
-                        <input name="password" type="password" class="field" placeholder=" &#xf023;  Password" value="<?php if(!empty($data['password'])): echo $data['password']; endif; ?>">
+                        <input name="password" required type="password" class="field" placeholder=" &#xf023;  Password" value="<?php if(!empty($data['password'])): echo $data['password']; endif; ?>">
                     </div>
                     <div class="error">
                         <?php if(!empty($data['passwordError'])): echo $data['passwordError']; endif; ?>

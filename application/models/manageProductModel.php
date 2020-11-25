@@ -36,7 +36,7 @@ class manageProductModel extends database {
     }
 
 
-    public function addUserData($data,$role){
+    public function addSubProductData($data,$role){
         $loginData = [
             $data['username'],
             $data['password']
@@ -96,43 +96,14 @@ class manageProductModel extends database {
         return -1;
     }
 
-    public function getEmployeeData($role){
 
-        $sql2 = "";
-
-        if($role == 'owner'){
-            $sql2 = "select w.owner_ID, w.name, w.address, contact_no from owner w where login_id is null";
-        }
-        else{
-            $sql1 = "SELECT emp_ID FROM sales_manager Union SELECT emp_ID FROM production_manager UNION SELECT emp_ID FROM supervisor Union SELECT emp_ID FROM accountant Union SELECT emp_ID FROM stock_keeper Union SELECT emp_ID FROM tailor";
-            $sql2 = "select e.emp_ID, e.name, e.job_start_date, e.contact_no, e.employee_role from employee as e where e.emp_ID NOT IN ($sql1)";
-        }
-
-        if($this->Query($sql2)) {
-
-            if($this->rowCount() > 0 ){
-                $data =  $this->fetchall();
-                return ['status' => 'ok', 'data' => $data];
-            }
-            else{
-                return ['status' => 'tableIsEmpty'];
-            }
-
-
-
-        }
-        return ['status' => 'error'];
-
-    }
-
-
-    public function getRoleID($role){
-        if($this->Query("SELECT role_ID FROM user_role WHERE title = ? ", [$role])) {
-            return $this->fetch();
+    public function getProductTableColumns($product){
+        if($this->Query("SELECT COLUMN_NAME, DATA_TYPE FROM  INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = ? AND COLUMN_KEY = '' ",[$product])) {
+            //echo("<script>console.log('PHP: " . json_encode($this->fetchall()) . "');</script>");
+            return $this->fetchall();
         }
         return -1;
     }
-
 }
 
 
