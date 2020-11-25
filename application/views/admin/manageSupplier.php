@@ -57,7 +57,7 @@
 
                         <button id="updateSupplier" onclick="updateSupplier()" class="three-set-btn2">Update</button>
 
-                        <button id="deleteSupplier" class="three-set-btn3" onclick="deleteSupplier()">Remove</button>
+                        <button id="deleteSupplier"  onclick="deleteSupplier()" class="three-set-btn3">Remove</button>
                     </div>
                 </div><!--flex row-->
 

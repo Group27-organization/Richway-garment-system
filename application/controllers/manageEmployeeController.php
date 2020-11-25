@@ -32,7 +32,6 @@ class manageEmployeeController extends framework
 
     public function setNewSession()
     {
-
         if (isset($_POST['key'])) {
             if ($_POST['key'] == "manageEmployeeData") {
                 $this->setSession("selected_role", $_POST['role']);
@@ -193,8 +192,7 @@ class manageEmployeeController extends framework
 
             <script>
                         if(!alert("Something went wrong! please try again.")) {
-                            window.location.href = "http://localhost/Richway-garment-system/
-                            manageEmployeeController/index"
+                            window.location.href = "http://localhost/Richway-garment-system/manageEmployeeController/index"
                         }
             </script>
             ';
@@ -300,21 +298,12 @@ class manageEmployeeController extends framework
 
     public function deleteEmployee()
     {
-        $id = $_POST['emp_ID'];
-
-        if ($this->manageEmployeeModel->deleteEmployee($id)) {
-            //echo "Employee Removed successfully";
-            echo '
-          <script>
-                        if(!alert("Employee removed successfully")) {
-                            window.location.href = "http://localhost/Richway-garment-system/manageEmployeeController/index"
-                        }
-                    </script>
-      
-        ';
-
+        $id=$_POST['emp_ID'];
+        if($this->manageEmployeeModel->deleteEmployee($id)){
+            echo "200";
 
         }
+
     }
 }
 ?>

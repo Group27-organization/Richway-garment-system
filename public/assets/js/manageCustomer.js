@@ -74,8 +74,6 @@ function deleteCustomer() {
         if (tblrows[i].className.includes('active-row')) {
             cust_ID = tblrows[i].firstElementChild.innerHTML;
             jQuery(function ($) {
-                
-
 
                 $.ajax({
                     type: 'POST',
@@ -83,7 +81,7 @@ function deleteCustomer() {
                     data: {customer_ID: cust_ID, key: "customerDelete"},
                     dataType: 'html',
                     success: function (data) {
-                        //alert(data);
+                        alert(data);
                         // console.log("Table data load"+data);
 
                     },

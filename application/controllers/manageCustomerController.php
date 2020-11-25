@@ -59,7 +59,7 @@ echo("<script>console.log('PHP in index');</script>");
                 foreach ($result as $row) {
 
                     echo "
-                            <tr class='tblrow' onclick='selectRow(event),selectCustomer()'>
+                            <tr class='tblrow' onclick='selectRow(event)'>
                                 <td id='customer_ID'>$row->customer_ID  </td>
                                 <td>$row->name</td>
                                 <td>$row->address</td>

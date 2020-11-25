@@ -24,8 +24,8 @@
 
         <div class="header-container background-gradient">
             <div class="header-group">
-                <h1 class="text-white">Add Employee Form</h1>
-                <p class="text-lead text-white">Add Employee Details</p>
+                <h1 class="text-white">Add Employee</h1>
+                <p class="text-lead text-white">You can add employee's details in here</p>
             </div>
             <div class="separator separator-bottom separator-skew zindex-100">
                 <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">

@@ -74,7 +74,7 @@
                 </div>
                 <div class="card-footer">
 
-                    <div class="model-footer">
+                    <div class="model-footer" id="employeeMsgView">
                         <h5>* Please select an employee to get this action!</h5>
                     </div>
 

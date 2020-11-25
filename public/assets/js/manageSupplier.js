@@ -9,7 +9,6 @@ $(document).ready(function(){
         success: function(data){
             $("#supplierTableForManageSupplier").html(data);
 
-
         },
         error       : function() {
             console.log("Table data not  load")
@@ -73,7 +72,6 @@ function deleteSupplier() {
                     url: "http://localhost/Richway-garment-system/manageSupplierController/deleteSupplier",
                     data: {supplierID: suppID, key: "supplierDelete"},
                     success: function (data) {
-                       // alert(data);
                         if(parseInt(data)===200){
                             if(!alert("Supplier removed successfully")) {
                                 window.location.href = "http://localhost/Richway-garment-system/manageSupplierController/index"
