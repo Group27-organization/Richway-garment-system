@@ -56,7 +56,7 @@
                 <div class="inputfield">
                     <label for="UserName">Assign Employee ID</label>
                     <div class="inputbutton">
-                        <input type="text" id="EmployeeId" name="EmployeeId" class="form-contrall">
+                        <input type="text" id="EmployeeId" name="EmployeeId" class="form-contrall-readonly" readonly>
                         <button id="findbtn" onclick="location.href" type="button"  class="btn2 input2 cripple">Find</button>
                     </div>
 

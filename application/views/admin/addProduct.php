@@ -29,7 +29,7 @@
         <div class="header-container background-gradient">
             <div class="header-group">
                 <h1 class="text-white">Create a sub product</h1>
-                <p class="text-lead text-white">Create new item related to the product "<?php echo $data['product']?>".</p>
+                <p class="text-lead text-white">Create new item related to the product <?php echo $data['product']?>.</p>
             </div>
             <div class="separator separator-bottom separator-skew zindex-100">
                 <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
@@ -40,7 +40,7 @@
 
         <!----------------------------------form start--------------------------------------------------------------------------------------- -->
 
-        <form action="<?php echo BASEURL; ?>/manageUserController/addUser" method="POST">
+        <form action="<?php echo BASEURL; ?>/manageProductController/addProduct" method="POST">
             <div class="flexbox-container">
 
                 <div class="inputfield">
@@ -53,27 +53,28 @@
                     <input type="text" id="Product" name="Product" value="<?php echo $data['product']?>" class="form-contrall-readonly" readonly>
                 </div>
 
-                <div class="inputfield">
-                    <label for="UserName">Assign Employee ID</label>
-                    <div class="inputbutton">
-                        <input type="text" id="EmployeeId" name="EmployeeId" class="form-contrall">
-                        <button id="findbtn" onclick="location.href" type="button"  class="btn2 input2 cripple">Find</button>
+
+                <?php
+                foreach($data['table_columns'] as $col):
+                    $colname = $col->COLUMN_NAME;
+                    $datatype = $col->DATA_TYPE; ?>
+                    <div class="inputfield">
+                        <label for="<?php echo $colname;?>"><?php echo ucwords(str_replace("_"," ",$colname))?></label>
+
+                        <?php if($datatype == 'int' or $datatype == 'double' or $datatype == 'float' or $datatype == 'currency'): ?>
+                            <input type="number" step="0.01" min="0" id="<?php echo $colname;?>" name="<?php echo $colname;?>" class="form-contrall" required>
+                        <?php
+                        elseif ($datatype == 'char'):?>
+                            <input type="text" maxlength="3" onkeypress="return /[A-Z]/i.test(event.key)" id="<?php echo $colname;?>" name="<?php echo $colname;?>" class="form-contrall" style=" text-transform: uppercase;" required>
+                        <?php
+                        elseif ($datatype == 'varchar'):?>
+                            <input type="text" maxlength="20" id="<?php echo $colname;?>" name="<?php echo $colname;?>" class="form-contrall" style=" text-transform: capitalize;" required>
+                        <?php endif; ?>
                     </div>
-
-                </div>
-
-                <div class="inputfield">
-                    <label for="UserName">User Name</label>
-                    <input type="email" id="UserName" name="UserName" class="form-contrall">
-                </div>
-
-                <div class="inputfield">
-                    <label for="Password">Password</label>
-                    <input type="password" id="Password" name="Password" class="form-contrall">
-                </div>
+                <?php   endforeach; ?>
 
                 <br><div class="inputfield inputbutton">
-                    <input type="submit" value="Create account" class="btn cripple">
+                    <input type="submit" value="Create sub product" class="btn cripple">
                 </div>
 
             </div>
@@ -84,80 +85,8 @@
 
 </div>
 
-<!-- Find employee Modal Section -->
-<div class="bg-modal">
-    <div class="modal-contents">
 
-        <div class="close">+</div>
-
-            <div class="card">
-                <div class="card-header">
-                    <div class="left-card-header">
-                        <h3 class="title">Assign Employee</h3>
-                    </div>
-                    <div class="right-card-header">
-                        <div class="SearchBtnWap">
-                            <div class="search">
-                                <input type="text" class="searchTerm" placeholder="#Employee ID">
-                                <button type="submit" class="searchButton cripple">
-                                    <i class="fa fa-search"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="table-responsive" id="table-responsive">
-
-                </div>
-                <div class="card-footer">
-
-                    <div class="model-footer">
-                        <h5>* Please select an employee to assign!</h5>
-                    </div>
-
-                    <div class="bottom-row">
-
-                        <nav aria-label="...">
-                            <ul class="pagination justify-content-start">
-                                <li class="page-item disabled">
-                                    <a class="page-link" href="#" tabindex="-1">
-                                        <i class="fas fa-angle-left"></i>
-                                        <span class="sr-only">Previous</span>
-                                    </a>
-                                </li>
-                                <li class="page-item active">
-                                    <a class="page-link" href="#">1</a>
-                                </li>
-<!--                                <li class="page-item">-->
-<!--                                    <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>-->
-<!--                                </li>-->
-<!--                                <li class="page-item"><a class="page-link" href="#">3</a></li>-->
-                                <li class="page-item">
-                                    <a class="page-link" href="#">
-                                        <i class="fas fa-angle-right"></i>
-                                        <span class="sr-only">Next</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </nav>
-
-
-                        <div class="BtnWap">
-                            <button id="close" class="model-btn2 cripple" onclick="closeModel()">Close</button>
-                            <button id="assign" class="model-btn cripple" onclick="assignEmployee()"  >Assign</button>
-                        </div>
-
-                    </div>
-
-                </div>
-            </div>
-
-        </div>
-</div>
-
-
-<?php linkJS("assets/js/admin-adduser.js") ?>
-<?php linkJS("assets/js/table.js") ?>
+<?php linkJS("assets/js/admin-addproduct.js") ?>
 
 </body>
 </html>

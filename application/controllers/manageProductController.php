@@ -130,27 +130,30 @@ class manageProductController extends framework {
 
         $result = $this->manageProductModel->getNextProductID($product);
 
+        $tblclmns = $this->manageProductModel->getProductTableColumns($product);
+
         $data = [
             'product_ID' => "ID".($result),
-            'product' => ucwords(str_replace("_","-",$product))
+            'product' => ucwords(str_replace("_","-",$product)),
+            'table_columns' => $tblclmns,
         ];
 
 
         $this->view("admin/addProduct",$data);
     }
 
-    public function addUser(){
+    public function addProduct(){
 
         $isEmpty = false;
 
-        $roleID = $this->manageUserModel->getRoleID( $this->getSession('selected_role') );
+        $roleID = $this->manageProductModel->getRoleID( $this->getSession('selected_role') );
 
         $loginTblData = [
 
             'username' => $this->input('UserName'),
             'password' => $this->input('Password'),
             'roleID' => $roleID->role_ID,
-            'empID' =>  $this->input('EmployeeId'),
+            'empID' =>  preg_replace('/\D/', '', $this->input('EmployeeId')),
         ];
 
         foreach ($loginTblData as $key => $value){
@@ -195,77 +198,6 @@ class manageProductController extends framework {
 
 
 
-    }
-
-    public function loadEmployeeTable(){
-
-        if(isset($_POST['key'])){
-            if($_POST['key'] == "manageUserData"){
-
-                $role = $this->getSession('selected_role');
-
-                $result = $this->manageUserModel->getEmployeeData($role);
-
-                echo "
-                        <table class=\"table align-items-center table-flush\">
-                        <thead class=\"thead-light\">
-                        <tr>
-                            <th scope=col>".(($role=='owner')?'Owner ID':'Employee ID')."</th>
-                            <th scope=col>".(($role=='owner')?'Owner Name':'Employee Name')."</th>
-                            ".(($role=='owner')?'':'<th>Employee Role</th>')."
-                            <th scope=col>".(($role=='owner')?'Address':'Job Start Date')."</th>
-                            <th scope=col>Contact</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-
-                ";
-
-                if($result['status'] === 'ok'){
-
-                    foreach($result['data'] as $row){
-
-                        //echo("<script>console.log('PHP: " . json_encode($row) . "');</script>");
-
-                        echo "
-                            <tr class='tblrow' onclick='selectRow(event)'>
-                                <td id='empid'>".(($role=='owner')?$row->owner_ID:$row->emp_ID)."</td>
-                                <td>$row->name</td>
-                                 ".(($role=='owner')?'':"<td>$row->employee_role</td>")."
-                                <td>".(($role=='owner')?$row->address:$row->job_start_date)."</td>
-                                <td>$row->contact_no</td>
-                            </tr>
-                        ";
-
-                    }
-                }
-                else if($result['status'] === 'tableIsEmpty') {
-                    echo "
-                    <tr class=active-row>
-                        <td colspan=5 style=\"text-align: center;\">There are no employees without a login account.</td>
-                    </tr>
-                   ";
-                }
-                else if($result['status'] === 'error') {
-                    echo "
-                    <tr class=active-row>
-                        <td colspan=5 style=\"text-align: center;\">Something went wrong!</td>
-                    </tr>
-                   ";
-                }
-
-
-
-                echo "
-                        </tbody>
-                    </table>
-                    
-                    ";
-
-            }
-
-
-        }
     }
 
 
