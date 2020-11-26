@@ -25,7 +25,18 @@ class createOrderModel extends database{
                 return $this->fetchall();
         }
     }
+    public function getFabricDetails(){
+        if($this->Query("SELECT * FROM predefine_fabric ")){
 
+            return $this->fetchall();
+        }
+    }
+    public function getButtonDetails(){
+        if($this->Query("SELECT * FROM predefine_button ")){
+
+            return $this->fetchall();
+        }
+    }
     public function getCustomerDetails(){
         if($this->Query("SELECT * FROM customer ")){
 

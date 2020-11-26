@@ -61,14 +61,45 @@ class createOrderController extends framework{
             if ($_POST['key'] == "ItemType") {
 
                 $type =strtolower($_POST['ItemType']);
-                if($type !="shirt"){
-                    $type = t-shirt;
+                if($type =="t-shirt"){
+                    $type = "t_shirt";
                 }
+
                 $result = $this->createOrderModel->getCollarSize($type);
+
                 echo ' <option value="0" selected="" disabled="">--SELECT--</option>';
                 foreach($result as $row){
                     //   echo("<script>console.log('PHP in loadOrderItemsTable contoller: " . json_encode($row->button_shape) . "');</script>");
                     echo '<option value="'.$row->size.'" data-value="'.$row->size.'">'.$row->size.'</option>';
+                }
+            }
+        }
+    }
+
+    public function setFabricType(){
+
+        if(isset($_POST['key'])) {
+            if ($_POST['key'] == "fabricType") {
+
+                $result = $this->createOrderModel->getFabricDetails();
+                echo ' <option value="0" selected="" disabled="">--SELECT--</option>';
+                foreach($result as $row){
+                    //   echo("<script>console.log('PHP in loadOrderItemsTable contoller: " . json_encode($row->button_shape) . "');</script>");
+                    echo '<option value="'.$row->ID.'" data-value="'.$row->ID.'">'.$row->type.'</option>';
+                }
+            }
+        }
+    }
+    public function setButtonType(){
+
+        if(isset($_POST['key'])) {
+            if ($_POST['key'] == "buttonType") {
+
+                $result = $this->createOrderModel->getButtonDetails();
+                echo ' <option value="0" selected="" disabled="">--SELECT--</option>';
+                foreach($result as $row){
+                    //   echo("<script>console.log('PHP in loadOrderItemsTable contoller: " . json_encode($row->button_shape) . "');</script>");
+                    echo '<option value="'.$row->ID.'" data-value="'.$row->ID.'">'.$row->type.'</option>';
                 }
             }
         }
@@ -81,7 +112,7 @@ class createOrderController extends framework{
 
                 foreach($result as $row){
                     echo "
-                    <div class='option-card'  onclick='selectedCard(this);'>
+                    <div class='option-card'  onclick='selectedCard(this);' style='margin: 10px;'>
                             <img src=$row->image_url style='width:100%;  opacity: 0.5; background-color: purple;' class=card-thumb>
                             
                                  <h4><b>$row->type</b></h4>
@@ -90,7 +121,7 @@ class createOrderController extends framework{
                                    
                                
                                  <p>$row->hand_type</p>
-                                 <button type='button' class='more' id='More'>more</button>
+                                
                                  <input type=text class='pImageURL'  value='$row->image_url' style='display: none;'>
                              </div>
                     </div>

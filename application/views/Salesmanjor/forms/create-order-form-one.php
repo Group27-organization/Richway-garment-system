@@ -43,9 +43,8 @@
         <div class="inputfield">
             <label for="Material">Fabric Type</label>
             <select id="FabricType" name="FabricType" class="form-contrall">
-                <option value="0" selected="" disabled="">--SELECT--</option>
-                <option value="Cotton">Cotton</option>
-                <option value="Silk" >Silk</option>
+<!--                <option value="0" selected="" disabled="">--SELECT--</option>-->
+
             </select>
         </div>
 
@@ -127,13 +126,14 @@
 
 
         <div class="inputfield" id="FabricDesignCodeDiv">
-            <label for="FabricDesignCode">Fabric Design Code</label>
+            <label for="FabricDesignCode" >Fabric Design Code</label>
             <input type="text" id="FabricDesignCode" name="FabricDesignCode" class="form-contrall">
         </div>
 
         <div class="inputfield" id="FabricColorDiv">
             <label for="FabricColor">Fabric Color</label>
-            <input type="text" id="FabricColor" name="materialColor" class="form-contrall">
+<!--            <input type="text" id="FabricColor" name="materialColor" class="form-contrall">-->
+            <input type="color" id="FabricColor" name="materialColor" style="width: 100%; height: 43px;border: none">
         </div>
 
 

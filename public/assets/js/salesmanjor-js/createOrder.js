@@ -14,7 +14,7 @@ $(document).ready(function () {
     $('#ItemType').on('change', function() {
         // $("label[for='FM1']").text("");
         let ItemType = $('option:selected',this).data("value");
-
+        console.log(ItemType);
 
 
 
@@ -59,7 +59,7 @@ $(document).ready(function () {
             $('html, body').animate({
                 scrollTop: $("#createOrderForm2").offset().top   //id of div to be scrolled
             }, 1000);
-            console.log(" vvvvvvvvvvv");
+
             document.querySelector('#PredefineModel').style.display = "flex";
             document.querySelector('body').style.overflow = "hidden !important";
             let Type =  $( "#ItemType option:selected" ).text();
@@ -95,15 +95,20 @@ $(document).ready(function () {
     });
 //********************************************************//
 
-    // $('more').on('click', function() {
-    //     console.log("option card");
-    //     // $(".choice").removeClass("choice");
-    //     // $(this).toggleClass("choice");
-    //     // let id =$("#pID").text();
-    //     // console.log("id"+id);
-    //     // $("label[for='ChooseTemplate']").text(id);
-    //
-    // });
+    $.ajax({
+        type: 'POST',
+        url: "http://localhost/Richway-garment-system/createOrderController/setFabricType",
+        data: {   key: "fabricType"},
+        success: function(data){
+
+            $("#FabricType").html(data);
+
+
+        },
+        error       : function() {
+            console.log("error");
+        }
+    });
     //****************************************************//
 
     $('#FabricDesign').on('change', function() {
@@ -191,7 +196,10 @@ $(document).ready(function () {
         }else if((FabricDesignCode=="")||(FabricColor=="")){
             alert("Some Field Are Missing!");
 
-        }else {
+        }else if(!$.isNumeric(Quantity) || parseInt(Quantity)<1  ||Quantity.length>=10){
+            alert("Plase Add Valid Quantity!");
+        }
+        else {
 
             /*******************************************************/
             count =count+1;
@@ -335,7 +343,7 @@ $(document).ready(function () {
     $("#NewCustomerBtn").click(function(){
         $('html, body').animate({
             scrollTop: $("#createOrderForm1").offset().top   //id of div to be scrolled
-        }, 1000);
+        }, 1);
 
         document.querySelector('#newCustomerForm').style.display = "flex";
         document.querySelector('body').style.overflow = "hidden !important";
@@ -351,7 +359,7 @@ $(document).ready(function () {
     $("#ExistingCustomerBtn").click(function () {
         $('html, body').animate({
             scrollTop: $("#createOrderForm1").offset().top   //id of div to be scrolled
-        }, 1000);
+        }, 1);
 
         document.querySelector('#bg-modal-existing-customer-Table').style.display = "flex";
         document.querySelector('body').style.overflow = "hidden";
@@ -373,16 +381,32 @@ $(document).ready(function () {
     });
 
     $("#addnewCustomerBtn").click(function () {
-        console.log("ADD new customer call");
+
 
         let CustomerName    = $("#CustomerName").val();
         let CustomerContactNumber   = $("#CustomerContactNumber").val();
         let Email   = $("#Email").val();
         let CustomerAddress = $("#CustomerAddress").val();
 
-        if( (CustomerName=="") || (CustomerContactNumber=="") || (Email=="") || (CustomerAddress=="") ){
+
+
+
+        if( (CustomerName=="") || (CustomerContactNumber=="") || (Email=="") || (CustomerAddress=="") ||(CustomerContactNumber.length==0)  ){
+            $("#newcustomer-error").html("Some Field Empty!");
             document.querySelector('#model-footer-newcustomer').style.display = "flex";
-        }else {
+
+
+        }else if( parseInt(CustomerContactNumber)<1 || parseInt(CustomerContactNumber)>999999999 || CustomerContactNumber.charAt(0) != '0' ||(CustomerContactNumber.length>10)){
+            $("#newcustomer-error").html("Incorrect Contact Number!");
+            document.querySelector('#model-footer-newcustomer').style.display = "flex";
+         }else if( IsName(CustomerName)==false){
+            $("#newcustomer-error").html("Invalid Customer Name!");
+             document.querySelector('#model-footer-newcustomer').style.display = "flex";
+         }else if(IsEmail(Email)==false){
+            $("#newcustomer-error").html("Invalid Email!");
+           document.querySelector('#model-footer-newcustomer').style.display = "flex";
+        }
+        else {
             let customerArr = [CustomerName,CustomerContactNumber,Email,CustomerAddress];
             ///////////////////////////////////////////customer table load/////////////////////////////////////////////////
 
@@ -392,9 +416,10 @@ $(document).ready(function () {
                 data: { newCustomer:customerArr ,  key: "NewCustomer"},
                 success: function(data){
                     $("label[for='customerLabel']").text(data);
-
+                    $('#newCustomerForm input[type=text]').val('');
                     $('#newCustomerForm').hide();
-                    // document.querySelector('#newCustomerForm').style.display = "none";
+
+
                     document.querySelector('body').style.overflow = "auto";
 
                 },
@@ -415,7 +440,7 @@ $(document).ready(function () {
     });
     $(".close").click(function () {
         console.log("customerCloseBtn")
-        // document.querySelector('.model-footer-oI-Table').style.display = "none";
+        $('#newCustomerForm input[type=text]').val('');
         document.querySelector('.bg-modal').style.display = "none";
         document.querySelector('body').style.overflow = "auto";
     });
@@ -432,8 +457,12 @@ $(document).ready(function () {
 
         let customer_ID =parseInt($("label[for='customerLabel']").html());
 
+        if(order_name=="" || order_status=="0" || order_due_date=="" || customer_ID=="" ){
+           alert("Some Field Missing");
+        }else{
+            let orderArray =[order_name,order_status,order_description,order_due_date,estimate_time,estimate_price,advance_price,0,customer_ID];
 
-        let orderArray =[order_name,order_status,order_description,order_due_date,estimate_time,estimate_price,advance_price,0,customer_ID];
+        }
 
 
         // order_item_ID
@@ -630,4 +659,21 @@ function closeModel() {
 function closeNewCutomerPopup() {
     document.querySelector('#newCustomerForm').style.display = "none";
     document.querySelector('body').style.overflow = "auto";
+}
+function IsEmail(email) {
+    var regex = /^([a-zA-Z0-9_\.\-\+])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+    if(!regex.test(email)) {
+        return false;
+    }else{
+        return true;
+    }
+}
+
+function IsName(name) {
+    var regex = /^(([A-Za-z]+[\-\']?)*([A-Za-z]+)?\s)+([A-Za-z]+[\-\']?)*([A-Za-z]+)?$/;
+    if(!regex.test(name)) {
+        return false;
+    }else{
+        return true;
+    }
 }

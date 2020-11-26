@@ -53,12 +53,8 @@
             </div>
 
 <!--            --><?php //require('forms/order-item-bucket-table.php') ?>
-        <div class="tab-content" id="bucketTable">
-<!--            <div class="tab">-->
-<!--                <button class="tablinks active" onclick="openEmp(event, 'RawMaterial')">Raw Material</button>-->
-<!--                <button class="tablinks" onclick="openEmp(event, 'Tools')">Tools</button>-->
-<!--                <button class="tablinks" onclick="openEmp(event, 'Machine')">Machine</button>-->
-<!--            </div>-->
+        <div class="tab-content" id="bucketTable" style="display: none">
+
 
             <!--------------------------------------------Tab Content-------------------------------------------------------------------------------------- -->
             <div id="tabcontentid" class="tabcontent">
