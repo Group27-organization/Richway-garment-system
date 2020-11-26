@@ -16,7 +16,6 @@ private $manageSupplierModel;
 
     public function index(){
 
-
         $this->view("admin/manageSupplier");
         echo("<script>console.log('PHP in index');</script>");
 
@@ -86,12 +85,7 @@ private $manageSupplierModel;
     }
 
     public function addSupplierform(){
-
-
         $this->view("admin/addSupplier");
-
-
-        
 
     }
 
@@ -99,10 +93,7 @@ private $manageSupplierModel;
             $id=$_POST['supplierID'];
            if($this->manageSupplierModel->deleteSupplier($id)){
              echo "200";
-
            }
-
-
     }
 
     public function loadupdateSupplierform(){
@@ -129,10 +120,11 @@ private $manageSupplierModel;
 
 
 
-        foreach ($supplierData as $key => $value){
-            if(empty($value)){
-                $isEmpty= true;
+        foreach ($supplierData as $key => $value) {
+            if (empty($value)) {
+                $isEmpty = true;
             }
+        }
 
 
             $updateData=[$supplierData['supplierName'],$supplierData['emailAddress'],$supplierData['address'],$supplierData['contactNo'],$supplierData[ 'hiddenID'],];
@@ -175,7 +167,7 @@ private $manageSupplierModel;
             }
 
 
-        }
+
 
     }
 
