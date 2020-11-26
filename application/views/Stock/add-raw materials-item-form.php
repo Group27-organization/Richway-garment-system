@@ -7,9 +7,10 @@
     <?php linkCSS("assets/css/nav.css") ?>
     <?php linkCSS("assets/css/side_nav.css") ?>
     <?php linkCSS("assets/css/admin-manageuser.css") ?>
-    <?php linkCSS("assets/css/admin-adduser.css") ?>
+
     <?php linkCSS("assets/css/form.css") ?>
     <?php linkCSS("assets/css/admin-table.css") ?>
+    <?php linkCSS("assets/css/admin-adduser.css") ?>
     <?php linkCSS("assets/css/stock/add-rawmaterial-form.css") ?>
 
     <?php linkCSS("assets/css/stock/pop-window-add-raw-matiral-item.css") ?>
@@ -31,7 +32,7 @@
 
         <div class="header-container background-gradient">
             <div class="header-group">
-                <h1 class="text-white">Add New Raw Material</h1>
+                <h1 class="text-white">Add Raw Materials</h1>
                 <p class="text-lead text-white">Add new raw material to stock.</p>
             </div>
             <div class="separator separator-bottom separator-skew zindex-100">
@@ -45,7 +46,7 @@
 
                 <div class="inputfield">
                     <label for="">Order Id </label>
-                    <label for="OrderIdLabel" ><?php echo $data ?></label>
+                    <label for="OrderIdLabel" class="form-contrall" style="background-color: white"><?php echo $data ?></label>
 <!--                    <input type="text" id="" name="" class="form-contrall" value="--><?php //echo $data ?><!--">-->
                 </div>
 
@@ -118,7 +119,7 @@
 
             <!--   -----------------------nool fabric button in after label box---------------------    -->
             <br><div class="inputfield inputbutton">
-                <button id="submitForm" class="btn cripple" >Submit</button>
+                <button id="submitForm" class="btn cripple" style="width: 100px; height: 43px;">Submit</button>
             </div>
 
 

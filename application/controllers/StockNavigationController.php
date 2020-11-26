@@ -131,8 +131,7 @@ class stockNavigationController extends framework {
                             <th scope=col>Order ID</th>
                             <th scope=col>Order Name</th>
                             <th scope=col>Order Status</th>
-                            <th scope=col>Order Description</th>
-                            <th scope=col>Order Due Date</th>
+                           <th scope=col>Order Due Date</th>
                             <th scope=col>estimate_time</th>
                             <th scope=col>sales_manager_ID</th>
                             <th scope=col>customer_ID</th>
@@ -154,7 +153,6 @@ class stockNavigationController extends framework {
                                 <td id='empid' >$row->order_ID </td>
                                  <td>$row->order_name</td>
                                 <td>$row->order_status</td>
-                                <td>$row->order_description</td>
                                 <td>$row->order_due_date</td>
                                 <td>$row->estimate_time</td>
                                 

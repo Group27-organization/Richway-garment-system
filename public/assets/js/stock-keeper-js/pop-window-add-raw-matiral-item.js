@@ -4,6 +4,9 @@ $(document).ready(function(){
         variable =  this.id;
         let itemid =$("#OrderItemsID").val();
         console.log("item id"+itemid);
+        $('html, body').animate({
+            scrollTop: $("#right").offset().top   //id of div to be scrolled
+        }, 1);
 
         document.querySelector('.bg-modal').style.display = "flex";
         document.querySelector('body').style.overflow = "hidden";
@@ -18,7 +21,7 @@ $(document).ready(function(){
         $('#Quantity').attr("placeholder", "");
 
         if (variable=="buttonbtn"){
-            console.log("butn");
+            // console.log("butn");
             $("#h3-tag").html("ADD Button");
             $("#lbl1").html(" Button Style");
             $("#lbl2").html("Button Color Code");
@@ -174,7 +177,7 @@ $(document).ready(function(){
     $("#addBFNBtn2").click(function(){
 
         let B=$("#OrderItemsID").val();
-        let A = $('#OrderId option:selected').val();
+        let A =  $("label[for='OrderIdLabel']").html();
         let material = $('#slt1 option:selected').text();
         let quantity = $("#Quantity").val();
         let unitPrice = $("#UnitPrice").val();
@@ -263,7 +266,8 @@ function selectSupplier() {
         }
     }
     if(empID.length>0){
-        $("#SuppliesId").val(empID);
+        // $("#SuppliesId").val(empID);
+        $("label[for='SuppliesIdLabel']").html(empID);
         // document.getElementById("SuppliesId").value = empID;
 
     }

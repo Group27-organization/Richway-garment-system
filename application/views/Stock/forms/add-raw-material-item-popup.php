@@ -27,10 +27,10 @@
             </div>
 
             <div class="inputfield2 second" id="selectSupplier">
-                <label for="SuppliesId">Assign Supplies</label>
+                <label for="">Assign Supplies</label>
                 <div class="inputbutton">
-<!--                    <label for='SuppliesIdLabel' class="form-contrall"></label>-->
-                    <input type="text" id="SuppliesId" name="" class="form-contrall2">
+                    <label for='SuppliesIdLabel' class="form-contrall2" style="height: 43px;"></label>
+<!--                    <input type="text" id="SuppliesId" name="" class="form-contrall2">-->
                     <button id="findsupbtn" onclick="location.href" type="button"  class="btn2 input2 cripple">Find</button>
                 </div>
             </div>

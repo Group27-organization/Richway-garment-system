@@ -2,11 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e9cf3daf-da73-4605-917b-565163328057" name="Default Changelist" comment="add raw material">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/controllers/StockNavigationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/controllers/StockNavigationController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/application/views/Stock/add-raw materials-item-form.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/Stock/add-raw materials-item-form.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/Stock/addSupplier.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/Stock/addSupplier.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/views/Stock/forms/add-raw-material-item-popup.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/Stock/forms/add-raw-material-item-popup.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/views/dashboard.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/dashboard.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/assets/css/Form.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/Form.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/css/stock/add-rawmaterial-form.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/stock/add-rawmaterial-form.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/js/stock-keeper-js/pop-window-add-raw-matiral-item.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/js/stock-keeper-js/pop-window-add-raw-matiral-item.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,12 +30,13 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="feature/sales-manager-dashboard-implementation" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1kUyzrRahfevvEfJRx0B3HS5qzI" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -63,6 +67,7 @@
       <workItem from="1605840929976" duration="39677000" />
       <workItem from="1605925974479" duration="19157000" />
       <workItem from="1606029714081" duration="1353000" />
+      <workItem from="1606366226374" duration="5429000" />
     </task>
     <task id="LOCAL-00001" summary="manage stock css updated">
       <created>1605852511911</created>
