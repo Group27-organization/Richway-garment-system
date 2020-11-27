@@ -2,7 +2,7 @@
 
 
 class manageCustomerController extends framework{
-private $manageCustomerModel;
+    private $manageCustomerModel;
     public function __construct(){
         if(!$this->getSession('userId')){
             $this->redirect("loginController/loginForm");
@@ -12,10 +12,10 @@ private $manageCustomerModel;
         $this->customerModel = $this->model('customerModel');
     }
 
-public function index(){
-    
- $this->view("admin/manageCustomer",$data);
-echo("<script>console.log('PHP in index');</script>");
+    public function index(){
+
+        $this->view("admin/manageCustomer",$data);
+        echo("<script>console.log('PHP in index');</script>");
 
 
     }
@@ -37,7 +37,7 @@ echo("<script>console.log('PHP in index');</script>");
         if(isset($_POST['key'])) {
             if ($_POST['key'] == "customerTableInDash") {
                 $result = $this->manageCustomerModel->loadCustomerTable();
-                 echo("<script>console.log('PHP in loadCustomerTable contoller: " . json_encode($result) . "');</script>");
+                echo("<script>console.log('PHP in loadCustomerTable contoller: " . json_encode($result) . "');</script>");
 
                 echo "
                 <table class=\"table align-items-center table-flush\">
@@ -83,65 +83,57 @@ echo("<script>console.log('PHP in index');</script>");
 
     }
 
-    
+
 
     public function deleteCustomer(){
         $id=$_POST['customer_ID'];
-       
-       if($this->manageCustomerModel->deleteCustomer($id)){
-        //echo "Customer Removed successfully";
-         echo '
-          <script>
-                        if(!alert("Customer removed successfully")) {
-                            window.location.href = "http://localhost/Richway-garment-system/manageCustomerController/index"
-                        }
-                    </script>
-      
-        ';
 
-       }
-          
-        
+        if($this->manageCustomerModel->deleteCustomer($id)){
+            echo "200";
 
-}
-
-
-public function loadupdateCustomerform(){
-    $customer_ID = $this->getSession('selected_customer');
-  
-    $data = $this->customerModel->updateCustomer($customer_ID);
-    
-    $this->view("admin/editCustomerform",$data);
-     
- }
-
-  public function updateCustomer(){
-      $customer_ID= $this->input('hiddenID');
-      $customerEdit=$this->customerModel->updateCustomer($customer_ID);
-      $customerData = [
-       'name'=>$this->input('name'),
-       'address'=>$this->input('address'),
-       'data'=>$customerEdit,
-       'hiddenID'=>$this->input('hiddenID'),
-       'contact_no'=>$this->input('contact_no'),
-       'Gender'=>$this->input('Gender'),
-       'email'=>$this->input('email'),
-    ];
-
-
-
-    foreach ($customerData as $key => $value){
-        if(empty($value)){
-            $isEmpty= true;
         }
 
 
-        $updateData=[$customerData['name'],$customerData['address'],$customerData['contact_no'],$customerData['Gender'],$customerData['email'],$customerData[ 'hiddenID'],];
 
-        if(!$isEmpty){
-            if($this->customerModel->editCustomer($updateData)){
+    }
 
-            echo '
+
+    public function loadupdateCustomerform(){
+        $customer_ID = $this->getSession('selected_customer');
+
+        $data = $this->customerModel->updateCustomer($customer_ID);
+
+        $this->view("admin/editCustomerform",$data);
+
+    }
+
+    public function updateCustomer(){
+        $customer_ID= $this->input('hiddenID');
+        $customerEdit=$this->customerModel->updateCustomer($customer_ID);
+        $customerData = [
+            'name'=>$this->input('name'),
+            'address'=>$this->input('address'),
+            'data'=>$customerEdit,
+            'hiddenID'=>$this->input('hiddenID'),
+            'contact_no'=>$this->input('contact_no'),
+            'Gender'=>$this->input('Gender'),
+            'email'=>$this->input('email'),
+        ];
+
+
+
+        foreach ($customerData as $key => $value){
+            if(empty($value)){
+                $isEmpty= true;
+            }
+
+
+            $updateData=[$customerData['name'],$customerData['address'],$customerData['contact_no'],$customerData['Gender'],$customerData['email'],$customerData[ 'hiddenID'],];
+
+            if(!$isEmpty){
+                if($this->customerModel->editCustomer($updateData)){
+
+                    echo '
               <script>
                             if(!alert("Customer Updated successfully")) {
                                 window.location.href = "http://localhost/Richway-garment-system/manageCustomerController/index";
@@ -150,10 +142,10 @@ public function loadupdateCustomerform(){
 
             ';
 
-            }
+                }
 
-            else {
-                echo '
+                else {
+                    echo '
 
             <script>
                         if(!alert("Something went wrong! please try again.")) {
@@ -162,23 +154,23 @@ public function loadupdateCustomerform(){
             </script>
             ';
 
-            }
+                }
 
-        }//if(!isempty)
-        else{
-            echo '
+            }//if(!isempty)
+            else{
+                echo '
           <script>
               if(!alert("Some required fields are missing!")) {
                   window.location.href = "http://localhost/Richway-garment-system/editCustomerController/index";
               }
           </script>
           ';
+            }
+
+
         }
 
-
     }
-
-}
 
 
 
