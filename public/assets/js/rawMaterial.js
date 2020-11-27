@@ -1,11 +1,11 @@
-openEmp(null,'fabric');
-addEmployeeBtn = document.getElementById("addEmployee");
+openRaw(null,'fabric');
+addRawmaterialBtn = document.getElementById("addRawmaterial");
 addRawmaterial.onclick = function() {
 
     $.ajax({
         type: 'POST',
-        url: "http://localhost/Richway-garment-system/manageEmployeeController/setNewSession",
-        data: {role: 'sales_manager', key: "manageEmployeeData"},
+        url: "http://localhost/Richway-garment-system/rawMaterialController/setNewSession",
+        data: {type: 'fabric', key: "rawMaterialData"},
         success: function (data, status) {
             location.href = "http://localhost/Richway-garment-system/rawMaterialController/addRawmaterialform";
         },
@@ -17,8 +17,8 @@ addRawmaterial.onclick = function() {
 
 
 
-function openEmp(evt,elementID) {
-    let i, tablinks, addEmployeeBtn;
+function openRaw(evt,elementID) {
+    let i, tablinks, addRawmaterialBtn;
 
     if(evt != null){
         tablinks = document.getElementsByClassName("tablinks");
@@ -26,13 +26,13 @@ function openEmp(evt,elementID) {
             tablinks[i].className = tablinks[i].className.replace(" active", "");
         }
         evt.currentTarget.className += " active";
-        addEmployeeBtn = document.getElementById("addEmployee");
-        addEmployeeBtn.onclick = function() {
+        addRawmaterialBtn = document.getElementById("addRawmaterial");
+        addRawmaterialBtn.onclick = function() {
 
             $.ajax({
                 type: 'POST',
-                url: "http://localhost/Richway-garment-system/manageEmployeeController/setNewSession",
-                data: { role: elementID,  key: "manageEmployeeData"},
+                url: "http://localhost/Richway-garment-system/rawMaterialController/setNewSession",
+                data: { type: elementID,  key: "rawMaterialData"},
                 success: function(data,status){
                     location.href = "http://localhost/Richway-garment-system/rawMaterialController/addRawmaterialform";
                 },
@@ -45,10 +45,11 @@ function openEmp(evt,elementID) {
     console.log("RRR :"+elementID);
     $.ajax({
         type: 'POST',
-        url: "http://localhost/Richway-garment-system/manageEmployeeController/loadTable",
-        data: { employeerole: elementID,  key: "manageEmployeeData2"},
+        url: "http://localhost/Richway-garment-system/rawMaterialController/loadTable",
+        data: { employeerole: elementID,  key: "rawMaterialData2"},
         dataType: 'html',
         success: function(data){
+
             $("#table-responsive").html(data);
 
 
@@ -62,4 +63,8 @@ function openEmp(evt,elementID) {
 }
 ;
 
+$("#addfabric").click(function () {
+    location.href = "http://localhost/Richway-garment-system/rawMaterialController/addRawmaterialform";
+
+});
 

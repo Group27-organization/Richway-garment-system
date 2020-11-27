@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta id="nav_item" content="Add Fabric">
-    <title>Add RawMaterial</title>
+    <title>Add Fabric</title>
 
     <?php linkCSS("assets/css/nav.css") ?>
     <?php linkCSS("assets/css/side_nav.css") ?>
@@ -25,8 +25,8 @@
 
         <div class="header-container background-gradient">
             <div class="header-group">
-                <h1 class="text-white">Add Raw Material</h1>
-                <p class="text-lead text-white">You can add raw material's details in here</p>
+                <h1 class="text-white">Add Fabric</h1>
+                <p class="text-lead text-white">You can add fabric's details in here</p>
             </div>
             <div class="separator separator-bottom separator-skew zindex-100">
                 <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
@@ -35,62 +35,52 @@
             </div>
         </div>
 
-        <form  action="<?php echo BASEURL;?>/rawMaterialController/addRawmaterialform" method="POST" >
+        <form  action="<?php echo BASEURL;?>/rawMaterialController/addfabric" method="POST" >
             <div class="flexbox-container">
 
                 <div class="inputfield">
-                    <label for="fabric_type">Fabric Type</label>
+                    <label for="fabric_code">Fabric Code</label>
+                    <input type="text" id="fabric_code" name="fabric_code" class="form-contrall"  value=" ">
+                </div>
+
+                <div class="inputfield">
+                    <label for="fabric_type">Type</label>
                     <input type="text" id="fabric_type" name="fabric_type" class="form-contrall"  value=" ">
                 </div>
 
+
                 <div class="inputfield">
-                    <label for="fabric_design">Fabric Design</label>
-                    <select id="fabric_design"  name="fabric_design" class="form-contrall" >
-                        <option value="">--SELECT--</option>
-                        <option value="Design">Design</option>
-                        <option value="Plane">Plane</option>
-                    </select>
+                    <label for="Description">Description</label>
+                    <textarea id="Description" name="Description" rows="4" cols="50" class="form-contrall"></textarea>
                 </div>
 
                 <div class="inputfield">
-                    <label for="color_code">Color Code</label>
-                    <input type="text" id="color_code" name="color_code" class="form-contrall" value="">
+                    <label for="color">Color</label>
+                    <input type="text" id="color" name="color" class="form-contrall" value="">
                 </div>
 
 
                 <div class="inputfield">
-                    <label for="design_code">Design Code</label>
-                    <input type="text" id="design_code" name="design_code" class="form-contrall" value="">
+                    <label for="band">Band</label>
+                    <input type="text" id="band" name="band" class="form-contrall" value="">
                 </div>
 
                 <div class="inputfield">
-                    <label for="unit_price">Unit Price</label>
-                    <input type="text" id="unit_price" name="unit_price" class="form-contrall" value=" ">
-                </div>
-
-
-                <div class="inputfield">
-                    <label for="reel_price">Reel Price</label>
-                    <input type="text" id="reel_price" name="reel_price"  value=""  class="form-contrall" >
-                </div>
-
-                <div class="inputfield">
-                    <label for="wrinkle_resistant">Wrinkle Resistant</label>
-                    <input type="text" id="wrinkle_resistant" name="wrinkle_resistant"  value=""  class="form-contrall" >
+                    <label for="quality_grade">Quality Grade</label>
+                    <input type="text" id="quality_grade" name="quality_grade" class="form-contrall" value=" ">
                 </div>
 
 
                 <div class="inputfield">
-                    <label for="function">Function</label>
-                    <input type="text" id="function" name="function"  value=""  class="form-contrall" >
+                    <label for="brand">Brand</label>
+                    <input type="text" id="brand" name="brand"  value=""  class="form-contrall" >
                 </div>
+
 
                 <div class="inputfield">
-                    <label for="machine_wash">Machine Wash</label>
-                    <input type="text" id="machine_wash" name="machine_wash"  value=""  class="form-contrall" >
+                    <label for="price">Price</label>
+                    <input type="text" id="price" name="price"  value=""  class="form-contrall" >
                 </div>
-
-
 
                 <br><div class="inputfield inputbutton">
                     <input type="submit" value="Submit" class="btn cripple">
@@ -103,6 +93,9 @@
         </form>
     </div><!--    right-->
 </div>  <!--    grid container-->
+
+<?php linkJS("assets/js/admin-rawMaterial.js") ?>
+<?php linkJS("assets/js/table.js") ?>
 
 </body>
 </html>

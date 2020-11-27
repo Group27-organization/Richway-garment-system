@@ -39,9 +39,9 @@
 
         <div class="tab-content">
             <div class="tab">
-                <button class="tablinks active" onclick="openEmp(event,'fabric')">Fabric</button>
-                <button class="tablinks" onclick="openEmp(event,'button')">Button</button>
-                <button class="tablinks" onclick="openEmp(event,'nool')">Nool</button>
+                <button class="tablinks active" onclick="openRaw(event,'fabric')">Fabric</button>
+                <button class="tablinks" onclick="openRaw(event,'button')">Button</button>
+                <button class="tablinks" onclick="openRaw(event,'nool')">Nool</button>
 
             </div>
 
