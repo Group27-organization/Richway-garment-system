@@ -26,8 +26,8 @@ function openRaw(evt,rawitemID) {
                         location.href = "http://localhost/Richway-garment-system/rawMaterialController/addButtonform";
 
                     }
-                    if(rawitemID=="nool"){
-                        location.href = "http://localhost/Richway-garment-system/rawMaterialController/addNoolform";
+                    if(rawitemID=="thread"){
+                        location.href = "http://localhost/Richway-garment-system/rawMaterialController/addThreadform";
 
                     }
 
@@ -76,11 +76,11 @@ function openRaw(evt,rawitemID) {
                     }
                 });
             }
-        if(rawitemID=="nool") {
+        if(rawitemID=="thread") {
             $.ajax({
 
                 type: 'POST',
-                url: "http://localhost/Richway-garment-system/rawMaterialController/loadNoolTable",
+                url: "http://localhost/Richway-garment-system/rawMaterialController/loadThreadTable",
                 data: {employeerole: rawitemID, key: "rawMaterialData2"},
                 dataType: 'html',
                 success: function (data) {
@@ -94,9 +94,6 @@ function openRaw(evt,rawitemID) {
                 }
             });
         }
-
-
-
 
 
 }

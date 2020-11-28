@@ -41,7 +41,7 @@
             <div class="tab">
                 <button class="tablinks active" onclick="openRaw(event,'fabric')">Fabric</button>
                 <button class="tablinks" onclick="openRaw(event,'button')">Button</button>
-                <button class="tablinks" onclick="openRaw(event,'nool')">Nool</button>
+                <button class="tablinks" onclick="openRaw(event,'thread')">Thread</button>
 
             </div>
 

@@ -72,8 +72,7 @@ class  rawMaterialController extends  framework
                             <th scope=col>Fabric ID</th>
                             <th scope=col>Fabric Code</th>   
                             <th scope=col>Type</th>                        
-                            <th scope=col>Description</th> 
-                            <th scope=col>Color</th> 
+                            <th scope=col>Description</th>                             
                             <th scope=col>Band</th> 
                             <th scope=col>Quality Grade</th>  
                             <th scope=col>Brand</th>                             
@@ -94,8 +93,7 @@ class  rawMaterialController extends  framework
                                 <td>$row->ID</td>
                                 <td>$row->fabric_code</td>   
                                 <td>$row->type</td>    
-                                <td>$row->Description</td>                         
-                                <td>$row->color</td>
+                                <td>$row->Description</td>                        
                                 <td>$row->band</td>                                
                                 <td>$row->quality_grade</td>                                
                                 <td>$row->brand</td>
@@ -133,7 +131,6 @@ class  rawMaterialController extends  framework
             'FabricCode'=> $this->input('fabric_code'),
             'Type'=>$this->input('type'),
             'Description'=>$this->input('Description'),
-            'Color'=>$this->input('color'),
             'Band'=>$this->input('band'),
             'QualityGrade'=>$this->input('quality_grade'),
             'Brand'=>$this->input('brand'),
@@ -196,7 +193,7 @@ class  rawMaterialController extends  framework
             empty($fabricData['bandError'])&&empty($fabricData['quality_gradeError'])&&
             empty($fabricData['brandError'])&&empty($fabricData['priceError'])) {*/
 
-        $Data = [$fabricData['FabricCode'], $fabricData['Type'], $fabricData['Description'],$fabricData['Color'], $fabricData['Band'], $fabricData['QualityGrade'],$fabricData['Brand'], $fabricData['Price'], 1];
+        $Data = [$fabricData['FabricCode'], $fabricData['Type'], $fabricData['Description'], $fabricData['Band'], $fabricData['QualityGrade'],$fabricData['Brand'], $fabricData['Price'], 1];
 
         if(!$isEmpty){
             if ($this->rawMaterialModel->insertfabric($Data)) {
@@ -320,12 +317,12 @@ class  rawMaterialController extends  framework
     }
 
 
-    public function addNoolform(){
-        $this->view("admin/addNoolform");
+    public function addThreadform(){
+        $this->view("admin/addThreadform");
     }
 
 
-    public function loadNoolTable(){
+    public function loadThreadTable(){
 
         if (isset($_POST['key'])) {
             if ($_POST['key'] == "rawMaterialData2") {
@@ -333,17 +330,17 @@ class  rawMaterialController extends  framework
                 echo("<script>console.log('PHP in table select: " . json_encode($role) . "');</script>");
 
 
-               // $result = $this->rawMaterialModel->loadNoolTable();
+                $result = $this->rawMaterialModel->loadThreadTable();
 
 
                 echo " 
                         <table class=\"table align-items-center table-flush\">
                         <thead class=\"thead-light\">
                         <tr>
-                            <th scope=col>Button Code</th>
-                            <th scope=col>Description</th>   
-                            <th scope=col>Price</th>                        
-                            <th scope=col>Image</th>                            
+                            <th scope=col>Thread ID</th>
+                            <th scope=col>Type</th>   
+                            <th scope=col>Color_code</th>                        
+                            <th scope=col>Raw Material ID</th>                            
                                                          
                         </tr>
                         </thead>
@@ -352,26 +349,19 @@ class  rawMaterialController extends  framework
                 ";
 
 
-//                foreach ($result as $row) {
-//
-//                    echo "
-//                            <tr class='tblrow' onclick='selectRow(event)'>
-//                                <td>$row->ID</td>
-//                                <td>$row->fabric_code</td>
-//                                <td>$row->type</td>
-//                                <td>$row->Description</td>
-//                                <td>$row->color</td>
-//                                <td>$row->band</td>
-//                                <td>$row->quality_grade</td>
-//                                <td>$row->brand</td>
-//                                <td>$row->price</td>
-//
-//
-//
-//                            </tr>
-//                        ";
-//
-//                }
+                foreach ($result as $row) {
+
+                    echo "
+                            <tr class='tblrow' onclick='selectRow(event)'>
+                                <td>$row->nool_ID</td>
+                                <td>$row->type</td>
+                                <td>$row->color_code</td>
+                                <td>$row->raw_material_ID</td>                            
+
+                            </tr>
+                        ";
+
+                }
 
 
                 echo "

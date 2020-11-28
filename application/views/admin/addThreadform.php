@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta id="nav_item" content="Add Nool">
-    <title>Add Nool</title>
+    <meta id="nav_item" content="Add Thread">
+    <title>Add Thread</title>
 
     <?php linkCSS("assets/css/nav.css") ?>
     <?php linkCSS("assets/css/side_nav.css") ?>
@@ -25,8 +25,8 @@
 
         <div class="header-container background-gradient">
             <div class="header-group">
-                <h1 class="text-white">Add Nool</h1>
-                <p class="text-lead text-white">You can add nool's details in here</p>
+                <h1 class="text-white">Add Thread</h1>
+                <p class="text-lead text-white">You can thread's details in here</p>
             </div>
             <div class="separator separator-bottom separator-skew zindex-100">
                 <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
@@ -35,7 +35,7 @@
             </div>
         </div>
 
-        <form  action="<?php echo BASEURL;?>/rawMaterialController/addnool" method="POST" >
+        <form  action="<?php echo BASEURL;?>/rawMaterialController/addthread" method="POST" >
             <div class="flexbox-container">
 
                 <div class="inputfield">
