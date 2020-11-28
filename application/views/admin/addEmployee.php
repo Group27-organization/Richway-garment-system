@@ -46,8 +46,8 @@
                         echo $data['nameError'];
                     }
 
-                    elseif($data['nameErrorFormat']) {
-                       echo $data['nameErrorFormat'];
+                    elseif($data['nameErrorCheckFormat']) {
+                       echo $data['nameErrorCheckFormat'];
                     }
                ?>
            </label>
@@ -66,9 +66,26 @@
 
         <div class="inputfield">
             <label for="contact_no">Contact Number</label>
-            <input type="tel" id="contact_no" maxlength="100" name="contact_no" class="form-contrall" value="<?php if($data['ContactNumber']) :echo $data['ContactNumber']; endif; ?>" pattern="[0-9]{10}">
+            <input type="tel" title="ex:-0723543234" id="contact_no" maxlength="100" name="contact_no" class="form-contrall" value="<?php if($data['ContactNumber']) :echo $data['ContactNumber']; endif; ?>" pattern="[0-9]{10}">
             <label class="error" style="color:red;">
                 <?php   if($data['contact_noError']) :echo $data['contact_noError']; endif; ?>
+            </label>
+        </div>
+
+        <div class="inputfield">
+            <label for="email">Email</label>
+            <input  id="email" maxlength="100" name="email" class="form-contrall" value="<?php if($data['email']) :echo $data['email']; endif; ?>">
+            <label class="error" style="color:red;">
+
+                <?php
+                if ($data['emailError']) {
+                    echo $data['emailError'];
+                }
+
+                elseif($data['emailformatError']){
+                    echo $data['emailformatError'];
+                }
+                ?>
             </label>
         </div>
 
@@ -96,13 +113,6 @@
                 <input type="text" id="role"  name="role" value=" <?php echo $data['employeeRole'] ?>" class="form-contrall-readonly" readonly>
         </div>
 
-        <div class="inputfield">
-            <label for="bank_account_name">Bank Account Name</label>
-            <input type="text" id="bank_account_name" maxlength="100" name="bank_account_name" class="form-contrall" value="<?php if($data['BankName']) :echo $data['BankName']; endif; ?>">
-            <label class="error" style="color:red;">
-                <?php   if($data['bank_account_nameError']) :echo $data['bank_account_nameError']; endif; ?>
-            </label>
-        </div>
 
         <div class="inputfield">
             <label for="bank_ID">Bank ID</label>
@@ -112,21 +122,6 @@
             </label>
         </div>
 
-        <div class="inputfield">
-            <label for="bank_branch">Bank Branch</label>
-            <input type="text" id="bank_branch" name="bank_branch" maxlength="100"  class="form-contrall" value="<?php if($data['BankBranch']) :echo $data['BankBranch']; endif; ?>">
-            <label class="error" style="color:red;">
-                <?php   if($data['bank_branchError']) :echo $data['bank_branchError']; endif; ?>
-            </label>
-        </div>
-
-        <div class="inputfield">
-            <label for="account_no" >Account Number</label>
-            <input type="text" id="account_no" name="account_no" maxlength="50" class="form-contrall" value="<?php if($data['AccountNumber']) :echo $data['AccountNumber']; endif; ?>">
-            <label class="error" style="color:red;">
-                <?php   if($data['account_noError']) :echo $data['account_noError']; endif; ?>
-            </label>
-        </div>
 
         <div class="inputfield">
             <label for="salary_basic">Salary Basic</label>

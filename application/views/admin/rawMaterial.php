@@ -39,9 +39,9 @@
 
         <div class="tab-content">
             <div class="tab">
-                <button class="tablinks active" onclick="openEmp(event,'fabric')">Fabric</button>
-                <button class="tablinks" onclick="openEmp(event,'button')">Button</button>
-                <button class="tablinks" onclick="openEmp(event,'nool')">Nool</button>
+                <button class="tablinks active" onclick="openRaw(event,'fabric')">Fabric</button>
+                <button class="tablinks" onclick="openRaw(event,'button')">Button</button>
+                <button class="tablinks" onclick="openRaw(event,'nool')">Nool</button>
 
             </div>
 
@@ -59,9 +59,9 @@
                     <div class="BtnWap">
                         <button id="addRawmaterial" class="three-set-btn1" onclick="location.href">Add</button>
 
-                        <button id="updateEmployee" class="three-set-btn2" onclick="">Update</button>
+                        <button id="updateRawmaterial" class="three-set-btn2" onclick="">Update</button>
 
-                        <button id="deleteEmployee" class="three-set-btn3" onclick="">Remove</button>
+                        <button id="deleteRawmaterial" class="three-set-btn3" onclick="deleteRawMaterial()">Remove</button>
                     </div>
                 </div><!--flex row-->
 

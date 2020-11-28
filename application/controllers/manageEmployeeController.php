@@ -74,9 +74,10 @@ class manageEmployeeController extends framework
                             <th scope=col>Employee ID</th>
                             <th scope=col>Full Name</th>                          
                             <th scope=col>Contact Number</th>                         
-                            <th scope=col>Account Number</th> 
-                            <th scope=col>Salary Basic</th> 
-                            <th scope=col>Job Start Date</th>  
+                            <th scope=col>Email</th> 
+                            <th scope=col>Address</th> 
+                            <th scope=col>Salary Basic</th>                             
+                            <th scope=col>Bank ID</th>
                             <th scope=col></th>                            
                             
                              
@@ -93,16 +94,15 @@ class manageEmployeeController extends framework
                             <tr class='tblrow' onclick='selectRow(event)'>
                                 <td id='empid'>$row->emp_ID</td>
                                 <td>$row->name</td>                               
-                                <td>$row->contact_no</td>                         
-                                <td>$row->account_no</td>
-                                <td>$row->salary_basic</td>
-                                <td>$row->job_start_date</td>
-                                 <th>
+                                <td>$row->contact_no</td>    
+                                <td>$row->email</td>     
+                                <td>$row->address</td>               
+                                <td>$row->salary_basic</td>                                
+                                <td>$row->bank_ID</td>   
+                                <th>
                                  <a href='#' class='viewBtn' style='margin: 4px;color: #00B4CC'> View </a>
-                                </th>
-                               
-                                
-                                
+                                </th>                            
+                                                                                              
                             </tr>
                         ";
 
@@ -123,7 +123,6 @@ class manageEmployeeController extends framework
     public function addEmployeeform()
     {
 
-       // echo("<script>console.log('PHP: " . json_encode($result) . "');</script>");
         $role = $this->getSession('selected_role');
 
         $data = [
@@ -145,25 +144,22 @@ class manageEmployeeController extends framework
             'FullName'=> $this->input('name'),
             'Address'=>$this->input('address'),
             'ContactNumber'=>$this->input('contact_no'),
+            'email'=>$this->input('email'),
             'BloodGroup'=>$this->input('blood_group'),
             'employeeRole'=>ucwords(str_replace("_", " ", $role)),
             'bank_ID'=>$this->input('bank_ID'),
-            'BankName'=>$this->input('bank_account_name'),
-            'BankBranch'=>$this->input('bank_branch'),
-            'AccountNumber'=>$this->input('account_no'),
             'SalaryBasic'=>$this->input('salary_basic'),
             'job_start_date'=>$this->input('job_start_date'),
             'nameError'=> '',
             'nameErrorCheckFormat'=>'',
             'addressError'=> '',
             'contact_noError'=> '',
+            'emailError'=>'',
+            'emailformatError'=>'',
             'blood_groupError'=> '',
-            'bank_account_nameError'=> '',
             'bank_IDError'=> '',
-            'bank_branchError'=> '',
-            'account_noError'=> '',
             'salary_basicError'=> '',
-            'job_start_dateError'=> ''
+            'job_start_dateError'=> '',
         ];
 
 
@@ -180,21 +176,21 @@ class manageEmployeeController extends framework
         if(empty( $employeeData['ContactNumber'])){
             $employeeData['contact_noError']="Contact Number is required";
         }
+
+        if(empty( $employeeData['email'])){
+            $employeeData['emailError']="Email is required";
+        }
+        if(!filter_var($employeeData['email'],FILTER_VALIDATE_EMAIL)){
+            $employeeData['emailformatError']="Invalid email address";
+        }
+
         if(empty( $employeeData['BloodGroup'])){
             $employeeData['blood_groupError']="Blood group is required";
         }
         if(empty( $employeeData['bank_ID'])){
             $employeeData[ 'bank_IDError']="Bank ID is required";
         }
-        if(empty( $employeeData['BankName'])){
-            $employeeData['bank_account_nameError']="Bank account  name is required";
-        }
-        if(empty( $employeeData['BankBranch'])){
-            $employeeData['bank_branchError']="Bank branch is required";
-        }
-        if(empty( $employeeData[ 'AccountNumber'])){
-            $employeeData['account_noError']="Account number is required";
-        }
+
         if(empty( $employeeData[ 'SalaryBasic'])){
             $employeeData['salary_basicError']="Salary basic is required";
         }
@@ -205,13 +201,12 @@ class manageEmployeeController extends framework
 
 
 
-        if(empty($employeeData['nameError'])&&empty($employeeData['addressError'])&&
-            empty($employeeData['contact_noError'])&&empty($employeeData['blood_groupError'])&&
-            empty($employeeData['bank_IDError'])&&empty($employeeData['bank_IDError'])&&
-            empty($employeeData['bank_account_nameError'])&&empty($employeeData['salary_basicError'])&&empty($employeeData['job_start_dateError'])) {
+        if(empty($employeeData['nameError'])&&empty($employeeData['nameErrorCheckFormat'])&&empty($employeeData['addressError'])&&
+            empty($employeeData['contact_noError'])&&empty( $employeeData['emailError'])&&empty( $employeeData['emailformatError'])&&
+            empty($employeeData['blood_groupError'])&&empty($employeeData['bank_IDError'])&&empty($employeeData['salary_basicError'])&&
+            empty($employeeData['job_start_dateError'])) {
 
-            $Data = [$employeeData['FullName'], $employeeData['Address'], $employeeData['ContactNumber'],$employeeData['BloodGroup'], $employeeData['employeeRole'], $employeeData['bank_ID'],$employeeData['BankName'], $employeeData['BankBranch'], $employeeData['AccountNumber'],$employeeData['SalaryBasic'], $employeeData['job_start_date'], 1];
-
+            $Data = [$employeeData['FullName'], $employeeData['Address'], $employeeData['ContactNumber'],$employeeData['email'],$employeeData['BloodGroup'], $employeeData['employeeRole'], $employeeData['bank_ID'],$employeeData['SalaryBasic'], $employeeData['job_start_date'], 1];
 
                     if ($this->manageEmployeeModel->insertemployee($Data)) {
 
@@ -250,6 +245,9 @@ class manageEmployeeController extends framework
 
 
 
+
+
+
     public function loadupdateEmployeeform()
     {
 
@@ -268,12 +266,10 @@ class manageEmployeeController extends framework
             'FullName' => $this->input('name'),
             'Address' => $this->input('address'),
             'ContactNumber' => $this->input('contact_no'),
+            'email'=>$this->input('email'),
             'BloodGroup' => $this->input('blood_group'),
             'employeeRole' => $this->input('role'),
             'bank_ID' => $this->input('bank_ID'),
-            'BankName' => $this->input('bank_account_name'),
-            'BankBranch' => $this->input('bank_branch'),
-            'AccountNumber' => $this->input('account_no'),
             'SalaryBasic' => $this->input('salary_basic'),
             'job_startdate' => $this->input('startJobDate'),
             'hiddenID' => $this->input('hiddenID'),
@@ -286,7 +282,7 @@ class manageEmployeeController extends framework
         }
 
 
-        $updateData = [$employeeData['FullName'], $employeeData['Address'], $employeeData['ContactNumber'], $employeeData['BloodGroup'], $employeeData['bank_ID'], $employeeData['BankName'], $employeeData['BankBranch'], $employeeData['AccountNumber'], $employeeData['SalaryBasic'], $employeeData['job_startdate'], $employeeData['hiddenID']];
+        $updateData = [$employeeData['FullName'], $employeeData['Address'], $employeeData['ContactNumber'], $employeeData['email'], $employeeData['BloodGroup'], $employeeData['bank_ID'], $employeeData['SalaryBasic'], $employeeData['job_startdate'], $employeeData['hiddenID']];
 
         if (!$isEmpty) {
 

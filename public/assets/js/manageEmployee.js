@@ -62,10 +62,6 @@ function openEmp(evt,elementID) {
 
 }
 
-$("#addEmployee").click(function () {
-    location.href = "http://localhost/Richway-garment-system/manageEmployeeController/addEmployeeform";
-
-});
 
 
 function updateEmployee() {
@@ -84,6 +80,7 @@ function updateEmployee() {
                     url: "http://localhost/Richway-garment-system/manageEmployeeController/NewSession",
                     data: {emp_ID: empID, key: "employeeUpdate"},
                     success: function (data) {
+                       console.log('PHP in model select: " . json_encode($id) . "');
                         location.href = "http://localhost/Richway-garment-system/manageEmployeeController/loadupdateEmployeeform";
                     },
                     error: function () {

@@ -55,6 +55,12 @@
         </div>
 
         <div class="inputfield">
+            <label for="email">Email</label>
+            <input id="email" maxlength="100" name="email" class="form-contrall" value="<?php echo $data->email;?> ">
+
+        </div>
+
+        <div class="inputfield">
             <label for="blood_group">Blood Group</label>
             <input type="text" id="blood_group" name="blood_group" class="form-contrall" value="<?php echo $data->blood_group;?>">
         </div>
@@ -65,24 +71,10 @@
             <input type="text" id="role" name="role"  value="<?php echo $data->employee_role;?>"  class="form-contrall-readonly" readonly>
         </div>
 
-        <div class="inputfield">
-            <label for="bank_account_name">Bank Account Name</label>
-            <input type="text" id="bank_account_name" name="bank_account_name" class="form-contrall" value="<?php echo $data->bank_account_name;?>">
-        </div>
 
         <div class="inputfield">
             <label for="bank_ID">Bank ID</label>
             <input type="text" id="bank_ID" name="bank_ID" class="form-contrall"  value="<?php echo $data->bank_ID;?>">
-        </div>
-
-        <div class="inputfield">
-            <label for="bank_branch">Bank Branch</label>
-            <input type="text" id="bank_branch" name="bank_branch" class="form-contrall" value="<?php echo $data->bank_branch;?>">
-        </div>
-
-        <div class="inputfield">
-            <label for="account_no">Account Number</label>
-            <input type="text" id="account_no" name="account_no" class="form-contrall" value="<?php echo $data->account_no;?>">
         </div>
 
         <div class="inputfield">
