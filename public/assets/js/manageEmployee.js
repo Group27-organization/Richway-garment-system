@@ -1,4 +1,3 @@
-
 openEmp(null,'sales_manager');
 addEmployeeBtn = document.getElementById("addEmployee");
 addEmployeeBtn.onclick = function() {
@@ -27,21 +26,7 @@ function openEmp(evt,elementID) {
             tablinks[i].className = tablinks[i].className.replace(" active", "");
         }
         evt.currentTarget.className += " active";
-        addEmployeeBtn = document.getElementById("addEmployee");
-        addEmployeeBtn.onclick = function() {
 
-            $.ajax({
-                type: 'POST',
-                url: "http://localhost/Richway-garment-system/manageEmployeeController/setNewSession",
-                data: { role: elementID,  key: "manageEmployeeData"},
-                success: function(data,status){
-                    location.href = "http://localhost/Richway-garment-system/manageEmployeeController/addEmployeeform";
-                },
-                error       : function() {
-                }
-            });
-
-        }
     }
         console.log("RRR :"+elementID);
         $.ajax({

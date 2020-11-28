@@ -53,20 +53,16 @@ class  rawMaterialController extends  framework
     }
 
 
-    public function loadTable()
+    public function loadFabricTable()
     {
 
         if (isset($_POST['key'])) {
             if ($_POST['key'] == "rawMaterialData2") {
-                $role = $_POST['employeerole'];
 
                 echo("<script>console.log('PHP in table select: " . json_encode($role) . "');</script>");
-                $data = [
-                    'role' =>  $role,
-                ];
 
 
-                $result = $this->rawMaterialModel->loadTable($data);
+                $result = $this->rawMaterialModel->loadFabricTable();
 
 
                 echo " 
@@ -103,10 +99,7 @@ class  rawMaterialController extends  framework
                                 <td>$row->band</td>                                
                                 <td>$row->quality_grade</td>                                
                                 <td>$row->brand</td>
-                                <td>$row->price</td>
-                                <th>
-                                 <a href='#' class='viewBtn' style='margin: 4px;color: #00B4CC'> View </a>
-                                </th>
+                                <td>$row->price</td>                               
 
 
 
@@ -127,7 +120,7 @@ class  rawMaterialController extends  framework
         }
     }
 
-    public function addRawmaterialform()
+    public function addFabricform()
     {
         $this->view("admin/addfabricform");
     }
@@ -259,6 +252,142 @@ class  rawMaterialController extends  framework
         }
 
     }
+
+
+    public function addButtonform(){
+        $this->view("admin/addButtonform");
+
+    }
+
+
+    public function loadButtonTable()
+    {
+
+        if (isset($_POST['key'])) {
+            if ($_POST['key'] == "rawMaterialData2") {
+
+                echo("<script>console.log('PHP in table select: " . json_encode($role) . "');</script>");
+
+
+                $result = $this->rawMaterialModel->loadButtonTable();
+
+
+                echo " 
+                        <table class=\"table align-items-center table-flush\">
+                        <thead class=\"thead-light\">
+                        <tr>
+                            <th scope=col>Button ID</th>
+                            <th scope=col>Button Code</th>                    
+                            <th scope=col>Description</th>   
+                            <th scope=col>Price</th>                        
+                            <th scope=col>Image</th>                            
+                                                         
+                        </tr>
+                        </thead>
+                        <tbody>
+                        
+                ";
+
+
+                foreach ($result as $row) {
+
+                    echo "
+                            <tr class='tblrow' onclick='selectRow(event)'>
+                                <td>$row->button_ID</td>
+                                <td>$row->Description</td>
+                                <td>$row->button_code</td>
+                                <td>$row->price</td>
+                                <td>$row->image</td>
+                                
+
+
+
+                            </tr>
+                        ";
+
+                }
+
+
+                echo "
+                        </tbody>
+                    </table>
+                ";
+
+            }
+
+
+        }
+    }
+
+
+    public function addNoolform(){
+        $this->view("admin/addNoolform");
+    }
+
+
+    public function loadNoolTable(){
+
+        if (isset($_POST['key'])) {
+            if ($_POST['key'] == "rawMaterialData2") {
+
+                echo("<script>console.log('PHP in table select: " . json_encode($role) . "');</script>");
+
+
+               // $result = $this->rawMaterialModel->loadNoolTable();
+
+
+                echo " 
+                        <table class=\"table align-items-center table-flush\">
+                        <thead class=\"thead-light\">
+                        <tr>
+                            <th scope=col>Button Code</th>
+                            <th scope=col>Description</th>   
+                            <th scope=col>Price</th>                        
+                            <th scope=col>Image</th>                            
+                                                         
+                        </tr>
+                        </thead>
+                        <tbody>
+                        
+                ";
+
+
+//                foreach ($result as $row) {
+//
+//                    echo "
+//                            <tr class='tblrow' onclick='selectRow(event)'>
+//                                <td>$row->ID</td>
+//                                <td>$row->fabric_code</td>
+//                                <td>$row->type</td>
+//                                <td>$row->Description</td>
+//                                <td>$row->color</td>
+//                                <td>$row->band</td>
+//                                <td>$row->quality_grade</td>
+//                                <td>$row->brand</td>
+//                                <td>$row->price</td>
+//
+//
+//
+//                            </tr>
+//                        ";
+//
+//                }
+
+
+                echo "
+                        </tbody>
+                    </table>
+                ";
+
+            }
+
+
+        }
+
+    }
+
+
+
 
 
 

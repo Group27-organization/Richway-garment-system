@@ -1,23 +1,7 @@
 openRaw(null,'fabric');
-addRawmaterialBtn = document.getElementById("addRawmaterial");
-addRawmaterial.onclick = function() {
-
-    $.ajax({
-        type: 'POST',
-        url: "http://localhost/Richway-garment-system/rawMaterialController/setNewSession",
-        data: {type: 'fabric', key: "rawMaterialData"},
-        success: function (data, status) {
-            location.href = "http://localhost/Richway-garment-system/rawMaterialController/addRawmaterialform";
-        },
-        error: function () {
-        }
-    });
-
-}
 
 
-
-function openRaw(evt,elementID) {
+function openRaw(evt,rawitemID) {
     let i, tablinks, addRawmaterialBtn;
 
     if(evt != null){
@@ -27,37 +11,92 @@ function openRaw(evt,elementID) {
         }
         evt.currentTarget.className += " active";
         addRawmaterialBtn = document.getElementById("addRawmaterial");
+
         addRawmaterialBtn.onclick = function() {
+            console.log("RRR :"+rawitemID);
+            openRaw(null,'fabric');
 
             $.ajax({
-                type: 'POST',
-                url: "http://localhost/Richway-garment-system/rawMaterialController/setNewSession",
-                data: { type: elementID,  key: "rawMaterialData"},
                 success: function(data,status){
-                    location.href = "http://localhost/Richway-garment-system/rawMaterialController/addRawmaterialform";
+                    if(rawitemID=="fabric"){
+                        location.href = "http://localhost/Richway-garment-system/rawMaterialController/addFabricform";
+
+                    }
+                    if(rawitemID=="button"){
+                        location.href = "http://localhost/Richway-garment-system/rawMaterialController/addButtonform";
+
+                    }
+                    if(rawitemID=="nool"){
+                        location.href = "http://localhost/Richway-garment-system/rawMaterialController/addNoolform";
+
+                    }
+
+
                 },
-                error       : function() {
+                error : function() {
                 }
             });
 
         }
-    }
-    console.log("RRR :"+elementID);
-    $.ajax({
-        type: 'POST',
-        url: "http://localhost/Richway-garment-system/rawMaterialController/loadTable",
-        data: { employeerole: elementID,  key: "rawMaterialData2"},
-        dataType: 'html',
-        success: function(data){
-           // alert(data);
-            $("#table-responsive").html(data);
-
-
-        },
-        error       : function() {
-            $("#table-responsive").html('<br><p>Something went wrong.</p>');
         }
-    });
+            if(rawitemID=="fabric") {
+                $.ajax({
+
+                    type: 'POST',
+                    url: "http://localhost/Richway-garment-system/rawMaterialController/loadFabricTable",
+                    data: {employeerole: rawitemID, key: "rawMaterialData2"},
+                    dataType: 'html',
+                    success: function (data) {
+                        // alert(data);
+                        $("#table-responsive").html(data);
+
+
+                    },
+                    error: function () {
+                        $("#table-responsive").html('<br><p>Something went wrong.</p>');
+                    }
+                });
+            }
+
+            if(rawitemID=="button") {
+                $.ajax({
+
+                    type: 'POST',
+                    url: "http://localhost/Richway-garment-system/rawMaterialController/loadButtonTable",
+                    data: {employeerole: rawitemID, key: "rawMaterialData2"},
+                    dataType: 'html',
+                    success: function (data) {
+                        // alert(data);
+                        $("#table-responsive").html(data);
+
+
+                    },
+                    error: function () {
+                        $("#table-responsive").html('<br><p>Something went wrong.</p>');
+                    }
+                });
+            }
+        if(rawitemID=="nool") {
+            $.ajax({
+
+                type: 'POST',
+                url: "http://localhost/Richway-garment-system/rawMaterialController/loadNoolTable",
+                data: {employeerole: rawitemID, key: "rawMaterialData2"},
+                dataType: 'html',
+                success: function (data) {
+                    // alert(data);
+                    $("#table-responsive").html(data);
+
+
+                },
+                error: function () {
+                    $("#table-responsive").html('<br><p>Something went wrong.</p>');
+                }
+            });
+        }
+
+
+
 
 
 }

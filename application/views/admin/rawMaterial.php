@@ -57,7 +57,7 @@
                         </div>
                     </div>
                     <div class="BtnWap">
-                        <button id="addRawmaterial" class="three-set-btn1" onclick="location.href">Add</button>
+                        <button id="addRawmaterial" class="three-set-btn1" onclick="openRaw()">Add</button>
 
                         <button id="updateRawmaterial" class="three-set-btn2" onclick="">Update</button>
 

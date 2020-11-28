@@ -24,8 +24,6 @@
 
         <?php include "components/nav.php"; ?>
 
-
-
         <div class="page-header">
             <div class="block">
                 <div class="page-header-routetext">

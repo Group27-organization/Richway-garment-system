@@ -2,10 +2,9 @@
 
 class rawMaterialModel extends database {
 
-    public function loadTable(){
+    public function loadFabricTable(){
 
         if($this->Query("SELECT * FROM predefine_fabric WHERE active=1" )){
-
 
             return $this->fetchall();
 
@@ -37,6 +36,18 @@ class rawMaterialModel extends database {
 
 
     }
+
+    public function loadButtonTable(){
+
+        if($this->Query("SELECT * FROM button WHERE active=1" )){
+
+            return $this->fetchall();
+
+        }
+
+    }
+
+
 
 
 
