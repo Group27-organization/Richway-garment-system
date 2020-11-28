@@ -36,7 +36,7 @@
         <?php include "components/nav.php"; ?>
         <div class="header-container background-gradient" id="header-gradant-form">
             <div class="header-group">
-                <h1 class="text-white">Create Order</h1>
+                <h1 class="text-white" id="header-name">Create Order 1/3</h1>
                 <p class="text-lead text-white">Add new oder.</p>
             </div>
             <div class="separator separator-bottom separator-skew zindex-100">
@@ -83,17 +83,17 @@
                             <th scope="col" style="display: none">Template Id</th>
                             <th scope="col">Template</th>
                             <th scope="col"  >Size</th>
-                            <th scope="col" >Fabric Type</th>
-                            <th scope="col" >Fabric Design</th>
+
+                            <th scope="col" style="display: none" >Fabric Design ID</th>
                             <th scope="col" >Fabric Design Image</th>
-                            <th scope="col" >Fabric Design Code</th>
-                            <th scope="col" >Fabric Color</th>
-                            <th scope="col" style="display: none">Button Design </th>
-                            <th scope="col" style="display: none">Button Color</th>
-                            <th scope="col" style="display: none">Nool Color</th>
+                            <th scope="col" >Fabric Design </th>
+
+                            <th scope="col" style="display: none">Button Design ID </th>
+                            <th scope="col" style="display: none">Button Design Image </th>
+                            <th scope="col" style="display: none">Button Design</th>
+
                             <th scope="col" >Quantity</th>
-<!-- style="display: none"-->
-                            <th scope="col"></th>
+                            <th scope="col">Action</th>
                         </tr>
                         </thead>
                         <tbody>

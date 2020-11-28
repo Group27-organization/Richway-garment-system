@@ -67,7 +67,7 @@ class createOrderController extends framework{
 
                 $result = $this->createOrderModel->getCollarSize($type);
 
-                echo ' <option value="0" selected="" disabled="">--SELECT--</option>';
+                echo ' <option  value="0" selected="" disabled="">--SELECT--</option>';
                 foreach($result as $row){
                     //   echo("<script>console.log('PHP in loadOrderItemsTable contoller: " . json_encode($row->button_shape) . "');</script>");
                     echo '<option value="'.$row->size.'" data-value="'.$row->size.'">'.$row->size.'</option>';
@@ -75,6 +75,35 @@ class createOrderController extends framework{
             }
         }
     }
+    public function setFabricCode(){
+
+        if(isset($_POST['key'])) {
+            if ($_POST['key'] == "fabricCode") {
+
+                $result = $this->createOrderModel->getFabricDetails();
+                echo ' <option  value="0" selected="" disabled="">--SELECT--</option>';
+                foreach($result as $row){
+                    //   echo("<script>console.log('PHP in loadOrderItemsTable contoller: " . json_encode($row->button_shape) . "');</script>");
+                    echo '<option value="'.$row->image_url.'" data-value="'.$row->ID.'">'.$row->code.'</option>';
+                }
+            }
+        }
+    }
+    public function setButtonCode(){
+
+        if(isset($_POST['key'])) {
+            if ($_POST['key'] == "buttonCode") {
+
+                $result = $this->createOrderModel->getButtonDetails();
+                echo ' <option  value="0" selected="" disabled="">--SELECT--</option>';
+                foreach($result as $row){
+//                        echo("<script>console.log('PHP in loadOrderItemsTable contoller: " . json_encode($row->predefine_button) . "');</script>");
+                    echo '<option value="'.$row->image_url.'" data-value="'.$row->ID.'"  >'.$row->code.'</option>';
+                }
+            }
+        }
+    }
+
 
     public function setFabricType(){
 
@@ -107,7 +136,7 @@ class createOrderController extends framework{
     public function templateCardGenarator(){
         if(isset($_POST['key'])) {
             if ($_POST['key'] == "PredefinePopup") {
-                $result = $this->createOrderModel->getPredifineCard($_POST['Type'],$_POST['handType'],$_POST['colorType']);
+                $result = $this->createOrderModel->getPredifineCard($_POST['Type']);
 
 
                 foreach($result as $row){
@@ -115,18 +144,36 @@ class createOrderController extends framework{
                     <div class='option-card'  onclick='selectedCard(this);' style='margin: 10px;'>
                             <img src=$row->image_url style='width:100%;  opacity: 0.5; background-color: purple;' class=card-thumb>
                             
-                                 <h4><b>$row->type</b></h4>
-                                
+                                <div class='card-description'>
+                                     <h4 ><b class='template-type'> $row->type</b></h4>
+                                     <p class='template-handtype'>$row->hand_type</p>
+                                     <p class='template-collartype'>$row->collar_type</p>
+                                </div>
                                 <input type=text  class='preID' value='$row->p_ID' style='display: none;'>
                                    
-                               
-                                 <p>$row->hand_type</p>
+                                 
                                 
                                  <input type=text class='pImageURL'  value='$row->image_url' style='display: none;'>
                              </div>
                     </div>
                     ";
                 }
+            }
+        }
+    }
+
+    public function isbuttoninpredefineCheck(){
+
+        if(isset($_POST['key'])) {
+            if ($_POST['key'] == "numberofbuttoncheck") {
+                if($_POST['table']=='t-shirt'){
+                    $_POST['table']='t_shirt';
+                }
+                $result = $this->createOrderModel->isButtonInPredefine($_POST['table'],(int)$_POST['predefineId']);
+//               echo("<script>console.log('PHP in  result : " . json_encode($result) . "');</script>");
+
+                echo((int)$result);
+
             }
         }
     }
@@ -143,7 +190,7 @@ class createOrderController extends framework{
                         <thead class=\"thead-light\">
                         <tr>
                         
-                            <th scope=col>Customer ID</th>
+                            <th scope=col style='display:none;'>Customer ID</th>
                             <th scope=col>Name</th>
                             <th scope=col>Contact Number</th>
                             <th scope=col>Email</th>
@@ -158,7 +205,7 @@ class createOrderController extends framework{
 
                     echo "
                             <tr class='tblrow' onclick='selectRow(event)'>
-                                <td id='supid'>$row->customer_ID   </td>
+                                <td id='supid' style='display:none;'>$row->customer_ID   </td>
                                 <td>$row->name</td>
                                 <td>$row->contact_no</td>
                                 <td>$row->email</td>
@@ -212,60 +259,56 @@ class createOrderController extends framework{
             if ($_POST['key'] == "orderArrayS") {
 
                 $orderArray = $_POST['orderArray'];
-                echo("order array 1".json_encode($orderArray)) ;
+//                echo("order array 1".json_encode($orderArray)) ;
                 // order_ID             auto
-                // order_name           0
+                //  order_description   0
                 // order_status         1
-                // order_description    2
-                // order_due_date       3
-                // estimate_time        4
-                // order_price          5
-                // advance_price        6
-                // supervisor_ID        7
-                // customer_ID          8
+                // order_due_date       2
+                // estimate_time        3
+                $orderArray[3] =intval( $orderArray[3]);
+                $orderArray[4] =intval( $orderArray[4]);
+                $orderArray[5] =intval( $orderArray[5]);
+                $orderArray[6] =intval( $orderArray[6]);
+                // order_price          4
+                // advance_price        5
+                // salesmanger_ID        6
+                // customer_ID          7
 
-                $loginID = $this->getSession('userId');
-                echo("login id".json_encode($loginID)) ;
-                $orderArray[7] = intval($this->createOrderModel->getSalesManagerId($loginID));
-                echo("orderArray2:".json_encode($orderArray)) ;
+                $loginID = $this->getSession('userId')['user_id'];
+//                echo("<br>login id : ".json_encode($loginID)) ;
+//                $A =$this->createOrderModel->getSalesManagerId(intval($loginID));
+                $orderArray[6] = intval($this->createOrderModel->getSalesManagerId(intval($loginID)));
+//                echo("<br>ge t selsmanger id : ".json_encode($A)) ;
+//                echo("<br>orderArray2:".json_encode($orderArray)) ;
 
 
                 $orderId = intval($this->createOrderModel->OrderAdd($orderArray));
-                echo("orderId:".json_encode($orderId)) ;
+//                echo("orderId:".json_encode($orderId)) ;
 
                 if($orderId){
 
-                    $loginID = $this->getSession('userId');
-
-
-
-
                     $orderItemList =$_POST['orderItemList'];
-                    echo("orderItemList:".json_encode($orderItemList));
+//                    ["M","1","1","123","0","1"]
+//                    echo("orderItemList:".json_encode($orderItemList));
                     foreach ($orderItemList as $row){
 
-                        // order_item_ID
 
-
-                        // material
-                        // material_design
-                        // material_design_image
-                        // material_design_code
-                        // material_color
-
-                        // button_shape
-                        // button_color
-
-                        // nool_color
-
+                        //size
+                        // fabric id
+                        // button_id
                         // quantity
-
-                        $row[9]=$orderId;  // order_ID
-                        // p_ID
+                        // $row[4]=$orderId;  // order_ID
+                        // predefine_ID
+                        $row[1] =intval($row[1]);
+                        $row[2] =intval($row[2]);
+                        $row[3] =intval($row[3]);
+                        $row[4] =intval($row[4]);
+                        $row[4]=$orderId;
+                        $row[5] =intval($row[5]);
 
                         echo("orderItemList final:".json_encode($row));
                             if($this->createOrderModel->orderItemAdd($row)){
-                                echo("Succefully added");
+                                echo("successfully added");
                             }else{
                                 echo("Order Item Not Added");
                             }

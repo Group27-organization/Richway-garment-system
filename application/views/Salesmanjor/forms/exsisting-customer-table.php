@@ -11,7 +11,7 @@
         <div class="card">
             <div class="card-header">
                 <div class="left-card-header">
-                    <h3 class="title">Select Order Item</h3>
+                    <h3 class="title">Select Customer</h3>
                 </div>
                 <div class="right-card-header">
                     <div class="SearchBtnWap">

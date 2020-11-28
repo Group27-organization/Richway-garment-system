@@ -8,11 +8,7 @@ class createOrderModel extends database{
             return $this->fetchall();
         }
     }
-//    public function getHandType($type){
-//        if($this->Query("SELECT DISTINCT hand_type FROM predefine WHERE type = ?",[$type])){
-//            return $this->fetchall();
-//        }
-//    }
+
     public function getCollarSize($type){
         if($this->Query("SELECT DISTINCT size FROM $type ")){
             return $this->fetchall();
@@ -25,6 +21,14 @@ class createOrderModel extends database{
                 return $this->fetchall();
         }
     }
+    public function isButtonInPredefine($tble,$data){
+
+
+        if($this->Query("SELECT  * FROM $tble WHERE p_ID =$data")){
+            return $this->fetch()->button_count;
+        }
+    }
+
     public function getFabricDetails(){
         if($this->Query("SELECT * FROM predefine_fabric ")){
 
@@ -45,27 +49,35 @@ class createOrderModel extends database{
     }
 
     public function OrderAdd($orderArray){
-        // order_ID             auto
-        // order_name           0
-        // order_status         1
-        // order_description    2
-        // order_due_date       3
-        // estimate_time        4
-        // order_price          5
-        // advance_price        6
-        // supervisor_ID        7
-        // customer_ID          8
 
-        if($this->Query("INSERT INTO orders  ( order_name, order_status, order_description, order_due_date, estimate_time, order_price, advance_price, sales_manager_ID, customer_ID) VALUES (?,?,?,?,?,?,?,?,?)",$orderArray)){
+//        order_ID
+//        order_description
+//        order_status
+//        order_due_date
+//        estimate_time
+//        order_price
+//        advance_price
+//        sales_manager_ID
+//        customer_ID
+
+
+        if($this->Query("INSERT INTO orders  ( order_description, order_status, order_due_date, estimate_time, order_price, advance_price, sales_manager_ID, customer_ID) VALUES (?,?,?,?,?,?,?,?)",$orderArray)){
             return intval($this->getCurrentLoginID());
         }else{
             return false;
         }
     }
-
+        // ["M","1","1","123","0","1"]
+            //order_item_ID
+            //fabric_ID
+            //button_ID
+            //nool_ID
+            //quantity
+            //order_ID
+            //p_ID
 
     public function orderItemAdd($orderItemArray){
-        if($this->Query("INSERT INTO order_item ( material, material_design,material_design_image, material_design_code, material_color, button_shape, button_color, nool_color, quantity, order_ID, p_ID) VALUES (?,?,?,?,?,?,?,?,?,?,?)",$orderItemArray)){
+        if($this->Query("INSERT INTO order_item ( size,fabric_ID,button_ID , quantity, order_ID, p_ID) VALUES (?,?,?,?,?,?)",$orderItemArray)){
             return true;
         }else{
             return false;
@@ -94,19 +106,5 @@ class createOrderModel extends database{
             return false;
         }
     }
-    public  function selectPredefineIDFOrOrderItem($shirtType,$handType,$size){
-    //  SELECT predefine.p_ID FROM predefine INNER JOIN shirt ON predefine.p_ID = shirt.p_ID WHERE predefine.type ='shirt' AND predefine.hand_type='long sleevs' AND shirt.size='M'
-        if($this->Query("SELECT predefine.p_ID 
-                                FROM predefine 
-                                INNER JOIN $shirtType 
-                                ON predefine.p_ID = $shirtType.p_ID 
-                                WHERE predefine.type =$shirtType 
-                                AND predefine.hand_type=$handType 
-                                AND $shirtType.size=$size
-        ")){
-            return intval($this->getCurrentLoginID());
-        }else{
-            return false;
-        }
-    }
+
 }

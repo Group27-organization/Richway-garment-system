@@ -20,7 +20,7 @@
                             </div>
                         </div>
                         <div class="BtnWap">
-                            <button type="button" id="ViewAllTbn" class="three-set-btn1"  >Back</button>
+                            <button type="button" id="ViewAllTbn" class="three-set-btn1"  >Add Another Item</button>
                             <button type="button" id="itemTableNextTbn" class="three-set-btn2">Next</button>
                         </div>
                     </div><!--flex row-->

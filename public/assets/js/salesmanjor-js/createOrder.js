@@ -1,11 +1,11 @@
 $(document).ready(function () {
-    console.log("jqvary load");
+
     $("#createOrderForm2").hide();
     $("#bucketTable").hide();
-
+    $(".error").hide();
     $("#NoolColorDiv").hide();
-    // $("#PredefineModel").hide();
-
+    $("label[for='TemplateDescription']").text("");
+    $("#CollarSize").prop("disabled", true);
 
     //****************************************create order form one *************************************************//
 
@@ -14,27 +14,9 @@ $(document).ready(function () {
     $('#ItemType').on('change', function() {
         // $("label[for='FM1']").text("");
         let ItemType = $('option:selected',this).data("value");
-        console.log(ItemType);
+        $("#CollarSize").prop("disabled", false);
 
-
-
-
-        // $.ajax({
-        //     type: 'POST',
-        //     url: "http://localhost/Richway-garment-system/createOrderController/setPredefineHandType",
-        //     data: { ItemType: ItemType,  key: "ItemType"},
-        //     success: function(data){
-        //
-        //         $("#ItemStyle").html(data);
-        //
-        //
-        //     },
-        //     error       : function() {
-        //         console.log("error");
-        //     }
-        // });
-
-        $.ajax({
+     $.ajax({
             type: 'POST',
             url: "http://localhost/Richway-garment-system/createOrderController/setPredefineSize",
             data: { ItemType: ItemType,  key: "ItemType"},
@@ -57,8 +39,8 @@ $(document).ready(function () {
 
         }else{
             $('html, body').animate({
-                scrollTop: $("#createOrderForm2").offset().top   //id of div to be scrolled
-            }, 1000);
+                scrollTop: $("#right").offset().top   //id of div to be scrolled
+            }, 1);
 
             document.querySelector('#PredefineModel').style.display = "flex";
             document.querySelector('body').style.overflow = "hidden !important";
@@ -71,7 +53,7 @@ $(document).ready(function () {
             $.ajax({
                 type: 'POST',
                 url: "http://localhost/Richway-garment-system/createOrderController/templateCardGenarator",
-                data: { Type: Type, colorType:colorType, handType:handType,  key: "PredefinePopup"},
+                data: { Type: Type,   key: "PredefinePopup"},
                 success: function(data){
 
                     $("#template-container").html(data);
@@ -93,15 +75,14 @@ $(document).ready(function () {
         document.querySelector('#PredefineModel').style.display = "none";
         document.querySelector('body').style.overflow = "auto";
     });
-//********************************************************//
-
+//********************fabric design code************************************//
     $.ajax({
         type: 'POST',
-        url: "http://localhost/Richway-garment-system/createOrderController/setFabricType",
-        data: {   key: "fabricType"},
+        url: "http://localhost/Richway-garment-system/createOrderController/setFabricCode",
+        data: {   key: "fabricCode"},
         success: function(data){
-
-            $("#FabricType").html(data);
+            // console.log("fabrc "+data);
+            $("#fabricdesigncode").html(data);
 
 
         },
@@ -109,62 +90,33 @@ $(document).ready(function () {
             console.log("error");
         }
     });
-    //****************************************************//
 
-    $('#FabricDesign').on('change', function() {
 
-        let FabricDesign = $('option:selected', this).val();
+    $("#fabricdesigncode").select2({
+        templateResult: formatOptions
+    });
+    //********************button design code************************************//
+    $.ajax({
+        type: 'POST',
+        url: "http://localhost/Richway-garment-system/createOrderController/setButtonCode",
+        data: {   key: "buttonCode"},
+        success: function(data){
+            // console.log("buttonCode"+data);
+            $("#buttondesigncode").html(data);
 
-        if(FabricDesign=="Plane"){
-            $("#FabricColorDiv").show();
-            $("#FabricDesignCodeDiv").hide();
 
-        }else if(FabricDesign=="Custom"){
-            $("#FabricColorDiv").hide();
-            $("#FabricDesignCodeDiv").show();
+        },
+        error       : function() {
+            console.log("error");
         }
-
     });
 
-    //**************add fabric design******************************************//
-    $('#ADDFabricDesignID').on('click', function() {
-        $.ajax({
-            type:'POST',
-            url: $(this).attr('action'),
-            data:formData,
-            cache:false,
-            contentType: false,
-            processData: false,
-            success:function(data){
-                console.log("success");
-                console.log(data);
-            },
-            error: function(data){
-                console.log("error");
-                console.log(data);
-            }
-        });
 
-
-
+    $("#buttondesigncode").select2({
+        templateResult: formatOptions
     });
 
-    //********************************************************//
 
-    $('#ItemType').on('change', function() {
-
-        let type = $('option:selected', this).val();
-
-        if(type=="t-shirt"){
-            $("#ButtonDesignDiv").hide();
-            $("#ButtonColorDiv").hide();
-
-        }else if(type=="shirt"){
-            $("#ButtonDesignDiv").show();
-            $("#ButtonColorDiv").show();
-        }
-
-    });
 //*****************************************order shirt or t shirt selected  hand type change************************************************//
 
     let count=0;
@@ -179,57 +131,62 @@ $(document).ready(function () {
         let CollarSize = $('#CollarSize option:selected').val();
 
         let FabricType =$('#FabricType option:selected').val();
-        let FabricDesign =$('#FabricDesign option:selected').val();
-        let FabricDesignCode =$("#FabricDesignCode").val();
-        if(FabricDesignCode==""){
-            FabricDesignCode="none";
-        }
-        let FabricColor =$("#FabricColor").val();
-        let FabricDesignImage="none";
-        let NoolColor = $("#NoolColor").val();
-        let ButtonDesign =$('#ButtonDesign option:selected').val();
-        let ButtonColor =$("#ButtonColor").val();
+
+        let FabricDesignID =$('#fabricdesigncode option:selected').data('value');
+        let FabricDesignImage =$("#fabricdesigncode option:selected").val();
+        let FabricDesignCode = $("#fabricdesigncode option:selected").text();
+
+        let ButtonDesignID =$('#buttondesigncode option:selected').data('value');
+
         let Quantity = $("#Quantity").val();
-
-        if((PredefineId=="")||(CollarSize=="")||(PredefineId=="")||(FabricType=="") ||(FabricDesign=="") ||(Quantity=="") ){
-            alert("Some Field Are Missing!");
-        }else if((FabricDesignCode=="")||(FabricColor=="")){
-            alert("Some Field Are Missing!");
-
-        }else if(!$.isNumeric(Quantity) || parseInt(Quantity)<1  ||Quantity.length>=10){
-            alert("Plase Add Valid Quantity!");
+        if($('#ItemType option:selected').val()=="0"){
+            $("label[for='IT']").show();
+        }if(PredefineId==""){
+            $("label[for='CT']").show();
+        }if(CollarSize=="0"){
+            $("label[for='CS']").show();
+        } if(FabricDesignID==""){
+            $("label[for='FDC']").show();
+        }if(isbuttonInclude=='yes'){
+            $("label[for='BDC']").show();
+        }
+        // else if(ButtonDesignID==""){
+        //     alert("ButtonDesignID Field Are Missing!");
+        // }
+        if(Quantity=="") {
+            $("label[for='FDC']").show();
+        } if(!$.isNumeric(Quantity) || parseInt(Quantity)<1  ||Quantity.length>=10){
+            $("label[for='Q']").show();
         }
         else {
 
             /*******************************************************/
             count =count+1;
             alert("Item "+count+"Added!");
+            $("label[for='TemplateDescription']").text("");
+
+
             $('html, body').animate({
-                scrollTop: $("#header-gradant-form").offset().top   //id of div to be scrolled
-            }, 1000);
+                scrollTop: $("#right").offset().top   //id of div to be scrolled
+            }, 1);
 
 
             $("#cardP").append("<a href=\"#\">"+ItemType+" "+count+"</a> <span class=\"price\">"+Quantity+"</span><br>");
             $("label[for='ItemCountCard']").text(count);
             countQuantity =countQuantity+parseInt(Quantity);
             $("label[for='ItemQuantityCount']").text(countQuantity);
-            console.log("Template :"+Template);
-            // let imgpath ="++";
-            // $("table").find("tr").eq(1).find("td").eq(1).append("<img src='https://kbob.github.io/images/sample-5.jpg' style='display:block;' width='100%' height='auto'/>");
+
+
             $('#addItemBucketTable tbody tr:last').after(
 
                 '<tr data-label="Pending Approval">' +
                 '<td data-label="" style="display: none">'+PredefineId+'</td>' +
-                '<td data-label=""><img src='+Template+'  style="width: 40px; height:40px; text-align:center;"/></td>' +
+                '<td data-label=""><img src='+Template+'  style="width: 160px; height:160px; text-align:center;"/></td>' +
                 '<td data-label="" >'+CollarSize+'</td>' +
-                '<td data-label="" >'+FabricType+'</td>' +
-                '<td data-label=""  >'+FabricDesign+'</td>' +
-                '<td data-label="" >'+FabricDesignImage+'</td>' +
+                '<td data-label=""  style="display: none">'+FabricDesignID+'</td>' +
+                '<td data-label="" ><img src='+FabricDesignImage+'  style="width: 160px; height:160px; text-align:center;"/></td>' +
                 '<td data-label="" >'+FabricDesignCode+'</td>' +
-                '<td data-label="" >'+FabricColor+'</td>' +
-                '<td data-label="" style="display: none">'+ButtonDesign+'</td>' +
-                '<td data-label="" style="display: none">'+ButtonColor+'</td>' +
-                '<td data-label="" style="display: none">'+NoolColor+'</td>' +
+                '<td data-label="" style="display: none">'+ButtonDesignID+'</td>' +
                 '<td data-label="" >'+Quantity+'</td>' +
                 '<td><div class="table__button-group">' +
                 '<a href="#" class="viewBtn"style="margin: 2px;color: #00B4CC">View  |</a>' +
@@ -238,10 +195,14 @@ $(document).ready(function () {
                 '</div></td>'+
                 '</tr>\n'
             );
+
             $('input[type=text]').val('');
-            // $('html, body').animate({
-            //     scrollTop: $("#rowTop").offset().top   //id of div to be scrolled
-            // }, 1000);
+            $('[name=options] option').filter(function() {
+                return ($(this).text() == '--SELECT--'); //To select Blue
+            }).prop('selected', true);
+            PredefineId=0;
+            $("#CollarSize").prop("disabled", true);
+            $(".error").hide();
 
         }
 
@@ -257,20 +218,21 @@ $(document).ready(function () {
             $("#bucketTable").show();
 
             $('html, body').animate({
-                scrollTop: $("#addItemBucketTable").offset().top   //id of div to be scrolled
-            }, 1000);
+                scrollTop: $("#right").offset().top   //id of div to be scrolled
+            }, 1);
         }
 
     });
 
     $("#itemTableNextTbn").click(function(){
-        console.log("Item table button cllickd");
+       // console.log("Item table button cllickd");
 
         $("#bucketTable").hide();
         $("#createOrderForm1").hide();
         $("#bucketTable").hide();
         $("#createOrderForm2").show();
         $("#header-gradant-form").show();
+        $("#header-name").html("Order Description 3/3");
 
         // $("#createOrderForm2").show();
 
@@ -299,39 +261,7 @@ $(document).ready(function () {
         alert(result);
     });
 
-    // $('#ViewAllTbn').click(function () {
-    //
-    //     let i =0;
-    //     let orderItemList= [];
-    //     $("table > tbody > tr").each(function () {
-    //         let arr =[$(this).find('td').eq(0).text()];
-    //         var num =$(this).find('td').eq(0).text();
-    //         orderItem = {
-    //             "Item" : $(this).find('td').eq(0).text(),
-    //             "Style" : $(this).find('td').eq(1).text(),
-    //             "Size" : $(this).find('td').eq(2).text(),
-    //             "Mateial" : $(this).find('td').eq(3).text(),
-    //             "Button" : $(this).find('td').eq(4).text(),
-    //             "Nool" : $(this).find('td').eq(5).text(),
-    //             "Quantity" : $(this).find('td').eq(6).text(),
-    //         };
-    //
-    //         var myJSON = JSON.stringify(orderItem);
-    //         orderItemList[i]=myJSON;
-    //         // console.log("myJSONList :"+orderItemList[i]);
-    //         console.log("i  :"+i);
-    //         i=i+1
-    //
-    //
-    //
-    //     });
-    //     console.log("myJSONList :"+orderItemList[1]);
-    //     console.log("length :"+orderItemList.length);
-    //
-    //     // console.log("Arra is:"+Array);
-    //     // console.log("Arra0 is:"+Array[0]);
-    //     // console.log("Arra00 is:"+Array[0][0]);
-    // });
+
 
     $('#backBtn').click(function () {
         $("#header-gradant-form").show();
@@ -342,7 +272,7 @@ $(document).ready(function () {
 
     $("#NewCustomerBtn").click(function(){
         $('html, body').animate({
-            scrollTop: $("#createOrderForm1").offset().top   //id of div to be scrolled
+            scrollTop: $("#right").offset().top   //id of div to be scrolled
         }, 1);
 
         document.querySelector('#newCustomerForm').style.display = "flex";
@@ -358,7 +288,7 @@ $(document).ready(function () {
 
     $("#ExistingCustomerBtn").click(function () {
         $('html, body').animate({
-            scrollTop: $("#createOrderForm1").offset().top   //id of div to be scrolled
+            scrollTop: $("#right").offset().top   //id of div to be scrolled
         }, 1);
 
         document.querySelector('#bg-modal-existing-customer-Table').style.display = "flex";
@@ -433,151 +363,108 @@ $(document).ready(function () {
 
 
     $("#excustomerCloseBtn").click(function () {
-        console.log("customerCloseBtn")
+       // console.log("customerCloseBtn")
         // document.querySelector('.model-footer-oI-Table').style.display = "none";
         document.querySelector('.bg-modal').style.display = "none";
         document.querySelector('body').style.overflow = "auto";
     });
     $(".close").click(function () {
-        console.log("customerCloseBtn")
+      //  console.log("customerCloseBtn")
         $('#newCustomerForm input[type=text]').val('');
         document.querySelector('.bg-modal').style.display = "none";
         document.querySelector('body').style.overflow = "auto";
     });
 
     $("#saveOrder").click(function () {
-        //order id
-        let order_name =$("#OrderName").val();
+
+        let orderArray;
+        let order_description =$("#OrderName").val();
         let order_status =$('#OrderStatus option:selected').val();
-        let order_description =$("#Description").val();
         let order_due_date =$("#DueDate").val();
-        let estimate_time =$("label[for='EstimateTime']").html();
-        let estimate_price =$("label[for='EstimateTotalPrice']").html();
-        let advance_price =$("label[for='EstimateAdvance']").html();
+        // let estimate_time =$("label[for='EstimateTime']").html();
+        // let order_price =$("label[for='EstimateTotalPrice']").html();
+        // let advance_price =$("label[for='EstimateAdvance']").html();
+        let estimate_time =0;
+        let order_price =0;
+        let advance_price =0;
 
         let customer_ID =parseInt($("label[for='customerLabel']").html());
 
-        if(order_name=="" || order_status=="0" || order_due_date=="" || customer_ID=="" ){
-           alert("Some Field Missing");
+        if(order_description=="" ){
+            $("label[for='OD']").show();
+        }if(customer_ID=="" ){
+            $("label[for='AC']").show();
         }else{
-            let orderArray =[order_name,order_status,order_description,order_due_date,estimate_time,estimate_price,advance_price,0,customer_ID];
+            // order_ID
+            // order_description
+            // order_status
+            // order_due_date
+            // estimate_time
+            // order_price
+            // advance_price
+            // sales_manager_ID
+            // customer_ID
+            let orderItemList= [];
+             orderArray =[order_description,"start",order_due_date,parseInt(110),parseInt(500),parseInt(250), parseInt(0),customer_ID];
+
+            let i =0;
+             $("#addItemBucketTable table > tbody > tr").each(function () {
+
+                var num =$(this).find('td').eq(3).text();
+               // console.log("fabric id "+num);
+                // ["M","1","100","","0","1"]
+
+                orderItem = [
+
+                    // Template
+                    $(this).find('td').eq(2).text(), //Size
+                    $(this).find('td').eq(3).text(), //Fabric Design Id
+                    $(this).find('td').eq(6).text(),  //Button Design id
+                    $(this).find('td').eq(7).text(),  //Quantity
+                    parseInt(0),                                  //order id
+                    parseInt( $(this).find('td').eq(0).text()),//Predefine Id
+
+                ];
+                if(i>0){
+                    //orderItemList[i-1]=myJSON;
+                    orderItemList.push(orderItem);
+                }
+
+               // console.log("i  :"+i);
+                i=i+1
+
+            });
+
+             $.ajax({
+                type: 'POST',
+                url: "http://localhost/Richway-garment-system/createOrderController/OrderAdd",
+                data: { orderArray: orderArray, orderItemList: orderItemList,  key: "orderArrayS"},
+                success: function(data){
+
+                    //console.log("Save Order :"+data);
+
+                },
+                error       : function() {
+                    console.log("error");
+                }
+            });
 
         }
 
 
-        // order_item_ID
-        // Item_type
-        // Item_style
 
-        // material
-        // material_design
-        // material_design_image
-        // material_design_code
-        // material_color
-
-        // button_shape
-        // button_color
-
-        // nool_color
-
-        // quantity
-
-        // order_ID
-        // p_ID
 ////////////////////////////////////////////////////////////////////////////////////////
-        // <th scope="col">Predefine Id</th>
-        // <th scope="col">Template</th>
-        // <th scope="col">Size</th>
-
-        // <th scope="col">Fabric Type</th>
-        // <th scope="col">Fabric Design</th>
-        // <th scope="col">Fabric Design Image</th>
-        // <th scope="col">Fabric Design Code</th>
-        // <th scope="col">Fabric Color</th>
-
-        // <th scope="col">Button Design </th>
-        // <th scope="col">Button Color</th>
-
-        // <th scope="col">Quantity</th>
-
-        let i =0;
-        let orderItemList= [];
-        $("#addItemBucketTable table > tbody > tr").each(function () {
-            let arr =[$(this).find('td').eq(0).text()];
-            var num =$(this).find('td').eq(0).text();
-            orderItem = [
-
-                // Template
-
-
-                $(this).find('td').eq(3).text(),    //Fabric Type
-                $(this).find('td').eq(4).text(), //Fabric Design
-                $(this).find('td').eq(5).text(), //Fabric Design Image
-                $(this).find('td').eq(6).text(), //Fabric Design Code
-                $(this).find('td').eq(7).text(), //Fabric Color
-
-                $(this).find('td').eq(8).text(),  //Button Design
-                $(this).find('td').eq(9).text(),  //Button Color
-                $(this).find('td').eq(10).text(), //nool color
-                $(this).find('td').eq(11).text(),  //Quantity
-                parseInt(0),                                  //order id
-                parseInt( $(this).find('td').eq(0).text())//Predefine Id
-
-            ];
-
-            //var myJSON = JSON.stringify(orderItem);
-            if(i>0){
-                //orderItemList[i-1]=myJSON;
-                orderItemList.push(orderItem);
-            }
-            // console.log("myJSONList :"+orderItemList[i]);
-            console.log("i  :"+i);
-            i=i+1
 
 
 
-        });
 
-        $.ajax({
-            type: 'POST',
-            url: "http://localhost/Richway-garment-system/createOrderController/OrderAdd",
-            data: { orderArray: orderArray, orderItemList: orderItemList,  key: "orderArrayS"},
-            success: function(data){
 
-                console.log("orderArray ? :"+data);
 
-            },
-            error       : function() {
-                console.log("error");
-            }
-        });
 
     });
-    $('#imageUploadForm').on('submit',(function() {
 
-        var formData = new FormData(this);
 
-        $.ajax({
-            type:'POST',
-            url: $(this).attr('action'),
-            data:formData,
-            cache:false,
-            contentType: false,
-            processData: false,
-            success:function(data){
-                console.log("success");
-                console.log(data);
-            },
-            error: function(data){
-                console.log("error");
-                console.log(data);
-            }
-        });
-    }));
 
-    $("#ImageBrowse").on("change", function() {
-        $("#imageUploadForm").submit();
-    });
 });
 
 
@@ -589,12 +476,13 @@ function productDelete(ctl) {
 
 function assignCustomer() {
 
-    let i, tblrows, empID="";
+    let i, tblrows, empID="",cname="";
 
     tblrows = document.getElementsByClassName("tblrow");
     for (i = 0; i < tblrows.length; i++) {
         if(tblrows[i].className.includes('active-row')){
             empID = tblrows[i].firstElementChild.innerHTML;
+            cname =  tblrows[i].children[1].innerHTML;
         }
     }
 
@@ -605,6 +493,7 @@ function assignCustomer() {
         document.querySelector('body').style.overflow = "auto";
         jQuery(function($) {
             $("label[for='customerLabel']").text(empID);
+            $("label[for='customerDetailsLabel']").text(cname);
         });
 
     }
@@ -615,13 +504,6 @@ function assignCustomer() {
 }
 
 
-// function uploadFabric(){
-// fetch('api-upload-image.php',{
-//     method :"POST",
-//     body : new FormData(document.getElementById('uploadFabric'))
-// })
-// }
-
 function selectedCard(ctl){
 
     $(".choice").removeClass("choice");
@@ -631,13 +513,24 @@ function selectedCard(ctl){
 
 }
 let imgurltemp ="";
+let isbuttonInclude='no';
 function addTemplate() {
     if($(".option-card").hasClass("choice")){
         let id =0;
+        let type="";
+        let handType ="";
+        let collorType="";
 
+        $(".choice .card-description").each(function() {
+            type =$('.template-type').html();
+            handType = $('.template-handtype').html();
+            collorType = $('.template-collartype').html();
+
+        });
 
         $(".choice .preID").each(function() {
             id =$(this).val();
+
         });
         $(".choice .pImageURL").each(function() {
             imgurltemp =$(this).val();
@@ -645,6 +538,27 @@ function addTemplate() {
         });
         $("label[for='ChooseTemplate']").text(id);
 
+        $.ajax({
+            type: 'POST',
+            url: "http://localhost/Richway-garment-system/createOrderController/isbuttoninpredefineCheck",
+            data: { table:type, predefineId: id,  key: "numberofbuttoncheck"},
+            success: function(data){
+
+                // console.log("numberofbuttoncheck  :"+data);
+                if(data>0){
+                    $("#ButtonDesignDiv").show();
+                    isbuttonInclude ='yes';
+                }else{
+                    isbuttonInclude ='no';
+                    $("#ButtonDesignDiv").hide();
+                }
+            },
+            error       : function() {
+                console.log("error");
+            }
+        });
+
+        $("label[for='TemplateDescription']").text(type+" with "+handType+" with "+collorType+" collar.");
         document.querySelector('#PredefineModel').style.display = "none";
         document.querySelector('body').style.overflow = "auto";
     }else{
@@ -676,4 +590,29 @@ function IsName(name) {
     }else{
         return true;
     }
+}
+/********************image in dropdownlist *********************/
+// function formatOptions2 (state) {
+//     if (!state.id) { return state.text; }
+//     if(state.id>1){}
+//     // console.log("sale val :"+state.element.value);
+//     var $state = $(
+//         '<span class="dropdownList" ><img class="dropdownimage" src="http://localhost/Richway-garment-system/public/assets/img/' + state.element.value.toLowerCase() + '.jpg"  /> ' + state.text + '</span>'
+//     );
+//     return $state;
+// }
+function formatOptions (state) {
+    if (!state.id) { return state.text; }
+
+    var $state;
+    $state = $(
+        '<span class="dropdownList" ><img class="dropdownimage" src="' + state.element.value+ '"  /> ' + state.text + '</span>'
+    );
+    if(state.element.value=='0'){
+        $state = $(
+            '<span class="dropdownList" id="impt" >--SELECT--</span>'
+        );
+    }
+
+    return $state;
 }

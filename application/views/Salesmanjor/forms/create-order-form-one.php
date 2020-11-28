@@ -1,169 +1,74 @@
+<script src="https://code.jquery.com/jquery-2.1.1.min.js" type="text/javascript"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.1/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.1/js/select2.min.js"></script>
 
 
 
-    <div class="flexbox-container" id="createOrderForm1" >
+<div class="flexbox-container" id="createOrderForm1" >
 
 
         <div class="inputfield">
             <label>Item Type</label>
-            <select id="ItemType" name="itemtype" class="form-contrall">
-            <option value="0" selected="" disabled="">--SELECT--</option>
+            <select id="ItemType" name="options" class="form-contrall">
+            <option  value="0" selected="" disabled="">--SELECT--</option>
             <?php if(!empty($data)): ?>
                 <?php foreach($data  as $c):?>
                     <option data-value="<?php echo $c->type; ?>"><?php echo $c->type ; ?></option>
                 <?php endforeach;?>
             <?php endif; ?>
             </select>
+            <label for="IT" class="error" style="color: red; display:none" >This Field Required!</label>
         </div>
 
 
-
-<!--        <div class="inputfield">-->
-<!--            <label for="ItemType">Item Style</label>-->
-<!--            <select id="ItemStyle" name="itemstyle" class="form-contrall">-->
-
-<!--        </select>-->
-<!--        </div>-->
 
         <div class="inputfield">
             <label for="CollarSize">Collar Size</label>
-            <select id="CollarSize" name="collarsize" class="form-contrall">
-<!--                <option value="volvo">15.5</option>-->
-<!--                <option value="saab">16.5</option>-->
-            </select>
+            <select id="CollarSize" name="options" class="form-contrall"></select>
+            <label for="CS" class="error" style="color: red; display:none" >This Field Required!</label>
         </div>
+
+
 
     <div class="inputfield">
         <label for="Material">Choose Template</label>
         <div class="inputbutton" >
-            <label for='ChooseTemplate' class="form-contrall-label"></label>
+            <label for='ChooseTemplate' class="form-contrall-label" style="display: none;"></label>
+            <label for='TemplateDescription' class="form-contrall-label"></label>
             <button id="ChooseTemplateID" onclick="location.href" type="button"  class="btn2 input2 cripple">Find</button>
         </div>
+        <label for="CT" class="error" style="color: red; display:none" >This Field Required!</label>
     </div>
-        <div class="inputfield">
-            <label for="Material">Fabric Type</label>
-            <select id="FabricType" name="FabricType" class="form-contrall">
-<!--                <option value="0" selected="" disabled="">--SELECT--</option>-->
 
-            </select>
+    <style>
+        .dropdownimage{
+            width:50px;
+            height:60px;
+            display: inline-block;
+        }
+        .dropdownList{
+            margin-top:-10px;
+            padding-top: 0px;
+
+        }
+    </style>
+
+        <div class="inputfield" >
+            <label>Fabric Design Code</label>
+            <select id='fabricdesigncode' name="options" style='width: 100%;'></select>
+            <label for="FDC"  class="error" style="color: red; display:none" >This Field Required!</label>
         </div>
 
-<!--        <div class="inputfield">-->
-<!--            <label>Fabric Design</label>-->
-<!--            <input type="text" id="MaterialDesign" name="materialDesign" class="form-contrall">-->
-<!--        </div>-->
+    <div class="inputfield" id="ButtonDesignDiv">
+        <label>Button  Design Code</label>
+        <select id='buttondesigncode' name="options" style='width: 100%;'></select>
+        <label for="BDC"  class="error" style="color: red; display:none" >This Field Required!</label>
+    </div>
 
-    <div class="inputfield">
-           <label>Fabric Design</label>
-        <select id="FabricDesign" name="itemtype" class="form-contrall">
-            <option value="0" selected="" disabled="">--SELECT--</option>
-            <option value="Plane">Plane</option>
-            <option value="Custom" >Custom</option>
-        </select>
-   </div>
-
-
-
-<!--        <div class="inputfield" id="addFabricDesign">-->
-<!--            <label>Add Fabric Design</label>-->
-<!--            <div class="inputbutton" style="justify-content: left; width: 100%;">-->
-<!--               <form id="uploadFabric" onsubmit="return false" style="justify-content: left; width: 100%;" >-->
-<!--                    <input type="file" class="form-contrall" style="">-->
-<!--                  <button id="" type="button" onclick="uploadFabric()" class="">OK</button>-->
-<!--                </form>-->
-<!--           </div>-->
-<!--        </div>-->
-<style>
-    [type="file"] {
-        height: 0;
-        overflow: hidden;
-        width: 0;
-    }
-
-    [type="file"] + label {
-        background: #5e72e4;
-        border: none;
-        border-radius: 5px;
-        color: #fff;
-        cursor: pointer;
-        display: inline-block;
-        font-family: 'Rubik', sans-serif;
-        font-size: inherit;
-        font-weight: 500;
-        margin-bottom: 1rem;
-        outline: none;
-        padding: 1rem 50px;
-        position: relative;
-        transition: all 0.3s;
-        vertical-align: middle;
-
-    &:hover {
-         background-color: #5e72e4(#5e72e4, 10%);
-     }
-
-    &.btn-1 {
-         background-color: #5e72e4;
-         box-shadow: 0 6px #5e72e4(#5e72e4, 10%);
-         transition: none;
-
-    &:hover {
-         box-shadow: 0 4px #5e72e4(#5e72e4, 10%);
-         top: 2px;
-     }
-    }
-</style>
-        <div class="inputfield" id="addFabricDesign">
-            <label>Add Fabric Design</label>
-
-            <form id="uploadFabric" onsubmit="return false" style="justify-content: left; width: 100%;" >
-                <input type="file" id="file">
-                <label for="file" class="btn-1">upload file</label>
-
-            </form>
-
-        </div>
-
-
-
-        <div class="inputfield" id="FabricDesignCodeDiv">
-            <label for="FabricDesignCode" >Fabric Design Code</label>
-            <input type="text" id="FabricDesignCode" name="FabricDesignCode" class="form-contrall">
-        </div>
-
-        <div class="inputfield" id="FabricColorDiv">
-            <label for="FabricColor">Fabric Color</label>
-<!--            <input type="text" id="FabricColor" name="materialColor" class="form-contrall">-->
-            <input type="color" id="FabricColor" name="materialColor" style="width: 100%; height: 43px;border: none">
-        </div>
-
-
-        <div class="inputfield" id="ButtonDesignDiv">
-            <label>Button Design</label>
-
-            <select id="ButtonDesign" name="buttonDesign" class="form-contrall">
-                <option value="0" selected="" disabled="">--SELECT--</option>
-                <option value="Plane">Flat</option>
-                <option value="Custom" >Bubble</option>
-            </select>
-        </div>
-
-
-
-        <div class="inputfield" id="ButtonColorDiv">
-            <label for="MatiralColor">Button Color</label>
-            <input type="text" id="ButtonColor" name="matiralcolor" class="form-contrall">
-        </div>
-
-        <div class="inputfield" id="NoolColorDiv">
-            <label for="MatiralColor">Nool Color</label>
-            <input type="text" id="NoolColor" name="noolColor" class="form-contrall">
-        </div>
-
-
-
-    <div class="inputfield">
+     <div class="inputfield">
         <label>Quantity</label>
         <input type="text" id="Quantity" name="quantity" class="form-contrall">
+         <label for="Q"  class="error" style="color: red; display:none" >This Field Required!</label>
     </div>
 
 
