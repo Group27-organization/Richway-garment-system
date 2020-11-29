@@ -87,7 +87,7 @@ private $manageSupplierModel;
     public function addSupplierForm(){
 
 
-        $this->view("Stock/addSupplierForm");
+        $this->view("stock/addSupplierForm");
 
 
         

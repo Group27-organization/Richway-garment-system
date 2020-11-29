@@ -13,7 +13,7 @@ class stockIssueController extends framework{
     public function index(){
 
 
-        $this->view("Stock/stock-issue-Form");
+        $this->view("stock/stock-issue-Form");
 
         $result = $this->stockIssueModel->loadSupplierTable();
 
@@ -32,7 +32,7 @@ class stockIssueController extends framework{
                 <table class='table align-items-center table-flush'>
                         <thead class='thead-light'>
                         <tr>
-                            <th scope=col>Stock ID</th>
+                            <th scope=col>stock ID</th>
                             <th scope=col>Order ID</th>
                             <th scope=col>Raw Material ID</th>
                             <th scope=col>order_item_ID</th>
@@ -77,7 +77,7 @@ class stockIssueController extends framework{
     }
     public function addIssueform(){
 
-        $this->view("Stock/stockIssueForm");
+        $this->view("stock/stockIssueForm");
 
     }
 

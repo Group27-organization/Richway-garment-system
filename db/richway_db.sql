@@ -528,7 +528,7 @@ INSERT INTO `user_role` (`role_ID`, `title`, `description`) VALUES
 (3, 'sales_manager', 'Sales Manager of the company.'),
 (4, 'production_manager', 'Production Manager of the company.'),
 (5, 'supervisor', 'Supervisor of the company.'),
-(6, 'stock_keeper', 'Stock Keeper of the company.'),
+(6, 'stock_keeper', 'stock Keeper of the company.'),
 (7, 'accountant', 'Accountant of the company.');
 
 -- --------------------------------------------------------

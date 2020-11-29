@@ -31,11 +31,11 @@ class stockNavigationController extends framework {
 
 
     public function index(){
-        $this->view("Stock/manageStock");
+        $this->view("stock/manageStock");
     }
     public function loadaddstockform(){
         $order_ID = $this->getSession('selected_orderforstock');
-        $this->view("Stock/add-raw materials-item-form",$order_ID);
+        $this->view("stock/add-raw materials-item-form",$order_ID);
 
     }
 
@@ -43,15 +43,15 @@ class stockNavigationController extends framework {
 
 
     public function stockIssue(){
-        $this->view("Stock/stockIssue");
+        $this->view("stock/stockIssue");
     }
 
     public function stockManage(){
-        $this->view("Stock/manageStock");
+        $this->view("stock/manageStock");
     }
 
     public function addSupplier(){
-        $this->view("Stock/addSupplier");
+        $this->view("stock/addSupplier");
     }
 
 //    public  function loadRTMTable(){
@@ -65,7 +65,7 @@ class stockNavigationController extends framework {
 //                        <table class=\"table align-items-center table-flush\">
 //                        <thead class=\"thead-light\">
 //                        <tr>
-//                            <th scope=col>Stock ID</th>
+//                            <th scope=col>stock ID</th>
 //                            <th scope=col>Order ID</th>
 //                            <th scope=col>Raw Material ID</th>
 //                            <th scope=col>order_item_ID</th>
