@@ -15,6 +15,39 @@ addRawmaterial.onclick = function() {
 
 }
 
+openRaw(null,'button');
+addRawmaterialBtn = document.getElementById("addbutton");
+addbutton.onclick = function() {
+
+    $.ajax({
+        type: 'POST',
+        url: "http://localhost/Richway-garment-system/rawMaterialController/setNewSession",
+        data: {type: 'button', key: "rawMaterialData"},
+        success: function (data, status) {
+            location.href = "http://localhost/Richway-garment-system/rawMaterialController/buttonform";
+        },
+        error: function () {
+        }
+    });
+
+}
+
+openRaw(null,'nool');
+addRawmaterialBtn = document.getElementById("addnool");
+addnool.onclick = function() {
+
+    $.ajax({
+        type: 'POST',
+        url: "http://localhost/Richway-garment-system/rawMaterialController/setNewSession",
+        data: {type: 'nool', key: "addnoolData"},
+        success: function (data, status) {
+            location.href = "http://localhost/Richway-garment-system/rawMaterialController/noolform";
+        },
+        error: function () {
+        }
+    });
+
+}
 
 
 function openRaw(evt,elementID) {
@@ -68,3 +101,12 @@ $("#addfabric").click(function () {
 
 });
 
+$("#addbutton").click(function () {
+    location.href = "http://localhost/Richway-garment-system/rawMaterialController/buttonform";
+
+});
+
+$("#addbutton").click(function () {
+    location.href = "http://localhost/Richway-garment-system/rawMaterialController/buttonform";
+
+});

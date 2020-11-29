@@ -133,9 +133,17 @@ class  rawMaterialController extends  framework
         $this->view("admin/addfabricform", $data);
     }
 
+    public function buttonform()
+    {
 
+        $this->view("admin/addbuttonform", $data);
+    }
 
+    public function noolform()
+    {
 
+        $this->view("admin/addnoolform", $data);
+    }
 
 
 
@@ -253,6 +261,130 @@ class  rawMaterialController extends  framework
 
 
     }
+
+    public function addbutton(){
+
+
+        $buttonData = [
+            'ButtonCode'=> $this->input('button_code'),
+            'Description'=>$this->input('Description'),
+            'Price'=>$this->input('price'),
+            'Image'=>$this->input('image'),
+            'button_codeError'=> '',
+            'DescriptionError'=> '',
+            'priceError'=> '',
+            'imageError'=> '',
+        ];
+
+       // echo("<script>console.log('PHP in table select: " . json_encode($fabricData['ButtonCode']) . "');</script>");
+
+        if(empty( $buttonData['ButtonCode'])){
+            $buttonData['button_codeError']="Button Code is required";
+        }
+        if(empty( $buttonData['Description'])){
+            $buttonData['DescriptionError']="Description is required";
+        }
+        if(empty( $buttonData['Price'])){
+            $buttonData['priceError']="Price is required";
+        }
+        if(empty( $buttonData['Image'])){
+            $buttonData[ 'imageError']="Image is required";
+        }
+
+
+
+
+        if(empty($buttonData['button_codeError'])&&empty($buttonData['DescriptionError'])&& empty($buttonData['priceError'])&&empty($buttonData['imageError'])) {
+            $Data = [$buttonData['ButtonCode'], $buttonData['Description'], $buttonData['Price'], $buttonData['Image'], 1];
+
+
+            if ($this->rawMaterialModel->insertbutton($Data)) {
+                // echo "Hii";
+                echo '
+                      <script>
+                                    if(!alert("Button added successfully")) {
+                                        window.location.href = "http://localhost/Richway-garment-system/rawMaterialController/buttonform"
+                                    }
+                      </script>
+
+                    ';
+            } else {
+
+                echo '
+
+                    <script>
+                                if(!alert("Something went wrong! please try again.")) {
+                                    window.location.href = "http://localhost/Richway-garment-system/rawMaterialController/buttonform"
+                                }
+                    </script>
+                    ';
+
+            }
+        }
+        else {
+            $this->view("admin/addbuttonform", $buttonData);
+
+        }
+
+
+
+        }
+
+
+    public function addnool(){
+
+
+        $noolData = [
+            'ColorCode'=> $this->input('color_code'),
+            'Type'=>$this->input('type'),
+            'color_codeError'=> '',
+            'typeError'=> '',
+        ];
+
+        if(empty( $noolData['ColorCode'])){
+            $noolData['color_codeError']="Color Code is required";
+        }
+        if(empty( $noolData['Type'])){
+            $noolData['typeError']="Type is required";
+        }
+
+        if(empty($noolData['color_codeError'])&&empty($noolData['typeError'])) {
+            $Data = [$noolData['ColorCode'], $noolData['Type'], 1];
+
+            if ($this->rawMaterialModel->insertnool($Data)) {
+
+                echo '
+                      <script>
+                                    if(!alert("Nool added successfully")) {
+                                        window.location.href = "http://localhost/Richway-garment-system/rawMaterialController/noolform"
+                                    }
+                      </script>
+
+                    ';
+            } else {
+
+                echo '
+
+                    <script>
+                                if(!alert("Something went wrong! please try again.")) {
+                                    window.location.href = "http://localhost/Richway-garment-system/rawMaterialController/noolform"
+                                }
+                    </script>
+                    ';
+
+            }
+
+
+        }
+
+        else {
+            $this->view("admin/addnoolform", $noolData);
+
+        }
+
+
+    }
+
 
 
 

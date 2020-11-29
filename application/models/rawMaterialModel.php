@@ -22,8 +22,17 @@ class rawMaterialModel extends database {
         }
     }
 
+    public function insertbutton($Data){
+        if($this->Query("INSERT INTO button(button_code,Description,price,image,active) VALUES (?,?,?,?,?)", $Data) ){
+            return true;
+        }
+    }
 
-
+    public function insertnool($Data){
+        if($this->Query("INSERT INTO nool(color_code,type,active) VALUES (?,?,?)", $Data) ){
+            return true;
+        }
+    }
 
 
 
