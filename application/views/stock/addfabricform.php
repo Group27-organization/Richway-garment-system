@@ -10,6 +10,7 @@
     <?php linkCSS("assets/css/admin-adduser.css") ?>
     <?php linkCSS("assets/css/form.css") ?>
     <?php linkCSS("assets/css/admin-table.css") ?>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 </head>
 <body>
@@ -36,12 +37,12 @@
         </div>
 
 
-        <form  action="<?php echo BASEURL;?>/rawMaterialToStockController/addfabric" method="POST" >
+        <form id="fabForm"  action="<?php echo BASEURL;?>/rawMaterialToStockController/addfabric" method="POST" >
             <div class="flexbox-container">
 
                 <div class="inputfield">
                     <label for="fabric_code">Fabric Code</label>
-                    <select id="ItemType" name="fabric_code_id" class="form-contrall">-->
+                    <select id="ItemType" name="fabric_code_id" class="form-contrall" required>
                         <option  value="0" selected="" disabled="">--SELECT--</option>
                                      <?php if(!empty($data)): ?>
                                           <?php foreach($data  as $c):?>
@@ -49,32 +50,32 @@
                                           <?php endforeach;?>
                                      <?php endif; ?>
                     </select>
-                    <label class="error" style="color:red;">
-                        <?php   if($data['FabricCodeIDError']) :echo $data['FabricCodeIDError']; endif; ?>
+                    <label id="A" class="error" style="color:red; display: none">
+                       This Field required
                     </label>
                 </div>
 
                 <div class="inputfield">
                     <label for="fabric_type">Quantity</label>
-                    <input type="text" id="" name="quantity" class="form-contrall"  value=" ">
-                    <label class="error" style="color:red;">
-                        <?php   if($data['QuantityError']) :echo $data['QuantityError']; endif; ?>
+                    <input type="text" id="fabQuantity" name="quantity" class="form-contrall"  value="" required>
+                    <label id="B" class="error" style="color:red; display: none">
+                        This Field required
                     </label>
                 </div>
 
 
                 <div class="inputfield">
                     <label for="Description">Description</label>
-                    <textarea id="Description" name="description" rows="4" cols="50" class="form-contrall"></textarea>
-                    <label class="error" style="color:red;">
-                        <?php   if($data['DescriptionError']) :echo $data['DescriptionError']; endif; ?>
+                    <textarea id="Description" name="description" rows="4" cols="50" class="form-contrall" required></textarea>
+                    <label id="C" class="error" style="color:red; display: none">
+                        This Field required
                     </label>
                 </div>
 
 
 
                 <br><div class="inputfield inputbutton">
-                    <input type="submit" value="Submit" class="btn cripple">
+                    <input id="fabsubmitBtn" type='button' value="Submit"  class="btn cripple">
                 </div>
 
 
@@ -85,6 +86,7 @@
     </div><!--    right-->
 </div>  <!--    grid container-->
 
+<?php linkJS("assets/js/addfabric-to-stock.js") ?>
 
 
 </body>

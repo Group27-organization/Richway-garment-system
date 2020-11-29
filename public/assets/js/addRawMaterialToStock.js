@@ -1,6 +1,6 @@
 openRaw(null,'fabric');
 
-
+let currenttab;
 function openRaw(evt,rawitemID) {
     let i, tablinks, addRawmaterialBtn;
 
@@ -11,6 +11,8 @@ function openRaw(evt,rawitemID) {
         }
         evt.currentTarget.className += " active";
         addRawmaterialBtn = document.getElementById("addRawmaterial");
+
+        currenttab =rawitemID;
 
         addRawmaterialBtn.onclick = function() {
             console.log("RRR :"+rawitemID);
@@ -97,3 +99,36 @@ function openRaw(evt,rawitemID) {
 
 
 }
+function updateRM() {
+
+    let i, tblrows, supID = "";
+
+    tblrows = document.getElementsByClassName("tblrow");
+    for (i = 0; i < tblrows.length; i++) {
+        if (tblrows[i].className.includes('active-row')) {
+            supID = tblrows[i].firstElementChild.innerHTML;
+            jQuery(function ($) {
+
+                $.ajax({
+                    type: 'POST',
+                    url: "http://localhost/Richway-garment-system/rawMaterialToStockController/setNewSession",
+                    data: {supplierID: supID, rawmaterialtype : currenttab, key: "rawMaterialData"},
+                    success: function (data) {
+                        // alert("you clicked"+);
+                        location.href = "http://localhost/Richway-garment-system/rawMaterialToStockController/editfabric";
+                    },
+                    error: function () {
+                        // console.log("update data not  load")
+                        //$("#tableParent").html('<br><p>Something went wrong.</p>');
+                    }
+                });
+
+
+            });
+        }
+    }
+}
+
+
+
+

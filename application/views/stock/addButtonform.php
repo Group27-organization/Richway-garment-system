@@ -10,6 +10,7 @@
     <?php linkCSS("assets/css/admin-adduser.css") ?>
     <?php linkCSS("assets/css/form.css") ?>
     <?php linkCSS("assets/css/admin-table.css") ?>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 </head>
 <body>
@@ -35,7 +36,7 @@
             </div>
         </div>
 
-        <form  action="<?php echo BASEURL;?>/rawMaterialToStockController/addbutton" method="POST" >
+        <form id="btnForm" action="<?php echo BASEURL;?>/rawMaterialToStockController/addbutton" method="POST" >
             <div class="flexbox-container">
 
                 <div class="inputfield">
@@ -48,29 +49,29 @@
                             <?php endforeach;?>
                         <?php endif; ?>
                     </select>
-                    <label class="error" style="color:red;">
-                        <?php   if($data['button_codeError']) :echo $data['button_codeError']; endif; ?>
+                    <label id="A" class="error" style="color:red; display: none">
+                        This Field required
                     </label>
                 </div>
 
                 <div class="inputfield">
                     <label for="fabric_type">Quantity</label>
-                    <input type="text" id="" name="quantity" class="form-contrall"  value=" ">
-                    <label class="error" style="color:red;">
-                        <?php   if($data['QuantityError']) :echo $data['QuantityError']; endif; ?>
+                    <input type="text" id="btnQuantity" name="quantity" class="form-contrall"  value="">
+                    <label id="B" class="error" style="color:red; display: none">
+                        This Field required
                     </label>
                 </div>
 
                 <div class="inputfield">
                     <label for="Description">Description</label>
                     <textarea id="Description" maxlength="500" name="description" rows="4" cols="50" class="form-contrall" value="<?php if($data['Description']) :echo $data['Description']; endif; ?>"></textarea>
-                    <label class="error" style="color:red;">
-                        <?php   if($data['DescriptionError']) :echo $data['DescriptionError']; endif; ?>
+                    <label id="C" class="error" style="color:red; display: none">
+                        This Field required
                     </label>
                 </div>
 
                 <br><div class="inputfield inputbutton">
-                    <input type="submit" value="Submit" class="btn cripple">
+                    <input id="btnsubmitBtn" type='button' value="Submit" class="btn cripple">
                 </div>
 
 
@@ -81,8 +82,8 @@
     </div><!--    right-->
 </div>  <!--    grid container-->
 
-<?php linkJS("assets/js/admin-rawMaterial.js") ?>
-<?php linkJS("assets/js/table.js") ?>
+<?php linkJS("assets/js/addbutton-to-stock.js") ?>
+
 
 </body>
 </html>
