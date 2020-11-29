@@ -26,27 +26,45 @@ function openEmp(evt,elementID) {
             tablinks[i].className = tablinks[i].className.replace(" active", "");
         }
         evt.currentTarget.className += " active";
+        addEmployeeBtn = document.getElementById("addEmployee");
+        addEmployeeBtn.onclick = function() {
 
+            $.ajax({
+                type: 'POST',
+                url: "http://localhost/Richway-garment-system/manageEmployeeController/setNewSession",
+                data: { role: elementID,  key: "manageEmployeeData"},
+                success: function(data,status){
+                    location.href = "http://localhost/Richway-garment-system/manageEmployeeController/addEmployeeform";
+                },
+                error       : function() {
+                }
+            });
+
+        }
     }
-        console.log("RRR :"+elementID);
-        $.ajax({
-            type: 'POST',
-            url: "http://localhost/Richway-garment-system/manageEmployeeController/loadTable",
-            data: { employeerole: elementID,  key: "manageEmployeeData2"},
-            dataType: 'html',
-            success: function(data){
-                $("#table-responsive").html(data);
+    console.log("RRR :"+elementID);
+    $.ajax({
+        type: 'POST',
+        url: "http://localhost/Richway-garment-system/manageEmployeeController/loadTable",
+        data: { employeerole: elementID,  key: "manageEmployeeData2"},
+        dataType: 'html',
+        success: function(data){
+            $("#table-responsive").html(data);
 
 
-            },
-            error       : function() {
-                $("#table-responsive").html('<br><p>Something went wrong.</p>');
-            }
-        });
+        },
+        error       : function() {
+            $("#table-responsive").html('<br><p>Something went wrong.</p>');
+        }
+    });
 
 
 }
 
+$("#addEmployee").click(function () {
+    location.href = "http://localhost/Richway-garment-system/manageEmployeeController/addEmployeeform";
+
+});
 
 
 function updateEmployee() {
@@ -65,7 +83,6 @@ function updateEmployee() {
                     url: "http://localhost/Richway-garment-system/manageEmployeeController/NewSession",
                     data: {emp_ID: empID, key: "employeeUpdate"},
                     success: function (data) {
-                       console.log('PHP in model select: " . json_encode($id) . "');
                         location.href = "http://localhost/Richway-garment-system/manageEmployeeController/loadupdateEmployeeform";
                     },
                     error: function () {

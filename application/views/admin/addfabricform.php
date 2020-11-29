@@ -40,12 +40,18 @@
 
                 <div class="inputfield">
                     <label for="fabric_code">Fabric Code</label>
-                    <input type="text" id="fabric_code" name="fabric_code" class="form-contrall"  value=" ">
+                    <input type="text" id="fabric_code" name="fabric_code" class="form-contrall"  value=" <?php if($data['FabricCode']) :echo $data['FabricCode']; endif; ?>">
+                    <label class="error" style="color:red;">
+                        <?php   if($data['fabric_codeError']) :echo $data['fabric_codeError']; endif; ?>
+                    </label>
                 </div>
 
                 <div class="inputfield">
                     <label for="fabric_type">Type</label>
-                    <input type="text" id="type" name="type" class="form-contrall"  value=" ">
+                    <input type="text" id="type" name="type" class="form-contrall"  value=" <?php   if($data['Type']) :echo $data['Type']; endif; ?>">
+                    <label class="error" style="color:red;">
+                        <?php   if($data['fabric_typeError']) :echo $data['fabric_typeError']; endif; ?>
+                    </label>
                 </div>
 
 
@@ -55,31 +61,37 @@
                 </div>
 
                 <div class="inputfield">
-                    <label for="color">Color</label>
-                    <input type="text" id="color" name="color" class="form-contrall" value="">
-                </div>
-
-
-                <div class="inputfield">
                     <label for="band">Band</label>
-                    <input type="text" id="band" name="band" class="form-contrall" value="">
+                    <input type="text" id="band" name="band" class="form-contrall" value="<?php   if($data['Band']) :echo $data['Band']; endif; ?>">
+                    <label class="error" style="color:red;">
+                        <?php   if($data['bandError']) :echo $data['bandError']; endif; ?>
+                    </label>
                 </div>
 
                 <div class="inputfield">
                     <label for="quality_grade">Quality Grade</label>
-                    <input type="text" id="quality_grade" name="quality_grade" class="form-contrall" value=" ">
+                    <input type="text" id="quality_grade" name="quality_grade" class="form-contrall" value="<?php   if($data['QualityGrade']) :echo $data['QualityGrade']; endif; ?>">
+                    <label class="error" style="color:red;">
+                        <?php   if($data['quality_gradeError']) :echo $data['quality_gradeError']; endif; ?>
+                    </label>
                 </div>
 
 
                 <div class="inputfield">
                     <label for="brand">Brand</label>
-                    <input type="text" id="brand" name="brand"  value=""  class="form-contrall" >
+                    <input type="text" id="brand" name="brand"  value="<?php   if($data['Brand']) :echo $data['Brand']; endif; ?>"  class="form-contrall" >
+                    <label class="error" style="color:red;">
+                        <?php   if($data['brandError']) :echo $data['brandError']; endif; ?>
+                    </label>
                 </div>
 
 
                 <div class="inputfield">
                     <label for="price">Price</label>
-                    <input type="text" id="price" name="price"  value=""  class="form-contrall" >
+                    <input type="number" min="0.00" step="0.01" maxlength="100"  id="price" name="price"  value="<?php   if($data['Price']) :echo $data['Price']; endif; ?>"  class="form-contrall" >
+                    <label class="error" style="color:red;">
+                        <?php   if($data['priceError']) :echo $data['priceError']; endif; ?>
+                    </label>
                 </div>
 
                 <br><div class="inputfield inputbutton">

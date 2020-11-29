@@ -24,6 +24,8 @@
 
         <?php include "components/nav.php"; ?>
 
+
+
         <div class="page-header">
             <div class="block">
                 <div class="page-header-routetext">
@@ -65,7 +67,7 @@
                     </div>
                 </div><!--flex row-->
 
-<!--                table start-->
+                <!--                table start-->
 
                 <div class="table-responsive" id="table-responsive">
 

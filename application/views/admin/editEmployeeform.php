@@ -37,6 +37,10 @@
 
 <form  action="<?php echo BASEURL;?>/manageEmployeeController/updateEmployee" method="POST" >
     <div class="flexbox-container">
+        <div class="inputfield">
+            <label for="role">Employee Role</label>
+            <input type="text" id="role" name="role"  value="<?php echo $data->employee_role;?>"  class="form-contrall-readonly" readonly>
+        </div>
 
         <div class="inputfield">
             <label for="name">Full Name</label>
@@ -48,34 +52,57 @@
             <input type="text" id="address" name="address" class="form-contrall" value="<?php echo $data->address;?>">
         </div>
 
-
         <div class="inputfield">
             <label for="contact_no">Contact Number</label>
             <input type="tel" id="contact_no" name="contact_no" class="form-contrall" value="<?php echo $data->contact_no;?>">
         </div>
 
         <div class="inputfield">
-            <label for="email">Email</label>
+            <label for="email">Email Address</label>
             <input id="email" maxlength="100" name="email" class="form-contrall" value="<?php echo $data->email;?> ">
 
         </div>
 
-        <div class="inputfield">
-            <label for="blood_group">Blood Group</label>
-            <input type="text" id="blood_group" name="blood_group" class="form-contrall" value="<?php echo $data->blood_group;?>">
-        </div>
-
 
         <div class="inputfield">
-            <label for="role">Role</label>
-            <input type="text" id="role" name="role"  value="<?php echo $data->employee_role;?>"  class="form-contrall-readonly" readonly>
-        </div>
+                <label for="blood_group">Blood Group</label>
+                <select id="blood_group"  name="blood_group" class="form-contrall" >
+                    <option value="">Select Blood Group</option>
+                    <option value="A+">A+</option>
+                    <option value="A-">A-</option>
+                    <option value="B+">B+</option>
+                    <option value="B-">B-</option>
+                    <option value="O+">O+</option>
+                    <option value="O-">O-</option>
+                    <option value="AB+">AB+</option>
+                    <option value="AB-">AB-</option>
+                </select>
 
+        </div>
 
         <div class="inputfield">
-            <label for="bank_ID">Bank ID</label>
-            <input type="text" id="bank_ID" name="bank_ID" class="form-contrall"  value="<?php echo $data->bank_ID;?>">
+            <label for="bank_account_name">Bank Account Name</label>
+            <input type="text" id="bank_account_name" maxlength="100" name="bank_account_name" class="form-contrall" value="<?php echo $data->bank_account_name;  ?>">
+
         </div>
+
+        <div class="inputfield">
+            <label for="bank_branch">Bank Branch</label>
+            <input type="text" id="bank_branch" name="bank_branch" maxlength="100"  class="form-contrall" value="<?php echo $data->bank_branch; ?>">
+
+         </div>
+
+        <div class="inputfield">
+            <label for="account_no" >Account Number</label>
+            <input type="text" id="account_no" name="account_no" maxlength="50" class="form-contrall" value="<?php echo $data->account_no; ?>">
+
+       </div>
+
+
+<!--        <div class="inputfield">-->
+<!--            <label for="bank_ID">Bank ID</label>-->
+<!--            <input type="text" id="bank_ID" name="bank_ID" class="form-contrall"  value="--><?php //echo $data->bank_ID;?><!--">-->
+<!--        </div>-->
 
         <div class="inputfield">
             <label for="salary_basic">Salary Basic</label>

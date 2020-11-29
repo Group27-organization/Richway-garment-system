@@ -14,14 +14,9 @@ class rawMaterialModel extends database {
 
     }
 
-//    public function getRoleID($role){
-//        if($this->Query("SELECT role_ID FROM user_role WHERE title = ? ", [$role])) {
-//            return $this->fetch();
-//        }
-//        return -1;
-//    }
+
     public function insertfabric($Data){
-        if($this->Query("INSERT INTO predefine_fabric(fabric_code,type,Description,color,band,quality_grade,brand,price,active) VALUES (?,?,?,?,?,?,?,?,?)", $Data) ){
+        if($this->Query("INSERT INTO predefine_fabric(fabric_code,type,Description,band,quality_grade,brand,price,active) VALUES (?,?,?,?,?,?,?,?)", $Data) ){
             return true;
         }
     }
@@ -56,6 +51,21 @@ class rawMaterialModel extends database {
         }
 
     }
+    public function insertbutton($Data){
+
+
+        if($this->Query("INSERT INTO predefine_button(button_code,Description,price,image,active) VALUES (?,?,?,?,?)", $Data) ){
+            echo("<script>console.log('PHP in loademployeeTable contoller: " . json_encode($Data) . "');</script>");
+            return true;
+        }
+    }
+
+    public function insertnool($Data){
+        if($this->Query("INSERT INTO predefine_nool(color_code,type,active) VALUES (?,?,?)", $Data) ){
+            return true;
+        }
+    }
+
 
 
 

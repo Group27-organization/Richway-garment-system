@@ -48,7 +48,7 @@
 
                 <div class="inputfield">
                     <label for="Description">Description</label>
-                    <textarea id="Description" maxlength="500" name="Description" rows="4" cols="50" class="form-contrall" value="<?php if($data['Description']) :echo $data['Description']; endif; ?>"></textarea>
+                    <textarea id="Description" maxlength="250" name="Description" rows="4" cols="50" class="form-contrall" value="<?php if($data['Description']) :echo $data['Description']; endif; ?>"></textarea>
                     <label class="error" style="color:red;">
                         <?php   if($data['DescriptionError']) :echo $data['DescriptionError']; endif; ?>
                     </label>
@@ -56,19 +56,19 @@
 
                 <div class="inputfield">
                     <label for="price">Price</label>
-                    <input type="text" id="price" maxlength="100" name="price" class="form-contrall" value="<?php if($data['Price']) :echo $data['Price']; endif; ?>">
+                    <input type="number" min="0.00" step="0.01" maxlength="100" id="price" name="price" class="form-contrall" value="<?php if($data['Price']) :echo $data['Price']; endif; ?>">
                     <label class="error" style="color:red;">
                         <?php   if($data['priceError']) :echo $data['priceError']; endif; ?>
                     </label>
                 </div>
 
-                <div class="inputfield">
-                    <label for="image">Image</label>
-                    <input type="text" id="image" maxlength="100" name="image" class="form-contrall" value="<?php if($data['image']) :echo $data['image']; endif; ?>">
-                    <label class="error" style="color:red;">
-                        <?php   if($data['imageError']) :echo $data['imageError']; endif; ?>
-                    </label>
-                </div>
+<!--                <div class="inputfield">-->
+<!--                    <label for="image">Image</label>-->
+<!--                    <input type="text" id="image" maxlength="100" name="image" class="form-contrall" value="--><?php //if($data['image']) :echo $data['image']; endif; ?><!--">-->
+<!--                    <label class="error" style="color:red;">-->
+<!--                        --><?php //  if($data['imageError']) :echo $data['imageError']; endif; ?>
+<!--                    </label>-->
+<!--                </div>-->
 
                 <br><div class="inputfield inputbutton">
                     <input type="submit" value="Submit" class="btn cripple">

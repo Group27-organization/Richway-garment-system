@@ -26,31 +26,10 @@ class  rawMaterialController extends  framework
 
     public function index()
     {
-        $this->view("admin/rawMaterial", $data);
+        $this->view("admin/rawMaterial");
         echo("<script>console.log('PHP in index');</script>");
     }
-    public function setNewSession()
-    {
-        if (isset($_POST['key'])) {
-            if ($_POST['key'] == "rawMaterialData") {
-                $this->setSession("selected_role", $_POST['type']);
-                return "Successfully set the session.";
-            }
-        }
-        return "error";
-    }
 
-
-    public function NewSession()
-    {
-        if (isset($_POST['key'])) {
-            if ($_POST['key'] == "employeeUpdate") {
-                $this->setSession("selected_employee", $_POST['emp_ID']);
-                return "Successfully set the session.";
-            }
-        }
-        return "error";
-    }
 
 
     public function loadFabricTable()
@@ -135,21 +114,17 @@ class  rawMaterialController extends  framework
             'QualityGrade'=>$this->input('quality_grade'),
             'Brand'=>$this->input('brand'),
             'Price'=>$this->input('price'),
-            /*'fabric_codeError'=> '',
+            'fabric_codeError'=> '',
             'fabric_typeError'=> '',
-            'DescriptionError'=> '',
-            'colorError'=> '',
             'bandError'=> '',
             'quality_gradeError'=> '',
             'brandError'=> '',
-            'priceError'=> '',*/
+            'priceError'=> '',
 
         ];
 
 
-
-
-        /*  if(empty( $fabricData['FabricCode'])){
+          if(empty( $fabricData['FabricCode'])){
               $fabricData['fabric_codeError']="Fabric Code is required";
           }
 
@@ -157,18 +132,11 @@ class  rawMaterialController extends  framework
               $fabricData['fabric_typeError']="Type is required";
           }
 
-          if(empty( $fabricData['Description'])){
-              $fabricData['DescriptionError']="Description is required";
-          }
-
-          if(empty( $fabricData['Color'])){
-              $fabricData['colorError']="Color is required";
-          }
           if(empty( $fabricData['Band'])){
               $fabricData[ 'bandError']="Band is required";
           }
 
-          if(empty( $fabricData['Quality Grade'])){
+          if(empty( $fabricData['QualityGrade'])){
               $fabricData[ 'quality_gradeError']="Quality Grade is required";
           }
 
@@ -178,24 +146,15 @@ class  rawMaterialController extends  framework
 
           if(empty( $fabricData['Price'])){
               $fabricData[ 'priceError']="Price is required";
-          }*/
+          }
 
 
-        foreach ($fabricData as $key => $value){
-            if(empty($value)){
-                $isEmpty= true;
-            }
-        }
-
-
-        /*if(empty($fabricData['fabric_codeError'])&&empty($fabricData['fabric_typeError'])&&
-            empty($fabricData['DescriptionError'])&&empty($fabricData['colorError'])&&
+        if(empty($fabricData['fabric_codeError'])&&empty($fabricData['fabric_typeError'])&&
             empty($fabricData['bandError'])&&empty($fabricData['quality_gradeError'])&&
-            empty($fabricData['brandError'])&&empty($fabricData['priceError'])) {*/
+            empty($fabricData['brandError'])&&empty($fabricData['priceError'])) {
 
-        $Data = [$fabricData['FabricCode'], $fabricData['Type'], $fabricData['Description'], $fabricData['Band'], $fabricData['QualityGrade'],$fabricData['Brand'], $fabricData['Price'], 1];
+            $Data = [$fabricData['FabricCode'], $fabricData['Type'], $fabricData['Description'], $fabricData['Band'], $fabricData['QualityGrade'], $fabricData['Brand'], $fabricData['Price'], 1];
 
-        if(!$isEmpty){
             if ($this->rawMaterialModel->insertfabric($Data)) {
 
                 echo '
@@ -206,47 +165,35 @@ class  rawMaterialController extends  framework
                       </script>
 
                     ';
-            }
-
-            else {
+            } else {
 
                 echo '
 
                     <script>
                                 if(!alert("Something went wrong! please try again.")) {
-                                    window.location.href = "http://localhost/Richway-garment-system/rawMaterialController/index"
+                                    window.location.href = "http://localhost/Richway-garment-system/rawMaterialController/addFabricform"
                                 }
                     </script>
                     ';
 
             }
 
-
         }
+
 
 
         else{
-            echo '
-            <script>
-                if(!alert("Some required fields are missing!")) {
-                    window.location.href = "http://localhost/Richway-garment-system/rawMaterialController/addRawmaterialform"
-                }
-            </script>
-            ';
+            $this->view("admin/addfabricform",$fabricData );
+
         }
 
-
     }
-
 
 
     public function deleteFabric(){
 
         $id=$_POST['ID'];
-        if($this->rawMaterialModel->deleteFabric($id)){
-            echo "200";
-
-        }
+        $this->rawMaterialModel->deleteFabric($id);
 
     }
 
@@ -274,10 +221,10 @@ class  rawMaterialController extends  framework
                         <thead class=\"thead-light\">
                         <tr>
                             <th scope=col>Button ID</th>
-                            <th scope=col>Button Code</th>                    
                             <th scope=col>Description</th>   
+                            <th scope=col>Button Code</th>                 
                             <th scope=col>Price</th>                        
-                            <th scope=col>Image</th>                            
+                                                     
                                                          
                         </tr>
                         </thead>
@@ -294,7 +241,7 @@ class  rawMaterialController extends  framework
                                 <td>$row->Description</td>
                                 <td>$row->button_code</td>
                                 <td>$row->price</td>
-                                <td>$row->image</td>
+                                
                                 
 
 
@@ -316,13 +263,76 @@ class  rawMaterialController extends  framework
         }
     }
 
+    public function addbutton(){
+
+
+        $buttonData = [
+            'ButtonCode'=> $this->input('button_code'),
+            'Description'=>$this->input('Description'),
+            'Price'=>$this->input('price'),
+            'button_codeError'=> '',
+            'priceError'=> '',
+
+        ];
+
+        // echo("<script>console.log('PHP in table select: " . json_encode($fabricData['ButtonCode']) . "');</script>");
+
+        if(empty( $buttonData['ButtonCode'])){
+            $buttonData['button_codeError']="Button Code is required";
+        }
+
+        if(empty( $buttonData['Price'])) {
+            $buttonData['priceError'] = "Price is required";
+        }
+
+
+
+        if(empty($buttonData['button_codeError'])&& empty($buttonData['priceError'])) {
+            $Data = [$buttonData['ButtonCode'], $buttonData['Description'], $buttonData['Price'],1];
+
+
+            if ($this->rawMaterialModel->insertbutton($Data)) {
+
+                echo '
+                      <script>
+                                    if(!alert("Button added successfully")) {
+                                        window.location.href = "http://localhost/Richway-garment-system/rawMaterialController/index"
+                                    }
+                      </script>
+
+                    ';
+            } else {
+
+                echo '
+
+                    <script>
+                                if(!alert("Something went wrong! please try again.")) {
+                                   window.location.href = "http://localhost/Richway-garment-system/rawMaterialController/addButtonform"
+                                }
+                    </script>
+                    ';
+
+            }
+        }
+        else {
+            $this->view("admin/addbuttonform", $buttonData);
+
+        }
+
+
+
+    }
+
+
+
 
     public function addThreadform(){
         $this->view("admin/addThreadform");
     }
 
 
-    public function loadThreadTable(){
+    public function loadThreadTable()
+    {
 
         if (isset($_POST['key'])) {
             if ($_POST['key'] == "rawMaterialData2") {
@@ -373,13 +383,65 @@ class  rawMaterialController extends  framework
 
 
         }
-
     }
 
 
 
 
+    public function addthread(){
 
+
+            $noolData = [
+                'ColorCode'=> $this->input('color_code'),
+                'Type'=>$this->input('type'),
+                'color_codeError'=> '',
+                'typeError'=> '',
+            ];
+
+            if(empty( $noolData['ColorCode'])){
+                $noolData['color_codeError']="Color Code is required";
+            }
+            if(empty( $noolData['Type'])){
+                $noolData['typeError']="Type is required";
+            }
+
+            if(empty($noolData['color_codeError'])&&empty($noolData['typeError'])) {
+                $Data = [$noolData['ColorCode'], $noolData['Type'], 1];
+
+                if ($this->rawMaterialModel->insertnool($Data)) {
+
+                    echo '
+                      <script>
+                                    if(!alert("Thread added successfully")) {
+                                        window.location.href = "http://localhost/Richway-garment-system/rawMaterialController/index"
+                                    }
+                      </script>
+
+                    ';
+                }
+                else {
+
+                    echo '
+
+                    <script>
+                                if(!alert("Something went wrong! please try again.")) {
+                                    window.location.href = "http://localhost/Richway-garment-system/rawMaterialController/addThreadform"
+                                }
+                    </script>
+                    ';
+
+                }
+
+
+            }
+
+            else {
+                $this->view("admin/addThreadform", $noolData);
+
+            }
+
+
+    }
 
 
 

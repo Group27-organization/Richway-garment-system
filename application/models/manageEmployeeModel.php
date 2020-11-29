@@ -24,7 +24,7 @@ class manageEmployeeModel extends database {
 
 
     public function insertemployee($Data){
-        if($this->Query("INSERT INTO employee(name,address,contact_no,email,blood_group,employee_role,bank_ID,salary_basic,job_start_date,active) VALUES (?,?,?,?,?,?,?,?,?,?)", $Data) ){
+        if($this->Query("INSERT INTO employee(name,address,contact_no,email,blood_group,employee_role,bank_account_name,bank_branch,account_no,salary_basic,job_start_date,active) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)", $Data) ){
             return true;
         }
     }
@@ -40,19 +40,19 @@ class manageEmployeeModel extends database {
 
     public function editEmployee($updateData){
         echo("<script>console.log('PHP in loademployeeTable contoller: " . json_encode($updateData) . "');</script>");
-        if($this->Query("UPDATE employee SET name = ?,address = ?,contact_no = ?,email = ?,blood_group = ?,bank_ID = ?,salary_basic = ?,job_start_date = ? WHERE emp_ID = ?",$updateData)){
+        if($this->Query("UPDATE employee SET name = ?,address = ?,contact_no = ?,email=?,blood_group = ?,bank_account_name = ?,bank_branch = ?,account_no = ?,salary_basic = ?,job_start_date = ? WHERE emp_ID = ?",$updateData)){
             return true;
         }
     }
 
 
 
-public function deleteEmployee($id){
+    public function deleteEmployee($id){
 
-    if($this->Query("UPDATE employee SET active = ? WHERE emp_ID=?", [0,$id])){
-        return true;
+        if($this->Query("UPDATE employee SET active = ? WHERE emp_ID=?", [0,$id])){
+            return true;
+        }
     }
-}
 
 }
 

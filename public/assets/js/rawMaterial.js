@@ -1,15 +1,15 @@
 openRaw(null,'fabric');
 
-
 function openRaw(evt,rawitemID) {
     let i, tablinks, addRawmaterialBtn;
 
-    if(evt != null){
+    if(evt != null) {
         tablinks = document.getElementsByClassName("tablinks");
         for (i = 0; i < tablinks.length; i++) {
             tablinks[i].className = tablinks[i].className.replace(" active", "");
         }
         evt.currentTarget.className += " active";
+    }
         addRawmaterialBtn = document.getElementById("addRawmaterial");
 
         addRawmaterialBtn.onclick = function() {
@@ -37,7 +37,7 @@ function openRaw(evt,rawitemID) {
                 }
             });
 
-        }
+
         }
             if(rawitemID=="fabric") {
                 $.ajax({
@@ -49,6 +49,7 @@ function openRaw(evt,rawitemID) {
                     success: function (data) {
                         // alert(data);
                         $("#table-responsive").html(data);
+
 
 
                     },
@@ -95,7 +96,6 @@ function openRaw(evt,rawitemID) {
             });
         }
 
-
 }
 
 
@@ -109,17 +109,15 @@ function deleteRawMaterial(){
         if (tblrows[i].className.includes('active-row')) {
             document.querySelector('#employeeMsgView').style.display = "none";
             rawID = tblrows[i].firstElementChild.innerHTML;
-            jQuery(function ($) {
                 $.ajax({
                     type: 'POST',
                     url: "http://localhost/Richway-garment-system/rawMaterialController/deleteFabric",
                     data: {ID: rawID, key: "rawDelete"},
                     success: function (data) {
-                         if(parseInt(data)===200){
                               if(!alert("Fabric removed successfully")) {
                                  window.location.href = "http://localhost/Richway-garment-system/rawMaterialController/index"
                               }
-                         }
+
                     },
                     error: function () {
                         // console.log("update data not  load")
@@ -128,14 +126,18 @@ function deleteRawMaterial(){
                 });
 
 
-            });
+
         }
-        else{
-            //document.querySelector('#employeeMsgView').style.display = "block";
-        }
+
 
     }
 }
+
+
+
+
+
+
 
 
 
