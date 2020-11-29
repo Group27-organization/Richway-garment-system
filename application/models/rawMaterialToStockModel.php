@@ -20,22 +20,24 @@ class rawMaterialToStockModel extends database {
 //        }
 //        return -1;
 //    }
-    public function insertfabric($Data){
-        if($this->Query("INSERT INTO predefine_fabric(fabric_code,type,Description,color,band,quality_grade,brand,price,active) VALUES (?,?,?,?,?,?,?,?,?)", $Data) ){
+    public function insertfabrictostock($Data){
+        if($this->Query("INSERT INTO stock_fabric(quantity,description,date,fabric_Id) VALUES (?,?,?,?)", $Data) ){
+            return true;
+        }
+    }
+    public function insertbuttonstock($Data){
+        if($this->Query("INSERT INTO stock_button(quantity,description,date,predefine_buttonID) VALUES (?,?,?,?)", $Data) ){
+            return true;
+        }
+    }
+    public function insertthreadstock($Data){
+        if($this->Query("INSERT INTO stock_nool(quantity,description,date,predefine_noolID ) VALUES (?,?,?,?)", $Data) ){
             return true;
         }
     }
 
 
-    public function deleteFabric($id){
 
-        if($this->Query("UPDATE predefine_fabric SET active = ? WHERE ID = ?",[0,$id])){
-            echo("<script>console.log('PHP in model select: " . json_encode($id) . "');</script>");
-            return true;
-        }
-
-
-    }
 
     public function loadButtonTable(){
 
@@ -56,7 +58,36 @@ class rawMaterialToStockModel extends database {
         }
 
     }
+    public function getpredefinefabricdata(){
+        if($this->Query("SELECT * FROM predefine_fabric" )){
+
+            return $this->fetchall();
+
+        }
+
+        return ['status' => 'error'];
+    }
 
 
+    public function getpredefinebuttondata(){
+        if($this->Query("SELECT * FROM predefine_button" )){
+
+            return $this->fetchall();
+
+        }
+
+        return ['status' => 'error'];
+    }
+
+
+public function getpredefinethreaddata(){
+    if($this->Query("SELECT * FROM predefine_nool" )){
+
+        return $this->fetchall();
+
+    }
+
+    return ['status' => 'error'];
+}
 
 }

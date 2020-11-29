@@ -35,13 +35,18 @@
             </div>
         </div>
 
-        <form  action="<?php echo BASEURL;?>/rawMaterialController/addbutton" method="POST" >
+        <form  action="<?php echo BASEURL;?>/rawMaterialToStockController/addbutton" method="POST" >
             <div class="flexbox-container">
 
                 <div class="inputfield">
                     <label for="button_code">Button Code</label>
-                    <select id='' style='width: 100%;'>
-                        <option value=''></option>
+                    <select id="ItemType" name="fabric_code_id" class="form-contrall">-->
+                        <option  value="0" selected="" disabled="">--SELECT--</option>
+                        <?php if(!empty($data)): ?>
+                            <?php foreach($data  as $c):?>
+                                <option value="<?php echo $c->ID ; ?>"><?php echo $c->code ; ?></option>
+                            <?php endforeach;?>
+                        <?php endif; ?>
                     </select>
                     <label class="error" style="color:red;">
                         <?php   if($data['button_codeError']) :echo $data['button_codeError']; endif; ?>
@@ -49,22 +54,20 @@
                 </div>
 
                 <div class="inputfield">
-                    <label for="Description">Description</label>
-                    <textarea id="Description" maxlength="500" name="Description" rows="4" cols="50" class="form-contrall" value="<?php if($data['Description']) :echo $data['Description']; endif; ?>"></textarea>
+                    <label for="fabric_type">Quantity</label>
+                    <input type="text" id="" name="quantity" class="form-contrall"  value=" ">
                     <label class="error" style="color:red;">
-                        <?php   if($data['DescriptionError']) :echo $data['DescriptionError']; endif; ?>
+                        <?php   if($data['QuantityError']) :echo $data['QuantityError']; endif; ?>
                     </label>
                 </div>
 
                 <div class="inputfield">
-                    <label for="price">Quantity</label>
-                    <input type="text" id="price" maxlength="100" name="price" class="form-contrall" value="<?php if($data['Price']) :echo $data['Price']; endif; ?>">
+                    <label for="Description">Description</label>
+                    <textarea id="Description" maxlength="500" name="description" rows="4" cols="50" class="form-contrall" value="<?php if($data['Description']) :echo $data['Description']; endif; ?>"></textarea>
                     <label class="error" style="color:red;">
-                        <?php   if($data['priceError']) :echo $data['priceError']; endif; ?>
+                        <?php   if($data['DescriptionError']) :echo $data['DescriptionError']; endif; ?>
                     </label>
                 </div>
-
-
 
                 <br><div class="inputfield inputbutton">
                     <input type="submit" value="Submit" class="btn cripple">

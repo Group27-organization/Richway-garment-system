@@ -50,17 +50,6 @@ class  rawMaterialToStockController extends  framework
     }
 
 
-    public function NewSession()
-    {
-        if (isset($_POST['key'])) {
-            if ($_POST['key'] == "employeeUpdate") {
-                $this->setSession("selected_employee", $_POST['emp_ID']);
-                return "Successfully set the session.";
-            }
-        }
-        return "error";
-    }
-
 //////////////////////////////////////////////////load fabric
 
     public function loadFabricTable(){
@@ -128,14 +117,94 @@ class  rawMaterialToStockController extends  framework
         }
     }
     public function addFabricform(){
-        $this->view("stock/addfabricform");
+        $fabriccode = $this->rawMaterialModel->getpredefinefabricdata();
+        $this->view("stock/addfabricform",$fabriccode);
 
     }
 
+    public function addfabric(){
+        $fabricData = [
+            'FabricCodeID'=> $this->input('fabric_code_id'),
+            'Quantity'=>$this->input('quantity'),
+            'Description'=>$this->input('description'),
+            'Date'=>date('Y-m-d'),
+
+
+
+        ];
+        echo("<script>console.log('PHP in loadSupplierTable contoller: " . json_encode($fabricData) . "');</script>");
 
 
 
 
+          if(empty( $fabricData['FabricCodeID'])){
+              $fabricData['FabricCodeIDError']="Fabric Code is required";
+          }
+
+          if(empty( $fabricData['Quantity'])){
+              $fabricData['QuantityError']="Quantity is required";
+          }
+
+          if(empty( $fabricData['Description'])){
+              $fabricData['DescriptionError']="Description is required";
+          }else{
+              foreach ($fabricData as $key => $value){
+                  if(empty($value)){
+                      $isEmpty= true;
+                  }
+              }
+
+
+              /*if(empty($fabricData['fabric_codeError'])&&empty($fabricData['fabric_typeError'])&&
+                  empty($fabricData['DescriptionError'])&&empty($fabricData['colorError'])&&
+                  empty($fabricData['bandError'])&&empty($fabricData['quality_gradeError'])&&
+                  empty($fabricData['brandError'])&&empty($fabricData['priceError'])) {*/
+              echo("<script>console.log('PHP in     : " . json_encode($fabricData['Quantity']) . "');</script>");
+
+              $Data = [ intval($fabricData['Quantity']), $fabricData['Description'], $fabricData['Date'],intval($fabricData['FabricCodeID'])];
+
+              if(!$isEmpty){
+                  if ($this->rawMaterialModel->insertfabrictostock($Data)) {
+
+                      echo '
+                      <script>
+                                    if(!alert("Fabric added successfully")) {
+                                        window.location.href = "http://localhost/Richway-garment-system/rawMaterialToStockController"
+                                    }
+                      </script>
+
+                    ';
+                  }
+
+                  else {
+
+                      echo '
+
+                    <script>
+                                if(!alert("Something went wrong! please try again.")) {
+                                    window.location.href = "http://localhost/Richway-garment-system/rawMaterialToStockController"
+                                }
+                    </script>
+                    ';
+
+                  }
+
+
+              }
+
+
+              else{
+                  echo '
+            <script>
+                if(!alert("Some required fields are missing!")) {
+                    window.location.href = "http://localhost/Richway-garment-system/rawMaterialController/addRawmaterialform"
+                }
+            </script>
+            ';
+              }
+          }
+
+    }
 
     public function loadButtonTable(){
 
@@ -200,7 +269,92 @@ class  rawMaterialToStockController extends  framework
         }
     }
     public function addButtonform(){
-        $this->view("stock/addButtonform");
+        $buttonccode = $this->rawMaterialModel->getpredefinebuttondata();
+
+        $this->view("stock/addButtonform",$buttonccode);
+
+    }
+    public function addbutton(){
+        $fabricData = [
+            'ButtonCodeID'=> $this->input('fabric_code_id'),
+            'Quantity'=>$this->input('quantity'),
+            'Description'=>$this->input('description'),
+            'Date'=>date('Y-m-d'),
+
+
+
+        ];
+        echo("<script>console.log('PHP in loadSupplierTable contoller: " . json_encode($fabricData) . "');</script>");
+
+
+
+
+        if(empty( $fabricData['FabricCodeID'])){
+            $fabricData['FabricCodeIDError']="Fabric Code is required";
+        }
+
+        if(empty( $fabricData['Quantity'])){
+            $fabricData['QuantityError']="Quantity is required";
+        }
+
+        if(empty( $fabricData['Description'])){
+            $fabricData['DescriptionError']="Description is required";
+        }else{
+            foreach ($fabricData as $key => $value){
+                if(empty($value)){
+                    $isEmpty= true;
+                }
+            }
+
+
+            /*if(empty($fabricData['fabric_codeError'])&&empty($fabricData['fabric_typeError'])&&
+                empty($fabricData['DescriptionError'])&&empty($fabricData['colorError'])&&
+                empty($fabricData['bandError'])&&empty($fabricData['quality_gradeError'])&&
+                empty($fabricData['brandError'])&&empty($fabricData['priceError'])) {*/
+            echo("<script>console.log('PHP in     : " . json_encode($fabricData['Quantity']) . "');</script>");
+
+            $Data = [ intval($fabricData['Quantity']), $fabricData['Description'], $fabricData['Date'],intval($fabricData['ButtonCodeID'])];
+
+            if(!$isEmpty){
+                if ($this->rawMaterialModel->insertbuttonstock($Data)) {
+
+                    echo '
+                      <script>
+                                    if(!alert("Button added successfully")) {
+                                        window.location.href = "http://localhost/Richway-garment-system/rawMaterialToStockController"
+                                    }
+                      </script>
+
+                    ';
+                }
+
+                else {
+
+                    echo '
+
+                    <script>
+                                if(!alert("Something went wrong! please try again.")) {
+                                    window.location.href = "http://localhost/Richway-garment-system/rawMaterialToStockController"
+                                }
+                    </script>
+                    ';
+
+                }
+
+
+            }
+
+
+            else{
+                echo '
+            <script>
+                if(!alert("Some required fields are missing!")) {
+                    window.location.href = "http://localhost/Richway-garment-system/rawMaterialController/addRawmaterialform"
+                }
+            </script>
+            ';
+            }
+        }
 
     }
 
@@ -264,9 +418,94 @@ class  rawMaterialToStockController extends  framework
 
     }
     public function addThreadform(){
-        $this->view("stock/addThreadform");
+        $threadccode = $this->rawMaterialModel->getpredefinethreaddata();
+
+        $this->view("stock/addThreadform",$threadccode);
 
     }
+    public function addthread(){
+        $threadData = [
+            'ButtonCodeID'=> $this->input('thread_code_id'),
+            'Quantity'=>$this->input('quantity'),
+            'Description'=>$this->input('description'),
+            'Date'=>date('Y-m-d'),
+
+
+
+        ];
+        echo("<script>console.log('PHP in loadSupplierTable contoller: " . json_encode($threadData) . "');</script>");
+
+
+
+
+        if(empty( $threadData['ButtonCodeID'])){
+            $threadData['FabricCodeIDError']="Fabric Code is required";
+        }
+
+        if(empty( $threadData['Quantity'])){
+            $threadData['QuantityError']="Quantity is required";
+        }
+
+        if(empty( $threadData['Description'])){
+            $threadData['DescriptionError']="Description is required";
+        }else{
+            foreach ($threadData as $key => $value){
+                if(empty($value)){
+                    $isEmpty= true;
+                }
+            }
+
+
+            /*if(empty($fabricData['fabric_codeError'])&&empty($fabricData['fabric_typeError'])&&
+                empty($fabricData['DescriptionError'])&&empty($fabricData['colorError'])&&
+                empty($fabricData['bandError'])&&empty($fabricData['quality_gradeError'])&&
+                empty($fabricData['brandError'])&&empty($fabricData['priceError'])) {*/
+
+            $Data = [ intval($threadData['Quantity']), $threadData['Description'], $threadData['Date'],intval($threadData['ButtonCodeID'])];
+
+            if(!$isEmpty){
+                if ($this->rawMaterialModel->insertthreadstock($Data)) {
+
+                    echo '
+                      <script>
+                                    if(!alert("Threads added successfully")) {
+                                        window.location.href = "http://localhost/Richway-garment-system/rawMaterialToStockController"
+                                    }
+                      </script>
+
+                    ';
+                }
+
+                else {
+
+                    echo '
+
+                    <script>
+                                if(!alert("Something went wrong! please try again.")) {
+                                    window.location.href = "http://localhost/Richway-garment-system/rawMaterialToStockController"
+                                }
+                    </script>
+                    ';
+
+                }
+
+
+            }
+
+
+            else{
+                echo '
+            <script>
+                if(!alert("Some required fields are missing!")) {
+                    window.location.href = "http://localhost/Richway-garment-system/rawMaterialController/addRawmaterialform"
+                }
+            </script>
+            ';
+            }
+        }
+
+    }
+
 
 
 

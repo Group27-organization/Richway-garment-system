@@ -25,7 +25,7 @@
 
         <div class="header-container background-gradient">
             <div class="header-group">
-                <h1 class="text-white">Add Fabric</h1>
+                <h1 class="text-white">Edit Fabric</h1>
                 <p class="text-lead text-white">You can add fabric's details in here</p>
             </div>
             <div class="separator separator-bottom separator-skew zindex-100">

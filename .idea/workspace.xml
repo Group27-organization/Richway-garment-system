@@ -2,37 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e9cf3daf-da73-4605-917b-565163328057" name="Default Changelist" comment="add raw material old form removed a.add new stock item to stock">
-      <change afterPath="$PROJECT_DIR$/application/controllers/rawMaterialToStockController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/application/views/stock/addButtonform.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/application/views/stock/addRawMaterialToStock.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/application/views/stock/addThreadform.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/application/views/stock/addfabricform.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/js/addRawMaterialToStock.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/application/views/stock/editfabricform.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/controllers/StockNavigationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/controllers/StockNavigationController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/controllers/addRawMaterialController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/controllers/manageSupplierController.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/controllers/manageSupplierController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/controllers/stockIssueController.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/controllers/stockIssueController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/models/addRawMaterialModel.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/Stock/add-raw materials-item-form.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/Stock/addSupplier.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/stock/addSupplier.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/Stock/addSupplierForm.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/stock/addSupplierForm.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/Stock/components/nav.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/stock/components/nav.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/Stock/components/side_nav.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/stock/components/side_nav.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/Stock/components/stock-issue-table-in-card.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/stock/components/stock-issue-table-in-card.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/Stock/components/supplier-table-in-card.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/stock/components/supplier-table-in-card.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/Stock/forms/add-raw-material-item-popup.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/Stock/forms/order-item-table-popup-window.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/Stock/manageStock.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/Stock/stockIssue.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/stock/stockIssue.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/Stock/stockIssueForm.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/stock/stockIssueForm.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/richway_db.sql" beforeDir="false" afterPath="$PROJECT_DIR$/db/richway_db.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/controllers/rawMaterialToStockController.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/controllers/rawMaterialToStockController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/models/rawMaterialToStockModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/models/rawMaterialToStockModel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/views/stock/addButtonform.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/stock/addButtonform.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/views/stock/addRawMaterialToStock.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/stock/addRawMaterialToStock.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/views/stock/addThreadform.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/stock/addThreadform.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/views/stock/addfabricform.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/stock/addfabricform.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/assets/css/Form.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/Form.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/admin-adduser.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/admin-adduser.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/js/stock-keeper-js/pop-window-add-raw-matiral-item.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/js/stock-keeper-js/popup-window-order-item-table-form.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/js/stock-keeper-js/raw-material-form.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/js/stockmanage-tabview.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/js/addRawMaterialToStock.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/js/addRawMaterialToStock.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/js/stockIssue.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/js/stockIssue.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,20 +47,20 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/application/views/Stock/forms" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/application/views/stock" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\xampp\htdocs\Richway-garment-system\application\views\stock" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\Richway-garment-system\application\views\stock" />
       <recent name="C:\xampp\htdocs\Richway-garment-system\application\views\Stock\forms" />
       <recent name="C:\xampp\htdocs\Richway-garment-system\public\assets\js" />
       <recent name="C:\xampp\htdocs\Richway-garment-system\application\models" />
       <recent name="C:\xampp\htdocs\Richway-garment-system\application\views\Stock" />
-      <recent name="C:\xampp\htdocs\Richway-garment-system\application\controllers" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\Richway-garment-system\application\views\stock" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />

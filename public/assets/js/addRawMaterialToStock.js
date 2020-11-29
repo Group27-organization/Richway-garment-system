@@ -97,5 +97,3 @@ function openRaw(evt,rawitemID) {
 
 
 }
-
-

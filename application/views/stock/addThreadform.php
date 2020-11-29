@@ -35,31 +35,37 @@
             </div>
         </div>
 
-        <form  action="<?php echo BASEURL;?>/rawMaterialController/addthread" method="POST" >
+        <form  action="<?php echo BASEURL;?>/rawMaterialToStockController/addthread" method="POST" >
             <div class="flexbox-container">
 
                 <div class="inputfield">
-                    <label for="color_code">Nool Code</label>
-                    <input type="text" id="color_code" maxlength="100" name="color_code" class="form-contrall" value="<?php if($data['ColorCode']) :echo $data['ColorCode']; endif; ?>">
+                    <label for="button_code">Thread Code</label>
+                    <select id="ItemType" name="thread_code_id" class="form-contrall">-->
+                        <option  value="0" selected="" disabled="">--SELECT--</option>
+                        <?php if(!empty($data)): ?>
+                            <?php foreach($data  as $c):?>
+                                <option value="<?php echo $c->ID ; ?>"><?php echo $c->color_code ; ?></option>
+                            <?php endforeach;?>
+                        <?php endif; ?>
+                    </select>
                     <label class="error" style="color:red;">
-                        <?php   if($data['color_codeError']) :echo $data['color_codeError']; endif; ?>
-                    </label>
-                </div>
-
-
-                <div class="inputfield">
-                    <label for="type">Quantity</label>
-                    <input type="text" id="type" maxlength="100" name="type" class="form-contrall" value="<?php if($data['Type']) :echo $data['Type']; endif; ?>">
-                    <label class="error" style="color:red;">
-                        <?php   if($data['typeError']) :echo $data['typeError']; endif; ?>
+                        <?php   if($data['button_codeError']) :echo $data['button_codeError']; endif; ?>
                     </label>
                 </div>
 
                 <div class="inputfield">
-                    <label for="type">Unit Price</label>
-                    <input type="text" id="type" maxlength="100" name="type" class="form-contrall" value="<?php if($data['Type']) :echo $data['Type']; endif; ?>">
+                    <label for="fabric_type">Quantity</label>
+                    <input type="text" id="" name="quantity" class="form-contrall"  value=" ">
                     <label class="error" style="color:red;">
-                        <?php   if($data['typeError']) :echo $data['typeError']; endif; ?>
+                        <?php   if($data['QuantityError']) :echo $data['QuantityError']; endif; ?>
+                    </label>
+                </div>
+
+                <div class="inputfield">
+                    <label for="Description">Description</label>
+                    <textarea id="Description" maxlength="500" name="description" rows="4" cols="50" class="form-contrall" value="<?php if($data['Description']) :echo $data['Description']; endif; ?>"></textarea>
+                    <label class="error" style="color:red;">
+                        <?php   if($data['DescriptionError']) :echo $data['DescriptionError']; endif; ?>
                     </label>
                 </div>
 
@@ -75,8 +81,7 @@
     </div><!--    right-->
 </div>  <!--    grid container-->
 
-<?php linkJS("assets/js/admin-rawMaterial.js") ?>
-<?php linkJS("assets/js/table.js") ?>
+
 
 </body>
 </html>
