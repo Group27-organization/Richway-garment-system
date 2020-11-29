@@ -21,17 +21,17 @@ class rawMaterialToStockModel extends database {
 //        return -1;
 //    }
     public function insertfabrictostock($Data){
-        if($this->Query("INSERT INTO stock_fabric(quantity,description,date,fabric_Id) VALUES (?,?,?,?)", $Data) ){
+        if($this->Query("INSERT INTO stock_fabric(quantity,description,date,fabric_Id,supplier_ID) VALUES (?,?,?,?,?)", $Data) ){
             return true;
         }
     }
     public function insertbuttonstock($Data){
-        if($this->Query("INSERT INTO stock_button(quantity,description,date,predefine_buttonID) VALUES (?,?,?,?)", $Data) ){
+        if($this->Query("INSERT INTO stock_button(quantity,description,date,predefine_buttonID,supplier_ID) VALUES (?,?,?,?,?)", $Data) ){
             return true;
         }
     }
     public function insertthreadstock($Data){
-        if($this->Query("INSERT INTO stock_nool(quantity,description,date,predefine_noolID ) VALUES (?,?,?,?)", $Data) ){
+        if($this->Query("INSERT INTO stock_nool(quantity,description,date,predefine_noolID,supplier_ID ) VALUES (?,?,?,?,?)", $Data) ){
             return true;
         }
     }
@@ -89,5 +89,12 @@ public function getpredefinethreaddata(){
 
     return ['status' => 'error'];
 }
+
+    public function loadSupplierTable(){
+        if($this->Query("SELECT * FROM supplier WHERE active=1")){
+
+            return $this->fetchall();
+        }
+    }
 
 }

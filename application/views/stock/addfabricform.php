@@ -10,6 +10,7 @@
     <?php linkCSS("assets/css/admin-adduser.css") ?>
     <?php linkCSS("assets/css/form.css") ?>
     <?php linkCSS("assets/css/admin-table.css") ?>
+    <?php linkCSS("assets/css/stockkeeper-form.css") ?>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 </head>
@@ -72,6 +73,17 @@
                     </label>
                 </div>
 
+                <div class="inputfield" id="selectSupplier">
+                    <label for="SuppliesId">Assign Supplies</label>
+                    <div class="inputbutton">
+                        <input id='SuppliesId' name="supplierid" style="display: none"  class="form-contrall-label" value="">
+                        <label for='SuppliesLabel' class="form-contrall-label"></label>
+
+                        <button id="findsupbtn"  type="button"  class="btn2 input2 cripple">Find</button>
+                    </div>
+                    <label id="D" class="error" style="color:red; display: none">This Field required</label>
+                </div>
+
 
 
                 <br><div class="inputfield inputbutton">
@@ -85,9 +97,9 @@
         </form>
     </div><!--    right-->
 </div>  <!--    grid container-->
+<?php require('supplier-popup-table.php') ?>
 
+<?php linkJS("assets/js/table.js") ?>
 <?php linkJS("assets/js/addfabric-to-stock.js") ?>
-
-
 </body>
 </html>

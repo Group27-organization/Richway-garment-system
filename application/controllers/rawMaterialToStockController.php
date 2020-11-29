@@ -122,89 +122,90 @@ class  rawMaterialToStockController extends  framework
 
     }
 
-    public function addfabric2(){
-        $fabricData = [
-            'FabricCodeID'=> $this->input('fabric_code_id'),
-            'Quantity'=>$this->input('quantity'),
-            'Description'=>$this->input('description'),
-            'Date'=>date('Y-m-d'),
-
-
-
-        ];
-        echo("<script>console.log('PHP in loadSupplierTable contoller: " . json_encode($fabricData) . "');</script>");
-
-
-
-
-          if(empty( $fabricData['FabricCodeID'])){
-              $fabricData['FabricCodeIDError']="Fabric Code is required";
-          }
-
-          if(empty( $fabricData['Quantity'])){
-              $fabricData['QuantityError']="Quantity is required";
-          }
-
-          if(empty( $fabricData['Description'])){
-              $fabricData['DescriptionError']="Description is required";
-          }else{
-              foreach ($fabricData as $key => $value){
-                  if(empty($value)){
-                      $isEmpty= true;
-                  }
-              }
-
-
-              /*if(empty($fabricData['fabric_codeError'])&&empty($fabricData['fabric_typeError'])&&
-                  empty($fabricData['DescriptionError'])&&empty($fabricData['colorError'])&&
-                  empty($fabricData['bandError'])&&empty($fabricData['quality_gradeError'])&&
-                  empty($fabricData['brandError'])&&empty($fabricData['priceError'])) {*/
-              echo("<script>console.log('PHP in     : " . json_encode($fabricData['Quantity']) . "');</script>");
-
-              $Data = [ intval($fabricData['Quantity']), $fabricData['Description'], $fabricData['Date'],intval($fabricData['FabricCodeID'])];
-
-              if(!$isEmpty){
-                  if ($this->rawMaterialModel->insertfabrictostock($Data)) {
-
-                      echo '
-                      <script>
-                                    if(!alert("Fabric added successfully")) {
-                                        window.location.href = "http://localhost/Richway-garment-system/rawMaterialToStockController"
-                                    }
-                      </script>
-
-                    ';
-                  }
-
-                  else {
-
-                      echo '
-
-                    <script>
-                                if(!alert("Something went wrong! please try again.")) {
-                                    window.location.href = "http://localhost/Richway-garment-system/rawMaterialToStockController"
-                                }
-                    </script>
-                    ';
-
-                  }
-
-
-              }
-
-
-              else{
-                  echo '
-            <script>
-                if(!alert("Some required fields are missing!")) {
-                    window.location.href = "http://localhost/Richway-garment-system/rawMaterialController/addRawmaterialform"
-                }
-            </script>
-            ';
-              }
-          }
-
-    }
+//    public function addfabric2(){
+//        $fabricData = [
+//            'FabricCodeID'=> $this->input('fabric_code_id'),
+//            'Quantity'=>$this->input('quantity'),
+//            'Description'=>$this->input('description'),
+//            'Date'=>date('Y-m-d'),
+//            'Supplier_id' =>$this->input('supplierid'),
+//
+//
+//
+//        ];
+//        echo("<script>console.log('PHP in loadSupplierTable contoller: " . json_encode($fabricData) . "');</script>");
+//
+//
+//
+//
+//          if(empty( $fabricData['FabricCodeID'])){
+//              $fabricData['FabricCodeIDError']="Fabric Code is required";
+//          }
+//
+//          if(empty( $fabricData['Quantity'])){
+//              $fabricData['QuantityError']="Quantity is required";
+//          }
+//
+//          if(empty( $fabricData['Description'])){
+//              $fabricData['DescriptionError']="Description is required";
+//          }else{
+//              foreach ($fabricData as $key => $value){
+//                  if(empty($value)){
+//                      $isEmpty= true;
+//                  }
+//              }
+//
+//
+//              /*if(empty($fabricData['fabric_codeError'])&&empty($fabricData['fabric_typeError'])&&
+//                  empty($fabricData['DescriptionError'])&&empty($fabricData['colorError'])&&
+//                  empty($fabricData['bandError'])&&empty($fabricData['quality_gradeError'])&&
+//                  empty($fabricData['brandError'])&&empty($fabricData['priceError'])) {*/
+//              echo("<script>console.log('PHP in     : " . json_encode($fabricData['Quantity']) . "');</script>");
+//
+//              $Data = [ intval($fabricData['Quantity']), $fabricData['Description'], $fabricData['Date'],intval($fabricData['FabricCodeID']) ||intval($fabricData['Supplier_id'])];
+//
+//              if(!$isEmpty){
+//                  if ($this->rawMaterialModel->insertfabrictostock($Data)) {
+//
+//                      echo '
+//                      <script>
+//                                    if(!alert("Fabric added successfully")) {
+//                                        window.location.href = "http://localhost/Richway-garment-system/rawMaterialToStockController"
+//                                    }
+//                      </script>
+//
+//                    ';
+//                  }
+//
+//                  else {
+//
+//                      echo '
+//
+//                    <script>
+//                                if(!alert("Something went wrong! please try again.")) {
+//                                    window.location.href = "http://localhost/Richway-garment-system/rawMaterialToStockController"
+//                                }
+//                    </script>
+//                    ';
+//
+//                  }
+//
+//
+//              }
+//
+//
+//              else{
+//                  echo '
+//            <script>
+//                if(!alert("Some required fields are missing!")) {
+//                    window.location.href = "http://localhost/Richway-garment-system/rawMaterialController/addRawmaterialform"
+//                }
+//            </script>
+//            ';
+//              }
+//          }
+//
+//    }
 
 
     public function addfabric(){
@@ -213,6 +214,7 @@ class  rawMaterialToStockController extends  framework
             'Quantity'=>$this->input('quantity'),
             'Description'=>$this->input('description'),
             'Date'=>date('Y-m-d'),
+            'Supplier_id' =>$this->input('supplierid'),
 
 
         ];
@@ -233,7 +235,7 @@ class  rawMaterialToStockController extends  framework
 
         if(empty($fabricData['FabricCodeIDError'])&&empty($fabricData['QuantityError'])&&empty($fabricData['DescriptionError'])) {
 
-            $Data = [ intval($fabricData['Quantity']), $fabricData['Description'], $fabricData['Date'],intval($fabricData['FabricCodeID'])];
+            $Data = [ intval($fabricData['Quantity']), $fabricData['Description'], $fabricData['Date'],intval($fabricData['FabricCodeID']),intval($fabricData['Supplier_id'])];
 
             if ($this->rawMaterialModel->insertfabrictostock($Data)) {
 
@@ -346,6 +348,7 @@ class  rawMaterialToStockController extends  framework
             'Quantity'=>$this->input('quantity'),
             'Description'=>$this->input('description'),
             'Date'=>date('Y-m-d'),
+            'Supplier_id' =>$this->input('supplierid'),
 
 
 
@@ -364,7 +367,7 @@ class  rawMaterialToStockController extends  framework
 
 
 
-            $Data = [ intval($fabricData['Quantity']), $fabricData['Description'], $fabricData['Date'],intval($fabricData['ButtonCodeID'])];
+            $Data = [ intval($fabricData['Quantity']), $fabricData['Description'], $fabricData['Date'],intval($fabricData['ButtonCodeID']),intval($fabricData['Supplier_id'])];
 
 
                 if ($this->rawMaterialModel->insertbuttonstock($Data)) {
@@ -468,10 +471,11 @@ class  rawMaterialToStockController extends  framework
     }
     public function addthread(){
         $threadData = [
-            'ButtonCodeID'=> $this->input('thread_code_id'),
+            'threadCodeID'=> $this->input('thread_code_id'),
             'Quantity'=>$this->input('quantity'),
             'Description'=>$this->input('description'),
             'Date'=>date('Y-m-d'),
+            'Supplier_id' =>$this->input('supplierid'),
 
 
 
@@ -480,14 +484,14 @@ class  rawMaterialToStockController extends  framework
 
 
 
-        if(empty( $threadData['ButtonCodeID'])|| empty( $threadData['Quantity']) || empty( $threadData['Description'])){
+        if(empty( $threadData['threadCodeID'])|| empty( $threadData['Quantity']) || empty( $threadData['Description'])){
 
         }else{
 
 
 
 
-            $Data = [ intval($threadData['Quantity']), $threadData['Description'], $threadData['Date'],intval($threadData['ButtonCodeID'])];
+            $Data = [ intval($threadData['Quantity']), $threadData['Description'], $threadData['Date'],intval($threadData['threadCodeID']),intval($threadData['Supplier_id'])];
 
 
                 if ($this->rawMaterialModel->insertthreadstock($Data)) {
@@ -525,9 +529,52 @@ class  rawMaterialToStockController extends  framework
     }
 
 
+    public function loadSupplierTable(){
+        echo("<script>console.log('PHP in ndex');</script>");
+        if(isset($_POST['key'])) {
+            if ($_POST['key'] == "supplierinstock") {
+                $result = $this->rawMaterialModel->loadSupplierTable();
 
-////////////////////////////////////////////////////
-//editfabric
+                echo "
+
+                 <table class=\"table align-items-center table-flush\">
+                        <thead class=\"thead-light\">
+                        <tr>
+                        
+                            <th scope=col>Supplier ID</th>
+                            <th scope=col>Name</thl>
+                            <th scope=col>Email Address</th>
+                            <th scope=col>Address</th>
+                            <th scope=col>Contact Number</th>
+                           
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                ";
+                foreach ($result as $row) {
+
+                    echo "
+                            <tr class='tblrow' onclick='selectRow(event)'>
+                                <td id='supid'>$row->supplier_ID  </td>
+                                <td>$row->name</td>
+                                 <td>$row->email</td>
+                                  <td>$row->address</td>
+                                <td>$row->contact_no</td>
+                                
+                            </tr>
+                        ";
+
+                }
+                echo "
+                        </tbody>
+                    </table>
+                    
+                    ";
+            }
+        }
+
+    }
 
 
 
