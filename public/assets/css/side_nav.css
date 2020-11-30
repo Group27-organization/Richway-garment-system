@@ -196,6 +196,7 @@
 .navigation-link.active {
     background-color: rgba(94, 114, 228,0.5);
     color: #ffffff;
+    transition: 0s;
 }
 
 [class$="--collapsed"] .navigation-link:hover .navigation-link__name {

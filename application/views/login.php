@@ -17,7 +17,7 @@
 
 
                 <div class="footer">
-                    <p>All rights reserved @ Richway Garments</br>Email: contact@richwaygarments.com</p>
+                    <p>All rights reserved @ Richway Garments (Pvt) Ltd.</br>Email: contact@richwaygarments.com</p>
                     <p>Copyright © 2020 Version 1.0</p>
                 </div>
 
@@ -32,26 +32,26 @@
 
                 <form action="<?php echo BASEURL; ?>/loginController/userLogin" method="POST">
                     <div class="loginfield">
-                        <input name="email" type="email" class="field" placeholder="&#xf0e0;  Email Address" value="<?php if(!empty($data['email'])): echo $data['email']; endif; ?>">
+                        <input name="email" required type="email" class="field" placeholder="&#xf0e0;  Email Address" value="<?php if(!empty($data['email'])): echo $data['email']; endif; ?>">
                     </div>
                     <div class="error">
                         <?php if(!empty($data['emailError'])): echo $data['emailError']; endif; ?>
                     </div>
                     <div class="loginfield">
-                        <input name="password" type="password" class="field" placeholder=" &#xf023;  Password" value="<?php if(!empty($data['password'])): echo $data['password']; endif; ?>">
+                        <input name="password" required type="password" class="field" placeholder=" &#xf023;  Password" value="<?php if(!empty($data['password'])): echo $data['password']; endif; ?>">
                     </div>
                     <div class="error">
                         <?php if(!empty($data['passwordError'])): echo $data['passwordError']; endif; ?>
                     </div>
 
-                    <div class="rememberme">
-                        <div class="checks">
-                            <input id="r1" type="checkbox" checked>
-                            <label id="r2"> Remember me</label>
-                        </div>
-                    </div>
+<!--                    <div class="rememberme">-->
+<!--                        <div class="checks">-->
+<!--                            <input id="r1" type="checkbox" checked>-->
+<!--                            <label id="r2"> Remember me</label>-->
+<!--                        </div>-->
+<!--                    </div>-->
 
-                    <div><input name="lginBtn" type="submit" value="Sign In" class="btn"></div>
+                    <div style="margin-top: 80px"><input name="lginBtn" type="submit" value="Sign In" class="btn"></div>
 
                     <div class="forget">
                         <a href="#">Forgot Password?</a>

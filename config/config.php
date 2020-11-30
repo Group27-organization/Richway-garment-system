@@ -11,5 +11,5 @@ define("PASSWORD", "");
 // Base URL
 
 define("BASEURL", "http://localhost/Richway-garment-system");
-
+define('DOCROOT', realpath(dirname(__DIR__)).'/');
 ?>

@@ -38,12 +38,19 @@ class loginModel extends database {
                             array_push($rolesarr, $r->title);
                         }
 
+                        $email_status = $row->email_status;
+
                         $user_data = [
                             'user_id' => $userId,
                             'user_name' => $user_name,
                             'role' => $rolesarr[0],
-                            'all_roles' => $rolesarr
+                            'all_roles' => $rolesarr,
+                            'email_status' => $email_status
                         ];
+
+                        if($email_status == "not verified"){
+                            return ['status' => 'notVerified', 'data' => $user_data];
+                        }
 
                         return ['status' => 'ok', 'data' => $user_data];
 

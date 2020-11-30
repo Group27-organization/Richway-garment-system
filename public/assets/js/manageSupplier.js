@@ -9,7 +9,6 @@ $(document).ready(function(){
         success: function(data){
             $("#supplierTableForManageSupplier").html(data);
 
-
         },
         error       : function() {
             console.log("Table data not  load")
@@ -31,6 +30,7 @@ function updateSupplier() {
     tblrows = document.getElementsByClassName("tblrow");
     for (i = 0; i < tblrows.length; i++) {
         if (tblrows[i].className.includes('active-row')) {
+            document.querySelector('#SupplierMsgView').style.display = "none";
             supID = tblrows[i].firstElementChild.innerHTML;
             jQuery(function ($) {
 
@@ -50,6 +50,10 @@ function updateSupplier() {
 
             });
         }
+
+        else{
+            document.querySelector('#SupplierMsgView').style.display = "block";
+        }
     }
 }
 
@@ -60,6 +64,7 @@ function deleteSupplier() {
     tblrows = document.getElementsByClassName("tblrow");
     for (i = 0; i < tblrows.length; i++) {
         if (tblrows[i].className.includes('active-row')) {
+            document.querySelector('#SupplierMsgView').style.display = "none";
             suppID = tblrows[i].firstElementChild.innerHTML;
             jQuery(function ($) {
                 $.ajax({
@@ -67,7 +72,6 @@ function deleteSupplier() {
                     url: "http://localhost/Richway-garment-system/manageSupplierController/deleteSupplier",
                     data: {supplierID: suppID, key: "supplierDelete"},
                     success: function (data) {
-                       // alert(data);
                         if(parseInt(data)===200){
                             if(!alert("Supplier removed successfully")) {
                                 window.location.href = "http://localhost/Richway-garment-system/manageSupplierController/index"
@@ -83,5 +87,9 @@ function deleteSupplier() {
 
             });
         }
+        else{
+            document.querySelector('#SupplierMsgView').style.display = "block";
+        }
+
     }
 }

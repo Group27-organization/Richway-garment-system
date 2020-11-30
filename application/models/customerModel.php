@@ -2,7 +2,6 @@
 
 class customerModel extends database {
 
-	
 
    
     public function updateCustomer($id){
@@ -12,8 +11,17 @@ class customerModel extends database {
         }
     }
 
-   public function editCustomer($updateData){
-    if($this->Query("UPDATE customer SET name = ?, address = ?,contact_no = ? , Gender=?, email=? WHERE customer_ID = ?",$updateData)){
+   public function editCustomer($Data){
+       $updatecustomerData=[
+           $Data['FullName'],
+           $Data['Address'],
+           $Data['contact_no'],
+           $Data['Gender'],
+           $Data['email'],
+           $Data['hiddenID'],
+
+       ];
+    if($this->Query("UPDATE customer SET name = ?, address = ?,contact_no = ? , Gender=?, email=? WHERE customer_ID = ?",$updatecustomerData)){
         return true;
     }
 
