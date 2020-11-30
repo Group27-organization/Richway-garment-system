@@ -100,7 +100,7 @@ class manageEmployeeModel extends database {
         if($this->Query("UPDATE employee SET name = ?,address = ?,contact_no = ?,email=?,blood_group = ?,salary_basic = ?,job_start_date = ? WHERE emp_ID = ?",$updateemployeeData)) {
 
             $bankdetails = [
-                $Data['bank_Name'],
+                $Data['bank_name'],
                 $Data['BankAccName'],
                 $Data['BankBranch'],
                 $Data['AccountNumber'],
