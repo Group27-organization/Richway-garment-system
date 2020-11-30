@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 class manageEmployeeController extends framework
 {
@@ -74,10 +74,10 @@ class manageEmployeeController extends framework
                             <th scope=col>Employee ID</th>
                             <th scope=col>Full Name</th>                          
                             <th scope=col>Contact Number</th>                         
-                            <th scope=col>Account Number</th> 
+                            <th scope=col>Email</th> 
                             <th scope=col>Salary Basic</th> 
                             <th scope=col>Job Start Date</th>  
-                             <th scope=col></th>                            
+                            <th scope=col></th>                            
                             
                              
                         </tr>
@@ -94,7 +94,7 @@ class manageEmployeeController extends framework
                                 <td id='empid'>$row->emp_ID</td>
                                 <td>$row->name</td>                               
                                 <td>$row->contact_no</td>                         
-                                <td>$row->account_no</td>
+                                <td>$row->email</td>
                                 <td>$row->salary_basic</td>
                                 <td>$row->job_start_date</td>
                                  <th>
@@ -123,11 +123,11 @@ class manageEmployeeController extends framework
     public function addEmployeeform()
     {
 
-        echo("<script>console.log('PHP: " . json_encode($result) . "');</script>");
+        // echo("<script>console.log('PHP: " . json_encode($result) . "');</script>");
         $role = $this->getSession('selected_role');
 
         $data = [
-            'role' => ucwords(str_replace("_", " ", $role))
+            'employeeRole' => ucwords(str_replace("_", " ", $role))
         ];
 
 
@@ -136,158 +136,273 @@ class manageEmployeeController extends framework
 
 
 
-
-
     public function addEmployee(){
         $role = $this->getSession('selected_role');
-        $data = [
-            'role' => ucwords(str_replace("_", " ", $role))
-        ];
-
-
 
         $employeeData = [
-
             'FullName'=> $this->input('name'),
             'Address'=>$this->input('address'),
             'ContactNumber'=>$this->input('contact_no'),
+            'email'=>$this->input('email'),
             'BloodGroup'=>$this->input('blood_group'),
-            'employeeRole'=>$data['role'],
-            'bank_ID'=>$this->input('bank_ID'),
-            'BankName'=>$this->input('bank_account_name'),
+            'employeeRole'=>ucwords(str_replace("_", " ", $role)),
+            'bank_name'=>$this->input('bank_name'),
+            'BankAccName'=>$this->input('bank_account_name'),
             'BankBranch'=>$this->input('bank_branch'),
             'AccountNumber'=>$this->input('account_no'),
             'SalaryBasic'=>$this->input('salary_basic'),
             'job_start_date'=>$this->input('job_start_date'),
-
+            'nameError'=> '',
+            'nameErrorCheckFormat'=>'',
+            'addressError'=> '',
+            'contact_noError'=> '',
+            'emailError'=>'',
+            'emailErrorFormat'=>'',
+            'blood_groupError'=> '',
+            'bank_nameError'=>'',
+            'bank_account_nameError'=> '',
+            'bank_branchError'=> '',
+            'account_noError'=> '',
+            'salary_basicError'=> '',
+            'job_start_dateError'=> ''
         ];
 
-        foreach ($employeeData as $key => $value) {
-            if (empty($value)) {
-                $isEmpty = true;
-            }
+
+
+        if(empty( $employeeData['FullName'])){
+            $employeeData['nameError']="Full name is required";
+        }
+        if (!preg_match("/^([a-zA-Z' ]+)$/",$employeeData['FullName'])) {
+            $employeeData['nameErrorCheckFormat']= "Only letters allowed";
+        }
+        if(empty( $employeeData['Address'])){
+            $employeeData['addressError']="Address is required";
+        }
+        if(empty( $employeeData['ContactNumber'])){
+            $employeeData['contact_noError']="Contact Number is required";
+        }
+        if(empty( $employeeData['email'])){
+            $employeeData['emailError']="Email address is required";
+        }
+        if(!filter_var($employeeData['email'], FILTER_VALIDATE_EMAIL)){
+            $employeeData['emailErrorFormat']="Invalid email address ";
+        }
+
+        if(empty( $employeeData['BloodGroup'])){
+            $employeeData['blood_groupError']="Blood group is required";
+        }
+        if(empty( $employeeData['bank_name'])){
+            $employeeData[ 'bank_nameError']="Bank name is required";
+        }
+
+        if(empty( $employeeData['BankAccName'])){
+            $employeeData['bank_account_nameError']="Bank account  name is required";
+        }
+        if(empty( $employeeData['BankBranch'])){
+            $employeeData['bank_branchError']="Bank branch is required";
+        }
+        if(empty( $employeeData[ 'AccountNumber'])){
+            $employeeData['account_noError']="Account number is required";
+        }
+        if(empty( $employeeData[ 'SalaryBasic'])){
+            $employeeData['salary_basicError']="Salary basic is required";
+        }
+        if(empty( $employeeData['job_start_date'])){
+            $employeeData['job_start_dateError']="Job start date is required";
+        }
+        echo("<script>console.log('PHP in edit: " . json_encode($employeeData) . "');</script>");
+
+
+
+        if(empty($employeeData['nameError'])&&empty($employeeData['nameErrorCheckFormat'])&&empty($employeeData['addressError'])&&empty($employeeData['contact_noError'])&&
+            empty($employeeData['emailError'])&& empty($employeeData['emailErrorFormat'])&&empty($employeeData['blood_groupError'])&&
+            empty($employeeData['bank_IDError'])&&empty($employeeData['bank_nameError'])&&empty($employeeData['bank_account_nameError'])&&empty($employeeData['salary_basicError'])&&empty($employeeData['job_start_dateError'])) {
+
+
+                    if ($this->manageEmployeeModel->insertemployee($employeeData)) {
+
+                        echo '
+                              <script>
+                                            if(!alert("Employee added successfully")) {
+                                                window.location.href = "http://localhost/Richway-garment-system/manageEmployeeController/index"
+                                            }
+                              </script>
+        
+                            ';
+                    }
+
+                    else {
+                        echo '
+        
+                            <script>
+                                        if(!alert("Something went wrong! please try again.")) {
+                                            window.location.href = "http://localhost/Richway-garment-system/manageEmployeeController/addEmployeeform"
+                                        }
+                            </script>
+                            ';
+
+                    }
+
+
         }
 
 
-        $Data=[$employeeData['FullName'],$employeeData['Address'],$employeeData['ContactNumber'],$employeeData['BloodGroup'],$employeeData['employeeRole'],$employeeData['bank_ID'],$employeeData['BankName'],$employeeData['BankBranch'],$employeeData['AccountNumber'],$employeeData['SalaryBasic'],$employeeData['job_start_date'],1];
-
-        if(!$isEmpty){
-
-            if($this->manageEmployeeModel->insertemployee($Data)){
-
-
-                echo '
-              <script>
-                            if(!alert("Employee added successfully")) {
-                                window.location.href = "http://localhost/Richway-garment-system/manageEmployeeController/index"
-                            }
-              </script>
-
-            ';
-
-            }
-
-            else {
-                echo '
-
-            <script>
-                        if(!alert("Something went wrong! please try again.")) {
-                            window.location.href = "http://localhost/Richway-garment-system/manageEmployeeController/index"
-                        }
-            </script>
-            ';
-
-            }
-
-        }//if(!isempty)
         else {
-            echo '
-            <script>
-                if(!alert("Some required fields are missing!")) {
-                    window.location.href = "http://localhost/Richway-garment-system/manageEmployeeController/addEmployeeform"
-                }
-            </script>
-            ';
-
+            $this->view("admin/addEmployee", $employeeData);
 
         }
-
 
     }
+
+
 
     public function loadupdateEmployeeform()
     {
 
         $empID = $this->getSession('selected_employee');
-        $data = $this->manageEmployeeModel->updateEmployee($empID);
+        $employeeEdit = $this->manageEmployeeModel->loadupdateEmployeedetails($empID);
+
+        $data = [
+            'data'=>$employeeEdit,
+            'nameError'=> '',
+            'nameErrorCheckFormat'=>'',
+            'addressError'=> '',
+            'contact_noError'=> '',
+            'emailError'=>'',
+            'emailErrorFormat'=>'',
+            'blood_groupError'=> '',
+            'bank_nameError'=>'',
+            'bank_account_nameError'=> '',
+            'bank_IDError'=> '',
+            'bank_branchError'=> '',
+            'account_noError'=> '',
+            'salary_basicError'=> '',
+            'job_start_dateError'=> ''
+
+        ];
+
+
         $this->view("admin/editEmployeeform", $data);
     }
+
 
     public function updateEmployee()
     {
         $employee_ID = $this->input('hiddenID');
-
+        $employeeEdit = $this->manageEmployeeModel->loadupdateEmployeedetails( $employee_ID);
 
         $employeeData = [
 
             'FullName' => $this->input('name'),
             'Address' => $this->input('address'),
             'ContactNumber' => $this->input('contact_no'),
+            'email'=>$this->input('email'),
             'BloodGroup' => $this->input('blood_group'),
             'employeeRole' => $this->input('role'),
-            'bank_ID' => $this->input('bank_ID'),
-            'BankName' => $this->input('bank_account_name'),
+            'bank_name'=>$this->input('bank_name'),
+            'BankAccName' => $this->input('bank_account_name'),
             'BankBranch' => $this->input('bank_branch'),
             'AccountNumber' => $this->input('account_no'),
             'SalaryBasic' => $this->input('salary_basic'),
             'job_startdate' => $this->input('startJobDate'),
             'hiddenID' => $this->input('hiddenID'),
+            'data'=> $employeeEdit,
+            'nameError'=> '',
+            'nameErrorCheckFormat'=>'',
+            'addressError'=> '',
+            'contact_noError'=> '',
+            'emailError'=>'',
+            'emailErrorFormat'=>'',
+            'blood_groupError'=> '',
+            'bank_nameError'=>'',
+            'bank_account_nameError'=> '',
+            'bank_branchError'=> '',
+            'account_noError'=> '',
+            'salary_basicError'=> '',
+            'job_start_dateError'=> ''
 
         ];
-        foreach ($employeeData as $key => $value) {
-            if (empty($value)) {
-                $isEmpty = true;
-            }
+
+
+
+        if(empty( $employeeData['FullName'])){
+            $employeeData['nameError']="Full name is required";
+        }
+        if (!preg_match("/^([a-zA-Z' ]+)$/",$employeeData['FullName'])) {
+            $employeeData['nameErrorCheckFormat']= "Only letters allowed";
+        }
+        if(empty( $employeeData['Address'])){
+            $employeeData['addressError']="Address is required";
+        }
+        if(empty( $employeeData['ContactNumber'])){
+            $employeeData['contact_noError']="Contact Number is required";
+        }
+        if(empty( $employeeData['email'])){
+            $employeeData['emailError']="Email address is required";
+        }
+        if(!filter_var($employeeData['email'], FILTER_VALIDATE_EMAIL)){
+            $employeeData['emailErrorFormat']="Invalid email address ";
         }
 
+        if(empty( $employeeData['BloodGroup'])){
+            $employeeData['blood_groupError']="Blood group is required";
+        }
+        if(empty( $employeeData['bank_name'])){
+            $employeeData[ 'bank_nameError']="Bank name is required";
+        }
 
-        $updateData = [$employeeData['FullName'], $employeeData['Address'], $employeeData['ContactNumber'], $employeeData['BloodGroup'], $employeeData['bank_ID'], $employeeData['BankName'], $employeeData['BankBranch'], $employeeData['AccountNumber'], $employeeData['SalaryBasic'], $employeeData['job_startdate'], $employeeData['hiddenID']];
+        if(empty( $employeeData['BankAccName'])){
+            $employeeData['bank_account_nameError']="Bank account  name is required";
+        }
+        if(empty( $employeeData['BankBranch'])){
+            $employeeData['bank_branchError']="Bank branch is required";
+        }
+        if(empty( $employeeData[ 'AccountNumber'])){
+            $employeeData['account_noError']="Account number is required";
+        }
+        if(empty( $employeeData[ 'SalaryBasic'])){
+            $employeeData['salary_basicError']="Salary basic is required";
+        }
+        if(empty( $employeeData['job_startdate'])){
+            $employeeData['job_start_dateError']="Job start date is required";
+        }
+        echo("<script>console.log('PHP in edit: " . json_encode($employeeData) . "');</script>");
 
-        if (!$isEmpty) {
-
-            if ($this->manageEmployeeModel->editEmployee($updateData)) {
 
 
-                echo '
-              <script>
-                            if(!alert("Employee Updated successfully")) {
-                                window.location.href = "http://localhost/Richway-garment-system/manageEmployeeController/index"
-                            }
-              </script>
+        if(empty($employeeData['nameError'])&&empty($employeeData['nameErrorCheckFormat'])&&empty($employeeData['addressError'])&&empty($employeeData['contact_noError'])&&
+            empty($employeeData['emailError'])&& empty($employeeData['emailErrorFormat'])&&empty($employeeData['blood_groupError'])&&
+            empty($employeeData['bank_nameError'])&&empty($employeeData['bank_account_nameError'])&&empty($employeeData['salary_basicError'])&&empty($employeeData['job_start_dateError'])) {
 
-            ';
 
-            } else {
-                echo '
+                    if ($this->manageEmployeeModel->editEmployee($employeeData)) {
 
-            <script>
-                        if(!alert("Something went wrong! please try again.")) {
-                            window.location.href = "http://localhost/Richway-garment-system/manageEmployeeController/loadupdateEmployeeform"
-                        }
-            </script>
-            ';
 
-            }
+                        echo '
+                      <script>
+                                    if(!alert("Employee Updated successfully")) {
+                                        window.location.href = "http://localhost/Richway-garment-system/manageEmployeeController/index"
+                                    }
+                      </script>
 
-        }//if(!isempty)
+                    ';
+
+                    } else {
+                        echo '
+
+                    <script>
+                                if(!alert("Something went wrong! please try again.")) {
+                                    window.location.href = "http://localhost/Richway-garment-system/manageEmployeeController/loadupdateEmployeeform"
+                                }
+                    </script>
+                    ';
+
+                    }
+
+        }
         else {
-            echo '
-            <script>
-                if(!alert("Some required fields are missing!")) {
-                    window.location.href = "http://localhost/Richway-garment-system/manageEmployeeController/loadupdateEmployeeform"
-                }
-            </script>
-            ';
+            $this->view("admin/editEmployeeform", $employeeData);
+
 
 
         }

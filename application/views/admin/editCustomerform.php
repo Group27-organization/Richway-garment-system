@@ -41,54 +41,82 @@
         <!----------------------------------form start--------------------------------------------------------------------------------------- -->
 
 
- <form  action="<?php echo BASEURL;?>/manageCustomerController/updateCustomer" method="POST" id="addCustomer" >
+ <form  action="<?php echo BASEURL;?>/manageCustomerController/updateCustomer" method="POST"  >
 <div class="flexbox-container">
 
     <div class="inputfield">
         <h2>Update Customer</h2>
     </div>
 
-      
-    
-      <div class="inputfield">
-          <label for="name">Full Name</label>
-          <input type="text" id="name" name="name" class="form-contrall" value="<?php echo $data->name;?>">
-      
-      </div>
+
+
+    <div class="inputfield">
+        <label for="name">Full Name</label>
+        <input type="text" id="name" name="name" class="form-contrall"  value="<?php echo $data['data']->name;?>">
+        <label class="error" style="color:red;">
+            <?php
+            if ($data['nameError']) {
+                echo $data['nameError'];
+            }
+
+            elseif($data['nameErrorFormat']) {
+                echo $data['nameErrorFormat'];
+            }
+            ?>
+        </label>
+    </div>
 
       <div class="inputfield">
           <label for="address">Address</label>
-          <input type="text" id="address" name="address" class="form-contrall" value="<?php echo $data->address;?>">
+          <input type="text" id="address" name="address" class="form-contrall" value="<?php echo $data['data']->address;?>">
+          <label class="error" style="color:red;">
+              <?php   if($data['addressError']) :echo $data['addressError']; endif; ?>
+          </label>
 
-      </div> 
+      </div>
 
-      <div class="inputfield">
+    <div class="inputfield">
         <label for="contact_no">Contact Number</label>
-        <input type="tel" id="contact_no" name="contact_no" class="form-contrall" value="<?php echo $data->contact_no;?>">
-
+        <input type="tel" id="contact_no" name="contact_no" class="form-contrall" value="<?php echo $data['data']->contact_no;?>">
         <input type="hidden" name="hiddenID" value="<?php echo $data->customer_ID;?>">
-    </div> 
+        <label class="error" style="color:red;">
+            <?php   if($data['contact_noError']) :echo $data['contact_noError']; endif; ?>
+        </label>
+    </div>
 
     <div class="inputfield">
         <label for="Gender">Gender</label>
-        <input type="text" id="Gender" name="Gender" class="form-contrall" value="<?php echo $data->Gender;?>">
-
+        <input type="text" id="Gender" name="Gender" class="form-contrall" value="<?php echo $data['data']->Gender;?>">
+        <label class="error" style="color:red;">
+            <?php   if($data['GenderError']) :echo $data['GenderError']; endif; ?>
+        </label>
     </div>
-    
+
     <div class="inputfield">
         <label for="email">Email</label>
-        <input type="email" id="email" name="email" class="form-contrall" value="<?php echo $data->email;?>">
+        <input id="email" maxlength="100" name="email" class="form-contrall" value="<?php echo $data['data']->email;?> ">
+        <label class="error" style="color:red;">
 
+            <?php
+            if ($data['emailError']) {
+                echo $data['emailError'];
+            }
+
+            elseif($data['emailErrorFormat']) {
+                echo $data['emailErrorFormat'];
+            }
+            ?>
+        </label>
     </div>
 
-    <br><div class="inputfield inputbutton"> 
-            <input type="submit" value="Update" class="btn cripple">
-    </div> 
+    <br><div class="inputfield inputbutton">
+        <input type="submit" value="Update" class="btn cripple">
+        <input type="hidden" name="hiddenID" value="<?php echo $data['data']->customer_ID;?>">
+    </div>
 
 </div>
-</div>
+
 </form>
-</div>
 </div>
 </body>
 </html>

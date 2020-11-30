@@ -30,7 +30,7 @@
             <div class="block">
                 <div class="page-header-routetext">
                     <a href="#"><img src="<?php echo BASEURL; ?>/public/assets/img/home%20(2).svg" ></i></a>
-                    <a href="#!" style="color:#8898aa;"> / Manage Employee</a>
+                    <a href="#!" style="color:#8898aa;"> / Raw Materials</a>
                 </div>
             </div>
         </div>
@@ -39,12 +39,10 @@
 
         <div class="tab-content">
             <div class="tab">
-                <button class="tablinks active" onclick="openEmp(event,'sales_manager')">Sales Managers</button>
-                <button class="tablinks" onclick="openEmp(event,'production_manager')">Production Managers</button>
-                <button class="tablinks" onclick="openEmp(event,'supervisor')">Supervisors</button>
-                <button class="tablinks" onclick="openEmp(event,'accountant')">Accountants</button>
-                <button class="tablinks" onclick="openEmp(event,'stock_keeper')">Stock Keepers</button>
-                <button class="tablinks" onclick="openEmp(event,'tailor')">Tailors</button>
+                <button class="tablinks active" onclick="openRaw(event,'fabric')">Fabric</button>
+                <button class="tablinks" onclick="openRaw(event,'button')">Button</button>
+                <button class="tablinks" onclick="openRaw(event,'thread')">Thread</button>
+
             </div>
 
             <!--------------------------------------------Tab Content-------------------------------------------------------------------------------------- -->
@@ -59,11 +57,11 @@
                         </div>
                     </div>
                     <div class="BtnWap">
-                        <button id="addEmployee" class="three-set-btn1" onclick="location.href"  >Add</button>
+                        <button id="addRawmaterial" class="three-set-btn1" onclick="openRaw()">Add</button>
 
-                        <button id="updateEmployee" class="three-set-btn2" onclick="updateEmployee()">Update</button>
+                        <button id="updateRawmaterial" class="three-set-btn2" onclick="">Update</button>
 
-                        <button id="deleteEmployee" class="three-set-btn3" onclick="deleteEmployee()">Remove</button>
+                        <button id="deleteRawmaterial" class="three-set-btn3" onclick="deleteRawMaterial()">Remove</button>
                     </div>
                 </div><!--flex row-->
 
@@ -120,7 +118,7 @@
 </div>
 
 
-<?php linkJS("assets/js/manageEmployee.js") ?>
+<?php linkJS("assets/js/rawmaterial.js") ?>
 <?php linkJS("assets/js/table.js") ?>
 
 </body>

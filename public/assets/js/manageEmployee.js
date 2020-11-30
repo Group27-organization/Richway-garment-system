@@ -1,4 +1,3 @@
-
 openEmp(null,'sales_manager');
 addEmployeeBtn = document.getElementById("addEmployee");
 addEmployeeBtn.onclick = function() {
@@ -43,21 +42,21 @@ function openEmp(evt,elementID) {
 
         }
     }
-        console.log("RRR :"+elementID);
-        $.ajax({
-            type: 'POST',
-            url: "http://localhost/Richway-garment-system/manageEmployeeController/loadTable",
-            data: { employeerole: elementID,  key: "manageEmployeeData2"},
-            dataType: 'html',
-            success: function(data){
-                $("#table-responsive").html(data);
+    console.log("RRR :"+elementID);
+    $.ajax({
+        type: 'POST',
+        url: "http://localhost/Richway-garment-system/manageEmployeeController/loadTable",
+        data: { employeerole: elementID,  key: "manageEmployeeData2"},
+        dataType: 'html',
+        success: function(data){
+            $("#table-responsive").html(data);
 
 
-            },
-            error       : function() {
-                $("#table-responsive").html('<br><p>Something went wrong.</p>');
-            }
-        });
+        },
+        error       : function() {
+            $("#table-responsive").html('<br><p>Something went wrong.</p>');
+        }
+    });
 
 
 }

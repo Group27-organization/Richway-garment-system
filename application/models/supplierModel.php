@@ -4,7 +4,7 @@ class supplierModel extends database {
 
 
 
-   public function updateSupplier($id){
+   public function loadupdateSupplier($id){
 	    if($this->Query("SELECT * FROM supplier WHERE supplier_ID=?",[$id])){
 	        $row=$this->fetch();
 	        return $row;
