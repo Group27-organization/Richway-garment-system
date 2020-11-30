@@ -48,7 +48,7 @@
 
                 <div class="inputfield">
                     <label for="EmailAddress">Email Address</label>
-                    <input type="email" id="EmailAddress" name="Eemailaddress" class="form-contrall" placeholder="example@gmail.com">
+                    <input type="email" id="EmailAddress" name="emailaddress" class="form-contrall" placeholder="example@gmail.com">
 
                 </div>
 

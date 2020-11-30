@@ -12,7 +12,7 @@
         $this->redirect("loginController/loginForm");
 
       }
-      elseif ($this->getSession('userId')['role'] != 'admin'){
+      elseif ($this->getSession('userId')['role'] != 'stock_keeper'){
           $this->redirect("somePage");
           echo "You cannot access this page.";
           die();
@@ -56,8 +56,8 @@
                     echo '
                       <script>
                                     if(!alert("Supplier added successfully")) {
-                                        alert("Supplier added successfully");
-                                        window.location.href = "http://localhost/Richway-garment-system/manageSupplierController/index";
+                                        
+                                        window.location.href = "http://localhost/Richway-garment-system/manageSupplierController/addSupplierForm";
                                     }
                                 </script>
 
@@ -71,8 +71,8 @@
 
                     <script>
                                 if(!alert("Something went wrong! please try again.")) {
-                                    alert("Something went wrong! please try again.")
-                                    window.location.href = "http://localhost/Richway-garment-system/addSupplierController";
+                                   
+                                    window.location.href = "http://localhost/Richway-garment-system/manageSupplierController/addSupplierForm";
                                 }
                     </script>
                     ';
@@ -84,8 +84,8 @@
                   echo '
                   <script>
                       if(!alert("Some required fields are missing!")) {
-                          alert("Some required fields are missing!")
-                          window.location.href = "http://localhost/Richway-garment-system/addSupplierController/index";
+                        
+                          window.location.href = "http://localhost/Richway-garment-system/manageSupplierController/addSupplierForm";
                       }
                   </script>
                   ';
