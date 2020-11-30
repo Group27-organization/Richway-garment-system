@@ -1,4 +1,8 @@
-<?php 
+<?php
+
+//ini_set('display_startup_errors',1);
+//ini_set('display_errors',1);
+//error_reporting(E_ALL);
 
 class manageProductController extends framework {
 
@@ -128,12 +132,9 @@ class manageProductController extends framework {
 
         //echo("<script>console.log('PHP: " . json_encode($product) . "');</script>");
 
-        $result = $this->manageProductModel->getNextProductID($product);
-
         $tblclmns = $this->manageProductModel->getProductTableColumns($product);
 
         $data = [
-            'product_ID' => "ID".($result),
             'product' => ucwords(str_replace("_","-",$product)),
             'table_columns' => $tblclmns,
         ];
@@ -141,6 +142,71 @@ class manageProductController extends framework {
 
         $this->view("admin/addProduct",$data);
     }
+
+
+    public function loadDesignTemplates(){
+
+        if(isset($_POST['key'])){
+            if($_POST['key'] == "loadDesignTemplateData"){
+
+                $result = $this->manageProductModel->loadDesignTemplateData($this->getSession('selected_product'));
+
+                //echo("<script>console.log('PHP: " . json_encode($result) . "');</script>");
+
+                $count = 0;
+                if($result !== -1){
+
+                    foreach($result as $row){
+
+                        if($count == 0){
+                            echo '<div class="first-row">';
+                        }
+                        elseif ($count == 2){
+                            echo '<div class="second-row">';
+                            $count = -2;
+                        }
+
+                        $imgurl = str_replace('.png','',$row->image_url);
+                        $imgurl = $imgurl."-trans.png";
+
+                        echo "
+                                <div class=\"product-container\">
+                                <div class=\"product\">
+                                    <div class=\"product-preview\">
+                                        <img src=\"".BASEURL."/public/assets/img/$imgurl\" style=\"width: 100%; height: 100%; object-fit: scale-down;\">
+                                    </div>
+                                    <div class=\"product-info\">
+                                        <div class=\"product-top\">
+                                            <h6>Description</h6>
+                                            <h4 id='desc'>$row->description</h4>
+                                        </div>
+                                        <div class=\"product-bottom\">
+                                            <button type=\"button\" class=\"slctbtn cripple\" onclick=\"selectPID(event,'$row->p_ID','$row->description')\">Select
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            ";
+
+                        $count += 1;
+                    }
+                }
+                else{
+                    echo "
+                        <br><p  style=\"text-align: center;\">There is no design template to the display!</p>
+                   ";
+                }
+
+
+            }
+
+
+        }
+
+    }
+
 
     public function addProduct(){
 
@@ -150,17 +216,20 @@ class manageProductController extends framework {
 
         $tblclmns = $this->manageProductModel->getProductTableColumns($product);
 
+        $pid = preg_replace('/[^0-9]/', '', $this->input('Select_Design_Category'));
+
         $prdTableData = [
             $result,
-            $this->input('p_ID'),
+            $pid,
         ];
 
         $emptyFlag = false;
 
         foreach ($tblclmns as $col){
             $col = $col->COLUMN_NAME;
+            echo("<script>console.log('PHP: " . json_encode($col) . "');</script>");
             $value = $this->input($col);
-            if(empty($value)){
+            if(!empty($value)){
                array_push($prdTableData,$value);
             }
             else{
@@ -175,8 +244,8 @@ class manageProductController extends framework {
             if($this->manageProductModel->addSubProductData($prdTableData,$product)){
                 echo '
                     <script>
-                        if(!alert("User account is successfully created.")) {
-                            window.location.href = "http://localhost/Richway-garment-system/manageUserController/index"
+                        if(!alert("Product details saved successfully.")) {
+                            window.location.href = "http://localhost/Richway-garment-system/manageProductController/index"
                         }
                     </script>
             ';
@@ -185,7 +254,7 @@ class manageProductController extends framework {
                 echo '
             <script>
                 if(!alert("Something went wrong! please try again.")) {
-                    window.location.href = "http://localhost/Richway-garment-system/manageUserController/addUserView"
+                    window.location.href = "http://localhost/Richway-garment-system/manageProductController/addProductView"
                 }
             </script>
             ';
@@ -196,7 +265,7 @@ class manageProductController extends framework {
             echo '
             <script>
                 if(!alert("Some required fields are missing!")) {
-                    window.location.href = "http://localhost/Richway-garment-system/manageUserController/addUserView"
+                    window.location.href = "http://localhost/Richway-garment-system/manageProductController/addProductView"
                 }
             </script>
             ';

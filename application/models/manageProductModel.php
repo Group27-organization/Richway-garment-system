@@ -12,7 +12,7 @@ class manageProductModel extends database {
             if($this->rowCount() > 0 ){
 
                 $data = $this->fetchall();
-                echo("<script>console.log('PHP: " . json_encode($data) . "');</script>");
+                //echo("<script>console.log('PHP: " . json_encode($data) . "');</script>");
 
                 return ['status' => 'ok', 'data' => $data];
 
@@ -36,43 +36,23 @@ class manageProductModel extends database {
     }
 
 
+    public function loadDesignTemplateData($type){
+        if($this->Query("SELECT * FROM predefine WHERE type = ?",[$type])) {
+            return $this->fetchall();
+        }
+
+        return -1;
+    }
+
     public function addSubProductData($data,$product){
-//        $loginData = [
-//            $data['username'],
-//            $data['password']
-//        ];
-//        $empData = [
-//            $data['empID'],
-//        ];
-//
-//        if($this->Query("INSERT INTO login (user_name, password) VALUES (?,?)", $loginData)){
-//
-//            $clogid = $this->getCurrentLoginID();
-//
-//            array_push($empData, $clogid);
-//
-//            $role_login = [
-//                $clogid,
-//                $data['roleID'],
-//                date("Y-m-d"),
-//                1
-//            ];
-//
-//            if ($this->Query("INSERT INTO per_role_login (login_ID, role_ID, assign_date, default_role) VALUES (?,?,?,?)", $role_login)){
-//
-//                if($role == 'owner') {
-//                    if($this->Query("UPDATE owner SET login_ID = $empData[1] WHERE owner_ID =  '$empData[0]' AND login_ID IS NULL")){
-//                        return true;
-//                    }
-//                }
-//
-//                if($this->Query("INSERT INTO $role (emp_ID, login_ID) VALUES (?,?)", $empData)){
-//                    return true;
-//                }
-//
-//            }
-//
-//        }
+
+        echo("<script>console.log('PHP: " . json_encode($data) . "');</script>");
+
+        if($this->Query("INSERT INTO $product VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)", $data)){
+
+            return true;
+
+        }
         return false;
     }
 

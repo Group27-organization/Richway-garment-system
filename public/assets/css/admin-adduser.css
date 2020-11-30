@@ -209,6 +209,13 @@ body{
     justify-content: flex-start !important;
 }
 
+.footer-align-items-center{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center !important;
+}
+
 .pagination {
     display: flex;
     padding-left: 0;

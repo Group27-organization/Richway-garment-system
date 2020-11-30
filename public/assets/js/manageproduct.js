@@ -81,7 +81,7 @@ function selectRow(evt,url,size) {
             if (tblrows[i].className.includes('active-row')) {
                 url = tblrows[i].lastElementChild.innerHTML;
                 size = tblrows[i].children.item(2).innerHTML;
-                console.log("url:"+url);
+                //console.log("url:"+url);
             }
         }
     }

@@ -155,7 +155,7 @@ select{
     background-position-x: 98%;
 }
 
-.fas {
+.btn .fas {
     margin-left: 0;
     margin-right: 8px;
 }
