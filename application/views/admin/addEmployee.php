@@ -39,7 +39,7 @@
 
                 <div class="inputfield">
                     <label for="role">Employee Role</label>
-                    <input type="text" id="role"  name="role" value=" <?php echo $data['employeeRole'] ?>" class="form-contrall-readonly" readonly>
+                    <input type="text" id="role"  name="role" value=" <?php echo $data['employeeRole'] ?>" class="form-contrall-special" readonly>
                 </div>
 
                 <div class="inputfield">

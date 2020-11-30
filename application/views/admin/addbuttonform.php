@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta id="nav_item" content="Add Button">
-    <title>Add Button</title>
+    <meta id="nav_item" content="Manage Raw Materials">
+    <title>Add New Button</title>
 
     <?php linkCSS("assets/css/nav.css") ?>
     <?php linkCSS("assets/css/side_nav.css") ?>
@@ -25,7 +25,7 @@
 
         <div class="header-container background-gradient">
             <div class="header-group">
-                <h1 class="text-white">Add Button</h1>
+                <h1 class="text-white">Add New Button</h1>
                 <p class="text-lead text-white">You can add button's details in here</p>
             </div>
             <div class="separator separator-bottom separator-skew zindex-100">
