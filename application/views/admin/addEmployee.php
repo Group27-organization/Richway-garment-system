@@ -44,15 +44,15 @@
 
                 <div class="inputfield">
                     <label for="name">Full Name</label>
-                    <input type="text"  maxlength="100" title="Full name should only contain letters. e.g. John" id="name" name="name" class="form-contrall" value="<?php if($data['FullName']) :echo $data['FullName']; endif; ?>">
+                    <input type="text"  maxlength="100" id="name" name="name" class="form-contrall" value="<?php if($data['FullName']) :echo $data['FullName']; endif; ?>">
                     <label class="error" style="color:red;">
                         <?php
                         if ($data['nameError']) {
                             echo $data['nameError'];
                         }
 
-                        elseif($data['nameErrorFormat']) {
-                            echo $data['nameErrorFormat'];
+                        elseif($data['nameErrorCheckFormat']) {
+                            echo $data['nameErrorCheckFormat'];
                         }
                         ?>
                     </label>
@@ -129,7 +129,7 @@
 
                 <div class="inputfield">
                     <label for="bank_account_name">Bank Account Name</label>
-                    <input type="text" id="bank_account_name" maxlength="100" name="bank_account_name" class="form-contrall" value="<?php if($data['BankName']) :echo $data['BankName']; endif; ?>">
+                    <input type="text" id="bank_account_name" maxlength="100" name="bank_account_name" class="form-contrall" value="<?php if($data['BankAccName']) :echo $data['BankAccName']; endif; ?>">
                     <label class="error" style="color:red;">
                         <?php   if($data['bank_account_nameError']) :echo $data['bank_account_nameError']; endif; ?>
                     </label>

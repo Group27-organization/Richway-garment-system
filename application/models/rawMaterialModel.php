@@ -53,8 +53,7 @@ class rawMaterialModel extends database {
     }
     public function insertbutton($Data){
 
-
-        if($this->Query("INSERT INTO predefine_button(button_code,Description,price,active) VALUES (?,?,?,?)", $Data) ){
+        if($this->Query("INSERT INTO predefine_button(code,Description,price,active) VALUES (?,?,?,?)", $Data) ){
             echo("<script>console.log('PHP in loademployeeTable contoller: " . json_encode($Data) . "');</script>");
             return true;
         }

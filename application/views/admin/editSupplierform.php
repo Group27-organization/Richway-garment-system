@@ -45,32 +45,57 @@
     
     <div class="inputfield"> 
           <label for="SuplierName">Suplier Name</label>
-          <input type="text" id="SuplierName" name="suplierName" class="form-contrall" value="<?php echo $data->name;?>">
+          <input type="text" id="SuplierName" name="suplierName" class="form-contrall" value="<?php echo  $data['data']->name;?>">
+           <label class="error" style="color:red;">
+               <?php
+               if ($data['nameError']) {
+                    echo $data['nameError'];
+               }
+
+               elseif($data['nameErrorCheckFormat']) {
+                   echo $data['nameErrorCheckFormat'];
+               }
+                ?>
+           </label>
         
     </div>
 
     <div class="inputfield"> 
           <label for="EmailAddress">Email Address</label>
-          <input type="email" id="EmailAddress" name="Eemailaddress" class="form-contrall" value="<?php echo $data->email;?>">
+          <input id="EmailAddress" name="Eemailaddress" class="form-contrall" value="<?php echo $data['data']->email;?>">
+           <label class="error" style="color:red;">
+
+               <?php
+               if ($data['emailError']) {
+                   echo $data['emailError'];
+               }
+
+               elseif($data['emailErrorFormat']) {
+                   echo $data['emailErrorFormat'];
+               }
+                ?>
+            </label>
           
    </div>
 
 
     <div class="inputfield">  
       <label for="Address">Address</label>
-      <input type="text" id="Address" name="address" class="form-contrall" value="<?php echo $data->address;?>">
-     
+      <input type="text" id="Address" name="address" class="form-contrall" value="<?php echo  $data['data']->address;?>">
+       <label class="error" style="color:red;">
+           <?php   if($data['addressError']) :echo $data['addressError']; endif; ?>
+       </label>
     </div>
 
     
     <div class="inputfield">  
         <label for="ContactNo">Contact No</label>
-        <input type="text" id="ContactNo" name="contactno" class="form-contrall"value="<?php echo $data->contact_no;?>">
-        <input type="hidden" name="hiddenID" value="<?php echo $data->supplier_ID;?>">
+        <input type="text" id="ContactNo" name="contactno" class="form-contrall"value="<?php echo  $data['data']->contact_no;?>">
+        <input type="hidden" name="hiddenID" value="<?php echo $data['data']->supplier_ID;?>">
+        <label class="error" style="color:red;">
+            <?php   if($data['contact_noError']) :echo $data['contact_noError']; endif; ?>
+        </label>
     </div>
-
-
-
 
 
     <div class="inputfield inputbutton">

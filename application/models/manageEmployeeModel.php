@@ -95,12 +95,10 @@ class manageEmployeeModel extends database {
 
         ];
 
-        //echo("<script>console.log('PHP in loademployeeTable contoller: " . json_encode($updateemployeeData) . "');</script>");
-
         if($this->Query("UPDATE employee SET name = ?,address = ?,contact_no = ?,email=?,blood_group = ?,salary_basic = ?,job_start_date = ? WHERE emp_ID = ?",$updateemployeeData)) {
 
             $bankdetails = [
-                $Data['bank_Name'],
+                $Data['bank_name'],
                 $Data['BankAccName'],
                 $Data['BankBranch'],
                 $Data['AccountNumber'],

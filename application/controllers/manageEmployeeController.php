@@ -214,7 +214,7 @@ class manageEmployeeController extends framework
 
 
 
-        if(empty($employeeData['nameError'])&&empty($employeeData['addressError'])&&empty($employeeData['contact_noError'])&&
+        if(empty($employeeData['nameError'])&&empty($employeeData['nameErrorCheckFormat'])&&empty($employeeData['addressError'])&&empty($employeeData['contact_noError'])&&
             empty($employeeData['emailError'])&& empty($employeeData['emailErrorFormat'])&&empty($employeeData['blood_groupError'])&&
             empty($employeeData['bank_IDError'])&&empty($employeeData['bank_nameError'])&&empty($employeeData['bank_account_nameError'])&&empty($employeeData['salary_basicError'])&&empty($employeeData['job_start_dateError'])) {
 
@@ -261,6 +261,7 @@ class manageEmployeeController extends framework
 
         $empID = $this->getSession('selected_employee');
         $employeeEdit = $this->manageEmployeeModel->loadupdateEmployeedetails($empID);
+
         $data = [
             'data'=>$employeeEdit,
             'nameError'=> '',
@@ -280,6 +281,7 @@ class manageEmployeeController extends framework
 
         ];
 
+
         $this->view("admin/editEmployeeform", $data);
     }
 
@@ -288,6 +290,7 @@ class manageEmployeeController extends framework
     {
         $employee_ID = $this->input('hiddenID');
         $employeeEdit = $this->manageEmployeeModel->loadupdateEmployeedetails( $employee_ID);
+
         $employeeData = [
 
             'FullName' => $this->input('name'),
@@ -313,7 +316,6 @@ class manageEmployeeController extends framework
             'blood_groupError'=> '',
             'bank_nameError'=>'',
             'bank_account_nameError'=> '',
-            'bank_IDError'=> '',
             'bank_branchError'=> '',
             'account_noError'=> '',
             'salary_basicError'=> '',
@@ -364,12 +366,13 @@ class manageEmployeeController extends framework
         if(empty( $employeeData['job_startdate'])){
             $employeeData['job_start_dateError']="Job start date is required";
         }
+        echo("<script>console.log('PHP in edit: " . json_encode($employeeData) . "');</script>");
 
 
 
-        if(empty($employeeData['nameError'])&&empty($employeeData['addressError'])&&empty($employeeData['contact_noError'])&&
+        if(empty($employeeData['nameError'])&&empty($employeeData['nameErrorCheckFormat'])&&empty($employeeData['addressError'])&&empty($employeeData['contact_noError'])&&
             empty($employeeData['emailError'])&& empty($employeeData['emailErrorFormat'])&&empty($employeeData['blood_groupError'])&&
-            empty($employeeData['bank_IDError'])&&empty($employeeData['bank_nameError'])&&empty($employeeData['bank_account_nameError'])&&empty($employeeData['salary_basicError'])&&empty($employeeData['job_start_dateError'])) {
+            empty($employeeData['bank_nameError'])&&empty($employeeData['bank_account_nameError'])&&empty($employeeData['salary_basicError'])&&empty($employeeData['job_start_dateError'])) {
 
 
                     if ($this->manageEmployeeModel->editEmployee($employeeData)) {
@@ -381,12 +384,12 @@ class manageEmployeeController extends framework
                                         window.location.href = "http://localhost/Richway-garment-system/manageEmployeeController/index"
                                     }
                       </script>
-        
+
                     ';
 
                     } else {
                         echo '
-        
+
                     <script>
                                 if(!alert("Something went wrong! please try again.")) {
                                     window.location.href = "http://localhost/Richway-garment-system/manageEmployeeController/loadupdateEmployeeform"

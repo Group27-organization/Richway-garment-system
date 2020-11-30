@@ -51,8 +51,8 @@
                     echo $data['nameError'];
                 }
 
-                elseif($data['nameErrorFormat']) {
-                    echo $data['nameErrorFormat'];
+                elseif($data['nameErrorCheckFormat']) {
+                    echo $data['nameErrorCheckFormat'];
                 }
                 ?>
             </label>

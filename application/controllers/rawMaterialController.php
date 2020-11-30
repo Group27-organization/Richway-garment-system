@@ -237,9 +237,9 @@ class  rawMaterialController extends  framework
 
                     echo "
                             <tr class='tblrow' onclick='selectRow(event)'>
-                                <td>$row->button_ID</td>
+                                <td>$row->ID</td>
                                 <td>$row->Description</td>
-                                <td>$row->button_code</td>
+                                <td>$row->code</td>
                                 <td>$row->price</td>
                                 
                                 
@@ -350,9 +350,8 @@ class  rawMaterialController extends  framework
                         <tr>
                             <th scope=col>Thread ID</th>
                             <th scope=col>Type</th>   
-                            <th scope=col>Color_code</th>                        
-                            <th scope=col>Raw Material ID</th>                            
-                                                         
+                            <th scope=col>Color_code</th>          
+                             
                         </tr>
                         </thead>
                         <tbody>
@@ -364,10 +363,10 @@ class  rawMaterialController extends  framework
 
                     echo "
                             <tr class='tblrow' onclick='selectRow(event)'>
-                                <td>$row->nool_ID</td>
+                                <td>$row->ID</td>
                                 <td>$row->type</td>
                                 <td>$row->color_code</td>
-                                <td>$row->raw_material_ID</td>                            
+                                                         
 
                             </tr>
                         ";
