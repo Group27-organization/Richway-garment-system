@@ -82,7 +82,7 @@
                 </div>
 
                 <br><div class="inputfield inputbutton">
-                    <input id="btnsubmitBtn" type='button' value="Submit" class="btn cripple">
+                    <input id="btnsubmitBtn" type='button' style="width: 100px; height: 43px; " value="Submit" class="btn cripple">
                 </div>
 
 

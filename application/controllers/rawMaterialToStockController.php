@@ -66,7 +66,7 @@ class  rawMaterialToStockController extends  framework
                         <table class=\"table align-items-center table-flush\">
                         <thead class=\"thead-light\">
                         <tr>
-                            <th scope=col> ID</th>
+                            <th scope=col style='display: none'> ID</th>
                             <th scope=col>Fabric Code</th>   
                             <th scope=col>Band</th> 
                             <th scope=col>Quality Grade</th>
@@ -89,7 +89,7 @@ class  rawMaterialToStockController extends  framework
 
                     echo "
                             <tr class='tblrow' onclick='selectRow(event)'>
-                                 <td>$row->ID</td>
+                                 <td style='display: none'>$row->ID</td>
                                  <td>$row->fabric_code</td>   
                                  <td>$row->band</td>                                
                                  <td>$row->quality_grade</td>                                
@@ -235,9 +235,21 @@ class  rawMaterialToStockController extends  framework
 
         if(empty($fabricData['FabricCodeIDError'])&&empty($fabricData['QuantityError'])&&empty($fabricData['DescriptionError'])) {
 
+            //type,date,stock_keeper_ID,supplier_ID
+            $loginID = $this->getSession('userId');
+            $stockKeeperId = intval($this->rawMaterialModel->getStockKeeperId($loginID));
+            $stockData=["raw material",$fabricData['Date'],$stockKeeperId,intval($fabricData['Supplier_id'])];
+
+            //type, quantity,description, stock_ID
+            $rmData=["fabric",intval($fabricData['Quantity']), $fabricData['Description'],0];
+
+            //fabric_Id, raw_material_id
+            $subTableData=[intval($fabricData['FabricCodeID']),0];
+
+
             $Data = [ intval($fabricData['Quantity']), $fabricData['Description'], $fabricData['Date'],intval($fabricData['FabricCodeID']),intval($fabricData['Supplier_id'])];
 
-            if ($this->rawMaterialModel->insertfabrictostock($Data)) {
+            if ($this->rawMaterialModel->insertfabrictostock($stockData,$rmData,$subTableData)) {
 
                 echo '
                       <script>
@@ -289,7 +301,7 @@ class  rawMaterialToStockController extends  framework
                         <table class=\"table align-items-center table-flush\">
                         <thead class=\"thead-light\">
                         <tr>
-                            <th scope=col>ID</th> 
+                            <th scope=col style='display: none'>ID</th> 
                              <th scope=col>Code</th> 
                              <th scope=col>Unit Price</th> 
                             <th scope=col>Description</th>   
@@ -309,7 +321,7 @@ class  rawMaterialToStockController extends  framework
 
                     echo "
                             <tr class='tblrow' onclick='selectRow(event)'>
-                                <td>$row->ID</td>
+                                <td style='display: none'>$row->ID</td>
                                  <td>$row->code</td>
                                  <td>$row->unit_price</td>
                                  <td>$row->description</td>
@@ -366,11 +378,24 @@ class  rawMaterialToStockController extends  framework
 
 
 
+//            $Data = [ intval($fabricData['Quantity']), $fabricData['Description'], $fabricData['Date'],intval($fabricData['ButtonCodeID']),intval($fabricData['Supplier_id'])];
+//
+            //type,date,stock_keeper_ID,supplier_ID
+            $loginID = $this->getSession('userId');
+            $stockKeeperId = intval($this->rawMaterialModel->getStockKeeperId($loginID));
+            $stockData=["raw material",$fabricData['Date'],$stockKeeperId,intval($fabricData['Supplier_id'])];
 
-            $Data = [ intval($fabricData['Quantity']), $fabricData['Description'], $fabricData['Date'],intval($fabricData['ButtonCodeID']),intval($fabricData['Supplier_id'])];
+            //type, quantity,description, stock_ID
+            $rmData=["button",intval($fabricData['Quantity']), $fabricData['Description'],0];
+
+            //btn_Id, raw_material_id
+            $subTableData=[intval($fabricData['ButtonCodeID']),0];
 
 
-                if ($this->rawMaterialModel->insertbuttonstock($Data)) {
+
+
+
+                if ($this->rawMaterialModel->insertbuttonstock($stockData,$rmData,$subTableData)) {
 
                     echo '
                       <script>
@@ -419,7 +444,7 @@ class  rawMaterialToStockController extends  framework
                         <table class=\"table align-items-center table-flush\">
                         <thead class=\"thead-light\">
                         <tr>
-                            <th scope=col>Thread ID</th>
+                            <th scope=col style='display: none'>Thread ID</th>
                             <th scope=col>Type</th>   
                             <th scope=col>Color_code</th>                        
                             <th scope=col>Unit Price</th> 
@@ -438,7 +463,7 @@ class  rawMaterialToStockController extends  framework
 
                     echo "
                             <tr class='tblrow' onclick='selectRow(event)'>
-                                <td>$row->ID</td>
+                                <td style='display: none'>$row->ID</td>
                                 <td>$row->type</td>
                                 <td>$row->color_code</td>
                                 <td>$row->unit_price</td>
@@ -493,8 +518,17 @@ class  rawMaterialToStockController extends  framework
 
             $Data = [ intval($threadData['Quantity']), $threadData['Description'], $threadData['Date'],intval($threadData['threadCodeID']),intval($threadData['Supplier_id'])];
 
+            $loginID = $this->getSession('userId');
+            $stockKeeperId = intval($this->rawMaterialModel->getStockKeeperId($loginID));
+            $stockData=["raw material",$threadData['Date'],$stockKeeperId,intval($threadData['Supplier_id'])];
 
-                if ($this->rawMaterialModel->insertthreadstock($Data)) {
+            //type, quantity,description, stock_ID
+            $rmData=["thread",intval($threadData['Quantity']), $threadData['Description'],0];
+
+            //btn_Id, raw_material_id
+            $subTableData=[intval($threadData['threadCodeID']),0];
+
+                if ($this->rawMaterialModel->insertthreadstock($stockData,$rmData,$subTableData)) {
 
                     echo '
                       <script>
@@ -541,10 +575,10 @@ class  rawMaterialToStockController extends  framework
                         <thead class=\"thead-light\">
                         <tr>
                         
-                            <th scope=col>Supplier ID</th>
+                            <th scope=col style='display: none'>Supplier ID</th>
                             <th scope=col>Name</thl>
                             <th scope=col>Email Address</th>
-                            <th scope=col>Address</th>
+                            <th scope=col style='display: none'>Address</th>
                             <th scope=col>Contact Number</th>
                            
                         </tr>
@@ -556,10 +590,10 @@ class  rawMaterialToStockController extends  framework
 
                     echo "
                             <tr class='tblrow' onclick='selectRow(event)'>
-                                <td id='supid'>$row->supplier_ID  </td>
+                                <td id='supid' style='display: none'>$row->supplier_ID  </td>
                                 <td>$row->name</td>
                                  <td>$row->email</td>
-                                  <td>$row->address</td>
+                                  <td style='display: none'>$row->address</td>
                                 <td>$row->contact_no</td>
                                 
                             </tr>

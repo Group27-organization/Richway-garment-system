@@ -87,7 +87,7 @@
 
 
                 <br><div class="inputfield inputbutton">
-                    <input id="fabsubmitBtn" type='button' value="Submit"  class="btn cripple">
+                    <input id="fabsubmitBtn" type='button' style="width: 100px; height: 43px; "  value="Submit"  class="btn cripple">
                 </div>
 
 

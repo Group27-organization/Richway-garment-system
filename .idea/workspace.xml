@@ -8,10 +8,9 @@
       <change beforePath="$PROJECT_DIR$/application/views/stock/addButtonform.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/stock/addButtonform.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/application/views/stock/addThreadform.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/stock/addThreadform.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/application/views/stock/addfabricform.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/stock/addfabricform.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/views/stock/supplier-popup-table.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/stock/supplier-popup-table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/assets/css/Form.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/Form.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/js/addbutton-to-stock.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/js/addbutton-to-stock.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/js/addfabric-to-stock.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/js/addfabric-to-stock.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/js/addnool-to-stock.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/js/addnool-to-stock.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/css/stockkeeper-form.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/stockkeeper-form.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,7 +76,8 @@
       <workItem from="1606029714081" duration="1353000" />
       <workItem from="1606366226374" duration="5429000" />
       <workItem from="1606622908255" duration="10951000" />
-      <workItem from="1606663402065" duration="17077000" />
+      <workItem from="1606663402065" duration="17323000" />
+      <workItem from="1606703178147" duration="7411000" />
     </task>
     <task id="LOCAL-00001" summary="manage stock css updated">
       <created>1605852511911</created>
@@ -100,7 +100,14 @@
       <option name="project" value="LOCAL" />
       <updated>1606672395249</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="supplier select popup add">
+      <created>1606681392895</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1606681392895</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -110,17 +117,18 @@
     <MESSAGE value="manage stock css updated" />
     <MESSAGE value="add fabric,nool,button to stock create without form validation" />
     <MESSAGE value="add fabric,nool,button to stock  js form validation form validation added" />
-    <option name="LAST_COMMIT_MESSAGE" value="add fabric,nool,button to stock  js form validation form validation added" />
+    <MESSAGE value="supplier select popup add" />
+    <option name="LAST_COMMIT_MESSAGE" value="supplier select popup add" />
   </component>
   <component name="WindowStateProjectService">
     <state x="413" y="110" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1606631206565">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="413" y="110" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1366.728@0.0.1366.728" timestamp="1606631206565" />
-    <state x="256" y="0" width="827" height="523" key="CommitChangelistDialog2" timestamp="1606672392042">
+    <state x="256" y="0" width="827" height="523" key="CommitChangelistDialog2" timestamp="1606681390410">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="256" y="0" width="827" height="523" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1606672392042" />
+    <state x="256" y="0" width="827" height="523" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1606681390410" />
     <state x="463" y="105" key="FileChooserDialogImpl" timestamp="1605774433948">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -137,10 +145,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="517" y="287" key="NewPhpFileDialog/0.0.1366.728@0.0.1366.728" timestamp="1605799284734" />
-    <state x="275" y="96" key="Vcs.Push.Dialog.v2" timestamp="1606672404558">
+    <state x="275" y="96" key="Vcs.Push.Dialog.v2" timestamp="1606681402208">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="275" y="96" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1606672404558" />
+    <state x="275" y="96" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1606681402208" />
     <state x="0" y="0" width="587" height="728" key="find.popup" timestamp="1605775235792">
       <screen x="0" y="0" width="1366" height="728" />
     </state>

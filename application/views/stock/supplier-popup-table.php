@@ -1,4 +1,4 @@
-
+<script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
 <!--aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa-->
 
 
@@ -16,7 +16,7 @@
                 <div class="right-card-header">
                     <div class="SearchBtnWap">
                         <div class="search">
-                            <input type="text" class="searchTerm" placeholder="#Order Item ID">
+                            <input type="text" class="searchTerm" placeholder="#Supplier name">
                             <button type="submit" class="searchButton cripple">
                                 <i class="fa fa-search"></i>
                             </button>
