@@ -113,6 +113,21 @@
                 </div>
 
                 <div class="inputfield">
+                    <label for="bank_name">Bank Name</label>
+                    <select id="bank_name"  name="bank_name" class="form-contrall" >
+                        <option value="">Select Bank</option>
+                        <option value="People's Bank">People's Bank</option>
+                        <option value="Bank of Ceylon.">Bank of Ceylon.</option>
+                        <option value="DFCC Bank PLC">DFCC Bank PLC.</option>
+                        <option value="Sampath Bank PLC">Sampath Bank PLC</option>
+                        <option value="National Development Bank PLC">National Development Bank PLC</option>
+                    </select>
+                    <label class="error" style="color:red;">
+                        <?php   if($data['bank_nameError']) :echo $data['bank_nameError']; endif; ?>
+                    </label>
+                </div>
+
+                <div class="inputfield">
                     <label for="bank_account_name">Bank Account Name</label>
                     <input type="text" id="bank_account_name" maxlength="100" name="bank_account_name" class="form-contrall" value="<?php if($data['BankName']) :echo $data['BankName']; endif; ?>">
                     <label class="error" style="color:red;">
@@ -120,13 +135,6 @@
                     </label>
                 </div>
 
-<!--                <div class="inputfield">-->
-<!--                    <label for="bank_ID">Bank ID</label>-->
-<!--                    <input type="text" id="bank_ID" name="bank_ID" maxlength="50" class="form-contrall" value="--><?php //if($data['bank_ID']) :echo $data['bank_ID']; endif; ?><!--">-->
-<!--                    <label class="error" style="color:red;">-->
-<!--                        --><?php //  if($data['bank_IDError']) :echo $data['bank_IDError']; endif; ?>
-<!--                    </label>-->
-<!--                </div>-->
 
                 <div class="inputfield">
                     <label for="bank_branch">Bank Branch</label>
