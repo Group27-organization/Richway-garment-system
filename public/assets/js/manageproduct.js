@@ -3,7 +3,7 @@ prdname = document.getElementById("firsttab").innerHTML.toString().toLowerCase()
 openProduct(null,prdname);
 
 function openProduct(evt,product) {
-    let i, tablinks, addProductBtn;
+    let i, tablinks, addProductBtn ,addnewdesignbtn;
 
     if(evt != null){
         tablinks = document.getElementsByClassName("tablinks");
@@ -14,6 +14,9 @@ function openProduct(evt,product) {
 
     }
 
+        addnewdesignbtn = document.getElementById("add_new_design_text");
+        addnewdesignbtn.innerText = "Add New " + product.replaceAll("_","-") + " Design";
+        addnewdesignbtn.style.textTransform = "capitalize";
 
         addProductBtn = document.getElementById("addproduct");
         addProductBtn.onclick = function() {

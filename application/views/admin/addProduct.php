@@ -53,6 +53,14 @@
                     <input type="text" id="Product" name="Product" value="<?php echo $data['product']?>" class="form-contrall-readonly" readonly>
                 </div>
 
+                <div class="inputfield">
+                    <label for="Select_Design_Category">Select Design Category</label>
+                    <div class="inputbutton">
+                        <input type="text" id="Select_Design_Category" name="Select_Design_Category" class="form-contrall-readonly" readonly>
+                        <button id="selectbtn" onclick="location.href" type="button"  class="btn2 input2 cripple">Select</button>
+                    </div>
+
+                </div>
 
                 <?php
                 foreach($data['table_columns'] as $col):

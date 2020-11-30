@@ -56,14 +56,21 @@ class loginController extends framework {
             } else if($result['status'] === 'passwordNotMacthed'){
                 $user['passwordError'] = "Sorry invalid password.";
                 $this->view("login", $user);
+            } else if($result['status'] === "notVerified"){
+                $this->setSession("userId", $result['data']);
+
+                if (!isset($_SESSION['CREATED'])) {
+                    $_SESSION['CREATED'] = time();
+                }
+
+                $this->redirect("manageUserController/changePasswordView");
+
             } else if($result['status'] === "ok"){
                 $this->setSession("userId", $result['data']);
 
-//                if($result['data']['role'] == 'admin'){
-//                    $this->redirect("adminDashboardController");
-//                }else {
-//                    $this->redirect("dashboardController");
-//                }
+                if (!isset($_SESSION['CREATED'])) {
+                    $_SESSION['CREATED'] = time();
+                }
 
                 $this->redirect("dashboardController");
 
@@ -71,6 +78,13 @@ class loginController extends framework {
         } else {
             $this->view("login", $user);
         }
+
+    }
+
+    public function logout(){
+
+        $this->destroy();
+        $this->redirect("loginController/loginForm");
 
     }
 

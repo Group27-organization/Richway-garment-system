@@ -144,29 +144,35 @@ class manageProductController extends framework {
 
     public function addProduct(){
 
-        $isEmpty = false;
+        $product =  $this->getSession('selected_product');
 
-        $roleID = $this->manageProductModel->getRoleID( $this->getSession('selected_role') );
+        $result = $this->manageProductModel->getNextProductID($product);
 
-        $loginTblData = [
+        $tblclmns = $this->manageProductModel->getProductTableColumns($product);
 
-            'username' => $this->input('UserName'),
-            'password' => $this->input('Password'),
-            'roleID' => $roleID->role_ID,
-            'empID' =>  preg_replace('/\D/', '', $this->input('EmployeeId')),
+        $prdTableData = [
+            $result,
+            $this->input('p_ID'),
         ];
 
-        foreach ($loginTblData as $key => $value){
+        $emptyFlag = false;
+
+        foreach ($tblclmns as $col){
+            $col = $col->COLUMN_NAME;
+            $value = $this->input($col);
             if(empty($value)){
-                $isEmpty= true;
+               array_push($prdTableData,$value);
+            }
+            else{
+                $emptyFlag = true;
             }
         }
 
-        if(!$isEmpty){
 
-            $loginTblData['password'] = password_hash($loginTblData['password'], PASSWORD_DEFAULT);
+        if(!$emptyFlag){
 
-            if($this->manageUserModel->addUserData($loginTblData,$this->getSession('selected_role'))){
+
+            if($this->manageProductModel->addSubProductData($prdTableData,$product)){
                 echo '
                     <script>
                         if(!alert("User account is successfully created.")) {

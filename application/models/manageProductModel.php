@@ -36,43 +36,43 @@ class manageProductModel extends database {
     }
 
 
-    public function addSubProductData($data,$role){
-        $loginData = [
-            $data['username'],
-            $data['password']
-        ];
-        $empData = [
-            $data['empID'],
-        ];
-
-        if($this->Query("INSERT INTO login (user_name, password) VALUES (?,?)", $loginData)){
-
-            $clogid = $this->getCurrentLoginID();
-
-            array_push($empData, $clogid);
-
-            $role_login = [
-                $clogid,
-                $data['roleID'],
-                date("Y-m-d"),
-                1
-            ];
-
-            if ($this->Query("INSERT INTO per_role_login (login_ID, role_ID, assign_date, default_role) VALUES (?,?,?,?)", $role_login)){
-
-                if($role == 'owner') {
-                    if($this->Query("UPDATE owner SET login_ID = $empData[1] WHERE owner_ID =  '$empData[0]' AND login_ID IS NULL")){
-                        return true;
-                    }
-                }
-
-                if($this->Query("INSERT INTO $role (emp_ID, login_ID) VALUES (?,?)", $empData)){
-                    return true;
-                }
-
-            }
-
-        }
+    public function addSubProductData($data,$product){
+//        $loginData = [
+//            $data['username'],
+//            $data['password']
+//        ];
+//        $empData = [
+//            $data['empID'],
+//        ];
+//
+//        if($this->Query("INSERT INTO login (user_name, password) VALUES (?,?)", $loginData)){
+//
+//            $clogid = $this->getCurrentLoginID();
+//
+//            array_push($empData, $clogid);
+//
+//            $role_login = [
+//                $clogid,
+//                $data['roleID'],
+//                date("Y-m-d"),
+//                1
+//            ];
+//
+//            if ($this->Query("INSERT INTO per_role_login (login_ID, role_ID, assign_date, default_role) VALUES (?,?,?,?)", $role_login)){
+//
+//                if($role == 'owner') {
+//                    if($this->Query("UPDATE owner SET login_ID = $empData[1] WHERE owner_ID =  '$empData[0]' AND login_ID IS NULL")){
+//                        return true;
+//                    }
+//                }
+//
+//                if($this->Query("INSERT INTO $role (emp_ID, login_ID) VALUES (?,?)", $empData)){
+//                    return true;
+//                }
+//
+//            }
+//
+//        }
         return false;
     }
 

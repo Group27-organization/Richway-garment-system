@@ -17,7 +17,7 @@
 
 
                 <div class="footer">
-                    <p>All rights reserved @ Richway Garments</br>Email: contact@richwaygarments.com</p>
+                    <p>All rights reserved @ Richway Garments (Pvt) Ltd.</br>Email: contact@richwaygarments.com</p>
                     <p>Copyright © 2020 Version 1.0</p>
                 </div>
 
@@ -44,14 +44,14 @@
                         <?php if(!empty($data['passwordError'])): echo $data['passwordError']; endif; ?>
                     </div>
 
-                    <div class="rememberme">
-                        <div class="checks">
-                            <input id="r1" type="checkbox" checked>
-                            <label id="r2"> Remember me</label>
-                        </div>
-                    </div>
+<!--                    <div class="rememberme">-->
+<!--                        <div class="checks">-->
+<!--                            <input id="r1" type="checkbox" checked>-->
+<!--                            <label id="r2"> Remember me</label>-->
+<!--                        </div>-->
+<!--                    </div>-->
 
-                    <div><input name="lginBtn" type="submit" value="Sign In" class="btn"></div>
+                    <div style="margin-top: 80px"><input name="lginBtn" type="submit" value="Sign In" class="btn"></div>
 
                     <div class="forget">
                         <a href="#">Forgot Password?</a>
