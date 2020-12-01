@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta id="nav_item" content="Add Thread">
-    <title>Add Thread</title>
+    <meta id="nav_item" content="Manage Raw Materials">
+    <title>Add New Thread</title>
 
     <?php linkCSS("assets/css/nav.css") ?>
     <?php linkCSS("assets/css/side_nav.css") ?>
@@ -25,7 +25,7 @@
 
         <div class="header-container background-gradient">
             <div class="header-group">
-                <h1 class="text-white">Add Thread</h1>
+                <h1 class="text-white">Add New Thread</h1>
                 <p class="text-lead text-white">You can thread's details in here</p>
             </div>
             <div class="separator separator-bottom separator-skew zindex-100">

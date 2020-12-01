@@ -40,21 +40,16 @@
 
         <!----------------------------------form start--------------------------------------------------------------------------------------- -->
 
-        <form action="<?php echo BASEURL; ?>/manageUserController/addUser" method="POST">
+        <form action="<?php echo BASEURL; ?>/manageUserController/addUser" method="POST" onsubmit="return createAccount()">
             <div class="flexbox-container">
 
                 <div class="inputfield">
-                    <label for="LoginId">Login ID</label>
-                    <input type="text" id="LoginId" name="LoginId" value= "<?php echo $data['login_ID']?>" class="form-contrall-readonly" readonly>
-                </div>
-
-                <div class="inputfield">
                     <label for="Role">Role</label>
-                    <input type="text" id="role" name="role" value="<?php echo $data['role']?>" class="form-contrall-readonly" readonly>
+                    <input type="text" id="role" name="role" value="<?php echo $data['role']?>" class="form-contrall-special" readonly>
                 </div>
 
                 <div class="inputfield">
-                    <label for="UserName">Assign Employee ID</label>
+                    <label for="EmployeeId">Assign Employee ID</label>
                     <div class="inputbutton">
                         <input type="text" id="EmployeeId" name="EmployeeId" class="form-contrall-readonly" readonly>
                         <button id="findbtn" onclick="location.href" type="button"  class="btn2 input2 cripple">Find</button>
@@ -64,16 +59,12 @@
 
                 <div class="inputfield">
                     <label for="UserName">User Name</label>
-                    <input type="email" id="UserName" name="UserName" class="form-contrall">
-                </div>
-
-                <div class="inputfield">
-                    <label for="Password">Password</label>
-                    <input type="password" id="Password" name="Password" class="form-contrall">
+                    <input type="email" id="UserName" name="UserName" class="form-contrall-readonly" readonly>
                 </div>
 
                 <br><div class="inputfield inputbutton">
-                    <input type="submit" value="Create account" class="btn cripple">
+                    <button id="create_account_btn" type="submit" class="btn cripple">Create account
+                    </button>
                 </div>
 
             </div>

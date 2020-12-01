@@ -61,15 +61,20 @@
 
                     </div>
 
-                    <button class="create-button" onclick="createProduct(event,$product)">
+                    <button id="add_new_design" class="create-button" onclick="createProduct(event,$product)">
                         <img src="<?php echo BASEURL; ?>/public/assets/img/plus-circle.svg" style="width: 24px; height: 24px;">
-                        Create New Product
+                        <span id="add_new_design_text"></span>
                     </button>
 
                 </div>
 
                 <!--------------------------------------------Tab Content-------------------------------------------------------------------------------------- -->
                 <div id="tabcontentid" class="tabcontent">
+
+                    <div id="product_tabview_msg" class="model-footer">
+                        <h5>* Please select an sub product item to get this action!</h5>
+                    </div>
+
                     <div class="flex-row-tab">
                         <div class="SearchBtnWap">
                             <div class="search">
@@ -94,10 +99,6 @@
 
                     </div>
                     <div class="card-footer">
-
-                        <div class="model-footer">
-                            <h5>* Please select an product item to get this action!</h5>
-                        </div>
 
                         <div class="bottom-row">
 
