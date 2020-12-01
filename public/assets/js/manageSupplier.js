@@ -7,13 +7,13 @@ $(document).ready(function(){
         data: {  key: "supplierTableInDash"},
         dataType: 'html',
         success: function(data){
-            $("#supplierTableForManageSupplier").html(data);
+            $("#table-responsive-supplierTable").html(data);
 
 
         },
         error       : function() {
             console.log("Table data not  load")
-            $("#tableParent").html('<br><p>Something went wrong.</p>');
+            $("#table-responsive-supplierTable").html('<br><p>Something went wrong.</p>');
         }
     });
 
