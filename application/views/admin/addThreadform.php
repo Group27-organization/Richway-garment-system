@@ -55,6 +55,14 @@
                     </label>
                 </div>
 
+                <div class="inputfield">
+                    <label for="price">Price</label>
+                    <input type="text" id="price" maxlength="100" name="price" class="form-contrall" value="<?php if($data['Price']) :echo $data['Price']; endif; ?>">
+                    <label class="error" style="color:red;">
+                        <?php   if($data['priceError']) :echo $data['priceError']; endif; ?>
+                    </label>
+                </div>
+
                 <br><div class="inputfield inputbutton">
                     <input type="submit" value="Submit" class="btn cripple">
                 </div>
