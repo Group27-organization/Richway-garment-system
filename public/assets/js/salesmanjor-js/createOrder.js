@@ -124,87 +124,240 @@ $(document).ready(function () {
     $("#addToBucket").on('click',function(){
 
 
+        let PredefineId = 0;
+        let FabricDesignID =0;
+        let ButtonDesignID=0;;
 
-        let PredefineId = $("label[for='ChooseTemplate']").html();
+
+        PredefineId = parseInt($("#ChooseTemplate").val());
+
         let Template =  imgurltemp;
 
         let CollarSize = $('#CollarSize option:selected').val();
 
         let FabricType =$('#FabricType option:selected').val();
 
-        let FabricDesignID =$('#fabricdesigncode option:selected').data('value');
+         FabricDesignID =$('#fabricdesigncode option:selected').data('value');
         let FabricDesignImage =$("#fabricdesigncode option:selected").val();
         let FabricDesignCode = $("#fabricdesigncode option:selected").text();
 
-        let ButtonDesignID =$('#buttondesigncode option:selected').data('value');
+         ButtonDesignID =$('#buttondesigncode option:selected').data('value');
+        // console.log("FabricDesignID"+FabricDesignID);
 
-        let Quantity = $("#Quantity").val();
+        let Quantity = parseInt($("#orderItemQuantity").val());
+        // console.log("Quantity :"+Number.isInteger(Quantity));
+        // console.log("Quantity2 :"+Number.isInteger($("#orderItemQuantity").val()));
+
+        // if($('#ItemType option:selected').val()=="0"){
+        //     $("label[for='IT']").show();
+        // } if(PredefineId==""||PredefineId==0 ||PredefineId===undefined){
+        //     $("label[for='CT']").show();
+        // } if(CollarSize=="0"){
+        //     $("label[for='CS']").show();
+        // } if(Number.isInteger(FabricDesignID) == false){
+        //     $("label[for='FDC']").show();
+        // }if(isbuttonInclude=='yes'){
+        //     if(Number.isInteger(ButtonDesignID) == false){
+        //         $("label[for='BDC']").show();
+        //     }
+        //
+        // }if(Number.isInteger(Quantity)==false){
+        //     $("label[for='Q']").show();
+        // }
+
+
+
         if($('#ItemType option:selected').val()=="0"){
             $("label[for='IT']").show();
-        }if(PredefineId==""){
-            $("label[for='CT']").show();
-        }if(CollarSize=="0"){
-            $("label[for='CS']").show();
-        } if(FabricDesignID==""){
-            $("label[for='FDC']").show();
-        }if(isbuttonInclude=='yes'){
-            $("label[for='BDC']").show();
+        }else{
+            if(CollarSize=="0"){
+                $("label[for='CS']").show();
+            }else{
+                if(Number.isInteger(PredefineId) == false){
+                    $("label[for='CT']").show();
+                }else{
+                    if(Number.isInteger(FabricDesignID) == false){
+                        $("label[for='FDC']").show();
+                    }else{
+                        if(isbuttonInclude=='yes'){
+                            if(Number.isInteger(ButtonDesignID) == false){
+                                $("label[for='BDC']").show();
+                            }else{
+                                if(Number.isInteger(Quantity)==false){
+                                    $("label[for='Q']").show();
+                                }else{
+
+                                    /*******************************************************/
+                                    count =count+1;
+                                    alert("Item "+count+"Added!");
+                                    $("label[for='TemplateDescription']").text("");
+
+                                    $("#orderItemQuantity").val("");
+
+                                    $('html, body').animate({
+                                        scrollTop: $("#right").offset().top   //id of div to be scrolled
+                                    }, 1);
+
+
+                                    $("#cardP").append("<a href=\"#\">"+ItemType+" "+count+"</a> <span class=\"price\">"+Quantity+"</span><br>");
+                                    $("label[for='ItemCountCard']").text(count);
+                                    countQuantity =countQuantity+parseInt(Quantity);
+                                    $("label[for='ItemQuantityCount']").text(countQuantity);
+
+
+                                    $('#addItemBucketTable tbody tr:last').after(
+
+                                        '<tr data-label="Pending Approval">' +
+                                        '<td data-label="" style="display: none">'+PredefineId+'</td>' +
+                                        '<td data-label=""><img src='+Template+'  style="width: 100px; height:100px; text-align:center;"/></td>' +
+                                        '<td data-label="" >'+CollarSize+'</td>' +
+                                        '<td data-label=""  style="display: none">'+FabricDesignID+'</td>' +
+                                        '<td data-label="" ><img src='+FabricDesignImage+'  style="width: 100px; height:100px; text-align:center;"/></td>' +
+                                        '<td data-label="" >'+FabricDesignCode+'</td>' +
+                                        '<td data-label="" style="display: none">'+ButtonDesignID+'</td>' +
+                                        '<td data-label="" >'+Quantity+'</td>' +
+                                        '<td><div class="table__button-group">' +
+                                        '<a href="#" class="viewBtn"style="margin: 2px;color: #00B4CC">View  |</a>' +
+                                        '<a href="#" class="viewBtn" style="margin: 2px;color: salmon" ;">Edit  |</a>' +
+                                        '<a href="#" style="margin: 2px; color: red;" onclick="productDelete(this);">Delete</a>' +
+                                        '</div></td>'+
+                                        '</tr>\n'
+                                    );
+                                    console.log("P2 :"+PredefineId);
+                                    console.log("F2 :"+FabricDesignID);
+                                    console.log("B2 :"+ButtonDesignID);
+                                    $('input[type=text]').val('');
+                                    $('[name=options] option').filter(function() {
+                                        return ($(this).text() == '--SELECT--'); //To select Blue
+                                    }).prop('selected', true);
+                                    PredefineId = 0;
+                                    $("#CollarSize").prop("disabled", true);
+                                    FabricDesignCode="--SELECT--";
+
+                                    $(".error").hide();
+
+
+                                }
+                            }
+
+                        }else{
+                            if(Number.isInteger(Quantity)==false){
+                                $("label[for='Q']").show();
+                            }else{
+
+                                /*******************************************************/
+                                count =count+1;
+                                alert("Item "+count+"Added!");
+                                $("label[for='TemplateDescription']").text("");
+
+                                $("#orderItemQuantity").val("");
+
+                                $('html, body').animate({
+                                    scrollTop: $("#right").offset().top   //id of div to be scrolled
+                                }, 1);
+
+
+                                $("#cardP").append("<a href=\"#\">"+ItemType+" "+count+"</a> <span class=\"price\">"+Quantity+"</span><br>");
+                                $("label[for='ItemCountCard']").text(count);
+                                countQuantity =countQuantity+parseInt(Quantity);
+                                $("label[for='ItemQuantityCount']").text(countQuantity);
+
+
+                                $('#addItemBucketTable tbody tr:last').after(
+
+                                    '<tr data-label="Pending Approval">' +
+                                    '<td data-label="" style="display: none">'+PredefineId+'</td>' +
+                                    '<td data-label=""><img src='+Template+'  style="width: 100px; height:100px; text-align:center;"/></td>' +
+                                    '<td data-label="" >'+CollarSize+'</td>' +
+                                    '<td data-label=""  style="display: none">'+FabricDesignID+'</td>' +
+                                    '<td data-label="" ><img src='+FabricDesignImage+'  style="width: 100px; height:100px; text-align:center;"/></td>' +
+                                    '<td data-label="" >'+FabricDesignCode+'</td>' +
+                                    '<td data-label="" style="display: none">'+ButtonDesignID+'</td>' +
+                                    '<td data-label="" >'+Quantity+'</td>' +
+                                    '<td><div class="table__button-group">' +
+                                    '<a href="#" class="viewBtn"style="margin: 2px;color: #00B4CC">View  |</a>' +
+                                    '<a href="#" class="viewBtn" style="margin: 2px;color: salmon" ;">Edit  |</a>' +
+                                    '<a href="#" style="margin: 2px; color: red;" onclick="productDelete(this);">Delete</a>' +
+                                    '</div></td>'+
+                                    '</tr>\n'
+                                );
+                                console.log("P2 :"+PredefineId);
+                                console.log("F2 :"+FabricDesignID);
+                                console.log("B2 :"+ButtonDesignID);
+                                $('input[type=text]').val('');
+                                $('[name=options] option').filter(function() {
+                                    return ($(this).text() == '--SELECT--'); //To select Blue
+                                }).prop('selected', true);
+                                PredefineId = 0;
+                                $("#CollarSize").prop("disabled", true);
+                                FabricDesignCode="--SELECT--";
+
+                                $(".error").hide();
+
+
+                            }
+
+                        }
+                    }
+                }
+            }
         }
-        // else if(ButtonDesignID==""){
-        //     alert("ButtonDesignID Field Are Missing!");
+
+
+        // else {
+        //
+        //     /*******************************************************/
+        //     count =count+1;
+        //     alert("Item "+count+"Added!");
+        //     $("label[for='TemplateDescription']").text("");
+        //
+        //
+        //     $('html, body').animate({
+        //         scrollTop: $("#right").offset().top   //id of div to be scrolled
+        //     }, 1);
+        //
+        //
+        //     $("#cardP").append("<a href=\"#\">"+ItemType+" "+count+"</a> <span class=\"price\">"+Quantity+"</span><br>");
+        //     $("label[for='ItemCountCard']").text(count);
+        //     countQuantity =countQuantity+parseInt(Quantity);
+        //     $("label[for='ItemQuantityCount']").text(countQuantity);
+        //
+        //
+        //     $('#addItemBucketTable tbody tr:last').after(
+        //
+        //         '<tr data-label="Pending Approval">' +
+        //         '<td data-label="" style="display: none">'+PredefineId+'</td>' +
+        //         '<td data-label=""><img src='+Template+'  style="width: 160px; height:160px; text-align:center;"/></td>' +
+        //         '<td data-label="" >'+CollarSize+'</td>' +
+        //         '<td data-label=""  style="display: none">'+FabricDesignID+'</td>' +
+        //         '<td data-label="" ><img src='+FabricDesignImage+'  style="width: 160px; height:160px; text-align:center;"/></td>' +
+        //         '<td data-label="" >'+FabricDesignCode+'</td>' +
+        //         '<td data-label="" style="display: none">'+ButtonDesignID+'</td>' +
+        //         '<td data-label="" >'+Quantity+'</td>' +
+        //         '<td><div class="table__button-group">' +
+        //         '<a href="#" class="viewBtn"style="margin: 2px;color: #00B4CC">View  |</a>' +
+        //         '<a href="#" class="viewBtn" style="margin: 2px;color: salmon" ;">Edit  |</a>' +
+        //         '<a href="#" style="margin: 2px; color: red;" onclick="productDelete(this);">Delete</a>' +
+        //         '</div></td>'+
+        //         '</tr>\n'
+        //     );
+        //     console.log("P2 :"+PredefineId);
+        //     console.log("F2 :"+FabricDesignID);
+        //     console.log("B2 :"+ButtonDesignID);
+        //     $('input[type=text]').val('');
+        //     $('[name=options] option').filter(function() {
+        //         return ($(this).text() == '--SELECT--'); //To select Blue
+        //     }).prop('selected', true);
+        //     PredefineId = 0;
+        //     $("#CollarSize").prop("disabled", true);
+        //     FabricDesignCode="--SELECT--";
+        //
+        //     $(".error").hide();
+        //     console.log("P3 :"+PredefineId);
+        //     console.log("F3 :"+FabricDesignID);
+        //     console.log("B3 :"+ButtonDesignID);
+        //
         // }
-        if(Quantity=="") {
-            $("label[for='FDC']").show();
-        } if(!$.isNumeric(Quantity) || parseInt(Quantity)<1  ||Quantity.length>=10){
-            $("label[for='Q']").show();
-        }
-        else {
-
-            /*******************************************************/
-            count =count+1;
-            alert("Item "+count+"Added!");
-            $("label[for='TemplateDescription']").text("");
-
-
-            $('html, body').animate({
-                scrollTop: $("#right").offset().top   //id of div to be scrolled
-            }, 1);
-
-
-            $("#cardP").append("<a href=\"#\">"+ItemType+" "+count+"</a> <span class=\"price\">"+Quantity+"</span><br>");
-            $("label[for='ItemCountCard']").text(count);
-            countQuantity =countQuantity+parseInt(Quantity);
-            $("label[for='ItemQuantityCount']").text(countQuantity);
-
-
-            $('#addItemBucketTable tbody tr:last').after(
-
-                '<tr data-label="Pending Approval">' +
-                '<td data-label="" style="display: none">'+PredefineId+'</td>' +
-                '<td data-label=""><img src='+Template+'  style="width: 160px; height:160px; text-align:center;"/></td>' +
-                '<td data-label="" >'+CollarSize+'</td>' +
-                '<td data-label=""  style="display: none">'+FabricDesignID+'</td>' +
-                '<td data-label="" ><img src='+FabricDesignImage+'  style="width: 160px; height:160px; text-align:center;"/></td>' +
-                '<td data-label="" >'+FabricDesignCode+'</td>' +
-                '<td data-label="" style="display: none">'+ButtonDesignID+'</td>' +
-                '<td data-label="" >'+Quantity+'</td>' +
-                '<td><div class="table__button-group">' +
-                '<a href="#" class="viewBtn"style="margin: 2px;color: #00B4CC">View  |</a>' +
-                '<a href="#" class="viewBtn" style="margin: 2px;color: salmon" ;">Edit  |</a>' +
-                '<a href="#" style="margin: 2px; color: red;" onclick="productDelete(this);">Delete</a>' +
-                '</div></td>'+
-                '</tr>\n'
-            );
-
-            $('input[type=text]').val('');
-            $('[name=options] option').filter(function() {
-                return ($(this).text() == '--SELECT--'); //To select Blue
-            }).prop('selected', true);
-            PredefineId=0;
-            $("#CollarSize").prop("disabled", true);
-            $(".error").hide();
-
-        }
 
     });
 
@@ -232,7 +385,7 @@ $(document).ready(function () {
         $("#bucketTable").hide();
         $("#createOrderForm2").show();
         $("#header-gradant-form").show();
-        $("#header-name").html("Order Description 3/3");
+
 
         // $("#createOrderForm2").show();
 
@@ -286,88 +439,110 @@ $(document).ready(function () {
     });
 
 
-    $("#ExistingCustomerBtn").click(function () {
-        $('html, body').animate({
-            scrollTop: $("#right").offset().top   //id of div to be scrolled
-        }, 1);
-
-        document.querySelector('#bg-modal-existing-customer-Table').style.display = "flex";
-        document.querySelector('body').style.overflow = "hidden";
-        ///////////////////////////////////////////customer table load/////////////////////////////////////////////////
-
-        $.ajax({
-            type: 'POST',
-            url: "http://localhost/Richway-garment-system/createOrderController/loadCustomerTable",
-            data: {  key: "customer"},
-            success: function(data){
-                $("#tableParent-oI-Table").html(data);
-
-
-            },
-            error       : function() {
-                $("#tableParent-oI-Table").html('<br><p>Something went wrong.</p>');
-            }
-        });
-    });
-
-    $("#addnewCustomerBtn").click(function () {
-
-
-        let CustomerName    = $("#CustomerName").val();
-        let CustomerContactNumber   = $("#CustomerContactNumber").val();
-        let Email   = $("#Email").val();
-        let CustomerAddress = $("#CustomerAddress").val();
-
-
+    // $("#ExistingCustomerBtn").click(function () {
+    //     $('html, body').animate({
+    //         scrollTop: $("#right").offset().top   //id of div to be scrolled
+    //     }, 1);
+    //
+    //     document.querySelector('#bg-modal-existing-customer-Table').style.display = "flex";
+    //     document.querySelector('body').style.overflow = "hidden";
+    //     ///////////////////////////////////////////customer table load/////////////////////////////////////////////////
+    //
+    //     $.ajax({
+    //         type: 'POST',
+    //         url: "http://localhost/Richway-garment-system/createOrderController/loadCustomerTable",
+    //         data: {  key: "customer"},
+    //         success: function(data){
+    //             $("#tableParent-oI-Table").html(data);
+    //
+    //
+    //         },
+    //         error       : function() {
+    //             $("#tableParent-oI-Table").html('<br><p>Something went wrong.</p>');
+    //         }
+    //     });
+    // });
+    //********************customer select************************************//
+    $.ajax({
+        type: 'POST',
+        url: "http://localhost/Richway-garment-system/createOrderController/setcustomerdropdown",
+        data: {   key: "customerdrop"},
+        success: function(data){
+            // console.log("fabrc "+data);
+            $("#selectcustomerdop").html(data);
 
 
-        if( (CustomerName=="") || (CustomerContactNumber=="") || (Email=="") || (CustomerAddress=="") ||(CustomerContactNumber.length==0)  ){
-            $("#newcustomer-error").html("Some Field Empty!");
-            document.querySelector('#model-footer-newcustomer').style.display = "flex";
-
-
-        }else if( parseInt(CustomerContactNumber)<1 || parseInt(CustomerContactNumber)>999999999 || CustomerContactNumber.charAt(0) != '0' ||(CustomerContactNumber.length>10)){
-            $("#newcustomer-error").html("Incorrect Contact Number!");
-            document.querySelector('#model-footer-newcustomer').style.display = "flex";
-         }else if( IsName(CustomerName)==false){
-            $("#newcustomer-error").html("Invalid Customer Name!");
-             document.querySelector('#model-footer-newcustomer').style.display = "flex";
-         }else if(IsEmail(Email)==false){
-            $("#newcustomer-error").html("Invalid Email!");
-           document.querySelector('#model-footer-newcustomer').style.display = "flex";
+        },
+        error       : function() {
+            console.log("error");
         }
-        else {
-            let customerArr = [CustomerName,CustomerContactNumber,Email,CustomerAddress];
-            ///////////////////////////////////////////customer table load/////////////////////////////////////////////////
-
-            $.ajax({
-                type: 'POST',
-                url: "http://localhost/Richway-garment-system/createOrderController/addNewCustomer",
-                data: { newCustomer:customerArr ,  key: "NewCustomer"},
-                success: function(data){
-                    $("label[for='customerLabel']").text(data);
-                    $('#newCustomerForm input[type=text]').val('');
-                    $('#newCustomerForm').hide();
-
-
-                    document.querySelector('body').style.overflow = "auto";
-
-                },
-                error       : function() {
-
-                }
-            });
-        }
-
     });
 
 
-    $("#excustomerCloseBtn").click(function () {
-       // console.log("customerCloseBtn")
-        // document.querySelector('.model-footer-oI-Table').style.display = "none";
-        document.querySelector('.bg-modal').style.display = "none";
-        document.querySelector('body').style.overflow = "auto";
+    $("#selectcustomerdop").select2({
+        templateResult: formatOptions2
     });
+
+
+
+    // $("#addnewCustomerBtn").click(function () {
+    //
+    //
+    //     let CustomerName    = $("#CustomerName").val();
+    //     let CustomerContactNumber   = $("#CustomerContactNumber").val();
+    //     let Email   = $("#Email").val();
+    //     let CustomerAddress = $("#CustomerAddress").val();
+    //
+    //
+    //
+    //
+    //     if( (CustomerName=="") || (CustomerContactNumber=="") || (Email=="") || (CustomerAddress=="") ||(CustomerContactNumber.length==0)  ){
+    //         $("#newcustomer-error").html("Some Field Empty!");
+    //         document.querySelector('#model-footer-newcustomer').style.display = "flex";
+    //
+    //
+    //     }else if( parseInt(CustomerContactNumber)<1 || parseInt(CustomerContactNumber)>999999999 || CustomerContactNumber.charAt(0) != '0' ||(CustomerContactNumber.length>10)){
+    //         $("#newcustomer-error").html("Incorrect Contact Number!");
+    //         document.querySelector('#model-footer-newcustomer').style.display = "flex";
+    //      }else if( IsName(CustomerName)==false){
+    //         $("#newcustomer-error").html("Invalid Customer Name!");
+    //          document.querySelector('#model-footer-newcustomer').style.display = "flex";
+    //      }else if(IsEmail(Email)==false){
+    //         $("#newcustomer-error").html("Invalid Email!");
+    //        document.querySelector('#model-footer-newcustomer').style.display = "flex";
+    //     }
+    //     else {
+    //         let customerArr = [CustomerName,CustomerContactNumber,Email,CustomerAddress];
+    //         ///////////////////////////////////////////customer table load/////////////////////////////////////////////////
+    //
+    //         $.ajax({
+    //             type: 'POST',
+    //             url: "http://localhost/Richway-garment-system/createOrderController/addNewCustomer",
+    //             data: { newCustomer:customerArr ,  key: "NewCustomer"},
+    //             success: function(data){
+    //                 $("label[for='customerLabel']").text(data);
+    //                 $('#newCustomerForm input[type=text]').val('');
+    //                 $('#newCustomerForm').hide();
+    //
+    //
+    //                 document.querySelector('body').style.overflow = "auto";
+    //
+    //             },
+    //             error       : function() {
+    //
+    //             }
+    //         });
+    //     }
+    //
+    // });
+
+
+    // $("#excustomerCloseBtn").click(function () {
+    //    // console.log("customerCloseBtn")
+    //     // document.querySelector('.model-footer-oI-Table').style.display = "none";
+    //     document.querySelector('.bg-modal').style.display = "none";
+    //     document.querySelector('body').style.overflow = "auto";
+    // });
     $(".close").click(function () {
       //  console.log("customerCloseBtn")
         $('#newCustomerForm input[type=text]').val('');
@@ -387,14 +562,22 @@ $(document).ready(function () {
         let estimate_time =0;
         let order_price =0;
         let advance_price =0;
+        let customer_ID =$('#selectcustomerdop option:selected').data('value');
 
-        let customer_ID =parseInt($("label[for='customerLabel']").html());
+        $("#selectcustomerdop").change(function () {
+            let customer_ID =$('#selectcustomerdop option:selected').data('value');
+            console.log("customer id :"+customer_ID);
+        });
+
+        // let customer_ID =parseInt($("label[for='customerLabel']").html());
 
         if(order_description=="" ){
             $("label[for='OD']").show();
-        }if(customer_ID=="" ){
-            $("label[for='AC']").show();
-        }else{
+        }if(order_due_date == "" ){
+            $("label[for='DD']").show();
+        }
+
+        else{
             // order_ID
             // order_description
             // order_status
@@ -441,7 +624,18 @@ $(document).ready(function () {
                 data: { orderArray: orderArray, orderItemList: orderItemList,  key: "orderArrayS"},
                 success: function(data){
 
-                    //console.log("Save Order :"+data);
+                    if(data=="ok"){
+                        alert("Succesfully Added!")
+                        window.location.href = "http://localhost/Richway-garment-system/createOrderController/createOrder"
+
+                    }else{
+                        window.location.href = "http://localhost/Richway-garment-system/createOrderController/createOrder"
+
+                    }
+                    //window.location.href = "http://localhost/Richway-garment-system/createOrderController/createOrder"
+
+
+
 
                 },
                 error       : function() {
@@ -536,8 +730,8 @@ function addTemplate() {
             imgurltemp =$(this).val();
 
         });
-        $("label[for='ChooseTemplate']").text(id);
-
+        // $("label[for='ChooseTemplate']").text(id);
+        $("#ChooseTemplate").val(id);
         $.ajax({
             type: 'POST',
             url: "http://localhost/Richway-garment-system/createOrderController/isbuttoninpredefineCheck",
@@ -613,6 +807,21 @@ function formatOptions (state) {
             '<span class="dropdownList" id="impt" >--SELECT--</span>'
         );
     }
+
+    return $state;
+}
+function formatOptions2 (state) {
+    if (!state.id) { return state.text; }
+
+    var $state;
+    $state = $(
+        '<span class="dropdownList" >' + state.text + '</span>'
+    );
+    // if(state.element.value=='0'){
+    //     $state = $(
+    //         '<span class="dropdownList" id="impt" >--SELECT--</span>'
+    //     );
+    // }
 
     return $state;
 }

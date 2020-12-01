@@ -25,7 +25,7 @@
 
 .option-card {
     width: 21.9%;
-    height: 60%;
+    height: 70%;
     padding: 15px 15px 0;
     margin: 0 10px 10px;
     border: 2px #cfcfcf solid;
@@ -47,7 +47,11 @@ a.option-card p:hover {
     text-decoration: none;
 }
 .card-thumb {
-    width: 100%;
+    width: 60%;
+    height: 60%;
     border-radius: 50%;
     margin-bottom: 15px;
+}
+.card-description{
+    font-size:10px ;
 }

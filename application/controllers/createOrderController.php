@@ -67,7 +67,7 @@ class createOrderController extends framework{
 
                 $result = $this->createOrderModel->getCollarSize($type);
 
-                echo ' <option  value="0" selected="" disabled="">--SELECT--</option>';
+                echo ' <option data-value="0"  value="0" selected="" disabled="">--SELECT--</option>';
                 foreach($result as $row){
                     //   echo("<script>console.log('PHP in loadOrderItemsTable contoller: " . json_encode($row->button_shape) . "');</script>");
                     echo '<option value="'.$row->size.'" data-value="'.$row->size.'">'.$row->size.'</option>';
@@ -84,7 +84,7 @@ class createOrderController extends framework{
                 echo ' <option  value="0" selected="" disabled="">--SELECT--</option>';
                 foreach($result as $row){
                     //   echo("<script>console.log('PHP in loadOrderItemsTable contoller: " . json_encode($row->button_shape) . "');</script>");
-                    echo '<option value="'.$row->image_url.'" data-value="'.$row->ID.'">'.$row->code.'</option>';
+                    echo '<option value="'.$row->image_url.'" data-value="'.$row->ID.'">'.$row->fabric_code.'</option>';
                 }
             }
         }
@@ -146,15 +146,12 @@ class createOrderController extends framework{
                             
                                 <div class='card-description'>
                                      <h4 ><b class='template-type'> $row->type</b></h4>
-                                     <p class='template-handtype'>$row->hand_type</p>
-                                     <p class='template-collartype'>$row->collar_type</p>
+                                     <p class='template-handtype'></span>$row->hand_type</p>
+                                     <p class='template-collartype'>$row->collar_type </p>
                                 </div>
                                 <input type=text  class='preID' value='$row->p_ID' style='display: none;'>
-                                   
-                                 
-                                
-                                 <input type=text class='pImageURL'  value='$row->image_url' style='display: none;'>
-                             </div>
+                                <input type=text class='pImageURL'  value='$row->image_url' style='display: none;'>
+                            
                     </div>
                     ";
                 }
@@ -178,52 +175,71 @@ class createOrderController extends framework{
         }
     }
 
-    public function loadCustomerTable(){
+//    public function loadCustomerTable(){
+//        if(isset($_POST['key'])) {
+//            if ($_POST['key'] == "customer") {
+//                $result = $this->createOrderModel->getCustomerDetails();
+//                //  echo("<script>console.log('PHP in loadOrderItemsTable contoller: " . json_encode($result) . "');</script>");
+//
+//                echo "
+//
+//                <table class=\"table align-items-center table-flush\">
+//                        <thead class=\"thead-light\">
+//                        <tr>
+//
+//                            <th scope=col style='display:none;'>Customer ID</th>
+//                            <th scope=col>Name</th>
+//                            <th scope=col>Contact Number</th>
+//                            <th scope=col>Email</th>
+//                            <th scope=col>Address</th>
+//
+//                        </tr>
+//                        </thead>
+//                        <tbody>
+//
+//                ";
+//                foreach ($result as $row) {
+//
+//                    echo "
+//                            <tr class='tblrow' onclick='selectRow(event)'>
+//                                <td id='supid' style='display:none;'>$row->customer_ID   </td>
+//                                <td>$row->name</td>
+//                                <td>$row->contact_no</td>
+//                                <td>$row->email</td>
+//                                <td>$row->address</td>
+//
+//                            </tr>
+//                        ";
+//
+//                }
+//                echo "
+//                        </tbody>
+//                    </table>
+//
+//                    ";
+//            }
+//        }
+//
+//    }
+    public function setcustomerdropdown(){
+
         if(isset($_POST['key'])) {
-            if ($_POST['key'] == "customer") {
+            if ($_POST['key'] == "customerdrop") {
+
                 $result = $this->createOrderModel->getCustomerDetails();
-                //  echo("<script>console.log('PHP in loadOrderItemsTable contoller: " . json_encode($result) . "');</script>");
-
-                echo "
-
-                <table class=\"table align-items-center table-flush\">
-                        <thead class=\"thead-light\">
-                        <tr>
-                        
-                            <th scope=col style='display:none;'>Customer ID</th>
-                            <th scope=col>Name</th>
-                            <th scope=col>Contact Number</th>
-                            <th scope=col>Email</th>
-                            <th scope=col>Address</th>
-                           
-                        </tr>
-                        </thead>
-                        <tbody>
-
-                ";
-                foreach ($result as $row) {
-
-                    echo "
-                            <tr class='tblrow' onclick='selectRow(event)'>
-                                <td id='supid' style='display:none;'>$row->customer_ID   </td>
-                                <td>$row->name</td>
-                                <td>$row->contact_no</td>
-                                <td>$row->email</td>
-                                <td>$row->address</td>
-                                
-                            </tr>
-                        ";
-
+//                echo ' <option  value="0" selected="" disabled="">--SELECT--</option>';
+                foreach($result as $row){
+//                        echo("<script>console.log('PHP in loadOrderItemsTable contoller: " . json_encode($row->predefine_button) . "');</script>");
+                    echo '<option value="'.$row->customer_ID .'" data-value="'.$row->customer_ID.'"  >'.$row->name.'-'.$row->contact_no.'</option>';
                 }
-                echo "
-                        </tbody>
-                    </table>
-                    
-                    ";
             }
         }
-
     }
+
+
+
+
+
     public function addNewCustomer(){
         if(isset($_POST['key'])) {
             if ($_POST['key'] == "NewCustomer") {
@@ -281,15 +297,16 @@ class createOrderController extends framework{
 //                echo("<br>ge t selsmanger id : ".json_encode($A)) ;
 //                echo("<br>orderArray2:".json_encode($orderArray)) ;
 
-
+              //  echo("orderArray:".json_encode($orderArray)) ;
                 $orderId = intval($this->createOrderModel->OrderAdd($orderArray));
-//                echo("orderId:".json_encode($orderId)) ;
-
+               // echo("orderId:".json_encode($orderId)) ;
+                $ct=0;
                 if($orderId){
 
                     $orderItemList =$_POST['orderItemList'];
 //                    ["M","1","1","123","0","1"]
-//                    echo("orderItemList:".json_encode($orderItemList));
+                  // echo("orderItemList:".json_encode($orderItemList));
+                    //echo("<script>console.log('PHP in ordet item list: " . json_encode($orderItemList) . "');</script>");
                     foreach ($orderItemList as $row){
 
 
@@ -306,19 +323,47 @@ class createOrderController extends framework{
                         $row[4]=$orderId;
                         $row[5] =intval($row[5]);
 
-                        echo("orderItemList final:".json_encode($row));
-                            if($this->createOrderModel->orderItemAdd($row)){
-                                echo("successfully added");
-                            }else{
-                                echo("Order Item Not Added");
-                            }
+
+                        if ($this->createOrderModel->orderItemAdd($row)) {
+                            $ct =$ct+1;
+                        }
+
+                        else {
+
+//                            echo '
+//
+//                    <script>
+//                                if(!alert("Something went wrong! please try again.")) {
+//                                    window.location.href = "http://localhost/Richway-garment-system/createOrderController/createOrder"
+//                                }
+//                    </script>
+//                    ';
+
+                        }
 
                     }
-                }
+                    if($ct>0){
+                        echo"ok";
+//                        echo("<script>console.log('PHP ct: " . json_encode($ct) . "');</script>");
+//
+//                        echo("<script>console.log('ok');</script>");
+//                        echo '
+//                      <script>
+//                                    if(!alert("Order added successfully")) {
+//                                        window.location.href = "http://localhost/Richway-garment-system/createOrderController/createOrder"
+//
+//                                    }
+//                      </script>
+//
+//                    ';
+                    }
 
-            }
-        }
-    }
+
+                }//
+
+            } //
+        }//key
+    }//orderadd
 
 
 

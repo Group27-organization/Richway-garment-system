@@ -11,12 +11,16 @@
     <?php linkCSS("assets/css/salesmanager-form.css") ?>
     <?php linkCSS("assets/css/admin-table.css") ?>
     <?php linkCSS("assets/css/admin-adduser.css") ?>
+
+
+
     <?php linkCSS("assets/css/salesmanger-orderitemtablecard.css") ?>
     <?php linkCSS("assets/css/salesmanjor-css/card-template.css") ?>
 
     <?php linkCSS("assets/css/stock/stock-managestock.css") ?>
     <?php linkCSS("assets/css/stock/pop-window-add-raw-matiral-item.css") ?>
-
+    <link href='https://fonts.googleapis.com/css?family=Alegreya+Sans' rel='stylesheet' type='text/css'>
+    <?php linkCSS("assets/css/progressbar.css") ?>
 
 
 
@@ -34,10 +38,15 @@
     <div class="right" id="right">
 
         <?php include "components/nav.php"; ?>
+
         <div class="header-container background-gradient" id="header-gradant-form">
+
             <div class="header-group">
-                <h1 class="text-white" id="header-name">Create Order 1/3</h1>
+
+                <h1 class="text-white" id="header-name">Create Order</h1>
                 <p class="text-lead text-white">Add new oder.</p>
+
+
             </div>
             <div class="separator separator-bottom separator-skew zindex-100">
                 <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
@@ -57,8 +66,16 @@
 
 
             <!--------------------------------------------Tab Content-------------------------------------------------------------------------------------- -->
-            <div id="tabcontentid" class="tabcontent">
+            <div id="tabcontentid" class="tabcontent" style="height: 100%">
+                <div style="margin-bottom: 40px;max-width: 800px">
+                    <ol class="progtrckr" data-progtrckr-steps="5">
+                        <li class="progtrckr-done">Order Processing</li>
+                        <li class="progtrckr-done">Selected Order Items</li>
+                        <li class="progtrckr-todo">Order Description</li>
+                    </ol>
+                </div>
                 <div class="flex-row-tab">
+
                     <div class="SearchBtnWap">
                         <div class="search">
                             <input type="text" class="searchTerm" placeholder="What are you looking for?">
@@ -68,8 +85,8 @@
                         </div>
                     </div>
                     <div class="BtnWap">
-                        <button id="backBtn" class="three-set-btn1"  >Back</button>
-                        <button id="itemTableNextTbn" class="three-set-btn2" >Next</button>
+                        <button id="backBtn" class="three-set-btn1"  style="width: 140px; height: 43px;">Add New Item</button>
+                        <button id="itemTableNextTbn" style="width: 140px; height: 43px;" class="three-set-btn2" style="width: 100px">Next &raquo;</button>
 
                     </div>
                 </div><!--flex row-->
@@ -77,7 +94,7 @@
                 <!--                table start-->
 
                 <div class="table-responsive"  id="addItemBucketTable" >
-                    <table class="table align-items-center table-flush" >
+                    <table class="table align-items-center table-flush"  >
                         <thead class="thead-light">
                         <tr>
                             <th scope="col" style="display: none">Template Id</th>
@@ -101,46 +118,47 @@
                         <tr></tr>
                         </tbody>
                     </table>
+                    <div class="card-footer">
+
+                        <div class="model-footer">
+                            <h5>* Please select an order to get this action!</h5>
+                        </div>
+
+                        <div class="bottom-row">
+
+                            <nav aria-label="...">
+                                <ul class="pagination ">
+                                    <li class="page-item disabled">
+                                        <a class="page-link" href="#" tabindex="-1">
+                                            <i class="fas fa-angle-left"></i>
+                                            <span class="sr-only">Previous</span>
+                                        </a>
+                                    </li>
+                                    <li class="page-item active">
+                                        <a class="page-link" href="#">1</a>
+                                    </li>
+                                    <!--                                <li class="page-item">-->
+                                    <!--                                    <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>-->
+                                    <!--                                </li>-->
+                                    <!--                                <li class="page-item"><a class="page-link" href="#">3</a></li>-->
+                                    <li class="page-item">
+                                        <a class="page-link" href="#">
+                                            <i class="fas fa-angle-right"></i>
+                                            <span class="sr-only">Next</span>
+                                        </a>
+                                    </li>
+                                </ul>
+
+                            </nav>
+
+                        </div>
+
+                    </div>
 
                 </div>
 
             </div>
-            <div class="card-footer">
 
-                <div class="model-footer">
-                    <h5>* Please select an order to get this action!</h5>
-                </div>
-
-                <div class="bottom-row">
-
-                    <nav aria-label="...">
-                        <ul class="pagination ">
-                            <li class="page-item disabled">
-                                <a class="page-link" href="#" tabindex="-1">
-                                    <i class="fas fa-angle-left"></i>
-                                    <span class="sr-only">Previous</span>
-                                </a>
-                            </li>
-                            <li class="page-item active">
-                                <a class="page-link" href="#">1</a>
-                            </li>
-                            <!--                                <li class="page-item">-->
-                            <!--                                    <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>-->
-                            <!--                                </li>-->
-                            <!--                                <li class="page-item"><a class="page-link" href="#">3</a></li>-->
-                            <li class="page-item">
-                                <a class="page-link" href="#">
-                                    <i class="fas fa-angle-right"></i>
-                                    <span class="sr-only">Next</span>
-                                </a>
-                            </li>
-                        </ul>
-
-                    </nav>
-
-                </div>
-
-            </div>
 
 
 
