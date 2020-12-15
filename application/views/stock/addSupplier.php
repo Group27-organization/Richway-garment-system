@@ -15,6 +15,7 @@
     <?php linkCSS("assets/css/admin-table.css") ?>
     <?php linkCSS("assets/css/stock-addsupplier.css") ?>
     <?php linkJS("assets/js/jquery.js"); ?>
+    
 </head>
 <body>
 

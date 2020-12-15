@@ -623,7 +623,7 @@ $(document).ready(function () {
                 url: "http://localhost/Richway-garment-system/createOrderController/OrderAdd",
                 data: { orderArray: orderArray, orderItemList: orderItemList,  key: "orderArrayS"},
                 success: function(data){
-
+                    alert("Succesfully Added!")
                     if(data=="ok"){
                         alert("Succesfully Added!")
                         window.location.href = "http://localhost/Richway-garment-system/createOrderController/createOrder"

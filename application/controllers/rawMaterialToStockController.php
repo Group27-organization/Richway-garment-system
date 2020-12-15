@@ -68,7 +68,7 @@ class  rawMaterialToStockController extends  framework
                         <tr>
                             <th scope=col style='display: none'> ID</th>
                             <th scope=col>Fabric Code</th>   
-                            <th scope=col>Band</th> 
+                            <th scope=col style='display: none'>Band</th> 
                             <th scope=col>Quality Grade</th>
                             <th scope=col>Uint Price</th> 
                             <th scope=col>Description</th> 
@@ -91,7 +91,7 @@ class  rawMaterialToStockController extends  framework
                             <tr class='tblrow' onclick='selectRow(event)'>
                                  <td style='display: none'>$row->ID</td>
                                  <td>$row->fabric_code</td>   
-                                 <td>$row->band</td>                                
+                                 <td style='display: none'>$row->band</td>                                
                                  <td>$row->quality_grade</td>                                
                                  <td>$row->unit_price</td>
                                  <td>$row->description</td>
