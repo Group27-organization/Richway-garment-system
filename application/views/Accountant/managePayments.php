@@ -10,6 +10,7 @@
     <?php linkCSS("assets/css/nav.css") ?>
     <?php linkCSS("assets/css/side_nav.css") ?>
     <?php linkCSS("assets/css/admin-manageuser.css") ?>
+    <?php linkCSS("assets/css/admin-managepayment.css") ?>
     <?php linkCSS("assets/css/admin-tabview.css") ?>
     <?php linkCSS("assets/css/admin-table.css") ?>
 </head>
@@ -37,15 +38,26 @@
         <!----------------------------------tab pane start--------------------------------------------------------------------------------------- -->
 
         <div class="tab-content">
-            <div class="tab">
-                <button class="tablinks active" onclick="openEmp(event,'sales_manager')">Sales Managers</button>
-                <button class="tablinks" onclick="openEmp(event,'production_manager')">Production Managers</button>
-                <button class="tablinks" onclick="openEmp(event,'supervisor')">Supervisors</button>
-                <button class="tablinks" onclick="openEmp(event,'accountant')">Accountants</button>
-                <button class="tablinks" onclick="openEmp(event,'stock_keeper')">Stock Keepers</button>
-                <button class="tablinks" onclick="openEmp(event,'tailor')">Tailors</button>
-            </div>
+            <div class="tabrow">
+                <div class="tab">
+                    <button class="tablinks active" onclick="openEmp(event,'sales_manager')">Sales Managers</button>
+                    <button class="tablinks" onclick="openEmp(event,'production_manager')">Production Managers</button>
+                    <button class="tablinks" onclick="openEmp(event,'supervisor')">Supervisors</button>
+                    <button class="tablinks" onclick="openEmp(event,'accountant')">Accountants</button>
+                    <button class="tablinks" onclick="openEmp(event,'stock_keeper')">Stock Keepers</button>
+                    <button class="tablinks" onclick="openEmp(event,'tailor')">Tailors</button>
 
+                </div>
+
+                <button class="create-button" onclick=" ">
+                    <!--                <img src="--><?php //echo BASEURL; ?><!--/public/assets/img/plus-circle.svg" style="width: 24px; height: 24px;">-->
+                    Generate Monthly Salary
+                </button>
+                <button class="create-button" onclick=" ">
+                    <!--                                <img src="--><?php //echo BASEURL; ?><!--/public/assets/img/plus-circle.svg" style="width: 24px; height: 24px;">-->
+                    View Salary Report
+                </button>
+            </div>
             <!--------------------------------------------Tab Content-------------------------------------------------------------------------------------- -->
             <div id="tabcontentid" class="tabcontent">
                 <div class="flex-row-tab">
@@ -57,13 +69,7 @@
                             </button>
                         </div>
                     </div>
-                    <div class="BtnWap">
-                        <button id="" class="three-set-btn1" onclick="location.href"  >Add Bonas</button>
-
-                        <button id="" class="three-set-btn2" onclick="">Review Payroll</button>
-
-
-                    </div>
+                    
                 </div><!--flex row-->
 
                 <!--                table start-->
