@@ -10,7 +10,10 @@
     <?php linkCSS("assets/css/admin-table.css") ?>
     <?php linkCSS("assets/css/stockkeeper-form.css") ?>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
- 
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js" type="text/javascript"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.1/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.1/js/select2.min.js"></script>
+    <?php linkJS("assets/js/addtool-form-stock.js") ?>
 </head>
 <body>
 <div class="grid-container">
@@ -34,27 +37,20 @@
             </div>
         </div>
 
-        <form id="btnForm" action="<?php echo BASEURL;?>/rawMaterialToStockController/addbutton" method="POST" >
+        <form id="btnForm" action="<?php echo BASEURL;?>/manageToolController/addTool" method="POST" >
             <div class="flexbox-container">
 
                 <div class="inputfield">
                     <label for="button_code">Select Category</label>
-                    <select id="ItemType" name="fabric_code_id" class="form-contrall">-->
-                        <option  value="0" selected="" disabled="">--SELECT--</option>
-                        <?php if(!empty($data)): ?>
-                            <?php foreach($data  as $c):?>
-                                <option value="<?php echo $c->ID ; ?>"><?php echo $c->code ; ?></option>
-                            <?php endforeach;?>
-                        <?php endif; ?>
+                    <select id='selecttooldopdown' name="category" style='width: 100%;'>
+                       <option  value="0" data-value="0" selected="" disabled="">--SELECT--</option>
                     </select>
-                    <label id="A" class="error" style="color:red; display: none">
-                        This Field required
-                    </label>
+                    <label for="A"  class="error" style="color: red; display:none" >This Field Required!</label>
                 </div>
 
                 <div class="inputfield">
                     <label for="fabric_type">Quantity</label>
-                    <input type="text" id="btnQuantity" name="quantity" class="form-contrall"  value="">
+                    <input type="text" id="toolQuantity" name="quantity" class="form-contrall"  value="">
                     <label id="B" class="error" style="color:red; display: none">
                         This Field required
                     </label>
@@ -62,29 +58,29 @@
 
                 <div class="inputfield">
                     <label for="fabric_type">Price</label>
-                    <input type="text" id="price" name="price" class="form-contrall"  value="">
-                    <label id="B" class="error" style="color:red; display: none">
+                    <input type="text" id="toolprice" name="price" class="form-contrall"  value="">
+                    <label id="C" class="error" style="color:red; display: none">
                         This Field required
                     </label>
                 </div>
 
                 <div class="inputfield">
                     <label for="Description">Description</label>
-                    <textarea id="Description" maxlength="500" name="description" rows="4" cols="50" class="form-contrall" value="<?php if($data['Description']) :echo $data['Description']; endif; ?>"></textarea>
-                    <label id="C" class="error" style="color:red; display: none">
+                    <textarea id="Description" maxlength="500" name="description" rows="4" cols="50" class="form-contrall" ></textarea>
+                    <label id="D" class="error" style="color:red; display: none">
                         This Field required
                     </label>
                 </div>
 
-                <div class="inputfield" id="selectSupplier">
-                    <label for="SuppliesId">Assign Supplies</label>
-                    <div class="inputbutton">
-                        <input id='SuppliesId' name="supplierid" style="display: none"  class="form-contrall-label" value="">
-                        <label for='SuppliesLabel' class="form-contrall-label"></label>
-                        <button id="findsupbtn"  type="button"  class="btn2 input2 cripple">Find</button>
-                    </div>
-                    <label id="D" class="error" style="color:red; display: none">This Field required</label>
+
+                <div class="inputfield">
+                    <label for="button_code">Select Supplies</label>
+                    <select id='selectsupplierdopdown' name="supplier" style='width: 100%;'>
+                        <option  value="0" data-value="0" selected="" disabled="">--SELECT--</option>
+                    </select>
+                    <label for="E"  class="error" style="color: red; display:none" >This Field Required!</label>
                 </div>
+
 
                 <br><div class="inputfield inputbutton">
                     <input id="btnsubmitBtn" type='button' style="width: 100px; height: 43px; " value="Submit" class="btn cripple">

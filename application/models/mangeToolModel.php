@@ -11,13 +11,30 @@ class mangeToolModel extends database
         }
     }
 
-     public function deleteSupplier($id){
 
-     	 if($this->Query("UPDATE supplier SET active = ? WHERE supplier_ID = ?",[0,$id])){
+    public function getCustomerDetails(){
+        if($this->Query("SELECT * FROM customer ")){
+
+            return $this->fetchall();
+        }
+    }
+    public function getSuppilerDetails(){
+        if($this->Query("SELECT * FROM supplier ")){
+
+            return $this->fetchall();
+        }
+    }
+
+
+    public function insertTooltoStock($Data){
+      //  echo("<script>console.log('PHP in  model: " . json_encode($Data) . "');</script>");
+
+        if($this->Query("INSERT INTO stock_tool(quantity,price,description,supplier_ID,tool_ID) VALUES (?,?,?,?,?)", $Data) ){
             return true;
-     	 }
+        }else{
+            return false;
+        }
 
-     	
     }
 
 

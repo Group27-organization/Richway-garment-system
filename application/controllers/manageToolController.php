@@ -84,12 +84,87 @@ private $mangeToolModel;
         }
 
     }
+    public function setToolCategoryDropdown(){
+
+        if(isset($_POST['key'])) {
+            if ($_POST['key'] == "selecttooldopdown") {
+
+                $result = $this->mangeToolModel->getCustomerDetails();
+                echo ' <option  value="0" selected="" disabled="">--SELECT--</option>';
+                foreach($result as $row){
+//                        echo("<script>console.log('PHP in loadOrderItemsTable contoller: " . json_encode($row->predefine_button) . "');</script>");
+                    echo '<option value="'.$row->customer_ID .'" data-value="'.$row->customer_ID.'"  >'.$row->name.'-'.$row->contact_no.'</option>';
+                }
+            }
+        }
+    }
+
+    public function setSupplierDropdown(){
+
+        if(isset($_POST['key'])) {
+            if ($_POST['key'] == "selectsupplierdopdown") {
+
+                $result = $this->mangeToolModel->getSuppilerDetails();
+                echo ' <option  value="0" selected="" disabled="">--SELECT--</option>';
+                foreach($result as $row){
+//                        echo("<script>console.log('PHP in loadOrderItemsTable contoller: " . json_encode($row->predefine_button) . "');</script>");
+                    echo '<option value="'.$row->supplier_ID  .'" data-value="'.$row->supplier_ID .'"  >'.$row->name.'-'.$row->contact_no.'</option>';
+                }
+            }
+        }
+    }
+
 
     public function addToolForm(){
 
         $this->view("stock/addToolForm");
 
     }
+    public function addTool()
+    {
+        echo("<script>console.log('PHP addTool');</script>");
+        $toolData = [
+
+            'quantity' => $this->input('quantity'),
+            'price' => $this->input('price'),
+            'description' => $this->input('description'),
+            'supplier' => $this->input('supplier'),
+            'toolId' => $this->input('category')
+        ];
+        //{"quantity":"1","price":"1","description":"vdvdgd","supplier":"27","toolId":"25"}
+        $addData = [intval($toolData['quantity']),floatval($toolData['price']), $toolData['description'], intval($toolData['supplier']),intval($toolData['toolId'])];
+
+
+        echo("<script>console.log('PHP in  contoller: " . json_encode($addData) . "');</script>");
+
+
+
+        if ($this->mangeToolModel->insertTooltoStock($addData)) {
+            echo("<script>console.log('true');</script>");
+            echo '
+              <script>
+                            if(!alert("Tools Added successfully")) {
+                                window.location.href = "http://localhost/Richway-garment-system/manageToolController";
+                            }
+              </script>
+
+            ';
+
+        } else {
+            echo '
+
+            <script>
+                        if(!alert("Something went wrong! please try again.")) {
+                            window.location.href = "http://localhost/Richway-garment-system/manageToolController";
+                        }
+            </script>
+            ';
+
+        }
+
+
+    }
+
 
 
 }
