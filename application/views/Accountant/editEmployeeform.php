@@ -7,7 +7,7 @@
     <?php linkCSS("assets/css/admin-adduser.css") ?>
     <?php linkCSS("assets/css/form.css") ?>
     <?php linkCSS("assets/css/admin-table.css") ?>
-    <?php linkJS("assets/js/Accountant.js"); ?>
+    <?php linkJS("assets/js/accountant.js"); ?>
 
 </head>
 <body>

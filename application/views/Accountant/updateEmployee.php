@@ -12,7 +12,7 @@
     <?php linkCSS("assets/css/admin-manageuser.css") ?>
     <?php linkCSS("assets/css/admin-tabview.css") ?>
     <?php linkCSS("assets/css/admin-table.css") ?>
-    <?php linkJS("assets/js/Accountant.js"); ?>
+    <?php linkJS("assets/js/accountant.js"); ?>
 </head>
 <body>
 
