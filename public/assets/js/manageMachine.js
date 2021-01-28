@@ -3,11 +3,11 @@ $(document).ready(function() {
 
     $.ajax({
         type: 'POST',
-        url: "http://localhost/Richway-garment-system/manageToolController/loadToolTable",
-        data: {key: "toolTableInDash"},
+        url: "http://localhost/Richway-garment-system/manageMachineController/loadMachineTable",
+        data: {key: "machineTableInDash"},
         dataType: 'html',
         success: function (data) {
-            $("#toolTableFormanageTool").html(data);
+            $("#machineTableFormanageMachine").html(data);
             console.log("Table data load" + data);
 
         },
@@ -17,8 +17,8 @@ $(document).ready(function() {
         }
     });
 
-    $("#addtool").click(function () {
-        location.href = "http://localhost/Richway-garment-system/manageToolController/addtoolform";
+    $("#addmachine").click(function () {
+        location.href = "http://localhost/Richway-garment-system/manageMachineController/addmachineform";
 
     });
 });

@@ -43,8 +43,9 @@ class manageToolController extends framework{
                 <table class=\"table align-items-center table-flush\">
                         <thead class=\"thead-light\">                        
                         <tr>
-                        
-                            <th scope=col>Stock ID</th>
+                         
+                            <th scope=col>Tool ID</th>
+                          <th scope=col>Stock ID</th>
                             <th scope=col>Name</th>
                             <th scope=col>Description</th>
                             <th scope=col>Re-order Value</th>
@@ -59,7 +60,9 @@ class manageToolController extends framework{
 
                     echo "
                             <tr class='tblrow' onclick='selectRow(event)'>
-                                <td id='stock_ID'>$row->stock_ID  </td>
+                            
+                                <td>tool_ID$row->tool_ID</td>
+                                <td>$row->stock_ID</td>
                                 <td>$row->Name</td>
                                 <td>$row->Description</td>
                                 <td>$row->ReorderValue</td>
@@ -88,10 +91,12 @@ class manageToolController extends framework{
 
 
         $toolData = [
+            'stock_ID'=> $this->input('stock_ID'),
             'Name'=> $this->input('Name'),
             'Description'=>$this->input('Description'),
             'Re-order Value'=>$this->input('ReorderValue'),
             'ABC analysis'=>$this->input('ABCanalysis'),
+            'stock_IDError'=> '',
             'NameError'=> '',
             'DescriptionError'=> '',
             'ReorderValueError'=> '',
@@ -99,7 +104,9 @@ class manageToolController extends framework{
 
         ];
 
-
+        if(empty( $toolData['stock_ID'])){
+            $toolData['stock_IDError']="stock_ID is required";
+        }
 
         if(empty( $toolData['Name'])){
             $toolData['NameError']="Name is required";
@@ -120,8 +127,8 @@ class manageToolController extends framework{
 
 
 
-        if(empty($toolData['NameError'])&& empty($toolData['DescriptionError']) && empty($toolData['ReorderValueError'])&& empty($toolData['ABCanalysisError'])) {
-            $Data = [$toolData['Name'], $toolData['Description'], $toolData['Re-order Value'],$toolData['ABC analysis'],1];
+        if(empty($toolData['stock_IDError'])&&empty($toolData['NameError'])&& empty($toolData['DescriptionError']) && empty($toolData['ReorderValueError'])&& empty($toolData['ABCanalysisError'])) {
+            $Data = [$toolData['stock_ID'],$toolData['Name'], $toolData['Description'], $toolData['Re-order Value'],$toolData['ABC analysis'],1];
 
 
             if ($this->manageToolModel->inserttool($Data)) {

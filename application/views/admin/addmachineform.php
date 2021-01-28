@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta id="nav_item" content="Manage Tool">
-    <title>Add new tool category</title>
+    <meta id="nav_item" content="Manage Machine">
+    <title>Add new machine </title>
 
     <?php linkCSS("assets/css/nav.css") ?>
     <?php linkCSS("assets/css/side_nav.css") ?>
@@ -25,8 +25,8 @@
 
         <div class="header-container background-gradient">
             <div class="header-group">
-                <h1 class="text-white">Add new tool category</h1>
-                <p class="text-lead text-white">You can add tool's details in here</p>
+                <h1 class="text-white">Add new machine</h1>
+                <p class="text-lead text-white">You can add machine's details in here</p>
             </div>
             <div class="separator separator-bottom separator-skew zindex-100">
                 <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
@@ -35,21 +35,27 @@
             </div>
         </div>
 
-        <form  action="<?php echo BASEURL;?>/manageToolController/addtool" method="POST" >
+        <form  action="<?php echo BASEURL;?>/manageMachineController/addmachine" method="POST" >
             <div class="flexbox-container">
 
-
-
                 <div class="inputfield">
-                    <label for="stock_ID">stock_ID</label>
-                    <input type="text" id="stock_ID" maxlength="100" name="Name" class="form-contrall" value="<?php if($data['stock_ID']) :echo $data['stock_ID']; endif; ?>">
+                    <label for="stock_ID">Stock_ID</label>
+                    <input type="text" id="stock_ID" maxlength="100" name="stock_ID" class="form-contrall" value="<?php if($data['stock_ID']) :echo $data['stock_ID']; endif; ?>">
                     <label class="error" style="color:red;">
                         <?php   if($data['stock_IDError']) :echo $data['stock_IDError']; endif; ?>
                     </label>
                 </div>
 
                 <div class="inputfield">
-                    <label for="Name">Category Name</label>
+                    <label for="line_ID">Line_ID</label>
+                    <input type="text" id="line_ID" maxlength="100" name="line_ID" class="form-contrall" value="<?php if($data['line_ID']) :echo $data['line_ID']; endif; ?>">
+                    <label class="error" style="color:red;">
+                        <?php   if($data['line_IDError']) :echo $data['line_IDError']; endif; ?>
+                    </label>
+                </div>
+
+                <div class="inputfield">
+                    <label for="Name">Machine Name</label>
                     <input type="text" id="Name" maxlength="100" name="Name" class="form-contrall" value="<?php if($data['Name']) :echo $data['Name']; endif; ?>">
                     <label class="error" style="color:red;">
                         <?php   if($data['NameError']) :echo $data['NameError']; endif; ?>
@@ -57,7 +63,7 @@
                 </div>
 
                 <div class="inputfield">
-                    <label for="Description">Category Description</label>
+                    <label for="Description">Description</label>
                     <textarea id="Description" maxlength="250" name="Description" rows="4" cols="50" class="form-contrall" value="<?php if($data['Description']) :echo $data['Description']; endif; ?>"></textarea>
                     <label class="error" style="color:red;">
                         <?php   if($data['DescriptionError']) :echo $data['DescriptionError']; endif; ?>
@@ -65,7 +71,7 @@
                 </div>
 
                 <div class="inputfield">
-                    <label for="ReorderValue">Re-orderValue</label>
+                    <label for="ReorderValue">Re-order Value</label>
                     <input type="ReorderValue" min="0.00" step="0.01" maxlength="100" id="ReorderValue" name="ReorderValue" class="form-contrall" value="<?php if($data['ReorderValue']) :echo $data['ReorderValue']; endif; ?>">
                     <label class="error" style="color:red;">
                         <?php   if($data['ReorderValueError']) :echo $data['ReorderValueError']; endif; ?>
@@ -91,6 +97,15 @@
                     </label>
                 </div>
 
+                <div class="inputfield">
+                    <label for="Warrenty">Warrenty</label>
+                    <input type="text" id="Warrenty" maxlength="100" name="Warrenty" class="form-contrall" value="<?php if($data['Warrenty']) :echo $data['Warrenty']; endif; ?>">
+                    <label class="error" style="color:red;">
+                        <?php   if($data['WarrentyError']) :echo $data['WarrentyError']; endif; ?>
+                    </label>
+                </div>
+
+
 
 
                 <br><div class="inputfield inputbutton">
@@ -105,8 +120,9 @@
     </div><!--    right-->
 </div>  <!--    grid container-->
 
-<?php linkJS("assets/js/admin-manageTool.js") ?>
+<?php linkJS("assets/js/admin-manageMachine.js") ?>
 <?php linkJS("assets/js/table.js") ?>
 
 </body>
 </html>
+
