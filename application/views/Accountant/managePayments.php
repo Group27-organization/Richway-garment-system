@@ -131,13 +131,10 @@
 
         <div class="card">
             <div class="card-header">
-                <div class="left-card-header">
-                    <h3 class="title">Assign Employee</h3>
-                </div>
                 <div class="right-card-header">
                     <div class="SearchBtnWap">
                         <div class="search">
-                            <input type="text" class="searchTerm" placeholder="#Employee ID">
+                            <input type="text" class="searchTerm" placeholder="#Generate Report ID">
                             <button type="submit" class="searchButton cripple">
                                 <i class="fa fa-search"></i>
                             </button>
@@ -149,10 +146,6 @@
 
             </div>
             <div class="card-footer">
-
-                <div class="model-footer">
-                    <h5>* Please select an employee to assign!</h5>
-                </div>
 
                 <div class="bottom-row">
 
@@ -183,7 +176,7 @@
 
                     <div class="BtnWap">
                         <button id="close" class="model-btn2 cripple" onclick="closeModel()">Close</button>
-                        <button id="assign" class="model-btn cripple" onclick="assignEmployee()"  >Assign</button>
+<!--                    <button id="assign" class="model-btn cripple" onclick="assignEmployee()"  >Assign</button>-->
                     </div>
 
                 </div>

@@ -21,7 +21,7 @@ class AccountantController extends framework {
         }
 
         $this->helper("link");
-       // $this->accountantModel = $this->model('accountantModel');
+        $this->accountantModel = $this->model('accountantModel');
     }
 
     public function index(){
@@ -172,6 +172,53 @@ class AccountantController extends framework {
                     </table>
                     
                     ";
+        }
+
+    }
+
+    public function generateMonthlySalary(){
+
+        echo("<script>console.log('PHP in ndex');</script>");
+        if(isset($_POST['key'])) {
+            if ($_POST['key'] == "monthlysalary") {
+                $result = $this->accountantModel->generateMonthlySalary();
+
+                echo "
+
+                 <table class=\"table align-items-center table-flush\">
+                        <thead class=\"thead-light\">
+                        <tr>
+                        
+                            <th scope=col>Generate Report ID</th>
+                            <th scope=col>Total Employee Count</th>
+                            <th scope=col>Date</th>
+                            <th scope=col></th> 
+                                                       
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                ";
+                foreach ($result as $row) {
+
+                    echo "
+                            <tr class='tblrow' onclick='selectRow(event)'>
+                                <td id='supid'>$row->report_ID  </td>
+                                <td>$row->emp_count</td>
+                                <td>$row->date</td> 
+                                <th>
+                                 <a href='#' class='viewBtn' style='margin: 4px;color: #00B4CC'> View </a>
+                                </th> 
+                            </tr>
+                        ";
+
+                }
+                echo "
+                        </tbody>
+                    </table>
+                    
+                    ";
+            }
         }
 
     }
