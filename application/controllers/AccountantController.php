@@ -48,6 +48,10 @@ class AccountantController extends framework {
         $this->view("Accountant/viewReports");
     }
 
+    public function viewSalary(){
+        $this->view("Accountant/viewSalary");
+    }
+
     public function updateEmployee(){
         $this->view("Accountant/updateEmployee");
     }
@@ -57,7 +61,7 @@ class AccountantController extends framework {
     }
 
     public function loadEmployeeTable(){
-        echo("<script>console.log('PHP in ndex');</script>");
+        echo("<script>console.log('PHP in index');</script>");
         if(isset($_POST['key'])) {
             if ($_POST['key'] == "employeeTableInDash") {
 
@@ -176,6 +180,63 @@ class AccountantController extends framework {
 
     }
 
+    public function loadSalaryTable(){
+        echo("<script>console.log('PHP in index');</script>");
+        if(isset($_POST['key'])) {
+            if ($_POST['key'] == "payrollTableInDash") {
+                $result = $this->accountantModel->loadSalaryTable();
+                echo("<script>console.log('PHP in loadSalaryTable controller: " . json_encode($result) . "');</script>");
+
+                echo "
+
+                 <table class=\"table align-items-center table-flush\">
+                        <thead class=\"thead-light\">
+                        <tr>
+                                                
+                      
+                            <th scope=col>Employee ID</th>
+                            <th scope=col>Name</th> 
+                             <th scope=col>Gross</th> 
+                               <th scope=col>Deductions</th>
+                                 <th scope=col>Cash Advance</th> 
+                                   <th scope=col>Net Pay</th>            
+                                                                                        
+                           
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                ";
+
+
+                foreach ($result as $row) {
+
+                    echo "
+                            <tr class='tblrow' onclick='selectRow(event),selectPayroll()'>
+                                <td id='emp_ID'>$row->emp_ID  </td>
+                                <td>$row->Name</td>
+                                <td>$row->gross</td>
+                                <td>$row->deduction</td>
+                                <td>$row->cashadvance</td>
+                                <td>$row->netpay</td>
+                              
+
+
+                            </tr>
+                        ";
+
+                }
+                echo "
+                        </tbody>
+                    </table>
+                    
+                    ";
+            }
+        }
+
+
+    }
+
     public function generateMonthlySalary(){
 
         echo("<script>console.log('PHP in ndex');</script>");
@@ -207,7 +268,7 @@ class AccountantController extends framework {
                                 <td>$row->emp_count</td>
                                 <td>$row->date</td> 
                                 <th>
-                                 <a href='#' class='viewBtn' style='margin: 4px;color: #00B4CC'> View </a>
+                                 <a href='http://localhost/Richway-garment-system/AccountantController/viewSalary' class='viewBtn' style='margin: 4px;color: #00B4CC'> View </a>
                                 </th> 
                             </tr>
                         ";

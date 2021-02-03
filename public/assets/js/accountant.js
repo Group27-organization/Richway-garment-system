@@ -59,3 +59,21 @@ $(document).ready(function() {
 
 });
 
+
+
+$.ajax({
+    type: 'POST',
+    url: "http://localhost/Richway-garment-system/AccountantController/loadSalaryTable",
+    data: {  key: "payrollTableInDash"},
+    dataType: 'html',
+    success: function(data){
+        $("#table-payroll").html(data);
+
+
+    },
+    error       : function() {
+        console.log("Table data not  load")
+        $("#tableParent").html('<br><p>Something went wrong.</p>');
+    }
+});
+
