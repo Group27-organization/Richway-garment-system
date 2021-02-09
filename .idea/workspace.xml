@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="52f54e1d-f9c9-4c5f-a2e2-18186743ac40" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/public/assets/img/ls1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/img/png-plain-t.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/img/s3.jpg" afterDir="false" />
+    <list default="true" id="52f54e1d-f9c9-4c5f-a2e2-18186743ac40" name="Default Changelist" comment="in add customer">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/controllers/rawMaterialToStockController.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/controllers/rawMaterialToStockController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/dashboard.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/dashboard.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/stock/addSupplier.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/stock/addSupplier.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/stock/components/side_nav.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/stock/components/side_nav.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/controllers/createOrderController.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/controllers/createOrderController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/views/Salesmanjor/addCustomer.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/Salesmanjor/addCustomer.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/views/Salesmanjor/createOrder.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/Salesmanjor/createOrder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/views/Salesmanjor/forms/create-order-form-one.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/views/Salesmanjor/forms/create-order-form-two.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/Salesmanjor/forms/create-order-form-two.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/assets/css/Form.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/Form.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/assets/js/salesmanjor-js/createOrder.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/js/salesmanjor-js/createOrder.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/js/salesmanjor-js/salesmanager-addCustomer.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/js/salesmanjor-js/salesmanager-addCustomer.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,7 +31,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="feature/sales-manager-dashboard-implementation" />
+        <entry key="$PROJECT_DIR$" value="feature/add-new-item-to-the-stock" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -46,22 +45,22 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/assets/img" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/assets/js/salesmanjor-js" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\xampp\htdocs\Richway-garment-system\public\assets\img" />
-      <recent name="C:\xampp\htdocs\Richway-garment-system\application\views\stock" />
-      <recent name="C:\xampp\htdocs\Richway-garment-system\public\assets\css\stock" />
-      <recent name="C:\xampp\htdocs\Richway-garment-system\public\assets\js" />
-      <recent name="C:\xampp\htdocs\Richway-garment-system\application\views\Stock\forms" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\xampp\htdocs\Richway-garment-system\public\assets\css" />
       <recent name="C:\xampp\htdocs\Richway-garment-system\application\views\stock" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\Richway-garment-system\public\assets\js\salesmanjor-js" />
+      <recent name="C:\xampp\htdocs\Richway-garment-system\application\views\Salesmanjor\forms" />
+      <recent name="C:\xampp\htdocs\Richway-garment-system\public\assets\img" />
+      <recent name="C:\xampp\htdocs\Richway-garment-system\application\views\stock" />
+      <recent name="C:\xampp\htdocs\Richway-garment-system\public\assets\css\stock" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -81,6 +80,11 @@
       <workItem from="1606663402065" duration="17323000" />
       <workItem from="1606703178147" duration="10407000" />
       <workItem from="1608003291455" duration="467000" />
+      <workItem from="1608347857548" duration="21000" />
+      <workItem from="1608731228534" duration="2595000" />
+      <workItem from="1610962045946" duration="288000" />
+      <workItem from="1612788982320" duration="13849000" />
+      <workItem from="1612843236521" duration="27787000" />
     </task>
     <task id="LOCAL-00001" summary="manage stock css updated">
       <created>1605852511911</created>
@@ -136,14 +140,14 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="413" y="110" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1366.728@0.0.1366.728" timestamp="1606631206565" />
-    <state x="256" y="0" width="827" height="523" key="CommitChangelistDialog2" timestamp="1606711204939">
+    <state x="256" y="0" width="827" height="523" key="CommitChangelistDialog2" timestamp="1612875022670">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="256" y="0" width="827" height="523" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1606711204939" />
-    <state x="463" y="105" key="FileChooserDialogImpl" timestamp="1605774433948">
+    <state x="256" y="0" width="827" height="523" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1612875022670" />
+    <state x="463" y="105" key="FileChooserDialogImpl" timestamp="1608735657535">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="463" y="105" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1605774433948" />
+    <state x="463" y="105" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1608735657535" />
     <state x="0" y="55" width="1366" height="619" key="MergeDialog" timestamp="1605770449584">
       <screen x="0" y="0" width="1366" height="728" />
     </state>

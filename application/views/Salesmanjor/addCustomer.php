@@ -12,7 +12,16 @@
     <?php linkCSS("assets/css/admin-table.css") ?>
     <?php linkCSS("assets/css/salesmanjor-css/addCustomer-form.css") ?>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
+    <style>
+        label.error {
+            color: red;
+            font-size: 1rem;
+            display: block;
+            margin-top: 5px;
+        }
 
+    </style>
 </head>
 <body>
 
@@ -43,21 +52,23 @@
 
                 <div class="inputfield">
                     <label for="name">Full Name</label>
-                    <input type="text" id="CustomerName" name="name" class="form-contrall" placeholder="MK kamal" required>  <label id="A" class="error" style="color:red; display: none" >
-                        This Field required
-                    </label>
+                    <input type="text" id="CustomerName" name="name" class="form-contrall" placeholder="MK kamal" required>
+<!--                    <label id="A" class="error" style="color:red; display: none" >-->
+<!--                        This Field required-->
+<!--                    </label>-->
                 </div>
 
                 <div class="inputfield">
                     <label for="address">Address</label>
-                    <input type="address" id="Address" name="address" class="form-contrall" placeholder="eg:no 37 galle road,dikkumbura"><label id="B" class="error" style="color:red; display: none">
-                        This Field required
-                    </label>
+                    <input type="address" id="Address" name="address" class="form-contrall" placeholder="eg:no 37 galle road,dikkumbura">
+<!--                    <label id="B" class="error" style="color:red; display: none">-->
+<!--                        This Field required-->
+<!--                    </label>-->
                 </div>
                 <div class="inputfield" id="selectSupplier">
                     <label for="contact_no">Contact Number</label>
                     <input type="number" id="CustomerContactNumber" name="contact_no" class="form-contrall" minlength="10" placeholder="eg:0414561231" required>
-                    <label id="C" class="error" style="color:red; display: none">This Field required</label>
+<!--                    <label id="C" class="error" style="color:red; display: none">This Field required</label>-->
                 </div>
 
 
@@ -68,18 +79,21 @@
                         <option value="male" data-value="male">Male</option>
                         <option value="female"  data-value="female">Female</option>
                     </select>
-                    <label id="D" class="error" style="color:red; display: none">This Field required</label>
+<!--                    <label id="D" class="error" style="color:red; display: none">This Field required</label>-->
                 </div>
 
                 <div class="inputfield">
                     <label for="email">Email</label>
-                    <input type="email" id="Email" name="email" class="form-contrall" placeholder="kmal32@gmail.com" required>
-                    <label id="E" class="error" style="color:red; display: none">This Field required</label>
+                    <input type="email" id="email" name="email" class="form-contrall" placeholder="kmal32@gmail.com" required>
+<!--                    <label id="E" class="error" style="color:red; display: none">This Field required</label>-->
                 </div>
 
 
                 <br><div class="inputfield inputbutton">
-                    <input id="btnsubmitC" type='button' style="width: 100px; height: 43px; " value="Submit" class="btn cripple">
+<!--                    <input id="btnsubmitC" type='button' style="width: 100px; height: 43px; " value="Submit" class="btn cripple">-->
+
+                        <input  type="submit" value="Submit" style="width: 100px; height: 43px;" class="btn cripple">
+
                 </div>
 
 

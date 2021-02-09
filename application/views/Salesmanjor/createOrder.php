@@ -27,7 +27,7 @@
 
     <?php linkJS("assets/js/jquery.js"); ?>
     <?php linkJS("assets/js/salesmanjor-js/createOrder.js"); ?>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
 </head>
 <body>
 

@@ -3,7 +3,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.1/js/select2.min.js"></script>
 <link href='https://fonts.googleapis.com/css?family=Alegreya+Sans' rel='stylesheet' type='text/css'>
 
-
+<form id="form1">
 <div class="flexbox-container" id="createOrderForm1" >
     <div style="margin-bottom: 40px;width: 90%">
         <ol class="progtrckr" data-progtrckr-steps="5">
@@ -14,17 +14,19 @@
     </div>
 
 
-    <div class="inputfield">
+
+        <div class="inputfield">
             <label>Item Type</label>
             <select id="ItemType" name="options" class="form-contrall">
-            <option  value="0" selected="" disabled="">--SELECT--</option>
-            <?php if(!empty($data)): ?>
-                <?php foreach($data  as $c):?>
-                    <option data-value="<?php echo $c->type; ?>"><?php echo $c->type ; ?></option>
-                <?php endforeach;?>
-            <?php endif; ?>
+                <option  value="0" selected="" disabled="">--SELECT--</option>
+                <?php if(!empty($data)): ?>
+                    <?php foreach($data  as $c):?>
+                        <option data-value="<?php echo $c->type; ?>"><?php echo $c->type ; ?></option>
+                    <?php endforeach;?>
+                <?php endif; ?>
             </select>
-            <label for="IT" class="error" style="color: red; display:none" >This Field Required!</label>
+
+            <label for="itemType" class="error" style="color: red; " >This Field Required!</label>
         </div>
 
 
@@ -32,56 +34,61 @@
         <div class="inputfield">
             <label for="CollarSize">Collar Size</label>
             <select id="CollarSize" name="options" class="form-contrall"></select>
-            <label for="CS" class="error" style="color: red; display:none" >This Field Required!</label>
+<!--            <label for="CS" class="error" style="color: red; display:none" >This Field Required!</label>-->
+            <label for="collarSize" class="error" style="color: red; display:none" >This Field Required!</label>
         </div>
 
 
 
-    <div class="inputfield">
-        <label for="Material">Choose Template</label>
-        <div class="inputbutton" >
-<!--            <label for='ChooseTemplate' class="form-contrall-label" style="display: none;"></label>-->
-            <input id="ChooseTemplate" type="text" style="display: none;" value="">
-            <label for='TemplateDescription' class="form-contrall-label"></label>
-            <button id="ChooseTemplateID" onclick="location.href" type="button"  class="btn2 input2 cripple">Find</button>
+        <div class="inputfield">
+            <label for="Material">Choose Template</label>
+            <div class="inputbutton" >
+                <!--            <label for='ChooseTemplate' class="form-contrall-label" style="display: none;"></label>-->
+                <input id="ChooseTemplate" type="text" style="display: none;" value="">
+                <label for='TemplateDescription' class="form-contrall-label"></label>
+                <button id="ChooseTemplateID" onclick="location.href" type="button"  class="btn2 input2 cripple">Find</button>
+            </div>
+<!--            <label for="CT" class="error" style="color: red; display:none" >This Field Required!</label>-->
+            <label for="templateSelect" class="error" style="color: red; display:none" >This Field Required!</label>
         </div>
-        <label for="CT" class="error" style="color: red; display:none" >This Field Required!</label>
-    </div>
 
-    <style>
-        .dropdownimage{
-            width:50px;
-            height:60px;
-            display: inline-block;
-        }
-        .dropdownList{
-            margin-top:-10px;
-            padding-top: 0px;
+        <style>
+            .dropdownimage{
+                width:50px;
+                height:60px;
+                display: inline-block;
+            }
+            .dropdownList{
+                margin-top:-10px;
+                padding-top: 0px;
 
-        }
-    </style>
+            }
+        </style>
 
         <div class="inputfield" >
             <label>Fabric Design Code</label>
             <select id='fabricdesigncode' name="options" style='width: 100%;'>
 <!--                <option  value="0" data-value="0" selected="" disabled="">--SELECT--</option>-->
             </select>
-            <label for="FDC"  class="error" style="color: red; display:none" >This Field Required!</label>
+<!--            <label for="FDC"  class="error" style="color: red; display:none" >This Field Required!</label>-->
+            <label for="fabricDesign"  class="error" style="color: red; display:none" >This Field Required!</label>
         </div>
 
-    <div class="inputfield" id="ButtonDesignDiv">
-        <label>Button  Design Code</label>
-        <select id='buttondesigncode' name="options" style='width: 100%;'>
-<!--            <option  value="0" selected="" disabled="">--SELECT--</option>-->
-        </select>
-        <label for="BDC"  class="error" style="color: red; display:none" >This Field Required!</label>
-    </div>
+        <div class="inputfield" id="ButtonDesignDiv">
+            <label>Button  Design Code</label>
+            <select id='buttondesigncode' name="options" style='width: 100%;'>
+                <!--            <option  value="0" selected="" disabled="">--SELECT--</option>-->
+            </select>
+<!--            <label for="BDC"  class="error" style="color: red; display:none" >This Field Required!</label>-->
+            <label for="buttonDesign"  class="error" style="color: red; display:none" >This Field Required!</label>
+        </div>
 
-     <div class="inputfield">
-        <label>Quantity</label>
-        <input type="number" id="orderItemQuantity" name="quantity" class="form-contrall"min="1">
-         <label for="Q"  class="error" style="color: red; display:none" >This Field Required!</label>
-    </div>
+        <div class="inputfield">
+            <label>Quantity</label>
+            <input type="number" id="orderItemQuantity" name="quantity" class="form-contrall"min="1">
+<!--            <label for="Q"  class="error" style="color: red; display:none" >This Field Required!</label>-->
+            <label for="quantity"  class="error" style="color: red; display:none" >This Field Required!</label>
+        </div>
 
 
 
@@ -91,4 +98,6 @@
             <button type="button" id="nextBtnf1" class="model-btn cripple" style="height: 48px; width:134px ;">Next</button>
         </div>
 
+
 </div>
+</form>

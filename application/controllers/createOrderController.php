@@ -227,7 +227,7 @@ class createOrderController extends framework{
             if ($_POST['key'] == "customerdrop") {
 
                 $result = $this->createOrderModel->getCustomerDetails();
-//                echo ' <option  value="0" selected="" disabled="">--SELECT--</option>';
+                echo ' <option  value="0" selected="" disabled="">--SELECT--</option>';
                 foreach($result as $row){
 //                        echo("<script>console.log('PHP in loadOrderItemsTable contoller: " . json_encode($row->predefine_button) . "');</script>");
                     echo '<option value="'.$row->customer_ID .'" data-value="'.$row->customer_ID.'"  >'.$row->name.'-'.$row->contact_no.'</option>';
