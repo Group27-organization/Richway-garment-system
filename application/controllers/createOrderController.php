@@ -324,6 +324,8 @@ class createOrderController extends framework{
                         $row[5] =intval($row[5]);
 
 
+
+
                         if ($this->createOrderModel->orderItemAdd($row)) {
                             $ct =$ct+1;
                         }

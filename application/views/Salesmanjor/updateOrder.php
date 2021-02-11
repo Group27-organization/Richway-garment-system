@@ -12,6 +12,7 @@
     <?php linkCSS("assets/css/admin-manageuser.css") ?>
     <?php linkCSS("assets/css/admin-tabview.css") ?>
     <?php linkCSS("assets/css/admin-table.css") ?>
+    <?php linkJS("assets/js/salesmanager-updateOrder.js") ?>
 </head>
 <body>
 
@@ -59,14 +60,14 @@
                     </div>
                     <div class="BtnWap">
 
-                        <button class="three-set-btn2">Update</button>
+                        <button class="three-set-btn2" onclick="updateOrder()" >Update</button>
 
                     </div>
                 </div><!--flex row-->
 
 <!--                table start-->
 
-                <div class="table-responsive" id="orderTableNotStart">
+                <div class="table-responsive" id="orderTable">
 
                 </div>
                 <div class="card-footer">
@@ -117,8 +118,8 @@
 </div>
 
 
-<?php linkJS("assets/js/salesmanager-updateOrder.js") ?>
 
+<?php linkJS("assets/js/table.js") ?>
 
 </body>
 </html>

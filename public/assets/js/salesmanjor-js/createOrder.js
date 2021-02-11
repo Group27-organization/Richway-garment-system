@@ -24,7 +24,8 @@ $(document).ready(function () {
             url: "http://localhost/Richway-garment-system/createOrderController/setPredefineSize",
             data: { ItemType: ItemType,  key: "ItemType"},
             success: function(data){
-                $("#CollarSize").html(data);
+                 $("#CollarSize").html(data);
+
 
 
             },
@@ -237,6 +238,7 @@ $(document).ready(function () {
            if(flag==1){
                flag =0;
                count =count+1;
+               console.log("count :"+count);
                alert("Item "+count+"Added!");
                $("#fabricdesigncode").select2("val", "");
                $("#buttondesigncode").select2("val", "");
@@ -444,7 +446,8 @@ $(document).ready(function () {
     });
 
     $("#nextBtnf1").click(function(){
-        if(count==1){
+        console.log("count is :::"+count);
+        if(count==0){
             alert("You Did not Add any Item To Bucket!");
         }else{
             $('input[type=text]').val('');
