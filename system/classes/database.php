@@ -57,6 +57,12 @@ class database {
 
     }
 
+    public function fetchOne(){
+
+        return $this->result->fetchOne(PDO::FETCH_ASSOC);
+
+    }
+
 
 
 }

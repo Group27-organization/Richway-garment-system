@@ -86,6 +86,6 @@
 </div>  <!--    grid container-->
 
 
-
+<?php linkJS("assets/js/updatefabric-to-stock.js") ?>
 </body>
 </html>

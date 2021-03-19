@@ -38,7 +38,7 @@
 
                     <div class="flexbox-container">
 
-                        <form  action="<?php echo BASEURL;?>/addSupplierController/addSupplier" method="POST" id="addSupplier" >
+                        <form  action="<?php echo BASEURL;?>/addSupplierController/addSupplier" method="POST" id="addSupplier">
 
                   <div class="inputfield">
                     <label for="SuplierName">Suplier Name</label>

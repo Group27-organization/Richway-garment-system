@@ -34,47 +34,47 @@
         </div>
                 <div class="flexbox-container">
                     <div class="inputfield">
-                        <label for="Date">Date</label>
-                        <select id="Date" name="date" class="form-contrall">
-                            <option value="p">2020-02-14</option>
-                            <option value="on">2020-02-14</option>
-                            <option value="s">2020-02-14</option>
-                            <option value="e">2020-02-14</option>
-                        </select>
-                    </div>
-
-                    <div class="inputfield">
-                        <label for="Address">Order Id</label>
-                        <input type="text" id="orderId" name="orderid" class="form-contrall-readonly" readonly>
+                        <label for="Address">Order Item Id</label>
+                        <input type="text" id="orderItemId" name="orderid" class="form-contrall-readonly" value="ordItem000<?php echo $data['order_item_ID'];?>"  readonly>
                     </div>
 
 
                     <div class="inputfield">
-                        <label for="OrderName">Order Name</label>
-                        <input type="text" id="OrderName" class="form-contrall-readonly" value="John Keells" readonly>
+                        <label for="OrderName">Fabric Code</label>
+                        <input type="text" id="FabricCode" class="form-contrall-readonly" value="pfc000<?php echo $data['fabricID'];?>"  readonly>
+                    </div>
+                    <div class="inputfield">
+                        <label for="OrderName">Fabric Quantity</label>
+                        <input type="text" id="FabricQuantity" class="form-contrall-readonly" value="<?php echo $data['fabricQuantity'];?>" >
                     </div>
 
                     <div class="inputfield">
-                        <label for="Job">Order Item ID</label>
-                        <select id="Job" name="Job" class="form-contrall">
-                            <option value="p">1</option>
-                            <option value="on">2</option>
-                            <option value="s">3</option>
-                            <option value="e">4</option>
-                        </select>
+                        <label for="OrderName">Button Code</label>
+                        <input type="text" id="ButtonCode" class="form-contrall-readonly" value="pbc000<?php echo $data['buttonID'];?>" >
                     </div>
+
+
                     <div class="inputfield">
-                        <label for="Job">Job</label>
-                        <select id="Job" name="Job" class="form-contrall">
-                            <option value="p">1-A</option>
-                            <option value="on">2-B</option>
-                            <option value="s">3-C</option>
-                            <option value="e">4-D</option>
-                        </select>
+                        <label for="OrderName">Button Quantity</label>
+                        <input type="text" id="ButtonQuantity" class="form-contrall-readonly" value="<?php echo $data['buttonQuantity'];?>"   readonly>
                     </div>
+
+                    <div class="inputfield">
+                        <label for="">Nool Code</label>
+                        <input type="text" id="NoolCode" class="form-contrall-readonly" value="pnc000<?php echo $data['noolID'];?>" readonly >
+                    </div>
+
+
+                    <div class="inputfield">
+                        <label for="">Nool Quantity</label>
+                        <input type="text" id="NoolQuantity" class="form-contrall-readonly" value="<?php echo $data['noolQuantity'];?>"   readonly>
+                    </div>
+
+
+
 
                     <div class="inputfield inputbutton">
-                        <input type="submit" value="Issue" class="btn cripple" >
+                        <input id="btnIssue" type="submit" value="Issue" class="btn cripple" >
                     </div>
 
                 </div><!--flexbox-container -->
@@ -86,7 +86,7 @@
 
 </div>  <!-- grid-container-->
 
-
+<?php linkJS("assets/js/stockIssue-form.js") ?>
 </body>
 </html>
 
