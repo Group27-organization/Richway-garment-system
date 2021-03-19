@@ -60,10 +60,10 @@ class AccountantController extends framework {
         $this->view("Accountant/editEmployeeform");
     }
 
-    public function loadEmployeeTable(){
+    public function loadPaymentTable(){
         echo("<script>console.log('PHP in index');</script>");
         if(isset($_POST['key'])) {
-            if ($_POST['key'] == "employeeTableInDash") {
+            if ($_POST['key'] == "paymentTableInDash") {
 
 
                 echo "
@@ -72,12 +72,12 @@ class AccountantController extends framework {
                         <thead class=\"thead-light\">
                         <tr>
                                                 
-                            <th scope=col>Employee number</th>
-                            <th scope=col>Employee ID</th>
-                            <th scope=col>Name</th>           
-                            <th scope=col>Last paid Date</th>
-                            <th scope=col>Last Paid Salary</th>                                                              
-                           
+                            <th scope=col>Report ID</th>
+                            <th scope=col>Generate Date</th>
+                            <th scope=col>Total Employees</th>           
+                            <th scope=col>Status</th>
+                            <th scope=col>Actions</th>                                                              
+                            
                         </tr>
                         </thead>
                         <tbody>
@@ -87,33 +87,14 @@ class AccountantController extends framework {
 
                 echo "
                          <tr>
-                            <td>emp12</td>
-                            <td>Saman Perera</td>                          
-                            <td>8.30 am</td>
-                            <td>7.30 pm</td>
-                            <td>2</td>
+                            <td>Rid001</td>
+                            <td>2021/02/06</td>                          
+                            <td>10</td>
+                            <td>pending</td>
+                            <td>view</td>
+                            
                         </tr>
-                        <tr>
-                            <td>emp32</td>
-                            <td>Kavishka Madushan</td>                           
-                            <td>9.30 am</td>
-                            <td>7.00 pm</td>
-                            <td>1.30</td>
-                        </tr>
-                        <tr>
-                            <td>emp53</td>
-                            <td>Sadew Amantha</td>                            
-                            <td>8.00 am</td>
-                            <td>6.30 pm</td>
-                            <td>1</td>
-                        </tr>
-                        <tr>
-                            <td>emp46</td>
-                            <td>Kusal Mendis</td>                            
-                            <td>8.30 am</td>
-                            <td>7.30 pm</td>
-                            <td>2</td>
-                        </tr>
+                       
                         ";
 
             }

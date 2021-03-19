@@ -37,29 +37,8 @@
             </div>
         </div>
 
-        <!----------------------------------tab pane start--------------------------------------------------------------------------------------- -->
 
-        <div class="tab-content">
-            <div class="tabrow">
-                <div class="tab">
-                    <button class="tablinks active" onclick="openEmp(event,'sales_manager')">Sales Managers</button>
-                    <button class="tablinks" onclick="openEmp(event,'production_manager')">Production Managers</button>
-                    <button class="tablinks" onclick="openEmp(event,'supervisor')">Supervisors</button>
-                    <button class="tablinks" onclick="openEmp(event,'accountant')">Accountants</button>
-                    <button class="tablinks" onclick="openEmp(event,'stock_keeper')">Stock Keepers</button>
-                    <button class="tablinks" onclick="openEmp(event,'tailor')">Tailors</button>
-
-                </div>
-
-                <button id="generate-salary-btn" onclick="location.href" class="create-button" >
-                    Generate Monthly Salary
-                </button>
-                <button id="view-salary-report" class="create-button" onclick="viewSalaryReport()">
-                    View Salary Report
-                </button>
-            </div>
-            <!--------------------------------------------Tab Content-------------------------------------------------------------------------------------- -->
-            <div id="tabcontentid" class="tabcontent">
+            <div class="tabcontent1">
                 <div class="flex-row-tab">
                     <div class="SearchBtnWap">
                         <div class="search">
@@ -69,7 +48,13 @@
                             </button>
                         </div>
                     </div>
-                    
+                    <div class="tabrow">
+                    <div class="BtnWap">
+                    <button id="generate-salary-btn" onclick="location.href" class="create-button" >
+                        Generate Monthly Salary
+                    </button>
+                    </div>
+                    </div>
                 </div><!--flex row-->
 
                 <!--                table start-->
@@ -114,7 +99,7 @@
                 </div>
 
             </div>
-
+        </div>
 
         </div>
 
@@ -176,7 +161,7 @@
 
                     <div class="BtnWap">
                         <button id="close" class="model-btn2 cripple" onclick="closeModel()">Close</button>
-<!--                    <button id="assign" class="model-btn cripple" onclick="assignEmployee()"  >Assign</button>-->
+                        <!--                    <button id="assign" class="model-btn cripple" onclick="assignEmployee()"  >Assign</button>-->
                     </div>
 
                 </div>

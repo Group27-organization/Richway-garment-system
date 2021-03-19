@@ -15,8 +15,8 @@ function openEmp(evt,elementID) {
 
     $.ajax({
         type: 'POST',
-        url: "http://localhost/Richway-garment-system/AccountantController/loadEmployeeTable",
-        data: {  key: "employeeTableInDash"},
+        url: "http://localhost/Richway-garment-system/AccountantController/loadPaymentTable",
+        data: {  key: "paymentTableInDash"},
         dataType: 'html',
         success: function(data){
             $("#table-responsive").html(data);
