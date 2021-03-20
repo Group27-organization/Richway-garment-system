@@ -59,7 +59,7 @@
                     <div class="BtnWap">
                         <button id="addRawmaterial" class="three-set-btn1" onclick="openRaw()">Add</button>
 
-                        <button id="updateRawmaterial" class="three-set-btn2" onclick="updateRM()">Update</button>
+<!--                        <button id="updateRawmaterial" class="three-set-btn2" onclick="updateRM()">Update</button>-->
 
 <!--                        <button id="deleteRawmaterial" class="three-set-btn3" onclick="deleteRawMaterial()">Remove</button>-->
                     </div>

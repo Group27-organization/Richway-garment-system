@@ -1,14 +1,14 @@
 <?php
 
 
-class manageToolController extends framework{
+class manageStockToolController extends framework{
 private $mangeToolModel;
     public function __construct(){
         if(!$this->getSession('userId')){
             $this->redirect("loginController/loginForm");
         }
         $this->helper("link");
-        $this->mangeToolModel = $this->model('mangeToolModel');
+        $this->mangeToolModel = $this->model('mangeStockToolModel');
 
     }
 
@@ -41,7 +41,7 @@ private $mangeToolModel;
         echo("<script>console.log('PHP in ndex');</script>");
         if(isset($_POST['key'])) {
             if ($_POST['key'] == "supplierTableInDash") {
-                $result = $this->mangeToolModel->loadSupplierTable();
+                $result = $this->mangeToolModel->getPredefineTool();
 
                 echo "
 
@@ -50,11 +50,10 @@ private $mangeToolModel;
                         <tr>
                         
                             <th scope=col>Tool ID</th>
-                            <th scope=col>Category</thl>
-                            <th scope=col>Level</thl>
-                            <th scope=col>Description</th>
-                            <th scope=col>Unit Price</th>
-                            <th scope=col>Quantity</th>
+                            <th scope=col>Name</thl>
+                            <th scope=col>ABCanalysis</thl>
+                            <th scope=col>quantity</th>
+                             <th scope=col>date</th>
                            
                         </tr>
                         </thead>
@@ -65,11 +64,11 @@ private $mangeToolModel;
 
                     echo "
                             <tr class='tblrow' onclick='selectRow(event)'>
-                                <td id='supid'>$row->supplier_ID  </td>
-                                <td>$row->name</td>
-                                 <td>$row->email</td>
-                                  <td>$row->address</td>
-                                <td>$row->contact_no</td>
+                                <td id='supid'>$row->tool_ID  </td>
+                                   <td>$row->Name</td>
+                                   <td>$row->ABCanalysis</td>
+                                   <td>$row->quantity</td>
+                                   <td>$row->date</td>
                                 
                             </tr>
                         ";
@@ -89,11 +88,11 @@ private $mangeToolModel;
         if(isset($_POST['key'])) {
             if ($_POST['key'] == "selecttooldopdown") {
 
-                $result = $this->mangeToolModel->getCustomerDetails();
+                $result = $this->mangeToolModel->getPredefineTool();
                 echo ' <option  value="0" selected="" disabled="">--SELECT--</option>';
                 foreach($result as $row){
 //                        echo("<script>console.log('PHP in loadOrderItemsTable contoller: " . json_encode($row->predefine_button) . "');</script>");
-                    echo '<option value="'.$row->customer_ID .'" data-value="'.$row->customer_ID.'"  >'.$row->name.'-'.$row->contact_no.'</option>';
+                    echo '<option value="'.$row->tool_ID  .'" data-value="'.$row->tool_ID .'"  >'.$row->Name.'-'.$row->ABCanalysis.'</option>';
                 }
             }
         }
@@ -117,7 +116,7 @@ private $mangeToolModel;
 
     public function addToolForm(){
 
-        $this->view("stock/addToolForm");
+        $this->view("stock/addStockToolForm");
 
     }
     public function addTool()
@@ -126,25 +125,33 @@ private $mangeToolModel;
         $toolData = [
 
             'quantity' => $this->input('quantity'),
-            'price' => $this->input('price'),
+
             'description' => $this->input('description'),
-            'supplier' => $this->input('supplier'),
+            'supplier' => $this->input('supplierOptions'),
             'toolId' => $this->input('category')
         ];
-        //{"quantity":"1","price":"1","description":"vdvdgd","supplier":"27","toolId":"25"}
-        $addData = [intval($toolData['quantity']),floatval($toolData['price']), $toolData['description'], intval($toolData['supplier']),intval($toolData['toolId'])];
+        //{"quantity":"1","description":"vdvdgd","supplier":"27","toolId":"25"}
+        //type, date, supplier_ID, stock_keeper_ID
+        $loginID = $this->getSession('userId');
+
+        $stockData =["tool",date("Y-m-d"),intval($toolData['supplier']),intval($loginID)];
+        //quantity,description,stock_ID
+        $stockTool =[intval($toolData['quantity']), $toolData['description'],0,intval($toolData['toolId'])];
+
+//        $addData = [intval($toolData['quantity']),floatval($toolData['price']), $toolData['description'], intval($toolData['supplier']),intval($toolData['toolId'])];
 
 
-        echo("<script>console.log('PHP in  contoller: " . json_encode($addData) . "');</script>");
+        echo("<script>console.log('PHP in  st contoller: " . json_encode($stockData) . "');</script>");
+        echo("<script>console.log('PHP in soo  contoller: " . json_encode($stockTool) . "');</script>");
 
 
 
-        if ($this->mangeToolModel->insertTooltoStock($addData)) {
+        if ($this->mangeToolModel->insertTooltoStock($stockData,$stockTool)) {
             echo("<script>console.log('true');</script>");
             echo '
               <script>
                             if(!alert("Tools Added successfully")) {
-                                window.location.href = "http://localhost/Richway-garment-system/manageToolController";
+                                window.location.href = "http://localhost/Richway-garment-system/manageStockToolController";
                             }
               </script>
 
@@ -155,7 +162,7 @@ private $mangeToolModel;
 
             <script>
                         if(!alert("Something went wrong! please try again.")) {
-                            window.location.href = "http://localhost/Richway-garment-system/manageToolController";
+                            window.location.href = "http://localhost/Richway-garment-system/manageStockToolController";
                         }
             </script>
             ';

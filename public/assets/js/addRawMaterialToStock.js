@@ -40,7 +40,7 @@ function openRaw(evt,rawitemID) {
             });
 
         }
-        }
+    }
             if(rawitemID=="fabric") {
                 $.ajax({
 
@@ -101,21 +101,33 @@ function openRaw(evt,rawitemID) {
 }
 function updateRM() {
 
-    let i, tblrows, supID = "";
+    let i, tblrows, rawID = "";
 
     tblrows = document.getElementsByClassName("tblrow");
     for (i = 0; i < tblrows.length; i++) {
         if (tblrows[i].className.includes('active-row')) {
-            supID = tblrows[i].firstElementChild.innerHTML;
+            rawID = tblrows[i].firstElementChild.innerHTML;
             jQuery(function ($) {
 
                 $.ajax({
                     type: 'POST',
                     url: "http://localhost/Richway-garment-system/rawMaterialToStockController/setNewSession",
-                    data: {supplierID: supID, rawmaterialtype : currenttab, key: "rawMaterialData"},
+                    data: {rawID: rawID,  key: "rawMaterialData"},
                     success: function (data) {
+
+                        if(currenttab=="fabric"){
+                            location.href = "http://localhost/Richway-garment-system/rawMaterialToStockController/editfabric";
+                        }
+                        if(currenttab=="button"){
+                            location.href = "http://localhost/Richway-garment-system/rawMaterialToStockController/editbutton";
+                        }
+                        if(currenttab=="thread"){
+                            location.href = "http://localhost/Richway-garment-system/rawMaterialToStockController/editthread";
+                        }
+
+
                         // alert("you clicked"+);
-                        location.href = "http://localhost/Richway-garment-system/rawMaterialToStockController/editfabric";
+
                     },
                     error: function () {
                         // console.log("update data not  load")

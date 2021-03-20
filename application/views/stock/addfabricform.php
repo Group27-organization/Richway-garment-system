@@ -13,6 +13,16 @@
     <?php linkCSS("assets/css/stockkeeper-form.css") ?>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
+    <style>
+        label.error {
+            color: red;
+            font-size: 1rem;
+            display: block;
+            margin-top: 5px;
+        }
+
+    </style>
 </head>
 <body>
 
@@ -51,43 +61,43 @@
                                           <?php endforeach;?>
                                      <?php endif; ?>
                     </select>
-                    <label id="A" class="error" style="color:red; display: none">
-                       This Field required
-                    </label>
+<!--                    <label id="A" class="error" style="color:red; display: none">-->
+<!--                       This Field required-->
+<!--                    </label>-->
                 </div>
 
                 <div class="inputfield">
                     <label for="fabric_type">Quantity</label>
                     <input type="text" id="fabQuantity" name="quantity" class="form-contrall"  value="" required>
-                    <label id="B" class="error" style="color:red; display: none">
-                        This Field required
-                    </label>
+<!--                    <label id="B" class="error" style="color:red; display: none">-->
+<!--                        This Field required-->
+<!--                    </label>-->
                 </div>
 
 
                 <div class="inputfield">
                     <label for="Description">Description</label>
                     <textarea id="Description" name="description" rows="4" cols="50" class="form-contrall" required></textarea>
-                    <label id="C" class="error" style="color:red; display: none">
-                        This Field required
-                    </label>
+<!--                    <label id="C" class="error" style="color:red; display: none">-->
+<!--                        This Field required-->
+<!--                    </label>-->
                 </div>
 
-                <div class="inputfield" id="selectSupplier">
-                    <label for="SuppliesId">Assign Supplies</label>
-                    <div class="inputbutton">
-                        <input id='SuppliesId' name="supplierid" style="display: none"  class="form-contrall-label" value="">
-                        <label for='SuppliesLabel' class="form-contrall-label"></label>
 
-                        <button id="findsupbtn"  type="button"  class="btn2 input2 cripple">Find</button>
-                    </div>
-                    <label id="D" class="error" style="color:red; display: none">This Field required</label>
+                <div class="inputfield" >
+                    <label>Select Supplies</label>
+                    <select id='supplierDrop' name="supplierOptions" style='width: 100%;'>
+                        <!--            <option  value="0"   selected="" disabled="">--SELECT--</option>-->
+                    </select>
+
                 </div>
 
 
 
                 <br><div class="inputfield inputbutton">
-                    <input id="fabsubmitBtn" type='button' style="width: 100px; height: 43px; "  value="Submit"  class="btn cripple">
+<!--                    <input id="fabsubmitBtn" type='button' style="width: 100px; height: 43px; "  value="Submit"  class="btn cripple">-->
+                    <input  type="submit" value="Submit" style="width: 100px; height: 43px;" class="btn cripple">
+
                 </div>
 
 

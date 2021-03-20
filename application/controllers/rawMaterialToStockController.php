@@ -42,7 +42,7 @@ class  rawMaterialToStockController extends  framework
     {
         if (isset($_POST['key'])) {
             if ($_POST['key'] == "rawMaterialData") {
-                $this->setSession("selected_role", $_POST['type']);
+                $this->setSession("selected_rawId", $_POST['rawID']);
                 return "Successfully set the session.";
             }
         }
@@ -71,8 +71,7 @@ class  rawMaterialToStockController extends  framework
                             <th scope=col>Band</th> 
                             <th scope=col>Quality Grade</th>
                             <th scope=col>Uint Price</th> 
-                            <th scope=col>Description</th> 
-                            <th scope=col>Quantity</th> 
+                           <th scope=col>Quantity</th> 
                             <th scope=col>Date</th> 
                               
                                
@@ -90,12 +89,11 @@ class  rawMaterialToStockController extends  framework
                     echo "
                             <tr class='tblrow' onclick='selectRow(event)'>
                                  <td style='display: none'>$row->ID</td>
-                                 <td>$row->fabric_code</td>   
-                                 <td>$row->band</td>                                
-                                 <td>$row->quality_grade</td>                                
-                                 <td>$row->unit_price</td>
-                                 <td>$row->description</td>
-                                 <td>$row->quantity</td>   
+                                 <td>$row->FC</td>   
+                                 <td>$row->Brand</td>                                
+                                 <td>$row->QG</td>                                
+                                 <td>$row->Price</td>
+                                  <td>$row->quantity</td>   
                                  <td>$row->date</td>                                
 
 
@@ -122,90 +120,8 @@ class  rawMaterialToStockController extends  framework
 
     }
 
-//    public function addfabric2(){
-//        $fabricData = [
-//            'FabricCodeID'=> $this->input('fabric_code_id'),
-//            'Quantity'=>$this->input('quantity'),
-//            'Description'=>$this->input('description'),
-//            'Date'=>date('Y-m-d'),
-//            'Supplier_id' =>$this->input('supplierid'),
-//
-//
-//
-//        ];
-//        echo("<script>console.log('PHP in loadSupplierTable contoller: " . json_encode($fabricData) . "');</script>");
-//
-//
-//
-//
-//          if(empty( $fabricData['FabricCodeID'])){
-//              $fabricData['FabricCodeIDError']="Fabric Code is required";
-//          }
-//
-//          if(empty( $fabricData['Quantity'])){
-//              $fabricData['QuantityError']="Quantity is required";
-//          }
-//
-//          if(empty( $fabricData['Description'])){
-//              $fabricData['DescriptionError']="Description is required";
-//          }else{
-//              foreach ($fabricData as $key => $value){
-//                  if(empty($value)){
-//                      $isEmpty= true;
-//                  }
-//              }
-//
-//
-//              /*if(empty($fabricData['fabric_codeError'])&&empty($fabricData['fabric_typeError'])&&
-//                  empty($fabricData['DescriptionError'])&&empty($fabricData['colorError'])&&
-//                  empty($fabricData['bandError'])&&empty($fabricData['quality_gradeError'])&&
-//                  empty($fabricData['brandError'])&&empty($fabricData['priceError'])) {*/
-//              echo("<script>console.log('PHP in     : " . json_encode($fabricData['Quantity']) . "');</script>");
-//
-//              $Data = [ intval($fabricData['Quantity']), $fabricData['Description'], $fabricData['Date'],intval($fabricData['FabricCodeID']) ||intval($fabricData['Supplier_id'])];
-//
-//              if(!$isEmpty){
-//                  if ($this->rawMaterialModel->insertfabrictostock($Data)) {
-//
-//                      echo '
-//                      <script>
-//                                    if(!alert("Fabric added successfully")) {
-//                                        window.location.href = "http://localhost/Richway-garment-system/rawMaterialToStockController"
-//                                    }
-//                      </script>
-//
-//                    ';
-//                  }
-//
-//                  else {
-//
-//                      echo '
-//
-//                    <script>
-//                                if(!alert("Something went wrong! please try again.")) {
-//                                    window.location.href = "http://localhost/Richway-garment-system/rawMaterialToStockController"
-//                                }
-//                    </script>
-//                    ';
-//
-//                  }
-//
-//
-//              }
-//
-//
-//              else{
-//                  echo '
-//            <script>
-//                if(!alert("Some required fields are missing!")) {
-//                    window.location.href = "http://localhost/Richway-garment-system/rawMaterialController/addRawmaterialform"
-//                }
-//            </script>
-//            ';
-//              }
-//          }
-//
-//    }
+
+
 
 
     public function addfabric(){
@@ -218,6 +134,7 @@ class  rawMaterialToStockController extends  framework
 
 
         ];
+        echo("<script>console.log('PHP in loadSupplierTable contoller: " . json_encode($fabricData) . "');</script>");
 
 
         if(empty( $fabricData['FabricCodeID'])){
@@ -283,6 +200,21 @@ class  rawMaterialToStockController extends  framework
 
     }
 
+//    public function editFabricDetals(){
+//        $fabricData =$this->rawMaterialModel->loadButtonTable();
+//        $this->view("stock/addfabricform",$fabricData );
+//    }
+//    update fabric
+
+    public function loadupdateFabricform(){
+
+        $rawMId = $this->getSession('rawMaterialData');
+        $data = $this->rawMaterialModel->setFabricData($rawMId);
+        $this->view("stock/editfabricform",$data);
+    }
+
+
+
 
 
 
@@ -304,9 +236,8 @@ class  rawMaterialToStockController extends  framework
                             <th scope=col style='display: none'>ID</th> 
                              <th scope=col>Code</th> 
                              <th scope=col>Unit Price</th> 
-                            <th scope=col>Description</th>   
-                            <th scope=col>Quantity</th>                        
-                            <th scope=col>Date</th> 
+                              <th scope=col>Quantity</th>                        
+                             <th scope=col>Date</th> 
                              
                             
                              
@@ -323,10 +254,9 @@ class  rawMaterialToStockController extends  framework
                             <tr class='tblrow' onclick='selectRow(event)'>
                                 <td style='display: none'>$row->ID</td>
                                  <td>$row->code</td>
-                                 <td>$row->unit_price</td>
-                                 <td>$row->description</td>
-                                 <td>$row->quantity</td>   
-                                 <td>$row->date</td>    
+                                 <td>$row->price</td>
+                                 <td>$row->quantity</td>
+                                <td>$row->date</td>    
                                               
                               
                                
@@ -448,7 +378,7 @@ class  rawMaterialToStockController extends  framework
                             <th scope=col>Type</th>   
                             <th scope=col>Color_code</th>                        
                             <th scope=col>Unit Price</th> 
-                            <th scope=col>Description</th>   
+                           
                             <th scope=col>Quantity</th>                        
                             <th scope=col>Date</th>                             
                                                          
@@ -465,10 +395,9 @@ class  rawMaterialToStockController extends  framework
                             <tr class='tblrow' onclick='selectRow(event)'>
                                 <td style='display: none'>$row->ID</td>
                                 <td>$row->type</td>
-                                <td>$row->color_code</td>
-                                <td>$row->unit_price</td>
-                                 <td>$row->description</td>
-                                 <td>$row->quantity</td>   
+                                <td>$row->code</td>
+                                <td>$row->price</td>
+                                <td>$row->quantity</td>   
                                  <td>$row->date</td>                             
 
                             </tr>
@@ -562,11 +491,29 @@ class  rawMaterialToStockController extends  framework
 
     }
 
+    public function supplierDropdown(){
+//        echo("<script>console.log('PHP in supplierDropdown called contoller: ');</script>");
+
+        if(isset($_POST['key'])) {
+            if ($_POST['key'] == "supplierinstock") {
+
+                $result = $this->rawMaterialModel->loadSupplierTable();
+                echo ' <option  value="0" selected="" disabled="">--SELECT--</option>';
+                foreach($result as $row){
+//                        echo("<script>console.log('PHP in loadOrderItemsTable contoller: " . json_encode($row->predefine_button) . "');</script>");
+                    echo '<option value="'.$row->supplier_ID .'" data-value="'.$row->supplier_ID.'"  >'.$row->name.'-'.$row->contact_no.'</option>';
+                }
+            }
+        }
+    }
+
+
+
 
     public function loadSupplierTable(){
         echo("<script>console.log('PHP in ndex');</script>");
         if(isset($_POST['key'])) {
-            if ($_POST['key'] == "supplierinstock") {
+            if ($_POST['key'] == "supplierinstock2") {
                 $result = $this->rawMaterialModel->loadSupplierTable();
 
                 echo "

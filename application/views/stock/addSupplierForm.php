@@ -10,7 +10,16 @@
     <?php linkCSS("assets/css/admin-adduser.css") ?>
     <?php linkCSS("assets/css/form.css") ?>
     <?php linkCSS("assets/css/admin-table.css") ?>
- 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
+    <style>
+        label.error {
+            color: red;
+            font-size: 1rem;
+            display: block;
+            margin-top: 5px;
+        }
+
+    </style>
 </head>
 <body>
 
@@ -38,10 +47,10 @@
 
                     <div class="flexbox-container">
 
-                        <form  action="<?php echo BASEURL;?>/addSupplierController/addSupplier" method="POST" id="addSupplier">
+        <form id="supplierForm"  action="<?php echo BASEURL;?>/addSupplierController/addSupplier" method="POST" id="addSupplier">
 
                   <div class="inputfield">
-                    <label for="SuplierName">Suplier Name</label>
+                    <label for="SuplierName">Supplier Name</label>
                     <input type="text" id="SuplierName" name="suplierName" class="form-contrall" placeholder="EX: R.M.Kavishka Bandara">
 
                   </div>
@@ -85,6 +94,90 @@
 
 </div>  <!-- grid-container-->
 
+<script>
+    $(document).ready(function(){
 
+        jQuery.validator.addMethod("noSpace", function(value, element) {
+            return value.indexOf(" ") < 0 && value != "";
+        }, "No space please and don't leave it empty");
+
+
+        jQuery.validator.addMethod("selectNone", function(value, element) {
+                if (element.value == "0") {
+                    return false;
+                } else
+                    return true;
+            },
+            "Please select an option."
+        );
+
+        $("#supplierForm").validate({
+
+            rules: {
+                suplierName : {
+                    required: true,
+                    selectNone: true,
+                    minlength: 5
+
+                },
+                emailaddress : {
+                    required: true,
+                    email: true,
+                    noSpace: true,
+                    minlength: 6
+                },
+                address: {
+                    required: true,
+                    minlength: 10,
+                    noSpace: true
+                },
+                contactno: {
+                    required: true,
+                    number: true,
+                    noSpace:true,
+                    length:10
+                },
+
+            },
+            messages : {
+                suplierName: {
+                    // selectNone: "Please select fabric code",
+                    required: "This Field Required",
+                    noSpace: "Dont Keep empty spaces ",
+                    minlength: "At Least 5 characters should be entered"
+
+                },
+                emailaddress: {
+
+                    noSpace: "Dont Keep empty spaces ",
+                    required: "This Field Required",
+                    email: "This is not valid email",
+                    minlength: "At Least 6 characters should be entered"
+
+                },
+                address: {
+                    required: "This Field Required",
+                    noSpace: "Dont Keep empty spaces ",
+                    minlength:"At Least 10 characters should be entered"
+                },
+                contactno: {
+                    required: "This Field Required",
+                    number: "Please enter  numerical value",
+                    noSpace: "Dont Keep empty spaces ",
+                    length: "length must be 10"
+
+
+                },
+
+            }
+        });
+
+
+
+
+    });
+
+
+</script>
 </body>
 </html>

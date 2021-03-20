@@ -1,7 +1,8 @@
 $(document).ready(function () {
+    console.log("addtool-form-stock");
     $.ajax({
         type: 'POST',
-        url: "http://localhost/Richway-garment-system/manageToolController/setToolCategoryDropdown",
+        url: "http://localhost/Richway-garment-system/manageStockToolController/setToolCategoryDropdown",
         data: {   key: "selecttooldopdown"},
         success: function(data){
              console.log("tool : "+data);
@@ -13,51 +14,93 @@ $(document).ready(function () {
             console.log("error");
         }
     });
-    $("#selecttooldopdown").select2({
-        templateResult: formatOptions2
-    });
+    // $("#selecttooldopdown").select2({
+    //     templateResult: formatOptions2
+    // });
+
 
     $.ajax({
         type: 'POST',
-        url: "http://localhost/Richway-garment-system/manageToolController/setSupplierDropdown",
-        data: {   key: "selectsupplierdopdown"},
+        url: "http://localhost/Richway-garment-system/rawMaterialToStockController/supplierDropdown",
+        data: {  key: "supplierinstock"},
         success: function(data){
-            console.log("tool : "+data);
-            $("#selectsupplierdopdown").html(data);
+            // $("#suppliertablestock").html(data);
+            $("#supplierOptions").html(data);
+
 
 
         },
         error       : function() {
-            console.log("error");
+
         }
     });
-    $("#selectsupplierdopdown").select2({
-        templateResult: formatOptions2
-    });
-
-    $("#btnsubmitBtn").click(function(e){
-        $("#A").hide();
-        $("#B").hide();
-        $("#C").hide();
-        $("#D").hide();
-        $("#E").hide();
+    // $("#selectsupplierdopdown").select2({
+    //     templateResult: formatOptions2
+    // });
 
 
-        $(".error").hide();
-        if($("#selecttooldopdown option:selected").val()=="0"){
-            $("#A").show();
-        }if($("#toolQuantity").val()=="" ||parseInt($("#toolQuantity").val())<0 ||jQuery.trim($("#toolQuantity").val()).length == 0 || $.isNumeric($("#btnQuantity").val())!=true  ){
-            $("#B").show();
-        }if($("#toolprice").val()=="" ||parseInt($("#toolprice").val())<0 ||jQuery.trim($("#toolprice").val()).length == 0 || $.isNumeric($("#btnQuantity").val())!=true  ){
-            $("#C").show();
-        } if(jQuery.trim($("#Description").val()).length == 0){
-            $("#D").show();
-        }if($("#selectsupplierdopdown option:selected").val()=="0"){
-            $("#E").show();
-        }else{
-            $("#btnForm").submit();
+
+    jQuery.validator.addMethod("noSpace", function(value, element) {
+        return value.indexOf(" ") < 0 && value != "";
+    }, "No space please and don't leave it empty");
+
+
+    jQuery.validator.addMethod("selectNone", function(value, element) {
+            if (element.value == "0") {
+                return false;
+            } else
+                return true;
+        },
+        "Please select an option."
+    );
+
+    $("#toolForm").validate({
+
+        rules: {
+            category : {
+
+                selectNone: true,
+
+            },
+            quantity : {
+                required: true,
+                number: true,
+                noSpace: true
+            },
+            description: {
+                required: true,
+                minlength: 10,
+                noSpace: true
+            },
+            supplierOptions: {
+                selectNone: true
+            },
+
+        },
+        messages : {
+            category: {
+                // selectNone: "Please select fabric code",
+                required: "Please select  tool code",
+
+            },
+            quantity: {
+                number: "Please enter your quantity as a numerical value",
+                noSpace: "Dont Keep empty spaces ",
+                required: "This Field Required",
+
+            },
+            description: {
+                required: "This Field Required",
+                noSpace: "Dont Keep empty spaces ",
+                minlength:"At Least 10 characters should be entered"
+            },
+            supplierOptions: {
+                required: "Please select supplier",
+
+
+            },
+
         }
-
     });
 
 });

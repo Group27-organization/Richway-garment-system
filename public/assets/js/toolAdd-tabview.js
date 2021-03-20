@@ -2,7 +2,7 @@
 $(document).ready(function(){
     $.ajax({
         type: 'POST',
-        url: "http://localhost/Richway-garment-system/manageToolController/loadToolTable",
+        url: "http://localhost/Richway-garment-system/manageStockToolController/loadToolTable",
         data: {  key: "supplierTableInDash"},
         dataType: 'html',
         success: function(data){
@@ -15,7 +15,7 @@ $(document).ready(function(){
         }
     });
     $("#addTool").click(function () {
-        location.href = "http://localhost/Richway-garment-system/manageToolController/addToolForm"
+        location.href = "http://localhost/Richway-garment-system/manageStockToolController/addToolForm"
     });
 });
 
