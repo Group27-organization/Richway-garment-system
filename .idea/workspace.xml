@@ -1,26 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="52f54e1d-f9c9-4c5f-a2e2-18186743ac40" name="Default Changelist" comment="add tool created with form validation .stock fabric,stock button,stock thred">
+    <list default="true" id="52f54e1d-f9c9-4c5f-a2e2-18186743ac40" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/controllers/manageToolController.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/controllers/manageStockToolController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/controllers/rawMaterialToStockController.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/controllers/rawMaterialToStockController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/models/mangeToolModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/models/mangeToolModel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/models/rawMaterialToStockModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/models/rawMaterialToStockModel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/stock/addButtonform.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/stock/addButtonform.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/stock/addRawMaterialToStock.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/stock/addRawMaterialToStock.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/stock/addSupplierForm.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/stock/addSupplierForm.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/stock/addThreadform.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/stock/addThreadform.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/stock/addToolForm.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/stock/addStockToolForm.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/stock/addfabricform.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/stock/addfabricform.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/application/views/stock/components/side_nav.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/stock/components/side_nav.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/assets/css/Form.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/Form.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/js/addRawMaterialToStock.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/js/addRawMaterialToStock.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/js/addbutton-to-stock.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/js/addbutton-to-stock.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/js/addfabric-to-stock.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/js/addfabric-to-stock.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/js/addnool-to-stock.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/js/addnool-to-stock.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/js/addtool-form-stock.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/js/addtool-form-stock.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/js/toolAdd-tabview.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/js/toolAdd-tabview.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,17 +45,17 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\xampp\htdocs\Richway-garment-system\public\assets\js" />
-      <recent name="C:\xampp\htdocs\Richway-garment-system\application\models" />
-      <recent name="C:\xampp\htdocs\Richway-garment-system\application\views\stock" />
-      <recent name="C:\xampp\htdocs\Richway-garment-system\application\controllers" />
-      <recent name="C:\xampp\htdocs\Richway-garment-system\public\assets\css\stock" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\xampp\htdocs\Richway-garment-system\public\assets\js" />
       <recent name="C:\xampp\htdocs\Richway-garment-system\public\assets\css" />
       <recent name="C:\xampp\htdocs\Richway-garment-system\application\views\stock" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\Richway-garment-system\public\assets\js" />
+      <recent name="C:\xampp\htdocs\Richway-garment-system\application\views\stock" />
+      <recent name="C:\xampp\htdocs\Richway-garment-system\application\models" />
+      <recent name="C:\xampp\htdocs\Richway-garment-system\application\controllers" />
+      <recent name="C:\xampp\htdocs\Richway-garment-system\public\assets\css\stock" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -94,7 +78,8 @@
       <workItem from="1615953830674" duration="24557000" />
       <workItem from="1616044115763" duration="23517000" />
       <workItem from="1616131592956" duration="37019000" />
-      <workItem from="1616216234066" duration="16808000" />
+      <workItem from="1616216234066" duration="20605000" />
+      <workItem from="1616324281267" duration="4517000" />
     </task>
     <task id="LOCAL-00001" summary="manage stock css updated">
       <created>1605852511911</created>
@@ -138,7 +123,14 @@
       <option name="project" value="LOCAL" />
       <updated>1616153110020</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="add tool created with form validation .stock fabric,stock button,stock nool view table updated">
+      <created>1616243601166</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1616243601166</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -152,21 +144,26 @@
     <MESSAGE value="add item to stock model updated" />
     <MESSAGE value="create order js updated" />
     <MESSAGE value="Stock Issue for Job is Created" />
-    <option name="LAST_COMMIT_MESSAGE" value="Stock Issue for Job is Created" />
+    <MESSAGE value="add tool created with form validation .stock fabric,stock button,stock nool view table updated" />
+    <option name="LAST_COMMIT_MESSAGE" value="add tool created with form validation .stock fabric,stock button,stock nool view table updated" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="0" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1616242800468">
+    <state x="0" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1616243324934">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="0" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1366.728@0.0.1366.728" timestamp="1616242800468" />
-    <state x="308" y="32" key="CommitChangelistDialog2" timestamp="1616242134592">
+    <state x="0" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1366.728@0.0.1366.728" timestamp="1616243324934" />
+    <state x="308" y="32" key="CommitChangelistDialog2" timestamp="1616243589403">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="308" y="32" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1616242134592" />
+    <state x="308" y="32" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1616243589403" />
     <state x="463" y="105" key="FileChooserDialogImpl" timestamp="1613043448965">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="463" y="105" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1613043448965" />
+    <state x="275" y="96" key="Vcs.Push.Dialog.v2" timestamp="1616243722523">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="275" y="96" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1616243722523" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
