@@ -61,14 +61,6 @@
                 </div>
 
                 <div class="inputfield">
-                    <label for="band">Band</label>
-                    <input type="text" id="band" name="band" class="form-contrall" value="<?php   if($data['Band']) :echo $data['Band']; endif; ?>">
-                    <label class="error" style="color:red;">
-                        <?php   if($data['bandError']) :echo $data['bandError']; endif; ?>
-                    </label>
-                </div>
-
-                <div class="inputfield">
                     <label for="quality_grade">Quality Grade</label>
                     <input type="text" id="quality_grade" name="quality_grade" class="form-contrall" value="<?php   if($data['QualityGrade']) :echo $data['QualityGrade']; endif; ?>">
                     <label class="error" style="color:red;">

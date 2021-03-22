@@ -16,7 +16,7 @@ class rawMaterialModel extends database {
 
 
     public function insertfabric($Data){
-        if($this->Query("INSERT INTO predefine_fabric(fabric_code,type,Description,band,quality_grade,brand,price,active) VALUES (?,?,?,?,?,?,?,?)", $Data) ){
+        if($this->Query("INSERT INTO predefine_fabric(fabric_code,type,Description,quality_grade,brand,price,active) VALUES (?,?,?,,?,?,?,?)", $Data) ){
             return true;
         }
     }

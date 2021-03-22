@@ -14,12 +14,7 @@ class manageEmployeeController extends framework
 
             $this->redirect("loginController/loginForm");
 
-        } elseif ($this->getSession('userId')['role'] != 'admin') {
-            //$this->redirect("somePage");
-            echo "You cannot access this page.";
-            die();
         }
-
         $this->helper("link");
         $this->manageEmployeeModel = $this->model('manageEmployeeModel');
     }
@@ -98,7 +93,7 @@ class manageEmployeeController extends framework
                                 <td>$row->salary_basic</td>
                                 <td>$row->job_start_date</td>
                                  <th>
-                                 <a href='#' class='viewBtn' style='margin: 4px;color: #00B4CC'> View </a>
+                                 <a href='#' class='viewBtn' style='margin: 4px;color: #11cdef'> View </a>
                                 </th>
                                
                                 
@@ -210,7 +205,7 @@ class manageEmployeeController extends framework
         if(empty( $employeeData['job_start_date'])){
             $employeeData['job_start_dateError']="Job start date is required";
         }
-        echo("<script>console.log('PHP in edit: " . json_encode($employeeData) . "');</script>");
+
 
 
 
@@ -218,6 +213,8 @@ class manageEmployeeController extends framework
             empty($employeeData['emailError'])&& empty($employeeData['emailErrorFormat'])&&empty($employeeData['blood_groupError'])&&
             empty($employeeData['bank_IDError'])&&empty($employeeData['bank_nameError'])&&empty($employeeData['bank_account_nameError'])&&empty($employeeData['salary_basicError'])&&empty($employeeData['job_start_dateError'])) {
 
+
+                    echo("<script>console.log('PHP in edit: " . json_encode($employeeData) . "');</script>");
 
                     if ($this->manageEmployeeModel->insertemployee($employeeData)) {
 
@@ -230,7 +227,6 @@ class manageEmployeeController extends framework
         
                             ';
                     }
-
                     else {
                         echo '
         
@@ -281,6 +277,7 @@ class manageEmployeeController extends framework
 
         ];
 
+        echo("<script>console.log('PHP: " . json_encode($data) . "');</script>");
 
         $this->view("admin/editEmployeeform", $data);
     }
@@ -298,7 +295,7 @@ class manageEmployeeController extends framework
             'ContactNumber' => $this->input('contact_no'),
             'email'=>$this->input('email'),
             'BloodGroup' => $this->input('blood_group'),
-            'employeeRole' => $this->input('role'),
+            'employeeRole' => $this->input('employee_role'),
             'bank_name'=>$this->input('bank_name'),
             'BankAccName' => $this->input('bank_account_name'),
             'BankBranch' => $this->input('bank_branch'),

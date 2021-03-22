@@ -45,12 +45,6 @@
 <div class="flexbox-container">
 
     <div class="inputfield">
-        <h2>Update Customer</h2>
-    </div>
-
-
-
-    <div class="inputfield">
         <label for="name">Full Name</label>
         <input type="text" id="name" name="name" class="form-contrall"  value="<?php echo $data['data']->name;?>">
         <label class="error" style="color:red;">

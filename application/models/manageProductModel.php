@@ -26,6 +26,32 @@ class manageProductModel extends database {
 
     }
 
+    public function getRemainedSizes($table, $preID){
+
+        // echo("<script>console.log('PHP: " . json_encode($table) . "');</script>");
+
+        if($this->Query("SELECT sizes,size FROM $table INNER JOIN predefine ON $table.p_ID = predefine.p_ID WHERE predefine.p_ID = $preID")){
+
+            if($this->rowCount() > 0 ){
+
+                $data = $this->fetchall();
+                $sizes = explode(",",$data[0]->sizes);
+                //echo("<script>console.log('PHP: " . json_encode($data) . "');</script>");
+                foreach ($data as $row){
+                    unset($sizes[array_search($row->size, $sizes)]);
+                }
+
+                $sizesStr = join(",",$sizes);
+
+                return $sizesStr;
+
+            }
+
+        }
+
+        return  0;
+    }
+
 
     public function getProductTypes(){
         if($this->Query("SELECT DISTINCT type FROM predefine")) {

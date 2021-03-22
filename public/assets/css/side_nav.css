@@ -1,3 +1,33 @@
+
+@font-face {
+    font-family: Poppins-Regular;
+    src: url('../fonts/poppins/Poppins-Regular.ttf');
+}
+
+* {
+    margin: 0px;
+    padding: 0px;
+    font-family: Poppins-Regular, serif;
+    box-sizing: border-box;
+}
+
+body {
+    /*background-color: #f8f9fe;*/
+    overflow-x: hidden;
+    color: #333;
+    justify-content: center;
+    background: linear-gradient(to bottom, #5e72e4 420px, #f8f9fe 0%);
+}
+/***************************************************************************************************************************/
+
+.grid-container {
+    margin-top: 0;
+    display: grid;
+    position: relative;
+    grid-gap: 0;
+    grid-template-columns: 250px auto;
+}
+
 .sidebar-flex-box-container {
     display: -webkit-box;
     display: flex;
@@ -90,6 +120,10 @@
     list-style-type: none;
     padding: 0;
     margin: 0;
+}
+
+.navigation li{
+    display: none;
 }
 
 .navigation::before {
@@ -196,7 +230,6 @@
 .navigation-link.active {
     background-color: rgba(94, 114, 228,0.5);
     color: #ffffff;
-    transition: 0s;
 }
 
 [class$="--collapsed"] .navigation-link:hover .navigation-link__name {

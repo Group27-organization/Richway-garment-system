@@ -69,11 +69,12 @@ $("#addEmployee").click(function () {
 
 function updateEmployee() {
 
-    let i, tblrows, empID = "";
+    let i, tblrows, empID = "",act=false;
 
     tblrows = document.getElementsByClassName("tblrow");
     for (i = 0; i < tblrows.length; i++) {
         if (tblrows[i].className.includes('active-row')) {
+            act = true;
             document.querySelector('#employeeMsgView').style.display = "none";
             empID = tblrows[i].firstElementChild.innerHTML;
             jQuery(function ($) {
@@ -94,10 +95,9 @@ function updateEmployee() {
 
             });
         }
-
-        else{
-            document.querySelector('#employeeMsgView').style.display = "block";
-        }
+    }
+    if(!act){
+        document.querySelector('#employeeMsgView').style.display = "block";
     }
 }
 

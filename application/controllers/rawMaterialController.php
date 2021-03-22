@@ -14,10 +14,6 @@ class  rawMaterialController extends  framework
 
             $this->redirect("loginController/loginForm");
 
-        } elseif ($this->getSession('userId')['role'] != 'admin') {
-            //$this->redirect("somePage");
-            echo "You cannot access this page.";
-            die();
         }
 
         $this->helper("link");
@@ -110,7 +106,6 @@ class  rawMaterialController extends  framework
             'FabricCode'=> $this->input('fabric_code'),
             'Type'=>$this->input('type'),
             'Description'=>$this->input('Description'),
-            'Band'=>$this->input('band'),
             'QualityGrade'=>$this->input('quality_grade'),
             'Brand'=>$this->input('brand'),
             'Price'=>$this->input('price'),

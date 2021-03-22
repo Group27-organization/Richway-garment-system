@@ -3,6 +3,11 @@
 
 class manageCustomerController extends framework{
     private $manageCustomerModel;
+    /**
+     * @var mixed
+     */
+    private $customerModel;
+
     public function __construct(){
         if(!$this->getSession('userId')){
             $this->redirect("loginController/loginForm");
