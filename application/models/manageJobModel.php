@@ -62,7 +62,7 @@ class manageJobModel extends database {
                 $lineIds = $this->fetchall();
 
                 foreach ($lineIds as $lid){
-                    if($this->Query("CALL getsortedAvailableLinesSet(?, @p1)",[$lid->line_ID])){
+                    if($this->Query("CALL getSortedAvailableLinesSet(?, @p1)",[$lid->line_ID])){
 
                         if($this->Query("SELECT @p0 AS lineID, @p1 AS end_date")) {
 
@@ -71,7 +71,7 @@ class manageJobModel extends database {
                                 $data = $this->fetch();
 
                                 // echo("<script>console.log('PHP: data: " . json_encode($data) . "');</script>");
-                                $sortedAvailableLinesArray[$data->lineID] = $data->end_date;
+                                $sortedAvailableLinesArray[$data->lineID] = strtotime($data->end_date);
 
                             }
                         }
@@ -81,13 +81,23 @@ class manageJobModel extends database {
 
                 // echo("<script>console.log('PHP: data: " . json_encode($data) . "');</script>");
 
-                return $sortedAvailableLinesArray;
+                return asort($sortedAvailableLinesArray);
 
             }
 
         }
 
 
+        return 0;
+    }
+
+    public function getWorkingDayData($day){
+        if($this->Query("SELECT * FROM working_day where working_day.day = $day")){
+            if($this->rowCount() > 0 ){
+                // echo("<script>console.log('PHP: data: " . json_encode($data) . "');</script>");
+                return $this->fetch();
+            }
+        }
         return 0;
     }
 
