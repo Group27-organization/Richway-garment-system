@@ -1,23 +1,22 @@
-
 document.getElementById('generate-salary-btn').addEventListener("click", function() {
     document.querySelector('.bg-modal').style.display = "flex";
     document.querySelector('body').style.overflowY = "hidden";
 
-    $.ajax({
-        type: 'POST',
-        url: "http://localhost/Richway-garment-system/AccountantController/generateMonthlySalary",
-        data: {  key: "monthlysalary"},
-        dataType: 'html',
-        success: function(data){
-            $("#table-emptxt").html(data);
-
-
-        },
-        error       : function() {
-            console.log("Table data not  load")
-            $("#table-emptxt").html('<br><p>Something went wrong.</p>');
-        }
-    });
+    // $.ajax({
+    //     type: 'POST',
+    //     url: "http://localhost/Richway-garment-system/AccountantController/generateMonthlySalary",
+    //     data: {  key: "monthlysalary"},
+    //     dataType: 'html',
+    //     success: function(data){
+    //         $("#table-emptxt").html(data);
+    //
+    //
+    //     },
+    //     error       : function() {
+    //         console.log("Table data not  load")
+    //         $("#table-emptxt").html('<br><p>Something went wrong.</p>');
+    //     }
+    // });
 
 
 
@@ -57,3 +56,27 @@ document.querySelector('.close').addEventListener("click", function() {
      document.querySelector('.bg-modal').style.display = "none";
      document.querySelector('body').style.overflow = "auto";
  }
+
+// document.getElementById('upload').addEventListener("click", function() {
+//     document.querySelector('.bg-modal').style.display = "flex";
+//     document.querySelector('body').style.overflowY = "hidden";
+//
+//     $.ajax({
+//         type: 'POST',
+//         url: "http://localhost/Richway-garment-system/AccountantController/generateMonthlySalary",
+//         data: {  key: "monthlysalary"},
+//         dataType: 'html',
+//         success: function(data){
+//             $("#table-emptxt").html(data);
+//
+//
+//         },
+//         error       : function() {
+//             console.log("Table data not  load")
+//             $("#table-emptxt").html('<br><p>Something went wrong.</p>');
+//         }
+//     });
+//
+//
+//
+// });

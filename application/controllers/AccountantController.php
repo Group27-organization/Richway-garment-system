@@ -1,6 +1,7 @@
 <?php
 
-class AccountantController extends framework {
+class AccountantController extends framework
+{
 
     /**
      * @var mixed
@@ -9,12 +10,11 @@ class AccountantController extends framework {
 
     public function __construct()
     {
-        if(!$this->getSession('userId')){
+        if (!$this->getSession('userId')) {
 
             $this->redirect("loginController/loginForm");
 
-        }
-       elseif ($this->getSession('userId')['role'] != 'admin'){
+        } elseif ($this->getSession('userId')['role'] != 'admin') {
             //$this->redirect("somePage");
             echo "You cannot access this page.";
             die();
@@ -24,12 +24,15 @@ class AccountantController extends framework {
         $this->accountantModel = $this->model('accountantModel');
     }
 
-    public function index(){
+    public function index()
+    {
         $this->view("Accountant/dashboard");
 
     }
-    public function NewSession(){
-        if(isset($_POST['key'])) {
+
+    public function NewSession()
+    {
+        if (isset($_POST['key'])) {
             if ($_POST['key'] == "employeeUpdate") {
                 $this->setSession("selected_employee", $_POST['emp_ID']);
                 return "Successfully set the session.";
@@ -39,30 +42,37 @@ class AccountantController extends framework {
     }
 
 
-
-    public function managePayments(){
+    public function managePayments()
+    {
         $this->view("Accountant/managePayments");
     }
 
-    public function viewReports(){
+    public function viewSalaryReport()
+    {
+        $this->view("Accountant/viewSalaryReport");
+    }
+
+
+    public function viewReports()
+    {
         $this->view("Accountant/viewReports");
     }
 
-    public function viewSalary(){
-        $this->view("Accountant/viewSalary");
-    }
 
-    public function updateEmployee(){
+    public function updateEmployee()
+    {
         $this->view("Accountant/updateEmployee");
     }
 
-    public function loadupdateEmployeeform(){
+    public function loadupdateEmployeeform()
+    {
         $this->view("Accountant/editEmployeeform");
     }
 
-    public function loadPaymentTable(){
+    public function loadPaymentTable()
+    {
         echo("<script>console.log('PHP in index');</script>");
-        if(isset($_POST['key'])) {
+        if (isset($_POST['key'])) {
             if ($_POST['key'] == "paymentTableInDash") {
 
 
@@ -108,153 +118,43 @@ class AccountantController extends framework {
 
     }
 
-    public function viewSalaryReport()
+    public function loadSalaryTable()
     {
-        $this->view("Accountant/viewSalaryReport");
-
-    }
-
-    public function loadSalaryReport(){
-        if(isset($_POST['key'])) {
-            if ($_POST['key'] == "salaryReportTableInDash") {
-
+        echo("<script>console.log('PHP in ndex');</script>");
+        if (isset($_POST['key'])) {
+            if ($_POST['key'] == "salaryDash") {
 
                 echo "
 
                  <table class=\"table align-items-center table-flush\">
                         <thead class=\"thead-light\">
                         <tr>
-                            <th scope=col>Salary Report</th>                    
-                            <th scope=col>Genarated date</th>
-                            <th scope=col>accept/not</th>                            
-                            <th scope=col></th>   
-                        </tr>
-                        </thead>
-                        <tbody>
-
-                ";
-
-
-                echo "
-                         <tr>
-                            <td></td>
-                            <td>2020-10-10</td>
-                            <td>
-                                 <button class='three-set-btn2' >Accept</button>
-                            </td>                     
-                            <th>
-                                 <button class='three-set-btn3' >Print</button>
-                            </th>
-                            
-                            
-                        </tr>
                         
-                        ";
-
-            }
-            echo "
-                        </tbody>
-                    </table>
-                    
-                    ";
-        }
-
-    }
-
-    public function loadSalaryTable(){
-        echo("<script>console.log('PHP in index');</script>");
-        if(isset($_POST['key'])) {
-            if ($_POST['key'] == "payrollTableInDash") {
-                $result = $this->accountantModel->loadSalaryTable();
-                echo("<script>console.log('PHP in loadSalaryTable controller: " . json_encode($result) . "');</script>");
-
-                echo "
-
-                 <table class=\"table align-items-center table-flush\">
-                        <thead class=\"thead-light\">
-                        <tr>
-                                                
-                      
-                            <th scope=col>Employee ID</th>
-                            <th scope=col>Name</th> 
-                             <th scope=col>Gross</th> 
-                               <th scope=col>Deductions</th>
-                                 <th scope=col>Cash Advance</th> 
-                                   <th scope=col>Net Pay</th>            
-                                                                                        
+                            <th scope=col>Emp ID</th>
+                            <th scope=col>Month</th>
+                            <th scope=col>Attendance</th>
+                            <th scope=col>Salary</th>
+                            <th scope=col>Status</th>
                            
                         </tr>
                         </thead>
                         <tbody>
 
                 ";
-
-
-                foreach ($result as $row) {
-
-                    echo "
-                            <tr class='tblrow' onclick='selectRow(event),selectPayroll()'>
-                                <td id='emp_ID'>$row->emp_ID  </td>
-                                <td>$row->Name</td>
-                                <td>$row->gross</td>
-                                <td>$row->deduction</td>
-                                <td>$row->cashadvance</td>
-                                <td>$row->netpay</td>
-                              
-
-
-                            </tr>
-                        ";
-
-                }
-                echo "
-                        </tbody>
-                    </table>
-                    
-                    ";
-            }
-        }
-
-
-    }
-
-    public function generateMonthlySalary(){
-
-        echo("<script>console.log('PHP in ndex');</script>");
-        if(isset($_POST['key'])) {
-            if ($_POST['key'] == "monthlysalary") {
-                $result = $this->accountantModel->generateMonthlySalary();
-
-                echo "
-
-                 <table class=\"table align-items-center table-flush\">
-                        <thead class=\"thead-light\">
-                        <tr>
-                        
-                            <th scope=col>Generate Report ID</th>
-                            <th scope=col>Total Employee Count</th>
-                            <th scope=col>Date</th>
-                            <th scope=col></th> 
-                                                       
-                        </tr>
-                        </thead>
-                        <tbody>
-
-                ";
-                foreach ($result as $row) {
-
-                    echo "
-                            <tr class='tblrow' onclick='selectRow(event)'>
-                                <td id='supid'>$row->report_ID  </td>
-                                <td>$row->emp_count</td>
-                                <td>$row->date</td> 
-                                <th>
-                                 <a href='http://localhost/Richway-garment-system/AccountantController/viewSalary' class='viewBtn' style='margin: 4px;color: #00B4CC'> View </a>
-                                </th> 
-                            </tr>
-                        ";
-
-                }
+//                foreach ($result as $row) {
+//
+//                    echo "
+//                            <tr class='tblrow' onclick='selectRow(event)'>
+//                                <td id='supid'>$row->supplier_ID  </td>
+//                                <td>$row->name</td>
+//                                 <td>$row->email</td>
+//                                  <td>$row->address</td>
+//                                <td>$row->contact_no</td>
+//
+//                            </tr>
+//                        ";
+//
+//                }
                 echo "
                         </tbody>
                     </table>
@@ -265,4 +165,55 @@ class AccountantController extends framework {
 
     }
 
+    public function generateMonthlySalary()
+    {
+
+        if (isset($_POST['key'])) {
+            if ($_POST['key'] == "payement") {
+                $payment = $_POST['paymentReport'];
+                $a=array();
+                $b=array();
+                $length=count($payment);
+                $presentDays =array();
+
+                for($x = 0; $x<$length; $x++){
+                    array_push($a,$payment[$x]['Date']);
+                    array_push($b,$payment[$x]['Emp_Id']);
+                }
+                $date=array_unique($a);
+                $emp_id=array_unique($b);
+                $unique_emp=$emp_id;
+
+                foreach ($emp_id as $emp) {
+                    $daysCount=0;
+
+                    foreach($date as $d ){
+
+
+                        for($x = 0; $x< $length; $x++){
+
+                            if($payment[$x]['Emp_Id']==$emp){
+
+                                if($payment[$x]['Date']==$d){
+
+                                    if($payment[$x]['Present']==1){
+                                        $daysCount++;
+                                    }
+
+                                }
+                            }
+
+                        }
+                    }
+                    $empID_Days[$emp]=$daysCount;
+                }
+
+               // echo("<script>console.log('PHP in generate salary: ". json_encode($empID_Days). "');</script>");
+                $this->accountantModel->generateMonthlySalary($empID_Days);
+
+
+            }
+        }
+
+    }
 }
