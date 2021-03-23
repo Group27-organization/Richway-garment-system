@@ -47,8 +47,7 @@ class  rawMaterialController extends  framework
                             <th scope=col>Fabric ID</th>
                             <th scope=col>Fabric Code</th>   
                             <th scope=col>Type</th>                        
-                            <th scope=col>Description</th>                             
-                            <th scope=col>Band</th> 
+                            <th scope=col>Description</th>                     
                             <th scope=col>Quality Grade</th>  
                             <th scope=col>Brand</th>                             
                             <th scope=col>Price</th>    
@@ -68,8 +67,7 @@ class  rawMaterialController extends  framework
                                 <td>$row->ID</td>
                                 <td>$row->fabric_code</td>   
                                 <td>$row->type</td>    
-                                <td>$row->Description</td>                        
-                                <td>$row->band</td>                                
+                                <td>$row->Description</td>   
                                 <td>$row->quality_grade</td>                                
                                 <td>$row->brand</td>
                                 <td>$row->price</td>                               
@@ -111,7 +109,6 @@ class  rawMaterialController extends  framework
             'Price'=>$this->input('price'),
             'fabric_codeError'=> '',
             'fabric_typeError'=> '',
-            'bandError'=> '',
             'quality_gradeError'=> '',
             'brandError'=> '',
             'priceError'=> '',
@@ -125,10 +122,6 @@ class  rawMaterialController extends  framework
 
         if(empty( $fabricData['Type'])){
             $fabricData['fabric_typeError']="Type is required";
-        }
-
-        if(empty( $fabricData['Band'])){
-            $fabricData[ 'bandError']="Band is required";
         }
 
         if(empty( $fabricData['QualityGrade'])){
@@ -145,10 +138,10 @@ class  rawMaterialController extends  framework
 
 
         if(empty($fabricData['fabric_codeError'])&&empty($fabricData['fabric_typeError'])&&
-            empty($fabricData['bandError'])&&empty($fabricData['quality_gradeError'])&&
+            empty($fabricData['quality_gradeError'])&&
             empty($fabricData['brandError'])&&empty($fabricData['priceError'])) {
 
-            $Data = [$fabricData['FabricCode'], $fabricData['Type'], $fabricData['Description'], $fabricData['Band'], $fabricData['QualityGrade'], $fabricData['Brand'], $fabricData['Price'], 1];
+            $Data = [$fabricData['FabricCode'], $fabricData['Type'], $fabricData['Description'],  $fabricData['QualityGrade'], $fabricData['Brand'], $fabricData['Price'], 1];
 
             if ($this->rawMaterialModel->insertfabric($Data)) {
 
@@ -333,7 +326,7 @@ class  rawMaterialController extends  framework
         if (isset($_POST['key'])) {
             if ($_POST['key'] == "rawMaterialData2") {
 
-                echo("<script>console.log('PHP in table select: " . json_encode($role) . "');</script>");
+                // echo("<script>console.log('PHP in table select: " . json_encode($role) . "');</script>");
 
 
                 $result = $this->rawMaterialModel->loadThreadTable();
@@ -346,7 +339,7 @@ class  rawMaterialController extends  framework
                             <th scope=col>Thread ID</th>
                             <th scope=col>Type</th>   
                             <th scope=col>Color_code</th>          
-                             
+                            <th scope=col>Price</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -361,7 +354,7 @@ class  rawMaterialController extends  framework
                                 <td>$row->ID</td>
                                 <td>$row->type</td>
                                 <td>$row->color_code</td>
-                                                         
+                                 <td>$row->price</td>                        
 
                             </tr>
                         ";
@@ -389,8 +382,10 @@ class  rawMaterialController extends  framework
         $noolData = [
             'ColorCode'=> $this->input('color_code'),
             'Type'=>$this->input('type'),
+            'Price'=>$this->input('price'),
             'color_codeError'=> '',
             'typeError'=> '',
+            'priceError'=>'',
         ];
 
         if(empty( $noolData['ColorCode'])){
@@ -400,8 +395,13 @@ class  rawMaterialController extends  framework
             $noolData['typeError']="Type is required";
         }
 
-        if(empty($noolData['color_codeError'])&&empty($noolData['typeError'])) {
-            $Data = [$noolData['ColorCode'], $noolData['Type'], 1];
+        if(empty( $noolData['Price'])){
+            $noolData['priceError']="Price is required";
+        }
+
+
+        if(empty($noolData['color_codeError'])&&empty($noolData['typeError'])&&empty($noolData['priceError'])) {
+            $Data = [$noolData['ColorCode'], $noolData['Type'],$noolData['Price'], 1];
 
             if ($this->rawMaterialModel->insertnool($Data)) {
 

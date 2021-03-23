@@ -60,6 +60,7 @@
                     <textarea id="Description" name="Description" rows="4" cols="50" class="form-contrall"></textarea>
                 </div>
 
+
                 <div class="inputfield">
                     <label for="quality_grade">Quality Grade</label>
                     <input type="text" id="quality_grade" name="quality_grade" class="form-contrall" value="<?php   if($data['QualityGrade']) :echo $data['QualityGrade']; endif; ?>">
