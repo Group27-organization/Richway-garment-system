@@ -18,11 +18,6 @@ class manageProductController extends framework {
         $this->redirect("loginController/loginForm");
 
       }
-      elseif ($this->getSession('userId')['role'] != 'admin'){
-          //$this->redirect("somePage");
-          echo "You cannot access this page.";
-          die();
-      }
 
        $this->helper("link");
        $this->manageProductModel = $this->model('manageProductModel');
@@ -62,6 +57,7 @@ class manageProductController extends framework {
                             <th scope=col>Collar Type</th>
                             <th scope=col>Description</th>
                             <th scope=col>Style</th>
+                            <th scope=col></th>
                         </tr>
                         </thead>
                         <tbody>
@@ -91,6 +87,9 @@ class manageProductController extends framework {
                                 <td>$row->collar_type</td>
                                 <td>$row->description</td>
                                 <td>$row->style</td>
+                                 <th>
+                                 <a href='#' class='viewBtn' style='margin: 4px;color: #11cdef'> View </a>
+                                </th>
                                 <td style='display:none;'>$row->image_url</td>
                             </tr>
                         ";
@@ -168,6 +167,9 @@ class manageProductController extends framework {
 
                         $imgurl = str_replace('.png','',$row->image_url);
                         $imgurl = $imgurl."-trans.png";
+// <div id='productSizes' style='display: none'>$row->size</div>
+
+                        $sizesStr = $this->manageProductModel->getRemainedSizes($this->getSession('selected_product'),$row->p_ID);
 
                         echo "
                                 <div class=\"product-container\">
@@ -181,7 +183,7 @@ class manageProductController extends framework {
                                             <h4 id='desc'>$row->description</h4>
                                         </div>
                                         <div class=\"product-bottom\">
-                                            <button type=\"button\" class=\"slctbtn cripple\" onclick=\"selectPID(event,'$row->p_ID','$row->description')\">Select
+                                            <button type=\"button\" class=\"slctbtn cripple\" onclick=\"selectPID(event,'$row->p_ID','$row->description','$sizesStr')\">Select
                                             </button>
                                         </div>
                                     </div>

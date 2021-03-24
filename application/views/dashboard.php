@@ -34,7 +34,7 @@
             <nav role="navigation">
                 <ul>
                     <li style="display:block;">
-                        <a class="navigation-link active" href="#">
+                        <a class="navigation-link active" href="<?php echo BASEURL; ?>/dashboardController">
 
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="navigation-link__icon feather feather-grid">
                                 <rect x="3" y="3" width="7" height="7"></rect>
@@ -243,7 +243,7 @@
                         echo "style=\"display:block;\"";
                     } ?> >
 
-                        <a class="navigation-link" href="#">
+                        <a class="navigation-link" href="<?php if($this->getSession('userId')) { echo BASEURL."/manageJobController/createJobView"; } ?>">
                             <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
                                  width="24" height="24"
                                  viewBox="0 0 172 172"
@@ -259,7 +259,7 @@
                         echo "style=\"display:block;\"";
                     } ?> >
 
-                        <a class="navigation-link" href="#">
+                        <a class="navigation-link" href="<?php if($this->getSession('userId')) { echo BASEURL."/manageJobController/updateJob"; } ?>">
                             <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
                                  width="24" height="24"
                                  viewBox="0 0 172 172"

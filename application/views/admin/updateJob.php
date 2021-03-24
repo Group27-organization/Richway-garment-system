@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta id="nav_item" content="Manage Employee">
-    <title>Manage Employee</title>
+    <meta id="nav_item" content="Manage User">
+    <title>Manage User</title>
     <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <?php linkCSS("assets/css/nav.css") ?>
@@ -29,8 +29,8 @@
         <div class="page-header">
             <div class="block">
                 <div class="page-header-routetext">
-                    <a href="#"><img src="<?php echo BASEURL; ?>/public/assets/img/home%20(2).svg" ></i></a>
-                    <a href="#!" style="color:#8898aa;"> / Manage Employee</a>
+                    <a href="#"><img src="<?php echo BASEURL; ?>/public/assets/img/home%20(2).svg" ></a>
+                    <a href="#!" style="color:#8898aa;"> / Manage User</a>
                 </div>
             </div>
         </div>
@@ -44,7 +44,7 @@
                 <button class="tablinks" onclick="openEmp(event,'supervisor')">Supervisors</button>
                 <button class="tablinks" onclick="openEmp(event,'accountant')">Accountants</button>
                 <button class="tablinks" onclick="openEmp(event,'stock_keeper')">Stock Keepers</button>
-                <button class="tablinks" onclick="openEmp(event,'tailor')">Tailors</button>
+                <button class="tablinks" onclick="openEmp(event,'owner')">Owners</button>
             </div>
 
             <!--------------------------------------------Tab Content-------------------------------------------------------------------------------------- -->
@@ -59,22 +59,22 @@
                         </div>
                     </div>
                     <div class="BtnWap">
-                        <button id="addEmployee" class="three-set-btn1" onclick="location.href"  >Add</button>
+                        <button id="adduser" class="three-set-btn1" onclick="location.href"  >Add</button>
 
-                        <button id="updateEmployee" class="three-set-btn2" onclick="updateEmployee()">Update</button>
+                        <button class="three-set-btn2">Update</button>
 
-                        <button id="deleteEmployee" class="three-set-btn3" onclick="deleteEmployee()">Remove</button>
+                        <button class="three-set-btn3">Remove</button>
                     </div>
                 </div><!--flex row-->
 
-                <!--                table start-->
+<!--                table start-->
 
                 <div class="table-responsive" id="table-responsive">
 
                 </div>
                 <div class="card-footer">
 
-                    <div class="model-footer" id="employeeMsgView" style="display: none">
+                    <div class="model-footer">
                         <h5>* Please select an employee to get this action!</h5>
                     </div>
 
@@ -120,7 +120,7 @@
 </div>
 
 
-<?php linkJS("assets/js/manageEmployee.js") ?>
+<?php linkJS("assets/js/manageuser.js") ?>
 <?php linkJS("assets/js/table.js") ?>
 
 </body>

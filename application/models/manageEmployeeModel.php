@@ -23,41 +23,44 @@ class manageEmployeeModel extends database {
 
 
     public function insertemployee($Data){
-        $employeeData = [
-            $Data['FullName'],
-            $Data['Address'],
-            $Data['ContactNumber'],
-            $Data['email'],
-            $Data['BloodGroup'],
-            $Data['employeeRole'],
-            $Data[ 'SalaryBasic'],
-            $Data['job_start_date'],
-            1
+
+
+        $bankdetails = [
+            $Data['bank_name'],
+            $Data['BankAccName'],
+            $Data['BankBranch'],
+            $Data['AccountNumber']
         ];
 
-        //echo("<script>console.log('PHP: " . json_encode($employeeData) . "');</script>");
+        echo("<script>console.log('PHP: bank" . json_encode($bankdetails) . "');</script>");
 
-        if($this->Query("INSERT INTO employee(name,address,contact_no,email,blood_group,employee_role,salary_basic,job_start_date,active) VALUES (?,?,?,?,?,?,?,?,?)",$employeeData) ) {
+
+        if ($this->Query("INSERT INTO  bank_account(bank_name,acc_name,branch,ac_number) VALUES (?,?,?,?)", $bankdetails)) {
 
             $bankID = $this->getCurrentAIID();
 
-            $bankdetails = [
-                $Data['bank_name'],
-                $Data['BankAccName'],
-                $Data['BankBranch'],
-                $Data['AccountNumber'],
-                $bankID,
+            echo("<script>console.log('PHP: bank" . json_encode($bankID) . "');</script>");
+
+            $employeeData = [
+                $Data['FullName'],
+                $Data['Address'],
+                $Data['ContactNumber'],
+                $Data['email'],
+                $Data['BloodGroup'],
+                $Data['employeeRole'],
+                $Data[ 'SalaryBasic'],
+                $Data['job_start_date'],
+                1,
+                $bankID
             ];
 
-
-            echo("<script>console.log('PHP: " . json_encode($bankdetails) . "');</script>");
-
-            if ($this->Query("INSERT INTO  bank_account(bank_name,acc_name,branch,ac_number,employee_ID) VALUES (?,?,?,?,?)", $bankdetails)) {
+            if($this->Query("INSERT INTO employee(name,address,contact_no,email,blood_group,employee_role,salary_basic,job_start_date,active,bank_ID) VALUES (?,?,?,?,?,?,?,?,?,?)",$employeeData) ) {
+                echo("<script>console.log('PHP: emp" . json_encode($employeeData) . "');</script>");
                 return true;
             }
 
-
         }
+        return false;
 
     }
 
@@ -73,11 +76,17 @@ class manageEmployeeModel extends database {
 
 
     public function loadupdateEmployeedetails($empID){
-        if($this->Query("SELECT * FROM employee INNER JOIN bank_account ON employee.emp_ID=bank_account.employee_ID WHERE employee.emp_ID=?",[$empID])) {
-            $row = $this->fetch();
-            return $row;
+        if($this->Query("SELECT * FROM employee INNER JOIN bank_account ON employee.bank_ID=bank_account.bank_ID WHERE employee.emp_ID=?",[$empID])) {
+            return $this->fetch();
        }
+        return -1;
+    }
 
+    public function getEmployeeBankID($empID){
+        if($this->Query("SELECT bank_ID FROM employee WHERE employee.emp_ID=?",[$empID])) {
+            return $this->fetch();
+        }
+        return -1;
     }
 
 
@@ -95,21 +104,29 @@ class manageEmployeeModel extends database {
 
         ];
 
+
         if($this->Query("UPDATE employee SET name = ?,address = ?,contact_no = ?,email=?,blood_group = ?,salary_basic = ?,job_start_date = ? WHERE emp_ID = ?",$updateemployeeData)) {
+
+            $bankID = $this->getEmployeeBankID($Data['hiddenID']);
+            $bankID = $bankID->bank_ID;
 
             $bankdetails = [
                 $Data['bank_name'],
                 $Data['BankAccName'],
                 $Data['BankBranch'],
                 $Data['AccountNumber'],
-                $Data['hiddenID'],
+                $bankID,
 
             ];
+
             echo("<script>console.log('PHP in bank details contoller: " . json_encode($bankdetails) . "');</script>");
-            if($this->Query("UPDATE bank_account SET bank_name=?,acc_name=?,branch=?,ac_number=? WHERE employee_ID = ?",  $bankdetails)){
+            if($this->Query("UPDATE bank_account SET bank_name=?,acc_name=?,branch=?,ac_number=? WHERE bank_ID = ?",  $bankdetails)){
                 return true;
             }
         }
+
+        return false;
+
     }
 
 

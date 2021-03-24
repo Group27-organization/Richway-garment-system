@@ -39,7 +39,15 @@
      <div class="flexbox-container">
         <div class="inputfield">
             <label for="role">Employee Role</label>
-            <input type="text" id="role" name="role"  value="<?php echo $data['data']->employee_role;?>"  class="form-contrall-readonly" readonly>
+            <select id="employee_role"  name="employee_role" class="form-contrall" >
+                <option value="Owner" <?=$data['data']->employee_role == 'Owner' ? ' selected="selected"' : '';?>>Owner</option>
+                <option value="Sales Manager" <?=$data['data']->employee_role == 'Sales Manager' ? ' selected="selected"' : '';?>>Sales Manager</option>
+                <option value="Production Manager" <?=$data['data']->employee_role == 'Production Manager' ? ' selected="selected"' : '';?>>Production Manager</option>
+                <option value="Stock Keeper" <?=$data['data']->employee_role == 'Stock Keeper' ? ' selected="selected"' : '';?>>Stock Keeper</option>
+                <option value="Accountant" <?=$data['data']->employee_role == 'Accountant' ? ' selected="selected"' : '';?>>Accountant</option>
+                <option value="Supervisor" <?=$data['data']->employee_role == 'Supervisor' ? ' selected="selected"' : '';?>>Supervisor</option>
+                <option value="Tailor" <?=$data['data']->employee_role == 'Tailor' ? ' selected="selected"' : '';?>>Tailor</option>
+            </select>
         </div>
 
         <div class="inputfield">
@@ -95,15 +103,15 @@
         <div class="inputfield">
                 <label for="blood_group">Blood Group</label>
                 <select id="blood_group"  name="blood_group" class="form-contrall" >
-                    <option value="">Select Blood Group</option>
-                    <option value="A+">A+</option>
-                    <option value="A-">A-</option>
-                    <option value="B+">B+</option>
-                    <option value="B-">B-</option>
-                    <option value="O+">O+</option>
-                    <option value="O-">O-</option>
-                    <option value="AB+">AB+</option>
-                    <option value="AB-">AB-</option>
+                    <option value="" disabled selected>Select Blood Group</option>
+                    <option value="A+" <?=$data['data']->blood_group == 'A+' ? ' selected="selected"' : '';?>>A+</option>
+                    <option value="A-" <?=$data['data']->blood_group == 'A-' ? ' selected="selected"' : '';?>>A-</option>
+                    <option value="B+" <?=$data['data']->blood_group == 'B+' ? ' selected="selected"' : '';?>>B+</option>
+                    <option value="B-" <?=$data['data']->blood_group == 'B-' ? ' selected="selected"' : '';?>>B-</option>
+                    <option value="O+" <?=$data['data']->blood_group == 'O+' ? ' selected="selected"' : '';?>>O+</option>
+                    <option value="O-" <?=$data['data']->blood_group == 'O-' ? ' selected="selected"' : '';?>>O-</option>
+                    <option value="AB+" <?=$data['data']->blood_group == 'AB+' ? ' selected="selected"' : '';?>>AB+</option>
+                    <option value="AB-" <?=$data['data']->blood_group == 'AB-' ? ' selected="selected"' : '';?>>AB-</option>
                 </select>
             <label class="error" style="color:red;">
                 <?php   if($data['blood_groupError']) :echo $data['blood_groupError']; endif; ?>
@@ -114,7 +122,7 @@
         <div class="inputfield">
             <label for="bank_name">Bank Name</label>
             <select id="bank_name"  name="bank_name" class="form-contrall" >
-                <option value="">Select Bank</option>
+                <option value="" disabled selected>Select Bank</option>
                 <option value="People's Bank">People's Bank</option>
                 <option value="Bank of Ceylon.">Bank of Ceylon.</option>
                 <option value="DFCC Bank PLC">DFCC Bank PLC.</option>

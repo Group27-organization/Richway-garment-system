@@ -22,7 +22,7 @@ document.querySelector('.close').addEventListener("click", function() {
     document.querySelector('body').style.overflowY = "auto";
 });
 
-function selectPID(evt,pid,desc) {
+function selectPID(evt,pid,desc,sizes) {
 
     if(evt != null){
 
@@ -30,6 +30,16 @@ function selectPID(evt,pid,desc) {
 
         document.querySelector('.bg-modal').style.display = "none";
         document.querySelector('body').style.overflowY = "auto";
+
+        let tmphtml = " <option value=\"\" disabled selected>Select Size</option>";
+        var arr = sizes.split(',');
+        arr.forEach(function(item) {
+            tmphtml += "<option value=\"?\">?</option>".replaceAll("?",item);
+        });
+
+        console.log(tmphtml);
+        document.getElementById('size').innerHTML = tmphtml;
+
     }
 
 }

@@ -16,7 +16,7 @@ class loginController extends framework {
 
         $this->helper("link");
         $this->loginModel = $this->model('loginModel');
-        
+
     }
 
     public function index(){
@@ -87,6 +87,52 @@ class loginController extends framework {
         $this->redirect("loginController/loginForm");
 
     }
+
+
+    public function forgotPasswordView(){
+        $this->view("forgotPassword");
+    }
+
+    public function forgotPassword(){
+
+        if(isset($_POST['key'])) {
+            if ($_POST['key'] == "forgotPasswordData") {
+
+                $email = $_POST['email'];
+
+                $msg_data = [
+                    'status' => 0,
+                    'msg' => ""
+                ];
+
+                if(empty($email)){
+                    $msg_data['status'] = 1;
+                    $msg_data['msg'] = "Enter an email address";
+                }
+                else {
+                    if($this->loginModel->checkEmail($email)){
+                        if($this->loginModel->forgotPasswordSendEmail($email)){
+                            $msg_data['status'] = 4;
+                            $msg_data['msg'] = "Password reset OTP just sent via email to ".$email.". Login with OTP for reset your password.";
+                        }
+                        else{
+                            $msg_data['status'] = 3;
+                            $msg_data['msg'] = "Email verification OTP sending failed! Please try again.";
+                        }
+                    }else{
+                        $msg_data['status'] = 2;
+                        $msg_data['msg'] = "Sorry, your entered email is not registered in our system! Try again with different email.";
+                    }
+
+                }
+
+                echo json_encode($msg_data);
+
+            }
+        }
+
+    }
+
 
 }
 

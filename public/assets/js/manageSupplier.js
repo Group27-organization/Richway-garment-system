@@ -25,11 +25,12 @@ $(document).ready(function(){
 
 function updateSupplier() {
 
-    let i, tblrows, supID = "";
+    let i, tblrows, supID = "",act=false;
 
     tblrows = document.getElementsByClassName("tblrow");
     for (i = 0; i < tblrows.length; i++) {
         if (tblrows[i].className.includes('active-row')) {
+            act = true;
             document.querySelector('#SupplierMsgView').style.display = "none";
             supID = tblrows[i].firstElementChild.innerHTML;
             jQuery(function ($) {
@@ -50,11 +51,12 @@ function updateSupplier() {
 
             });
         }
-
-        else{
-            document.querySelector('#SupplierMsgView').style.display = "block";
-        }
     }
+
+    if(!act){
+        document.querySelector('#SupplierMsgView').style.display = "block";
+    }
+
 }
 
 function deleteSupplier() {

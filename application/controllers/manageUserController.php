@@ -18,11 +18,6 @@ class manageUserController extends framework {
         $this->redirect("loginController/loginForm");
 
       }
-      elseif ($this->getSession('userId')['role'] != 'admin'){
-          //$this->redirect("somePage");
-          echo "You cannot access this page.";
-          die();
-      }
 
        $this->helper("link");
        $this->manageUserModel = $this->model('manageUserModel');
@@ -105,7 +100,7 @@ class manageUserController extends framework {
                                 <td>".(($_POST['tableName']=='owner')?$row->name:$row->emp_name)."</td>
                                 <td>$row->user_name</td>
                                 <td>$extraRoles</td>
-                                <td style='display: flex; align-items: center'><img src=$src style='width: 6px; height: 6px; margin-right: 8px;'>".ucwords($row->email_status)."<a href='#' class='viewBtn' style='display: $display; margin-left: 20px;color: #00B4CC'><b>Resend OTP</b></a></td>
+                                <td style='display: flex; align-items: center'><img src=$src style='width: 6px; height: 6px; margin-right: 8px;'>".ucwords($row->email_status)."<a href='#' class='viewBtn' style='display: $display; margin-left: 20px;color: #11cdef'><b>Resend OTP</b></a></td>
                             </tr>
                         ";
 

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Change Password</title>
+    <title>Forgot Password</title>
     <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <?php linkCSS("assets/css/nav.css") ?>
@@ -18,8 +18,8 @@
 
     <div class="header-container background-gradient">
         <div class="header-group">
-            <h1 class="text-white">Set new password</h1>
-            <p class="text-lead text-white">Set strong password to your account.</p>
+            <h1 class="text-white">Reset your password</h1>
+            <p class="text-lead text-white">You can reset your password in here.</p>
         </div>
         <div class="separator separator-bottom separator-skew zindex-100">
             <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
@@ -30,12 +30,12 @@
 
     <!----------------------------------form start--------------------------------------------------------------------------------------- -->
 
-    <form action="" method="POST" id="changePasswordForm">
+    <form action="" method="POST" id="forgotPasswordForm" onsubmit="return forgotPassword()">
         <div class="flexbox-container">
 
-            <div class="inputfield">
-                <label for="new_password">New password</label>
-                <input type="password" id="new_password" name="new_password" value="" class="form-contrall">
+            <div class="inputfield" >
+                <label for="email" style="margin-bottom: 25px">Enter your user account's verified email address and we will send you a password reset OTP.</label>
+                <input type="email" id="email" name="email" value="" placeholder="Enter your email address" class="form-contrall">
             </div>
 
             <div class="error_msg" id="msgv1">
@@ -43,18 +43,8 @@
                 <span id="error_msg1"></span>
             </div>
 
-            <div class="inputfield">
-                <label for="confirm_password">Confirm password</label>
-                <input type="password" id="confirm_password" name="confirm_password" value="" class="form-contrall">
-            </div>
-
-            <div class="error_msg" id="msgv2">
-                <img src="<?php echo BASEURL; ?>/public/assets/img/exclamation-circle-solid.svg" width="12px" height="12px" style="margin-top: 2px; margin-right: 5px">
-                <span id="error_msg2"></span>
-            </div>
-
             <br><div class="inputfield inputbutton">
-                <button id="change_password_btn" type="submit" class="btn cripple">Change password
+                <button id="forgot_password_btn" type="submit" class="btn cripple">Send password reset email
                 </button>
             </div>
 
@@ -65,7 +55,7 @@
 </div>
 
 
-<?php linkJS("assets/js/admin-changepassword.js") ?>
+<?php linkJS("assets/js/admin-forgotpassword.js") ?>
 
 
 

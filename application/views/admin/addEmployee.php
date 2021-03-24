@@ -97,7 +97,7 @@
                 <div class="inputfield">
                     <label for="blood_group">Blood Group</label>
                     <select id="blood_group"  name="blood_group" class="form-contrall" >
-                        <option value="">Select Blood Group</option>
+                        <option value="" disabled selected>Select Blood Group</option>
                         <option value="A+">A+</option>
                         <option value="A-">A-</option>
                         <option value="B+">B+</option>
@@ -115,7 +115,7 @@
                 <div class="inputfield">
                     <label for="bank_name">Bank Name</label>
                     <select id="bank_name"  name="bank_name" class="form-contrall" >
-                        <option value="">Select Bank</option>
+                        <option value="" disabled selected>Select Bank</option>
                         <option value="People's Bank">People's Bank</option>
                         <option value="Bank of Ceylon.">Bank of Ceylon.</option>
                         <option value="DFCC Bank PLC">DFCC Bank PLC.</option>
