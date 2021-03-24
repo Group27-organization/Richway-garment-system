@@ -33,8 +33,7 @@ class manageJobModel extends database {
     }
 
     public function getLPH($pid){
-
-        if($this->Query("SELECT rate_per_hour_from_line FROM predefined WHERE predefined.p_ID = $pid")){
+        if($this->Query("SELECT rate_per_hour_from_line FROM predefine WHERE predefine.p_ID = $pid")){
 
             if($this->rowCount() > 0 ){
 
@@ -54,7 +53,7 @@ class manageJobModel extends database {
 
     public function getSortedAvailableLinesArr(){
 
-        if($this->Query("SELECT line_ID FROM line")){
+        if($this->Query("SELECT DISTINCT(line.line_ID) as line_ID FROM line inner join assign on assign.line_ID=line.line_ID")){
 
             if($this->rowCount() > 0 ){
 
@@ -62,26 +61,23 @@ class manageJobModel extends database {
                 $lineIds = $this->fetchall();
 
                 foreach ($lineIds as $lid){
-                    if($this->Query("CALL getSortedAvailableLinesSet(?, @p1)",[$lid->line_ID])){
+                    if($this->Query("CALL getSortedAvailableLinesSet($lid->line_ID,@p1)")){
 
-                        if($this->Query("SELECT @p0 AS lineID, @p1 AS end_date")) {
+                        if($this->Query("SELECT @p1 AS end_date")) {
 
                             if ($this->rowCount() > 0) {
 
                                 $data = $this->fetch();
-
                                 // echo("<script>console.log('PHP: data: " . json_encode($data) . "');</script>");
-                                $sortedAvailableLinesArray[$data->lineID] = strtotime($data->end_date);
-
+                                $sortedAvailableLinesArray[$lid->line_ID] = strtotime($data->end_date);
                             }
                         }
 
                     }
                 }
-
                 // echo("<script>console.log('PHP: data: " . json_encode($data) . "');</script>");
-
-                return asort($sortedAvailableLinesArray);
+                asort($sortedAvailableLinesArray);
+                return $sortedAvailableLinesArray;
 
             }
 
@@ -92,7 +88,8 @@ class manageJobModel extends database {
     }
 
     public function getWorkingDayData($day){
-        if($this->Query("SELECT * FROM working_day where working_day.day = $day")){
+        $day = strtolower($day);
+        if($this->Query("SELECT * FROM working_day where working_day.day = ?",[$day])){
             if($this->rowCount() > 0 ){
                 // echo("<script>console.log('PHP: data: " . json_encode($data) . "');</script>");
                 return $this->fetch();

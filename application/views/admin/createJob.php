@@ -59,7 +59,7 @@
                             </div>
                         </div>
                         <div class="BtnWap">
-                            <button id="addproduct" class="three-set-btn1 cripple" onclick="location.href"  >Creat Job</button>
+                            <button id="createJob" class="three-set-btn1 cripple"  >Creat Job</button>
                         </div>
                     </div><!--flex row-->
 
