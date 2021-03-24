@@ -108,118 +108,85 @@ class manageJobController extends framework {
     }
 
 
-//  {
-//      {
-//            order_id: 122,
-//            quantity: 5000,
-//            p_ID: 2,
-//      }
-//      {
-//            order_id: 103,
-//            quantity: 2000,
-//            p_ID: 1,
-//      }
-//  }
+
+
+//[{"order_item_id":122,"quantity":5000,"p_ID":2},{"order_item_id":103,"quantity":2000,"p_ID":1}]
 
     //Calculate Order Due Date Process
-    public function calculateOrderDueDate($data){
-        $ttt = $this->calculateTotalTailoringTime($data);
-        $this->calculateNormalDueDate($ttt);
-        return 0;
+    public function calculateOrderDueDate(){
+
+        if(isset($_POST['key'])) {
+            if ($_POST['key'] == "manageJobData") {
+                $data = $_POST['data'];
+                $ttt = $this->calculateTotalTailoringTime($data);
+                $returnData = $this->calculateNormalDueDate($ttt);
+                $normalDueDate = date('Y-m-d H:i:s', $returnData[0] );
+               // echo "Normal Due Date Is: ".$ttt." - ".$normalDueDate." ".json_encode($returnData[1]);
+                //echo json_encode($data);
+            }
+        }
     }
 
     public function calculateTotalTailoringTime($data){
         $ttt = 0;
         foreach ($data as $item ){
             $lph =  $this->manageJobModel->getLPH($item['p_ID']);
-            $ttt += $item['quantity'] / $lph;
+            if($lph == 0) continue;
+            $ttt += ($item['quantity'] / $lph);
         }
-        return ceil($ttt);
+        $ttt = ($ttt * 60) + (30 * sizeof($data)); //add 30 minutes interval to start the next job
+        return intval(ceil($ttt));
     }
 
 
     public function calculateNormalDueDate($ttt){
         $sortedLinesArr = $this->sortAvailableLines();
-        $normalDueDate = $sortedLinesArr[array_key_first($sortedLinesArr)];
+        $arrKeys = array_keys($sortedLinesArr);
+        $normalDueDate = $sortedLinesArr[$arrKeys[0]];
+        $normalDueDate = date('Y-m-d H:i:s',$normalDueDate);
 
-        $startTime = date('H:i:s', $normalDueDate);
-        $startTime = strtotime("+30 minutes",$startTime);
-        $startDay = date('D', $normalDueDate);
 
-        $workingDayData = $this->manageJobModel->getWorkingDayData($startDay);
-        $round1Start = strtotime($workingDayData->round1_start);
-        $round1End = strtotime($workingDayData->round1_end);
-        $round2Start = strtotime($workingDayData->round2_start);
-        $round2End = strtotime($workingDayData->round2_end);
-        $round3Start = strtotime($workingDayData->round3_start);
-        $round3End = strtotime($workingDayData->round3_end);
-        $round4Start = strtotime($workingDayData->round4_start);
-        $round4End = strtotime($workingDayData->round4_end);
+        $useLineIDs = [];
+        $line1FinalizeDate = $this->getFinishedDatetimeFromLine($normalDueDate,$ttt);
+        echo date('Y-m-d H:i:s', $line1FinalizeDate);
+        return;
+        array_push($useLineIDs,$arrKeys[0]);
 
-        $tailoringDueDate = [];
-        $remainTimeInStartDay = 0;
-        $round = 1;
-        //in round 1
-        if($startTime - $round1Start >= 0 && $round1End - $startTime > 0){
-            $remain = strtotime('05:30:00');
-            $remainTimeInStartDay = ($round1End - $startTime) + $remain;
-            $round = 1;
-        }
-        //in round 2
-        else if($startTime - $round2Start >= 0 && $round2End - $startTime > 0){
-            $remain = strtotime('03:15:00');
-            $remainTimeInStartDay = ($round2End - $startTime) + $remain;
-            $round = 2;
-        }
-        //in round 3
-        else if($startTime - $round3Start >= 0 && $round3End - $startTime > 0){
-            $remain = strtotime('01:15:00');
-            $remainTimeInStartDay = ($round3End - $startTime) + $remain;
-            $round = 3;
-        }
-        //in round 4
-        else if($startTime - $round4Start >= 0 && $round4End - $startTime > 0){
-            $remainTimeInStartDay = $round4End - $startTime;
-            $round = 4;
-        }
-
-        $remainTimeInStartDay = date('H:i:s', $remainTimeInStartDay);
-        if($ttt * 60 < $this->minutes($remainTimeInStartDay) ){
-            $tttInMin = $ttt * 60;
-            if($round == 1){
-
+        //code use line 2 to 8
+        $preFinalizeDate = $line1FinalizeDate;
+        $key = 1;
+        if ($preFinalizeDate > $sortedLinesArr[$arrKeys[$key]]){
+            $data = $this->recurDueDateCal($key, $arrKeys, $sortedLinesArr, $ttt, 0);
+            for ($x = 1; $x < $data[1]; $x++) {
+                array_push($useLineIDs,$arrKeys[$x]);
             }
-            $date = strtotime("+{$tttInMin} minutes",$startTime);
-        }
-        //fill dates under ttt is over
-        while ($ttt>0){
-            //line 1
-            $counterDueDate = date('Y-m-d', strtotime('+1 day', $normalDueDate ));
-            $counterDay = date('D', strtotime('+1 day', $normalDueDate ));
-            $counterDayData = $this->manageJobModel->getWorkingDayData($counterDay);
-
-
-            //in round 1
-            if($startTime - $round1Start >= 0 && $round1End - $startTime > 0){
-                $remainTimeInStartDay = $round1End - $startTime;
-            }
-            //in round 2
-            else if($startTime - $round2Start >= 0 && $round2End - $startTime > 0){
-                $remainTimeInStartDay = $round2End - $startTime;
-            }
-            //in round 3
-            else if($startTime - $round3Start >= 0 && $round3End - $startTime > 0){
-                $remainTimeInStartDay = $round3End - $startTime;
-            }
-            //in round 4
-            else if($startTime - $round4Start >= 0 && $round4End - $startTime > 0){
-                $remainTimeInStartDay = $round4End - $startTime;
-            }
-
+            $preFinalizeDate = $data[0];
         }
 
+
+        return array($preFinalizeDate,$useLineIDs);
+    }
+
+    private function recurDueDateCal($key, $arrKeys, $sortedLinesArr, $ttt, $remainMins){
+        $preLineAvilDate = $sortedLinesArr[$arrKeys[$key-1]];
+        $nextLineAvilDate = $sortedLinesArr[$arrKeys[$key]];
+        $nextLineStartDate = $this->getFinishedDatetimeFromLine($nextLineAvilDate,30);
+        $mins = $this->getFinishedTTT($preLineAvilDate, $nextLineStartDate);
+        $mins = $mins * $key;
+        $mins -= 30;
+        $tttVar = $ttt - ($mins + $remainMins);
+        $tttVar = ceil($tttVar/$key+1);
+        $preFinalizeDate = $this->getFinishedDatetimeFromLine($nextLineStartDate, $tttVar);
+
+        if($preFinalizeDate > $sortedLinesArr[$arrKeys[$key+1]]){
+            //recursion
+            $this->recurDueDateCal($key+1, $arrKeys, $sortedLinesArr, $ttt, $mins);
+        }else{
+            return array($preFinalizeDate,$key);
+        }
 
         return 0;
+
     }
 
     private function minutes($time){
@@ -227,12 +194,11 @@ class manageJobController extends framework {
         return ($time[0]*60) + ($time[1]) + ($time[2]/60);
     }
 
-    private function getNextOrderStartTime($datetime, $sumTime){
+    private function getFinishedTTT($start, $end){
 
-
-        $startTime = date('H:i:s', $datetime);
+        $startTime = date('H:i:s', $start);
         $startTime = strtotime($startTime);
-        $startDay = date('D', $datetime);
+        $startDay = date('D', $start);
 
         $workingDayData = $this->manageJobModel->getWorkingDayData($startDay);
         $round1Start = strtotime($workingDayData->round1_start);
@@ -247,61 +213,65 @@ class manageJobController extends framework {
 
         $round = 1;
         //in round 1
-        if($startTime - $round1Start >= 0 && $round1End - $startTime > 0){
+        if($startTime - $round1Start >= 0 && $round1End - $startTime >= 0){
             $round = 1;
         }
         //in round 2
-        else if($startTime - $round2Start >= 0 && $round2End - $startTime > 0){
+        else if($startTime - $round2Start >= 0 && $round2End - $startTime >= 0){
             $round = 2;
         }
         //in round 3
-        else if($startTime - $round3Start >= 0 && $round3End - $startTime > 0){
+        else if($startTime - $round3Start >= 0 && $round3End - $startTime >= 0){
             $round = 3;
         }
         //in round 4
-        else if($startTime - $round4Start >= 0 && $round4End - $startTime > 0){
+        else if($startTime - $round4Start >= 0 && $round4End - $startTime >= 0){
             $round = 4;
         }
 
-
+        $actualDatetime = $start;
         $time = $startTime;
         $zeroTime = strtotime('00:00:00');
-        while ($sumTime > 0){
-            $time = strtotime("+1 minutes",$time);
+        $minutes = 0;
+        while ($end - $actualDatetime > 0){
+            $time = strtotime("+1 minutes".$time);
             if($round == 1 && $time - $round1End > 0) {
                 if($round2Start == $zeroTime){
                     $round = 4;
-                    $time = strtotime("-1 minutes",$time);
+                    $time = strtotime("-1 minutes".$time);
                 }else{
                     $round = 2;
                     $min = $this->minutes( date('H:i:s', $round2Start - $round1End) );
-                    $time = strtotime("+{$min} minutes",$time);
+                    $time = strtotime("+{$min} minutes".$time);
+                    $minutes++;
                 }
             }
             else if($round == 2 && $time - $round2End > 0){
                 if($round3Start == $zeroTime){
                     $round = 4;
-                    $time = strtotime("-1 minutes",$time);
+                    $time = strtotime("-1 minutes".$time);
                 }else{
                     $round = 3;
                     $min = $this->minutes( date('H:i:s', $round3Start - $round2End) );
-                    $time = strtotime("+{$min} minutes",$time);
+                    $time = strtotime("+{$min} minutes".$time);
+                    $minutes++;
                 }
             }
             else if($round == 3 && $time - $round3End > 0){
                 if($round4Start == $zeroTime){
-                    $time = strtotime("-1 minutes",$time);
+                    $time = strtotime("-1 minutes".$time);
                 }else{
                     $min = $this->minutes( date('H:i:s', $round4Start - $round3End) );
-                    $time = strtotime("+{$min} minutes",$time);
+                    $time = strtotime("+{$min} minutes".$time);
+                    $minutes++;
                 }
                 $round = 4;
             }
             else if($round == 4 && $time - $round4End > 0){
 
-                $datetime = date('Y-m-d', strtotime("+1 days",$datetime));
+                $start = date('Y-m-d', strtotime("+1 days".$start));
 
-                $startDay = date('D', $datetime);
+                $startDay = date('D', strtotime($start));
 
                 $workingDayData = $this->manageJobModel->getWorkingDayData($startDay);
                 $round1Start = strtotime($workingDayData->round1_start);
@@ -318,17 +288,125 @@ class manageJobController extends framework {
                     $round = 4;
                 }else{
                     $round = 1;
+                    $minutes++;
                 }
-                $time = strtotime("+1 minutes", $round1Start);
+                $time = strtotime("+1 minutes". $round1Start);
 
             }
-            $sumTime--;
+
+            $actualDatetime = strtotime(date('Y-m-d H:i:s', strtotime("$start $time")));
+
+
+        }
+
+        return $minutes;
+
+    }
+
+    private function getFinishedDatetimeFromLine($datetime, $tttTime){
+        echo $tttTime." ";
+        $startTime = date('H:i:s', strtotime($datetime));
+        $startTime = strtotime($startTime);
+        $startDay = date('D', strtotime($datetime));
+
+        $workingDayData = $this->manageJobModel->getWorkingDayData($startDay);
+        $round1Start = strtotime($workingDayData->round1_start);
+        $round1End = strtotime($workingDayData->round1_end);
+        $round2Start = strtotime($workingDayData->round2_start);
+        $round2End = strtotime($workingDayData->round2_end);
+        $round3Start = strtotime($workingDayData->round3_start);
+        $round3End = strtotime($workingDayData->round3_end);
+        $round4Start = strtotime($workingDayData->round4_start);
+        $round4End = strtotime($workingDayData->round4_end);
+
+
+        $round = 1;
+        //in round 1
+        if($startTime - $round1Start >= 0 && $round1End - $startTime >= 0){
+            $round = 1;
+        }
+        //in round 2
+        else if($startTime - $round2Start >= 0 && $round2End - $startTime >=0){
+            $round = 2;
+        }
+        //in round 3
+        else if($startTime - $round3Start >= 0 && $round3End - $startTime >= 0){
+            $round = 3;
+        }
+        //in round 4
+        else if($startTime - $round4Start >= 0 && $round4End - $startTime >= 0){
+            $round = 4;
         }
 
 
-        $time = date('H:i:s', strtotime($round1Start));
-        $date = date('Y-m-d', strtotime($datetime));
-        return date('Y-m-d H:i:s', strtotime("$date $time"));
+        $time = $startTime;
+        $zeroTime = strtotime('00:00:00');
+        while ($tttTime > 0){
+            $time = strtotime("+1 minutes",$time);
+            if($round == 1 && $time - $round1End > 0) {
+                if($round2Start == $zeroTime){
+                    $round = 4;
+                    $time = strtotime("-1 minutes",$time);
+                }else{
+                    $round = 2;
+                    $min = ($round2Start - $round1End)/60;
+                    $time = strtotime("+{$min} minutes",$time);
+                    --$tttTime;
+                }
+            }
+            else if($round == 2 && $time - $round2End > 0){
+                if($round3Start == $zeroTime){
+                    $round = 4;
+                    $time = strtotime("-1 minutes",$time);
+                }else{
+                    $round = 3;
+                    $min = ($round3Start - $round2End)/60;
+                    $time = strtotime("+{$min} minutes",$time);
+                    --$tttTime;
+                }
+            }
+            else if($round == 3 && $time - $round3End > 0){
+                if($round4Start == $zeroTime){
+                    $time = strtotime("-1 minutes",$time);
+                }else{
+                    $min = ($round4Start - $round3End)/60;
+                    $time = strtotime("+{$min} minutes",$time);
+                    --$tttTime;
+                }
+                $round = 4;
+            }
+            else if($round == 4 && $time - $round4End > 0){
+                $datetime = date('Y-m-d', strtotime("+1 days".$datetime));
+                $startDay = date('D', strtotime($datetime));
+
+                $workingDayData = $this->manageJobModel->getWorkingDayData($startDay);
+                $round1Start = strtotime($workingDayData->round1_start);
+                $round1End = strtotime($workingDayData->round1_end);
+                $round2Start = strtotime($workingDayData->round2_start);
+                $round2End = strtotime($workingDayData->round2_end);
+                $round3Start = strtotime($workingDayData->round3_start);
+                $round3End = strtotime($workingDayData->round3_end);
+                $round4Start = strtotime($workingDayData->round4_start);
+                $round4End = strtotime($workingDayData->round4_end);
+
+
+                if($round1Start == $zeroTime){
+                    $round = 4;
+                }else{
+                    $round = 1;
+                    --$tttTime;
+                }
+                $time = strtotime("+1 minutes", $round1Start);
+            }
+            else{
+                --$tttTime;
+            }
+        }
+
+
+        $time = date('H:i:s', $time);
+        $date = $datetime;
+        return strtotime(date('Y-m-d H:i:s', strtotime("$date $time")));
 
     }
 
