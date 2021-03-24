@@ -51,21 +51,28 @@
 
                         <button id="print" class="three-set-btn3" onclick="print">Print</button>
                     </div>
+                    <div class="BtnWap">
+                        <button style="" id="send" class="three-set-btn2" onclick="send">Send to Get Approval</button>
+                    </div>
                 </div><!--flex row-->
 
                 <!--                table start-->
 
                 <div class="table-responsive" id="salary" >
-<!--                    --><?php //echo $data ?>
+                    <div class="inputfield inputbutton">
+
+
+                    </div>
+
 
                 </div>
+
 
                 <div class="card-footer">
 
                     <div class="model-footer">
                         <h5>* Please select an order to get this action!</h5>
                     </div>
-
 
                     <div class="bottom-row">
 

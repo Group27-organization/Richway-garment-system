@@ -30,26 +30,12 @@ class AccountantController extends framework
 
     }
 
-    public function NewSession()
-    {
-        if (isset($_POST['key'])) {
-            if ($_POST['key'] == "employeeUpdate") {
-                $this->setSession("selected_employee", $_POST['emp_ID']);
-                return "Successfully set the session.";
-            }
-        }
-        return "error";
-    }
+
 
 
     public function managePayments()
     {
         $this->view("Accountant/managePayments");
-    }
-
-    public function viewSalaryReport()
-    {
-        $this->view("Accountant/viewSalaryReport");
     }
 
 
@@ -74,7 +60,7 @@ class AccountantController extends framework
         echo("<script>console.log('PHP in index');</script>");
         if (isset($_POST['key'])) {
             if ($_POST['key'] == "paymentTableInDash") {
-
+                $result = $this->accountantModel->loadSalaryReport();
 
                 echo "
 
@@ -82,8 +68,8 @@ class AccountantController extends framework
                         <thead class=\"thead-light\">
                         <tr>
                                                 
-                            <th scope=col>Report ID</th>
-                            <th scope=col>Generate Date</th>
+                            <th scope=col>Report ID</th>                            
+                            <th scope=col>Month</th>
                             <th scope=col>Total Employees</th>           
                             <th scope=col>Status</th>
                             <th scope=col>Actions</th>                                                              
@@ -94,17 +80,20 @@ class AccountantController extends framework
 
                 ";
 
+            foreach ($result as $row) {
 
                 echo "
-                         <tr>
-                            <td>Rid001</td>
-                            <td>2021/02/06</td>                          
-                            <td>10</td>
-                            <td>pending</td>
-                            <td>view</td>
-                            
-                        </tr>
-                       
+                            <tr class='tblrow' onclick='selectRow(event)'>
+                                <td >$row->report_id </td>                               
+                                <td>$row->Month</td>
+                                <td>$row->total_employee</td>
+                                <td>$row->status</td>
+                                <th>
+                                 <a href='http://localhost/Richway-garment-system/AccountantController/viewSalaryReport?month=$row->Month' class='viewBtn' style='margin: 4px;color: #00B4CC'>View /</a>                                
+                                 <a href='#' class='viewBtn' style='margin: 4px;color:#FF6347'>Send to Approve</a>
+                                </th>
+
+                            </tr>
                         ";
 
             }
@@ -113,57 +102,15 @@ class AccountantController extends framework
                     </table>
                     
                     ";
-        }
 
-
-    }
-
-    public function loadSalaryTable()
-    {
-        echo("<script>console.log('PHP in ndex');</script>");
-        if (isset($_POST['key'])) {
-            if ($_POST['key'] == "salaryDash") {
-
-                echo "
-
-                 <table class=\"table align-items-center table-flush\">
-                        <thead class=\"thead-light\">
-                        <tr>
-                        
-                            <th scope=col>Emp ID</th>
-                            <th scope=col>Month</th>
-                            <th scope=col>Attendance</th>
-                            <th scope=col>Salary</th>
-                            <th scope=col>Status</th>
-                           
-                        </tr>
-                        </thead>
-                        <tbody>
-
-                ";
-//                foreach ($result as $row) {
-//
-//                    echo "
-//                            <tr class='tblrow' onclick='selectRow(event)'>
-//                                <td id='supid'>$row->supplier_ID  </td>
-//                                <td>$row->name</td>
-//                                 <td>$row->email</td>
-//                                  <td>$row->address</td>
-//                                <td>$row->contact_no</td>
-//
-//                            </tr>
-//                        ";
-//
-//                }
-                echo "
-                        </tbody>
-                    </table>
-                    
-                    ";
-            }
         }
 
     }
+}
+
+
+
+
 
     public function generateMonthlySalary()
     {
@@ -208,12 +155,76 @@ class AccountantController extends framework
                     $empID_Days[$emp]=$daysCount;
                 }
 
-               // echo("<script>console.log('PHP in generate salary: ". json_encode($empID_Days). "');</script>");
-                $this->accountantModel->generateMonthlySalary($empID_Days);
-
+                //echo("<script>console.log('PHP in generate salary: ". json_encode($empID_Days). "');</script>");
+                $this->accountantModel->generateMonthlySalary($empID_Days,$payment[1]['Date']);
 
             }
         }
 
     }
+
+
+    public function viewSalaryReport()
+    {
+        $Date=$_GET['month'];
+        $this->setSession("selected_Date",$Date);
+        echo("<script>console.log('PHP in view salary report: ". json_encode($Date). "');</script>");
+        $this->view("Accountant/viewSalaryReport");
+    }
+
+
+    public function loadSalaryTable()
+    {
+
+        $Date =  $this->getSession('selected_Date');
+
+        echo("<script>console.log('Selected Date: ". json_encode($Date). "');</script>");
+
+        if (isset($_POST['key'])) {
+            if ($_POST['key'] == "salaryDash") {
+
+                $result = $this->accountantModel->loadSalaryTable($Date);
+
+                echo "
+
+                 <table class=\"table align-items-center table-flush\">
+                        <thead class=\"thead-light\">
+                        <tr>
+                        
+                            <th scope=col>Emp ID</th>
+                            <th scope=col>Month</th>
+                            <th scope=col>Attendance</th>
+                            <th scope=col>Salary</th>
+                            <th scope=col>Status</th>
+                           
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                ";
+                foreach ($result as $row) {
+
+                    echo "
+                            <tr class='tblrow' onclick='selectRow(event)'>
+                                <td >$row->emp_id</td>
+                                <td>$row->month_And_Year</td>
+                                <td>$row->attendance</td>
+                                <td>$row->salary</td>
+                                <td>$row->status</td>
+
+                            </tr>
+                        ";
+
+                }
+                echo "
+                        </tbody>
+                    </table>
+                    
+                    ";
+            }
+        }
+
+    }
+
+
 }

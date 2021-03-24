@@ -10,7 +10,7 @@
     <?php linkCSS("assets/css/nav.css") ?>
     <?php linkCSS("assets/css/side_nav.css") ?>
     <?php linkCSS("assets/css/admin-manageuser.css") ?>
-    <?php linkCSS("assets/css/admin-managepayment.css") ?>
+    <?php linkCSS("assets/css/accountant-managepayment.css") ?>
 
     <?php linkCSS("assets/css/admin-tabview.css") ?>
     <?php linkCSS("assets/css/admin-adduser.css") ?>
