@@ -23,6 +23,76 @@ $(document).ready(function() {
     });
 });
 
+function updateMachine() {
+
+    let i, tblrows, machID = "";
+
+    tblrows = document.getElementsByClassName("tblrow");
+    for (i = 0; i < tblrows.length; i++) {
+        if (tblrows[i].className.includes('active-row')) {
+            document.querySelector('#machineMsgView').style.display = "none";
+            machID = tblrows[i].firstElementChild.innerHTML;
+            jQuery(function ($) {
+
+                $.ajax({
+                    type: 'POST',
+                    url: "http://localhost/Richway-garment-system/manageMachineController/setNewSession",
+                    data: {machine_ID: machID, key: "MachineUpdate"},
+                    dataType: 'html',
+                    success: function (data) {
+                        location.href = "http://localhost/Richway-garment-system/manageMachineController/loadupdateMachineform";
+                    },
+                    error: function () {
+                        // console.log("update data not  load")
+                        $("#tableParent").html('<br><p>Something went wrong.</p>');
+                    }
+                });
+
+
+            });
+        }
+        else{
+            document.querySelector('#machineMsgView').style.display = "block";
+        }
+    }
+}
+
+
+
+    /*function updateMachine() {
+
+        let i, tblrows, machID = "";
+
+        tblrows = document.getElementsByClassName("tblrow");
+        for (i = 0; i < tblrows.length; i++) {
+            if (tblrows[i].className.includes('active-row')) {
+                document.querySelector('#machineMsgView').style.display = "none";
+                machID = tblrows[i].firstElementChild.innerHTML;
+                jQuery(function ($) {
+
+                    $.ajax({
+                        type: 'POST',
+                        url: "http://localhost/Richway-garment-system/manageMachineController/setNewSession",
+                        data: {machine_ID: machID, key: "MachineUpdate"},
+                        dataType: 'html',
+                        success: function (data) {
+                            location.href = "http://localhost/Richway-garment-system/manageMachineController/loadupdateMachineform";
+                        },
+                        error: function () {
+                            console.log("update data not  load")
+                            $("#tableParent").html('<br><p>Something went wrong.</p>');
+                        }
+                    });
+
+
+                });
+            } else {
+                document.querySelector('#machineMsgView').style.display = "block";
+            }
+        }
+    }*/
+
+
 
 
 

@@ -1,18 +1,24 @@
 <?php
 
 
-class manageMachineController extends framework{
+class manageMachineController extends framework
+{
     private $manageMachineModel;
-    public function __construct(){
-        if(!$this->getSession('userId')){
+
+    public function __construct()
+    {
+        if (!$this->getSession('userId')) {
             $this->redirect("loginController/loginForm");
         }
+
+
         $this->helper("link");
         $this->manageMachineModel = $this->model('manageMachineModel');
 
     }
 
-    public function index(){
+    public function index()
+    {
 
         $this->view("admin/manageMachine");
         echo("<script>console.log('PHP in index');</script>");
@@ -20,10 +26,11 @@ class manageMachineController extends framework{
 
     }
 
-    public function setNewSession(){
-        if(isset($_POST['key'])) {
+    public function setNewSession()
+    {
+        if (isset($_POST['key'])) {
             if ($_POST['key'] == "MachineUpdate") {
-                $this->setSession("selected_machine", $_POST['stock_ID']);
+                $this->setSession("selected_machine", $_POST['machine_ID']);
                 return "Successfully set the session.";
             }
         }
@@ -31,10 +38,11 @@ class manageMachineController extends framework{
     }
 
 
-    public function loadMachineTable(){
+    public function loadMachineTable()
+    {
 
         echo("<script>console.log('PHP in index');</script>");
-        if(isset($_POST['key'])) {
+        if (isset($_POST['key'])) {
             if ($_POST['key'] == "machineTableInDash") {
                 $result = $this->manageMachineModel->loadMachineTable();
                 echo("<script>console.log('PHP in loadMachineTable controller: " . json_encode($result) . "');</script>");
@@ -43,15 +51,13 @@ class manageMachineController extends framework{
                 <table class=\"table align-items-center table-flush\">
                         <thead class=\"thead-light\">                        
                         <tr>
-                         <th scope=col>".ucwords(str_replace("_","-",$tblname))."ID</th>
-                         <th scope=col>Stock ID</th>
-                         <th scope=col>Line ID</th>
+                           <th scope=col>Machine ID</th>
                             <th scope=col>Name</th>
                             <th scope=col>Description</th>
                             <th scope=col>Re-order Value</th>
                             <th scope=col>ABC analysis</th>
-                            <th scope=col>Warrenty</th>
-                           
+                            <th scope=col>Warranty</th>
+                            <th scope=col>Price</th>
                              
                             
                         </tr>
@@ -63,14 +69,13 @@ class manageMachineController extends framework{
 
                     echo "
                             <tr class='tblrow' onclick='selectRow(event)'>
-                                <td id='ID'>$row->ID  </td>
-                                 <td>$row->stock_ID</td>
-                                  <td>$row->line_ID</td>
+                                <td>$row->machine_ID</td>
                                 <td>$row->Name</td>
                                 <td>$row->Description</td>
                                 <td>$row->ReorderValue</td>
                                 <td>$row->ABCanalysis</td>
-                                <td>$row->Warrenty</td>
+                                <td>$row->Warranty</td>
+                                <td>$row->Price</td>
                               
                             </tr>
                         ";
@@ -91,63 +96,55 @@ class manageMachineController extends framework{
         $this->view("admin/addmachineform");
     }
 
-    public function addmachine(){
+    public function addmachine()
+    {
 
 
         $machineData = [
-            'stock_ID'=> $this->input('stock_ID'),
-            'line_ID'=> $this->input('line_ID'),
-            'Name'=> $this->input('Name'),
-            'Description'=>$this->input('Description'),
-            'Re-order Value'=>$this->input('ReorderValue'),
-            'ABC analysis'=>$this->input('ABCanalysis'),
-            'Warrenty'=> $this->input('Warrenty'),
-            'stock_IDError'=> '',
-            'line_IDError'=> '',
-            'NameError'=> '',
-            'DescriptionError'=> '',
-            'ReorderValueError'=> '',
-            'ABCanalysisError'=> '',
-            'WarrentyError'=> '',
+            'Machine ID' => $this->input('machine_ID'),
+            'Name' => $this->input('Name'),
+            'Description' => $this->input('Description'),
+            'Re-order Value' => $this->input('ReorderValue'),
+            'ABC analysis' => $this->input('ABCanalysis'),
+            'Warranty' => $this->input('Warranty'),
+            'Price' => $this->input('Price'),
+            'NameError' => '',
+            'DescriptionError' => '',
+            'ReorderValueError' => '',
+            'ABCanalysisError' => '',
+            'WarrantyError' => '',
+            'PriceError' => '',
 
         ];
 
 
+        if (empty($machineData['Name'])) {
+            $machineData['NameError'] = "Name is required";
+        }
 
-        if(empty( $machineData['stock_ID'])){
-            $machineData['stock_IDError']="stock_ID is required";
+        if (empty($machineData['Description'])) {
+            $machineData['DescriptionError'] = "Description is required";
+        }
+
+        if (empty($machineData['Re-order Value'])) {
+            $machineData['ReorderValueError'] = "Re-order Value is required";
+        }
+
+        if (empty($machineData['ABC analysis'])) {
+            $machineData['ABCanalysisError'] = "ABC analysis is required";
+        }
+
+        if (empty($machineData['Warranty'])) {
+            $machineData['WarrantyError'] = "Warranty is required";
+        }
+
+        if (empty($machineData['Price'])) {
+            $machineData['PriceError'] = "Price is required";
         }
 
 
-        if(empty( $machineData['line_ID'])){
-            $machineData['line_IDError']="line_ID is required";
-        }
-
-        if(empty( $machineData['Name'])){
-            $machineData['NameError']="Name is required";
-        }
-
-        if(empty( $machineData['Description'])){
-            $machineData['DescriptionError']="Description is required";
-        }
-
-        if(empty( $machineData['Re-order Value'])){
-            $machineData['ReorderValueError']="Re-order Value is required";
-        }
-
-        if(empty( $machineData['ABC analysis'])){
-            $machineData['ABCanalysisError']="ABC analysis is required";
-        }
-
-        if(empty( $machineData['Warrenty'])){
-            $machineData['WarrentyError']="Warrenty is required";
-        }
-
-
-
-
-        if(empty($machineData['stock_IDError'])&&empty($machineData['line_IDError'])&&empty($machineData['NameError'])&& empty($machineData['DescriptionError']) && empty($machineData['ReorderValueError'])&& empty($machineData['ABCanalysisError'])&& empty($machineData['WarrentyError'])){
-            $Data = [$machineData['stock_ID'],$machineData['line_ID'],$machineData['Name'], $machineData['Description'], $machineData['Re-order Value'],$machineData['ABC analysis'],$machineData['Warrenty'],1];
+        if (empty($machineData['NameError']) && empty($machineData['DescriptionError']) && empty($machineData['ReorderValueError']) && empty($machineData['ABCanalysisError']) && empty($machineData['WarrantyError']) && empty($machineData['PriceError'])) {
+            $Data = [$machineData['Machine ID'], $machineData['Name'], $machineData['Description'], $machineData['Re-order Value'], $machineData['ABC analysis'], $machineData['Warranty'], $machineData['Price'], 1];
 
 
             if ($this->manageMachineModel->insertmachine($Data)) {
@@ -160,8 +157,7 @@ class manageMachineController extends framework{
                       </script>
 
                     ';
-            }
-            else {
+            } else {
 
                 echo '
 
@@ -173,17 +169,122 @@ class manageMachineController extends framework{
                     ';
 
             }
-        }
-        else {
+        } else {
             $this->view("admin/addmachineform", $machineData);
 
         }
 
+
+    }
+
+    public function loadupdateMachineform(){
+        $machine_ID = $this->getSession('selected_machine');
+
+        $machineEdit = $this->manageMachineModel->updateMachine($machine_ID);
+        $data = [
+            'data'=>$machineEdit,
+            'NameError' => '',
+            'DescriptionError' => '',
+            'ReorderValueError' => '',
+            'ABCanalysisError' => '',
+            'WarrantyError' => '',
+            'PriceError' => '',
+
+
+        ];
+
+        $this->view("admin/editMachineform", $data);
+
+    }
+
+    public function updateMachine()
+    {
+        $machine_ID = $this->input('hiddenID');
+        $machineEdit = $this->manageMachineModel->updateMachine($machine_ID);
+        $machineData = [
+           // 'Machine ID' => $this->input('machine_ID'),
+            'Name' => $this->input('Name'),
+            'Description' => $this->input('Description'),
+            'Re-order Value' => $this->input('ReorderValue'),
+            'ABC analysis' => $this->input('ABCanalysis'),
+            'Warranty' => $this->input('Warranty'),
+            'Price' => $this->input('Price'),
+            'hiddenID' => $this->input('hiddenID'),
+            'data' => $machineEdit,
+            'NameError' => '',
+            'DescriptionError' => '',
+            'ReorderValueError' => '',
+            'ABCanalysisError' => '',
+            'WarrantyError' => '',
+            'PriceError' => '',
+        ];
+
+
+        if (empty($machineData['Name'])) {
+            $machineData['NameError'] = "Name is required";
+        }
+
+        if (empty($machineData['Description'])) {
+            $machineData['DescriptionError'] = "Description is required";
+        }
+
+        if (empty($machineData['Re-order Value'])) {
+            $machineData['ReorderValueError'] = "Re-order Value is required";
+        }
+
+        if (empty($machineData['ABC analysis'])) {
+            $machineData['ABCanalysisError'] = "ABC analysis is required";
+        }
+
+        if (empty($machineData['Warranty'])) {
+            $machineData['WarrantyError'] = "Warranty is required";
+        }
+
+        if (empty($machineData['Price'])) {
+            $machineData['PriceError'] = "Price is required";
+        }
+
+        // echo("<script>console.log('PHP in edit: " . json_encode($customerData) . "');</script>");
+
+        if (empty($machineData['NameError']) && empty($machineData['DescriptionError']) && empty($machineData['ReorderValueError']) && empty($machineData['ABCanalysisError']) && empty($machineData['WarrantyError']) && empty($machineData['PriceError'])) {
+           // $updateData = [$machineData['Machine ID'], $machineData['Name'], $machineData['Description'], $machineData['Re-order Value'], $machineData['ABC analysis'], $machineData['Warranty'], $machineData['Price'], $machineData[ 'hiddenID'],];
+
+            if ($this->manageMachineModel->editMachine($machineData)) {
+
+                echo '
+              <script>
+                            if(!alert("Machine Updated successfully")) {
+                                window.location.href = "http://localhost/Richway-garment-system/manageMachineController/index";
+                            }
+              </script>
+
+            ';
+
+            } else {
+                echo '
+
+            <script>
+                        if(!alert("Something went wrong! please try again.")) {
+                            window.location.href = "http://localhost/Richway-garment-system/manageMachineController/loadupdateMachineform";
+                        }
+            </script>
+            ';
+
+            }
+        }
+
+        else {
+            $this->view("admin/editMachineform", $machineData);
+
+
+        }
 
 
     }
 
 
 
+
 }
-?>
+
+    ?>

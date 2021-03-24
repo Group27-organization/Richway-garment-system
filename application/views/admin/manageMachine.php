@@ -54,6 +54,7 @@
                     <div class="BtnWap">
 
                         <button id="addmachine" class="three-set-btn1" onclick="location.href"  >Add</button>
+                        <button id="updateMachine" onclick="updateMachine()" class="three-set-btn2">Update</button>
                     </div>
                 </div><!--flex row-->
 

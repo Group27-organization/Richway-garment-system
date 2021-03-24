@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta id="nav_item" content="Manage Machine">
-    <title>Add new machine </title>
+    <meta id="nav_item" content="Manage Tool">
+    <title>Update new tool category</title>
 
     <?php linkCSS("assets/css/nav.css") ?>
     <?php linkCSS("assets/css/side_nav.css") ?>
@@ -25,8 +25,8 @@
 
         <div class="header-container background-gradient">
             <div class="header-group">
-                <h1 class="text-white">Add new machine</h1>
-                <p class="text-lead text-white">You can add machine's details in here</p>
+                <h1 class="text-white">Update tool category</h1>
+                <p class="text-lead text-white">You can update tool's details in here</p>
             </div>
             <div class="separator separator-bottom separator-skew zindex-100">
                 <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
@@ -35,29 +35,30 @@
             </div>
         </div>
 
-        <form  action="<?php echo BASEURL;?>/manageMachineController/addmachine" method="POST" >
+        <form  action="<?php echo BASEURL;?>/manageToolController/updateTool" method="POST" >
             <div class="flexbox-container">
 
 
+
                 <div class="inputfield">
-                    <label for="Name">Machine Name</label>
-                    <input type="text" id="Name" maxlength="100" name="Name" class="form-contrall" value="<?php if($data['Name']) :echo $data['Name']; endif; ?>">
+                    <label for="Name">Category Name</label>
+                    <input type="text" id="Name" maxlength="100" name="Name" class="form-contrall" value="<?php echo  $data['data']->Name;?>">
                     <label class="error" style="color:red;">
                         <?php   if($data['NameError']) :echo $data['NameError']; endif; ?>
                     </label>
                 </div>
 
                 <div class="inputfield">
-                    <label for="Description">Description</label>
-                    <textarea id="Description" maxlength="250" name="Description" rows="4" cols="50" class="form-contrall" value="<?php if($data['Description']) :echo $data['Description']; endif; ?>"></textarea>
+                    <label for="Description">Category Description</label>
+                    <input id="Description" maxlength="250" name="Description" rows="4" cols="50" class="form-contrall" value="<?php echo  $data['data']->Description;?>">
                     <label class="error" style="color:red;">
                         <?php   if($data['DescriptionError']) :echo $data['DescriptionError']; endif; ?>
                     </label>
                 </div>
 
                 <div class="inputfield">
-                    <label for="ReorderValue">Re-order Value</label>
-                    <input type="ReorderValue" min="0.00" step="0.01" maxlength="100" id="ReorderValue" name="ReorderValue" class="form-contrall" value="<?php if($data['ReorderValue']) :echo $data['ReorderValue']; endif; ?>">
+                    <label for="ReorderValue">Re-orderValue</label>
+                    <input type="ReorderValue" min="0.00" step="0.01" maxlength="100" id="ReorderValue" name="ReorderValue" class="form-contrall" value="<?php echo  $data['data']->ReorderValue;?>">
                     <label class="error" style="color:red;">
                         <?php   if($data['ReorderValueError']) :echo $data['ReorderValueError']; endif; ?>
                     </label>
@@ -65,8 +66,7 @@
 
                 <div class="inputfield">
                     <label for="ABCanalysis">ABC analysis</label>
-                    <select id="ABCanalysis"  name="ABCanalysis" class="form-contrall" >
-                        <option value="">--SELECT--</option>
+                    <select id="ABCanalysis"  name="ABCanalysis" class="form-contrall" value="<?php echo  $data['data']->ABCanalysis;?>">
                         <option value="A-High Value & Low Stock">A-High Value & Low Stock</option>
                         <option value="A-Moderate Value & Moderate Stock">A-Moderate Value & Moderate Stock</option>
                         <option value="A-Low Value & High Stock">A-Low Value & High Stock</option>
@@ -83,16 +83,8 @@
                 </div>
 
                 <div class="inputfield">
-                    <label for="Warranty">Warranty</label>
-                    <input type="text" id="Warranty" maxlength="100" name="Warranty" class="form-contrall" value="<?php if($data['Warranty']) :echo $data['Warranty']; endif; ?>">
-                    <label class="error" style="color:red;">
-                        <?php   if($data['WarrantyError']) :echo $data['WarrantyError']; endif; ?>
-                    </label>
-                </div>
-
-                <div class="inputfield">
-                    <label for="Price">Price</label>
-                    <input type="text" id="Price" maxlength="100" name="Price" class="form-contrall" value="<?php if($data['Price']) :echo $data['Price']; endif; ?>">
+                    <label for="price">Price</label>
+                    <input type="text" id="price" maxlength="100" name="price" class="form-contrall" value="<?php echo  $data['data']->price;?>">
                     <label class="error" style="color:red;">
                         <?php   if($data['PriceError']) :echo $data['PriceError']; endif; ?>
                     </label>
@@ -101,7 +93,8 @@
 
 
                 <br><div class="inputfield inputbutton">
-                    <input type="submit" value="Submit" class="btn cripple">
+                    <input type="submit" value="Update" class="btn cripple">
+                    <input type="hidden" name="hiddenID" value="<?php echo $data['data']->tool_ID;?>">
                 </div>
 
 
@@ -112,9 +105,8 @@
     </div><!--    right-->
 </div>  <!--    grid container-->
 
-<?php linkJS("assets/js/admin-manageMachine.js") ?>
+<?php linkJS("assets/js/admin-manageTool.js") ?>
 <?php linkJS("assets/js/table.js") ?>
 
 </body>
 </html>
-

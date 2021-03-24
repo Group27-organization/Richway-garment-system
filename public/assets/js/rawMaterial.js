@@ -1,6 +1,10 @@
+let rawMaterialType='fabric';
 openRaw(null,'fabric');
 
+
 function openRaw(evt,rawitemID) {
+    console.log("rawMaterialType initial :"+rawMaterialType);
+
     let i, tablinks, addRawmaterialBtn;
 
     if(evt != null) {
@@ -10,10 +14,14 @@ function openRaw(evt,rawitemID) {
         }
         evt.currentTarget.className += " active";
     }
+    rawMaterialType =rawitemID;
+    console.log("rawMaterialType :::"+rawMaterialType);
+
     addRawmaterialBtn = document.getElementById("addRawmaterial");
 
     addRawmaterialBtn.onclick = function() {
         console.log("RRR :"+rawitemID);
+
         openRaw(null,'fabric');
 
         $.ajax({
@@ -96,7 +104,59 @@ function openRaw(evt,rawitemID) {
         });
     }
 
+
 }
+
+
+
+function updateRawMaterial() {
+
+    let i, tblrows, fabID = "";
+
+    tblrows = document.getElementsByClassName("tblrow");
+    for (i = 0; i < tblrows.length; i++) {
+        if (tblrows[i].className.includes('active-row')) {
+            document.querySelector('#rawMaterialMsgView').style.display = "none";
+            fabID = tblrows[i].firstElementChild.innerHTML;
+            jQuery(function ($) {
+
+                $.ajax({
+                    type: 'POST',
+                    url: "http://localhost/Richway-garment-system/rawMaterialController/setNewSession",
+                    data: {ID: fabID, key: "fabricUpdate"},
+                    success: function (data) {
+
+                        if(rawMaterialType=="fabric"){
+                            location.href = "http://localhost/Richway-garment-system/rawMaterialController/loadupdateFabricform";
+
+                        }
+                        if(rawMaterialType=="button"){
+                            location.href = "http://localhost/Richway-garment-system/rawMaterialController/loadupdateButtonform";
+
+                        }
+                        if(rawMaterialType=="thread"){
+                            location.href = "http://localhost/Richway-garment-system/rawMaterialController/loadupdateThreadform";
+
+                        }
+
+
+                    },
+                    error: function () {
+                        // console.log("update data not  load")
+                        //$("#tableParent").html('<br><p>Something went wrong.</p>');
+                    }
+                });
+
+
+            });
+        }
+
+        else{
+            document.querySelector('#rawMaterialMsgView').style.display = "block";
+        }
+    }
+}
+
 
 
 
@@ -132,7 +192,23 @@ function deleteRawMaterial(){
 
     }
 }
+$(document).ready(function(){
+$.ajax({
+    type: 'POST',
+    url: "http://localhost/Richway-garment-system/rawMaterialController/fabric_codeDropdown",
+    data: {  key: "fabric_code"},
+    success: function(data){
+        console.log("success");
+        // $("#fabric_codeDropdownlistId").html(data);
 
+
+
+    },
+    error       : function() {
+
+    }
+});
+});
 
 
 

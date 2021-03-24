@@ -54,6 +54,7 @@
                     <div class="BtnWap">
 
                         <button id="addtool" class="three-set-btn1" onclick="location.href"  >Add</button>
+                        <button id="updateTool" onclick="updateTool()" class="three-set-btn2">Update</button>
                     </div>
                 </div><!--flex row-->
 
@@ -112,8 +113,9 @@
 </div>
 
 
-<?php linkJS("assets/js/manageTool.js"); ?>
-<?php linkJS("assets/js/table.js") ?>
 
+<?php linkJS("assets/js/table.js") ?>
+<?php linkJS("assets/js/manageTool.js"); ?>
 </body>
+
 </html>
