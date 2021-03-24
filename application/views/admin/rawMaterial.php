@@ -59,7 +59,7 @@
                     <div class="BtnWap">
                         <button id="addRawmaterial" class="three-set-btn1" onclick="openRaw()">Add</button>
 
-                        <button id="updateRawmaterial" class="three-set-btn2" onclick="">Update</button>
+                        <button id="updateRawmaterial" class="three-set-btn2" onclick="updateRawMaterial()">Update</button>
 
                         <button id="deleteRawmaterial" class="three-set-btn3" onclick="deleteRawMaterial()">Remove</button>
                     </div>
@@ -72,8 +72,8 @@
                 </div>
                 <div class="card-footer">
 
-                    <div class="model-footer" id="employeeMsgView">
-                        <h5>* Please select an employee to get this action!</h5>
+                    <div class="model-footer" id="rawMaterialMsgView">
+                        <h5>* Please select an rawMaterial to get this action!</h5>
                     </div>
 
                     <div class="bottom-row">

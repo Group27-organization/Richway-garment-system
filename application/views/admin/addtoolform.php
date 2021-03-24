@@ -41,14 +41,6 @@
 
 
                 <div class="inputfield">
-                    <label for="stock_ID">stock_ID</label>
-                    <input type="text" id="stock_ID" maxlength="100" name="Name" class="form-contrall" value="<?php if($data['stock_ID']) :echo $data['stock_ID']; endif; ?>">
-                    <label class="error" style="color:red;">
-                        <?php   if($data['stock_IDError']) :echo $data['stock_IDError']; endif; ?>
-                    </label>
-                </div>
-
-                <div class="inputfield">
                     <label for="Name">Category Name</label>
                     <input type="text" id="Name" maxlength="100" name="Name" class="form-contrall" value="<?php if($data['Name']) :echo $data['Name']; endif; ?>">
                     <label class="error" style="color:red;">
@@ -88,6 +80,14 @@
                     </select>
                     <label class="error" style="color:red;">
                         <?php   if($data['ABCanalysisError']) :echo $data['ABCanalysisError']; endif; ?>
+                    </label>
+                </div>
+
+                <div class="inputfield">
+                    <label for="price">Price</label>
+                    <input type="text" id="price" maxlength="100" name="price" class="form-contrall" value="<?php if($data['price']) :echo $data['price']; endif; ?>">
+                    <label class="error" style="color:red;">
+                        <?php   if($data['PriceError']) :echo $data['PriceError']; endif; ?>
                     </label>
                 </div>
 

@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta id="nav_item" content="Manage Raw Materials">
-    <title>Add New Thread</title>
+    <title>Update Thread</title>
 
     <?php linkCSS("assets/css/nav.css") ?>
     <?php linkCSS("assets/css/side_nav.css") ?>
@@ -10,7 +10,7 @@
     <?php linkCSS("assets/css/admin-adduser.css") ?>
     <?php linkCSS("assets/css/form.css") ?>
     <?php linkCSS("assets/css/admin-table.css") ?>
-    <script src="https://code.jquery.com/jquery-2.1.1.min.js" type="text/javascript"></script>
+
 </head>
 <body>
 
@@ -25,8 +25,8 @@
 
         <div class="header-container background-gradient">
             <div class="header-group">
-                <h1 class="text-white">Add New Thread</h1>
-                <p class="text-lead text-white">You can add thread's details in here</p>
+                <h1 class="text-white">Update Thread</h1>
+                <p class="text-lead text-white">You can update thread's details in here</p>
             </div>
             <div class="separator separator-bottom separator-skew zindex-100">
                 <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
@@ -35,27 +35,28 @@
             </div>
         </div>
 
-        <form  action="<?php echo BASEURL;?>/rawMaterialController/addthread" method="POST" >
+        <form  action="<?php echo BASEURL;?>/rawMaterialController/updateThread" method="POST" >
             <div class="flexbox-container">
 
                 <div class="inputfield">
                     <label for="fabric_code">Select Fabric Code</label>
                     <select id="fabricCodeDrop" name="options" class="form-contrall"  >
-                        <option  value="0" selected="" disabled="">--SELECT--</option>
-                        <?php if(!empty($data)): ?>
-                            <?php foreach($data  as $c):?>
-                                <option value="<?php echo $c->ID; ?>"> <?php echo $c->type ; ?>"-" <?php echo $c->fabric_code ; ?></option>
-                            <?php endforeach;?>
-                        <?php endif; ?>
+<!--                        <option  value="" selected="" >--SELECT--</option>-->
+                        <option value="<?php echo  $data['data']->fabID;?>" selected="" > <?php echo$data['data']->fabType ; ?>- <?php echo $data['data']->fabricCode ; ?></option>
+<!--                        --><?php //if(!empty($data->fabArr)): ?>
+<!--                            --><?php //foreach($data->fabArr  as $c):?>
+<!--                                <option value="--><?php //echo $c->ID; ?><!--"> --><?php //echo $c->type ; ?><!--"-" --><?php //echo $c->fabric_code ; ?><!--</option>-->
+<!--                            --><?php //endforeach;?>
+<!--                        --><?php //endif; ?>
 
                     </select>
-<!--                        --><?php //  if($data['color_codeError']) :echo $data['color_codeError']; endif; ?>
+                    <!--                        --><?php //  if($data['color_codeError']) :echo $data['color_codeError']; endif; ?>
                     </label>
                 </div>
 
                 <div class="inputfield">
                     <label for="color_code">Color Code</label>
-                    <input type="text" id="color_code" maxlength="100" name="color_code" class="form-contrall" value="<?php if($data['ColorCode']) :echo $data['ColorCode']; endif; ?>">
+                    <input type="text" id="color_code" maxlength="100" name="color_code" class="form-contrall" value="<?php echo  $data['data']->color_code;?>">
                     <label class="error" style="color:red;">
                         <?php   if($data['color_codeError']) :echo $data['color_codeError']; endif; ?>
                     </label>
@@ -64,7 +65,7 @@
 
                 <div class="inputfield">
                     <label for="type">Type</label>
-                    <input type="text" id="type" maxlength="100" name="type" class="form-contrall" value="<?php if($data['Type']) :echo $data['Type']; endif; ?>">
+                    <input type="text" id="type" maxlength="100" name="type" class="form-contrall" value="<?php echo  $data['data']->type;?>">
                     <label class="error" style="color:red;">
                         <?php   if($data['typeError']) :echo $data['typeError']; endif; ?>
                     </label>
@@ -72,14 +73,15 @@
 
                 <div class="inputfield">
                     <label for="price">Price</label>
-                    <input type="text" id="price" maxlength="100" name="price" class="form-contrall" value="<?php if($data['Price']) :echo $data['Price']; endif; ?>">
+                    <input type="text" id="price" maxlength="100" name="price" class="form-contrall" value="<?php echo  $data['data']->price;?>">
                     <label class="error" style="color:red;">
                         <?php   if($data['priceError']) :echo $data['priceError']; endif; ?>
                     </label>
                 </div>
 
                 <br><div class="inputfield inputbutton">
-                    <input type="submit" value="Submit" class="btn cripple">
+                    <input type="submit" value="Update" class="btn cripple">
+                    <input type="hidden" name="hiddenID" value="<?php echo $data['data']->ID;?>">
                 </div>
 
 
@@ -90,8 +92,7 @@
     </div><!--    right-->
 </div>  <!--    grid container-->
 
-<?php linkJS("assets/js/admin-addnool.js") ?>
-<?php linkJS("assets/js/rawMaterial.js") ?>
+<?php linkJS("assets/js/admin-rawMaterial.js") ?>
 <?php linkJS("assets/js/table.js") ?>
 
 </body>
