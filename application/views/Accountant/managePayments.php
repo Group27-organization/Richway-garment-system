@@ -28,6 +28,7 @@
     var ExcelToJSON = function() {
 
             this.parseExcel = function(file) {
+
                 var reader = new FileReader();
 
                 reader.onload = function(e) {
@@ -41,6 +42,7 @@
                         var json_object = JSON.stringify(XL_row_object);
                         //console.log(JSON.parse(json_object));
 
+
                         let x = JSON.parse(json_object);
                         if (x) {
                             $('#up').show();
@@ -48,17 +50,19 @@
 
 
 
-                        $.ajax({
-                            type: 'POST',
-                            url: "http://localhost/Richway-garment-system/AccountantController/generateMonthlySalary",
-                            data: {paymentReport: x, key: "payement"},
-                            dataType: 'html',
-                            success: function (data) {
-                                 console.log(data);
+                        if(x.length!=0)
+                        {
+                            $("#pay").hide();
+                            $("#generate").show();
 
-                            },
+                            document.getElementById("generate").onclick = function(){generateSalary(x)};
 
-                        });
+                        }
+
+                        else{
+                            console.log('nothing in the file');
+                        }
+
                     })
                 };
 
@@ -69,6 +73,24 @@
                 reader.readAsBinaryString(file);
             };
         };
+        function generateSalary(x) {
+            $.ajax({
+
+                type: 'POST',
+                url: "http://localhost/Richway-garment-system/AccountantController/generateMonthlySalary",
+                data: {paymentReport: x, key: "payement"},
+                dataType: 'html',
+                success: function (data) {
+                    console.log(data);
+                    $("#pay").hide();
+                    $("#generate").hide();
+                    alert("Salary generated Successfully");
+                    location.href = "http://localhost/Richway-garment-system/AccountantController/managePayments";
+
+                },
+
+            });
+    }
 
 
         function handleFileSelect(evt) {
@@ -185,23 +207,27 @@
 
             <div class="container2">
                 <label id="up" style="display: none;color:#4BB543" >Uploaded Payment Sheet</label>
-                <label for="upload" class="et_pb_contact_form_label">Upload Payment Sheet</label>
+                <label id="pay" for="upload" style="display:class="et_pb_contact_form_label">Upload Payment Sheet</label>
+                <label id="generatedmsg" style="display: none;color:#4BB543" >Generated Payment Sheet</label>
+
                 <form enctype="multipart/form-data">
                     <input type="file" id="upload" class="file-upload" name="files[]">
 
                 </form>
+
                 <script>
                     document.getElementById('upload').addEventListener('change', handleFileSelect, false);
 
                 </script>
 
             </div>
-
-
-            <div class="BtnWap" style="display: none">
-                <button id="calculate" class="model-btn2 cripple" onclick="calculate()">Calculate</button>
+            <div id="generate" style="display: none">
+                <button name="generate" id="generate" class="three-set-btn1" onclick=" " style=" margin-top: 150px;" >Generate Salary</button>
 
             </div>
+`
+
+
 
             <div class="card-footer">
 
