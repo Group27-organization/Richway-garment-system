@@ -17,7 +17,7 @@
 <body>
 
 <div class="grid-container">
-    <?php include "components/side_nav2.php"; ?>
+    <?php include "components/side_nav.php"; ?>
     <div class="right" id="right">
 
         <?php include "components/nav.php"; ?>
@@ -57,12 +57,9 @@
                         </div>
                     </div>
                     <div class="BtnWap">
-
-
                         <button id="updateEmployee" class="three-set-btn2" onclick="">Update </button>
-
-
                     </div>
+
                 </div><!--flex row-->
 
                 <!--                table start-->

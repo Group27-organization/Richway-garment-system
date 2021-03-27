@@ -29,6 +29,16 @@ class AccountantController extends framework
         $this->view("Accountant/dashboard");
 
     }
+    public function setNewSession(){
+
+        if(isset($_POST['key'])) {
+            if ($_POST['key'] == "notificationID") {
+                $this->setSession("selected_ID", $_POST['NotificationId']);
+                return "Successfully set the session.";
+            }
+        }
+        return "error";
+    }
 
 
 
@@ -53,6 +63,10 @@ class AccountantController extends framework
     public function loadupdateEmployeeform()
     {
         $this->view("Accountant/editEmployeeform");
+    }
+    public function Notification()
+    {
+        $this->view("Accountant/notification");
     }
 
     public function loadPaymentTable()
@@ -225,6 +239,92 @@ class AccountantController extends framework
         }
 
     }
+
+    public function loadNotificationTable(){
+          echo("<script>console.log('PHP in acc-notification');</script>");
+        if(isset($_POST['key'])) {
+            if ($_POST['key'] == "notificationTableDash") {
+                $result = $this->accountantModel->loadNotificationTable();
+                //echo("<script>console.log('PHP in loadSupplierTable contoller: " . json_encode($result) . "');</script>");
+
+                echo "
+
+                 <table id='myTable' class=\"table align-items-center table-flush\">
+                        <thead class=\"thead-light\">
+                        <tr>
+                            <th scope=col style='display: none'>Notification ID</th>
+                            <th scope=col style='display: none'>Sender ID</th>
+                            <th scope=col>Sender Role</th>
+                            <th scope=col style='display: none'>Receiver Role</th>
+                            <th scope=col>Date</th>
+                            <th scope=col>Description</th>
+                            <th scope=col>Actions</th>
+                           
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                ";
+                foreach ($result as $row) {
+
+                    echo "
+                            <tr class='tblrow' onclick='selectRow(event)'>
+                                <td style='display: none'>$row->ID</td>
+                                <td style='display: none'>$row->sender_Id</td>
+                                <td>$row->sender_role</td>
+                                <td style='display: none'>$row->reciver_role</td>
+                                <td>$row->date</td>
+                                <td>$row->description</td>
+                                <td>
+                               
+                                <button class='viewBtn' style='background-color: snow; color:orange; border: none' onclick='selectRowView(event)'>view</button>
+                                   
+                                </td>
+                                
+                            </tr>
+                        ";
+
+                }
+            echo "
+                                    </tbody>
+                                </table>
+                                
+                                ";  
+            }
+            }
+
+
+    }
+    public function loadDescrpition()
+    {
+
+
+        if (isset($_POST['key'])) {
+            if ($_POST['key'] == "notification") {
+                $notificationID =$_POST['notificationID'];
+                $loginID = $this->getSession('userId')['user_id'];
+                $result = $this->accountantModel->loadDescription($notificationID);
+                $description =$result->description;
+
+
+                echo $description;
+                $readIds = $result->read_ids;
+                $loginID = $this->getSession('userId')['user_id'];
+                $readIdArr = explode(",",$readIds);
+
+                if (in_array($loginID, $readIdArr)) {
+
+                }else{
+                  $updateReadIds = $readIds.','.$loginID;
+                    $result = $this->accountantModel->readUpdateNotification($updateReadIds,$notificationID);
+                }
+
+
+
+            }
+        }
+    }
+
 
 
 }

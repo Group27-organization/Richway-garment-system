@@ -17,7 +17,7 @@
 
 <div class="grid-container">
 
-    <?php include "components/side_nav1.php"; ?>
+    <?php include "components/side_nav.php"; ?>
 
     <div class="right" id="right">
 
