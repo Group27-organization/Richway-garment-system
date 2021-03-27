@@ -156,7 +156,7 @@
                         </a>
                     </li>
 
-                <!--                    sales manager -->
+                    <!--                    sales manager -->
 
                     <li <?php if($data['data']->create_order){
                         echo "style=\"display:block;\"";
@@ -221,23 +221,23 @@
                         </a>
                     </li>
 
-<!--                    <li --><?php //if($data['data']->salesmanager_viewReport){
-//                        echo "style=\"display:block;\"";
-//                    } ?><!-- >-->
-<!---->
-<!--                        <a class="navigation-link" href="#">-->
-<!--                            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"-->
-<!--                                 width="24" height="24"-->
-<!--                                 viewBox="0 0 172 172"-->
-<!--                                 style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none"  font-size="none"  style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#9e9fa4"><path d="M35.83333,21.5c-7.83362,0 -14.33333,6.49972 -14.33333,14.33333v100.33333c0,7.83362 6.49972,14.33333 14.33333,14.33333h100.33333c7.83362,0 14.33333,-6.49972 14.33333,-14.33333v-100.33333c0,-7.83362 -6.49972,-14.33333 -14.33333,-14.33333zM35.83333,35.83333h100.33333v100.33333h-100.33333zM74.7181,50.25065l-10.13411,10.13411l25.61524,25.61523l-25.67123,25.67122l10.13412,10.13412l35.80533,-35.80534z"></path></g></g>-->
-<!--                            </svg>-->
-<!--                            <span class="navigation-link__name js_navigation-item-name">-->
-<!--                View Reports-->
-<!--              </span>-->
-<!--                        </a>-->
-<!--                    </li>-->
+                    <!--                    <li --><?php //if($data['data']->salesmanager_viewReport){
+                    //                        echo "style=\"display:block;\"";
+                    //                    } ?><!-- >-->
+                    <!---->
+                    <!--                        <a class="navigation-link" href="#">-->
+                    <!--                            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"-->
+                    <!--                                 width="24" height="24"-->
+                    <!--                                 viewBox="0 0 172 172"-->
+                    <!--                                 style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none"  font-size="none"  style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#9e9fa4"><path d="M35.83333,21.5c-7.83362,0 -14.33333,6.49972 -14.33333,14.33333v100.33333c0,7.83362 6.49972,14.33333 14.33333,14.33333h100.33333c7.83362,0 14.33333,-6.49972 14.33333,-14.33333v-100.33333c0,-7.83362 -6.49972,-14.33333 -14.33333,-14.33333zM35.83333,35.83333h100.33333v100.33333h-100.33333zM74.7181,50.25065l-10.13411,10.13411l25.61524,25.61523l-25.67123,25.67122l10.13412,10.13412l35.80533,-35.80534z"></path></g></g>-->
+                    <!--                            </svg>-->
+                    <!--                            <span class="navigation-link__name js_navigation-item-name">-->
+                    <!--                View Reports-->
+                    <!--              </span>-->
+                    <!--                        </a>-->
+                    <!--                    </li>-->
 
-<!--                    production manger-->
+                    <!--                    production manger-->
 
                     <li <?php if($data['data']->create_job){
                         echo "style=\"display:block;\"";
@@ -304,7 +304,7 @@
                     </li>
 
 
-<!--                    accountant-->
+                    <!--                    accountant-->
 
                     <li <?php if($data['data']->manage_payments){
                         echo "style=\"display:block;\"";
@@ -354,7 +354,7 @@
                         </a>
                     </li>
 
-<!--                    owner-->
+                    <!--                    owner-->
 
                     <li <?php if($data['data']->manage_payroll){
                         echo "style=\"display:block;\"";
@@ -404,7 +404,7 @@
                         </a>
                     </li>
 
-<!--                    Supervisor-->
+                    <!--                    Supervisor-->
 
                     <li <?php if($data['data']->mark_attendance){
                         echo "style=\"display:block;\"";
@@ -438,7 +438,7 @@
                         </a>
                     </li>
 
-<!--                    stock keeper-->
+                    <!--                    stock keeper-->
 
                     <li <?php if($data['data']->stock_issue){
                         echo "style=\"display:block;\"";

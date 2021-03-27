@@ -2,15 +2,32 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="52f54e1d-f9c9-4c5f-a2e2-18186743ac40" name="Default Changelist" comment="update order done with validation">
+      <change afterPath="$PROJECT_DIR$/application/controllers/notificationController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/application/controllers/testUVController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/application/controllers/testYController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/application/models/notificationModel.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/application/models/orderCreateModel.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/application/views/Salesmanjor/forms/billGenarate.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/application/views/Salesmanjor/forms/billGenarate2.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/application/views/Salesmanjor/updateOrderForms.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/js/js-chart/colum_chart.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/js/js-chart/gender_bar_chart.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/js/js-chart/pieChart_tf.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/js/notification.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/js/salesmanjor-js/A.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/js/salesmanjor-js/updateOrder-forms.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/application/controllers/createOrderController.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/controllers/createOrderController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/controllers/updateOrderController.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/controllers/updateOrderController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/application/models/createOrderModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/models/createOrderModel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/models/updateOrderModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/models/updateOrderModel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/Salesmanjor/updateOrder.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/Salesmanjor/updateOrder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/views/Salesmanjor/components/nav.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/Salesmanjor/components/nav.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/views/Salesmanjor/createOrder.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/Salesmanjor/createOrder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/views/Salesmanjor/forms/create-order-form-one.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/Salesmanjor/forms/create-order-form-one.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/views/Salesmanjor/forms/create-order-form-two.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/Salesmanjor/forms/create-order-form-two.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/views/Salesmanjor/forms/popupTemplateSelect.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/Salesmanjor/forms/popupTemplateSelect.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/views/dashboard.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/dashboard.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/assets/css/Form.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/Form.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/popup-window-form.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/popup-window-form.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/js/salesmanager-updateOrder.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/js/salesmanager-updateOrder.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/css/salesmanjor-css/card-template.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/salesmanjor-css/card-template.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/js/js-chart/on_load_charts.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/js/js-chart/on_load_charts.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/assets/js/salesmanjor-js/createOrder.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/js/salesmanjor-js/createOrder.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -46,22 +63,22 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/application/views/Salesmanjor/forms" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Richway-garment-system-feature-owner-dashboard" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\xampp\htdocs\Richway-garment-system\application\views\Salesmanjor\forms" />
-      <recent name="C:\xampp\htdocs\Richway-garment-system\application\views\Salesmanjor" />
-      <recent name="C:\xampp\htdocs\Richway-garment-system\public\assets\js\salesmanjor-js" />
-      <recent name="C:\xampp\htdocs\Richway-garment-system\public\assets\img" />
-      <recent name="C:\xampp\htdocs\Richway-garment-system\application\views\stock" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\xampp\htdocs\Richway-garment-system\public\assets\css" />
       <recent name="C:\xampp\htdocs\Richway-garment-system\application\views\stock" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\Richway-garment-system\application\controllers" />
+      <recent name="C:\xampp\htdocs\Richway-garment-system\application\models" />
+      <recent name="C:\xampp\htdocs\Richway-garment-system\application\views\Salesmanjor\forms" />
+      <recent name="C:\xampp\htdocs\Richway-garment-system\application\views\Salesmanjor" />
+      <recent name="C:\xampp\htdocs\Richway-garment-system\public\assets\js\salesmanjor-js" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -88,6 +105,14 @@
       <workItem from="1612843236521" duration="39076000" />
       <workItem from="1612931872368" duration="31596000" />
       <workItem from="1613014678077" duration="16504000" />
+      <workItem from="1616388310070" duration="32961000" />
+      <workItem from="1616471936064" duration="34691000" />
+      <workItem from="1616565460828" duration="17461000" />
+      <workItem from="1616646890202" duration="28482000" />
+      <workItem from="1616737530595" duration="26962000" />
+      <workItem from="1616833400533" duration="5312000" />
+      <workItem from="1616846076473" duration="4402000" />
+      <workItem from="1616861364458" duration="4655000" />
     </task>
     <task id="LOCAL-00001" summary="manage stock css updated">
       <created>1605852511911</created>
@@ -147,50 +172,34 @@
     <option name="LAST_COMMIT_MESSAGE" value="add customer form validation updated using jquery validator plugging .&#10;create order form validation updated using jquery." />
   </component>
   <component name="WindowStateProjectService">
-    <state x="413" y="110" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1606631206565">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state x="413" y="110" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1366.728@0.0.1366.728" timestamp="1606631206565" />
     <state x="256" y="0" width="827" height="523" key="CommitChangelistDialog2" timestamp="1613038610077">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="256" y="0" width="827" height="523" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1613038610077" />
-    <state x="463" y="105" key="FileChooserDialogImpl" timestamp="1608735657535">
+    <state x="463" y="105" key="FileChooserDialogImpl" timestamp="1616853119669">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="463" y="105" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1608735657535" />
-    <state x="0" y="55" width="1366" height="619" key="MergeDialog" timestamp="1605770449584">
+    <state x="463" y="105" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1616853119669" />
+    <state x="423" y="86" key="NewPhpClassDialog" timestamp="1616595628416">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="0" y="55" width="1366" height="619" key="MergeDialog/0.0.1366.728@0.0.1366.728" timestamp="1605770449584" />
-    <state x="321" y="125" key="MultipleFileMergeDialog" timestamp="1605770463828">
+    <state x="423" y="86" key="NewPhpClassDialog/0.0.1366.728@0.0.1366.728" timestamp="1616595628416" />
+    <state x="517" y="287" key="NewPhpFileDialog" timestamp="1616417530683">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="321" y="125" key="MultipleFileMergeDialog/0.0.1366.728@0.0.1366.728" timestamp="1605770463828" />
-    <state x="517" y="287" key="NewPhpFileDialog" timestamp="1605799284734">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state x="517" y="287" key="NewPhpFileDialog/0.0.1366.728@0.0.1366.728" timestamp="1605799284734" />
+    <state x="517" y="287" key="NewPhpFileDialog/0.0.1366.728@0.0.1366.728" timestamp="1616417530683" />
     <state x="275" y="96" key="Vcs.Push.Dialog.v2" timestamp="1612887496372">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="275" y="96" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1612887496372" />
-    <state x="0" y="0" width="587" height="728" key="find.popup" timestamp="1605775235792">
+    <state x="389" y="97" width="587" height="534" key="find.popup" timestamp="1616330071342">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="0" y="0" width="587" height="728" key="find.popup/0.0.1366.728@0.0.1366.728" timestamp="1605775235792" />
-    <state x="463" y="76" key="git4idea.branch.GitSmartOperationDialog" timestamp="1608003719083">
+    <state x="389" y="97" width="587" height="534" key="find.popup/0.0.1366.728@0.0.1366.728" timestamp="1616330071342" />
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1616653245804">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="463" y="76" key="git4idea.branch.GitSmartOperationDialog/0.0.1366.728@0.0.1366.728" timestamp="1608003719083" />
-    <state x="470" y="262" key="git4idea.ui.GitStashDialog" timestamp="1605770057591">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state x="470" y="262" key="git4idea.ui.GitStashDialog/0.0.1366.728@0.0.1366.728" timestamp="1605770057591" />
-    <state x="339" y="162" key="run.anything.popup" timestamp="1606713526954">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state x="339" y="162" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1606713526954" />
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1616653245804" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

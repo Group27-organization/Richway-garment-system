@@ -14,12 +14,12 @@
             <div class="model-footer" id="rawmaterial-error">
                 <h5>* Something  to assign!</h5>
             </div>
-            <div class="bottom-row2" >
-                <div class="BtnWap2">
-                    <button type="button" id="closeTemplatePopup" class="model-btn2 cripple close" >Close</button>
-                    <button id="addTemplateBtn" class="model-btn cripple cripple" onclick="addTemplate()" >Add</button>
-                </div>
-            </div>
+<!--            <div class="bottom-row2" >-->
+<!--                <div class="BtnWap2">-->
+<!--                    <button type="button" id="closeTemplatePopup" class="model-btn2 cripple close" >Close</button>-->
+<!--                    <button id="addTemplateBtn" class="model-btn cripple cripple" onclick="addTemplate()" >Add</button>-->
+<!--                </div>-->
+<!--            </div>-->
         </div>
     </div><!--    modal-contents-->
 </div><!--bg-modal-->

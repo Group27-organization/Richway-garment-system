@@ -2,6 +2,37 @@ const errorCheck = {itemType: 0, collarSize: 0, templateSelect: 0,fabricDesign: 
 
 $(document).ready(function () {
 
+    //notification
+    // $("#CIN").on('click',function(){
+
+    setInterval(function() {
+            console.log("called after 100 ");
+            $.ajax({
+                type: 'POST',
+                url: "http://localhost/Richway-garment-system/createOrderController/getNotificationCount",
+                data: {   key: "notifycount"},
+                success: function(data){
+                    document.getElementById('notifycount').innerText=parseInt(data);
+                    console.log("called after time ");
+                     console.log("data:"+data);
+                    // alert(data);
+                },
+                error       : function() {
+                    console.log("error");
+                }
+            });
+        }, 50000);
+
+
+
+
+
+    // });
+
+
+
+
+
     $("#createOrderForm2").hide();
     $("#bucketTable").hide();
     $(".error").hide();
@@ -9,6 +40,13 @@ $(document).ready(function () {
     $("#ButtonDesignDiv").hide();
     $("label[for='TemplateDescription']").text("");
     $("#CollarSize").prop("disabled", true);
+
+    $('#customerGiveDateDive').hide();
+    $('#generateOrderStatusDiv').hide();
+
+
+
+
 
     //****************************************create order form one *************************************************//
 
@@ -56,7 +94,7 @@ $(document).ready(function () {
 
             $.ajax({
                 type: 'POST',
-                url: "http://localhost/Richway-garment-system/createOrderController/templateCardGenarator",
+                url: "http://localhost/Richway-garment-system/createOrderController/templateCardGenarator2",
                 data: { Type: Type,   key: "PredefinePopup"},
                 success: function(data){
 
@@ -304,147 +342,12 @@ $(document).ready(function () {
 
 
 
-        // if($('#ItemType option:selected').val()=="0"){
-        //     $("label[for='IT']").show();
-        // }else{
-        //     if(CollarSize=="0"){
-        //         $("label[for='CS']").show();
-        //     }else{
-        //         if(Number.isInteger(PredefineId) == false){
-        //             $("label[for='CT']").show();
-        //         }else{
-        //             if(Number.isInteger(FabricDesignID) == false){
-        //                 $("label[for='FDC']").show();
-        //             }else{
-        //                 if(isbuttonInclude=='yes'){
-        //                     if(Number.isInteger(ButtonDesignID) == false){
-        //                         $("label[for='BDC']").show();
-        //                     }else{
-        //                         if(Number.isInteger(Quantity)==false){
-        //                             $("label[for='Q']").show();
-        //                         }else{
-        //
-        //                             /*******************************************************/
-        //                             count =count+1;
-        //                             alert("Item "+count+"Added!");
-        //                             $("label[for='TemplateDescription']").text("");
-        //
-        //                             $("#orderItemQuantity").val("");
-        //
-        //                             $('html, body').animate({
-        //                                 scrollTop: $("#right").offset().top   //id of div to be scrolled
-        //                             }, 1);
-        //
-        //
-        //                             $("#cardP").append("<a href=\"#\">"+ItemType+" "+count+"</a> <span class=\"price\">"+Quantity+"</span><br>");
-        //                             $("label[for='ItemCountCard']").text(count);
-        //                             countQuantity =countQuantity+parseInt(Quantity);
-        //                             $("label[for='ItemQuantityCount']").text(countQuantity);
-        //
-        //
-        //                             $('#addItemBucketTable tbody tr:last').after(
-        //
-        //                                 '<tr data-label="Pending Approval">' +
-        //                                 '<td data-label="" style="display: none">'+PredefineId+'</td>' +
-        //                                 '<td data-label=""><img src='+Template+'  style="width: 100px; height:100px; text-align:center;"/></td>' +
-        //                                 '<td data-label="" >'+CollarSize+'</td>' +
-        //                                 '<td data-label=""  style="display: none">'+FabricDesignID+'</td>' +
-        //                                 '<td data-label="" ><img src='+FabricDesignImage+'  style="width: 100px; height:100px; text-align:center;"/></td>' +
-        //                                 '<td data-label="" >'+FabricDesignCode+'</td>' +
-        //                                 '<td data-label="" style="display: none">'+ButtonDesignID+'</td>' +
-        //                                 '<td data-label="" >'+Quantity+'</td>' +
-        //                                 '<td><div class="table__button-group">' +
-        //                                 '<a href="#" class="viewBtn"style="margin: 2px;color: #00B4CC">View  |</a>' +
-        //                                 '<a href="#" class="viewBtn" style="margin: 2px;color: salmon" ;">Edit  |</a>' +
-        //                                 '<a href="#" style="margin: 2px; color: red;" onclick="productDelete(this);">Delete</a>' +
-        //                                 '</div></td>'+
-        //                                 '</tr>\n'
-        //                             );
-        //                             console.log("P2 :"+PredefineId);
-        //                             console.log("F2 :"+FabricDesignID);
-        //                             console.log("B2 :"+ButtonDesignID);
-        //                             $('input[type=text]').val('');
-        //                             $('[name=options] option').filter(function() {
-        //                                 return ($(this).text() == '--SELECT--'); //To select Blue
-        //                             }).prop('selected', true);
-        //                             PredefineId = 0;
-        //                             $("#CollarSize").prop("disabled", true);
-        //                             FabricDesignCode="--SELECT--";
-        //
-        //                             $(".error").hide();
-        //
-        //
-        //                         }
-        //                     }
-        //
-        //                 }else{
-        //                     if(Number.isInteger(Quantity)==false){
-        //                         $("label[for='Q']").show();
-        //                     }else{
-        //
-        //                         /*******************************************************/
-        //                         count =count+1;
-        //                         alert("Item "+count+"Added!");
-        //                         $("label[for='TemplateDescription']").text("");
-        //
-        //                         $("#orderItemQuantity").val("");
-        //
-        //                         $('html, body').animate({
-        //                             scrollTop: $("#right").offset().top   //id of div to be scrolled
-        //                         }, 1);
-        //
-        //
-        //                         $("#cardP").append("<a href=\"#\">"+ItemType+" "+count+"</a> <span class=\"price\">"+Quantity+"</span><br>");
-        //                         $("label[for='ItemCountCard']").text(count);
-        //                         countQuantity =countQuantity+parseInt(Quantity);
-        //                         $("label[for='ItemQuantityCount']").text(countQuantity);
-        //
-        //
-        //                         $('#addItemBucketTable tbody tr:last').after(
-        //
-        //                             '<tr data-label="Pending Approval">' +
-        //                             '<td data-label="" style="display: none">'+PredefineId+'</td>' +
-        //                             '<td data-label=""><img src='+Template+'  style="width: 100px; height:100px; text-align:center;"/></td>' +
-        //                             '<td data-label="" >'+CollarSize+'</td>' +
-        //                             '<td data-label=""  style="display: none">'+FabricDesignID+'</td>' +
-        //                             '<td data-label="" ><img src='+FabricDesignImage+'  style="width: 100px; height:100px; text-align:center;"/></td>' +
-        //                             '<td data-label="" >'+FabricDesignCode+'</td>' +
-        //                             '<td data-label="" style="display: none">'+ButtonDesignID+'</td>' +
-        //                             '<td data-label="" >'+Quantity+'</td>' +
-        //                             '<td><div class="table__button-group">' +
-        //                             '<a href="#" class="viewBtn"style="margin: 2px;color: #00B4CC">View  |</a>' +
-        //                             '<a href="#" class="viewBtn" style="margin: 2px;color: salmon" ;">Edit  |</a>' +
-        //                             '<a href="#" style="margin: 2px; color: red;" onclick="productDelete(this);">Delete</a>' +
-        //                             '</div></td>'+
-        //                             '</tr>\n'
-        //                         );
-        //                         console.log("P2 :"+PredefineId);
-        //                         console.log("F2 :"+FabricDesignID);
-        //                         console.log("B2 :"+ButtonDesignID);
-        //                         $('input[type=text]').val('');
-        //                         $('[name=options] option').filter(function() {
-        //                             return ($(this).text() == '--SELECT--'); //To select Blue
-        //                         }).prop('selected', true);
-        //                         PredefineId = 0;
-        //                         $("#CollarSize").prop("disabled", true);
-        //                         FabricDesignCode="--SELECT--";
-        //
-        //                         $(".error").hide();
-        //
-        //
-        //                     }
-        //
-        //                 }
-        //             }
-        //         }
-        //     }
-        // }
 
 
 
 
     });
-
+//go to step 2
     $("#nextBtnf1").click(function(){
         console.log("count is :::"+count);
         if(count==0){
@@ -461,6 +364,9 @@ $(document).ready(function () {
         }
 
     });
+
+
+//step 2
 
     $("#itemTableNextTbn").click(function(){
        // console.log("Item table button cllickd");
@@ -508,19 +414,57 @@ $(document).ready(function () {
     });
 
 
-    $("#NewCustomerBtn").click(function(){
-        $('html, body').animate({
-            scrollTop: $("#right").offset().top   //id of div to be scrolled
-        }, 1);
 
-        document.querySelector('#newCustomerForm').style.display = "flex";
-        document.querySelector('body').style.overflow = "hidden !important";
-    });
 
     $(".close").click(function(){
         document.querySelector('.model-footer').style.display = "none";
         document.querySelector('.bg-modal').style.display = "none";
         document.querySelector('body').style.overflow = "auto";
+    });
+
+//step 3
+    //**************************selectOrderDueDateType**************************************//
+
+//back to step 2
+    $("#backstep2").click(function(){
+        $("#createOrderForm2").hide();
+        $("#header-gradant-form").hide();
+        $("#bucketTable").show();
+    });
+
+
+    $( ".selectOrderDueDateType" ).on( "change", function() {
+
+        if($( "input:checked" ).val() == "normal" ){
+            $('#customerGiveDateDive').hide();
+            $('#customerNotGiveDateDive').show();
+            $('#generateOrderStatusDiv').hide();
+
+            $("label[for='OS']").hide();
+            $("label[for='TP']").hide();
+            $("label[for='EA']").hide();
+            $("label[for='DD']").hide();
+            $("label[for='AC']").hide();
+            $("label[for='OD']").hide();
+            $("label[for='GeneratedOrderStatus']").text("");
+            $("label[for='EstimateTotalPrice']").text("");
+            $("label[for='EstimateAdvance']").text("");
+
+
+        }else{
+            $('#customerNotGiveDateDive').hide();
+            $('#customerGiveDateDive').show();
+            $('#generateOrderStatusDiv').show();
+            $("label[for='GeneratedDueDate']").text("");
+            $("label[for='OS']").hide();
+            $("label[for='TP']").hide();
+            $("label[for='EA']").hide();
+            $("label[for='DD']").hide();
+            $("label[for='AC']").hide();
+            $("label[for='OD']").hide();
+            $("label[for='EstimateTotalPrice']").text("");
+            $("label[for='EstimateAdvance']").text("");
+        }
     });
 
 
@@ -548,13 +492,18 @@ $(document).ready(function () {
 
 
 
-    $(".close").click(function () {
-      //  console.log("customerCloseBtn")
-        $('#newCustomerForm input[type=text]').val('');
-        document.querySelector('.bg-modal').style.display = "none";
-        document.querySelector('body').style.overflow = "auto";
-    });
 
+//dynamic validation
+
+    $("#customerGiveDate").on("change paste keyup", function() {
+        console.log("customer due date select :"+$(this).val());
+        let x =$(this).val();
+        if($(this).val()){
+            $("label[for='CD']").hide();
+        }else{
+
+        }
+    });
 
     $("#OrderName").change(function () {
 
@@ -590,29 +539,353 @@ $(document).ready(function () {
 
 
     $("#customer").change(function () {
-
-
         if(typeof $('#customer option:selected').data('value') === 'undefined'){
             $("label[for='AC']").show();
             console.log("customer id :undifine");
         }else{
-
             $("label[for='AC']").hide();
         }
     });
 
-    $("#saveOrder").click(function () {
+    $("#customer").select2({
+        templateResult: formatOptions2
+    });
+
+
+    //cancel order****************************************
+
+    $('#generateNormalDueDate').click( function() {
+        console.log("grnarated normal due date button called");
+        let rate =1;
+        let flag=1;
+        if($("input[name='dateType']:checked").val()=="normal"){
+            console.log(" normal clicked");
+            let flag=1;
+        }else{
+            console.log("customer clicked");
+            let status_percentage=$("label[for='GeneratedOrderStatus']").html();
+            if(status_percentage =="extra_line"){
+                 rate =1.20;
+
+            }else if(status_percentage=="optimize"){
+                rate =1.50;
+            }else if(status_percentage="overflow"){
+                flag=0;
+                rate=0;
+            }
+        }
+
+        console.log("befor flag");
+        if(flag==1){
+            console.log("flag 1 called");
+            let table = $("#addItemBucketTable table > tbody ");
+            let jsonArr = [];
+
+            table.find('tr').each(function (i) {
+                var $tds = $(this).find('td'),
+                    PredefineId = $tds.eq(0).text(),
+                    FabricDesignID = $tds.eq(3).text(),
+                    ButtonDesignID = $tds.eq(6).text(),
+                    q = $tds.eq(7).text();
+
+                var feed = {PreId: parseInt(PredefineId.trim()), FabricID: parseInt(FabricDesignID.trim()), ButtonID: parseInt(ButtonDesignID.trim()), Quantity: parseInt(q.trim())};
+                if(i>0){
+                    jsonArr.push(feed);
+                }
+            });
+
+            let abc = JSON.stringify(jsonArr);
+            console.log("myJSON :"+abc);
+            console.log( jsonArr.length);
+
+            let x =[{
+                ButtonID: 2,
+                FabricID: 20,
+                PreId: 1,
+                Quantity: 1000
+            }, {
+                ButtonID: 2,
+                FabricID: 20,
+                PreId: 1,
+                Quantity: 2000
+            }];
+
+            $.ajax({
+                type: 'POST',
+                url: "http://localhost/Richway-garment-system/createOrderController/priceCalculate",
+                data: {  dataArr:jsonArr, Arrlength:jsonArr.length, rate:rate, key: "priceCal"},
+                success: function(data){
+
+                    $("label[for='EstimateTotalPrice']").text(data);
+                    $("label[for='EstimateAdvance']").text(parseFloat(data)/2);
+                    console.log(data);
+
+                    },
+                error       : function() {
+                    console.log("error");
+                }
+            });
+
+        }
+
+
+
+    });
+//customer give due date
+    $('#GeneratedOrderStatusBtn').click( function() {
+        let due_date="";
+        if($("input[name='dateType']:checked").val()=="normal"){
+            let x = $("label[for='GeneratedDueDate']").html();
+            due_date =x.substring(0, 10);
+        }else{
+            let x = $("#customerGiveDate").val();
+            due_date =x.substring(0, 10);
+        }
+
+
+        let table2 = $("#addItemBucketTable table > tbody ");
+        let jsonArr3 = [];
+
+        table2.find('tr').each(function (i) {
+            var $tds = $(this).find('td'),
+                PredefineId = $tds.eq(0).text(),
+                quantity = $tds.eq(7).text();
+
+            var feed = {PreId: parseInt(PredefineId.trim()), Quantity: parseInt(quantity.trim())};
+            if(i>0){
+                jsonArr3.push(feed);
+            }
+        });
+
+        let s = JSON.stringify(jsonArr3);
+        console.log("jsonArr3 :"+s);
+
+        let checkStatusArr={
+            "order":jsonArr3,
+            "cus_date":due_date
+        };
+
+        let SJson = JSON.stringify(checkStatusArr);
+        console.log("checkStatusArr :"+SJson);
+
+        let rate =1;
+        let flag=1;
+        if($("input[name='dateType']:checked").val()=="normal"){
+            flag=1;
+        }else{
+            let status_percentage=$("label[for='GeneratedOrderStatus']").html();
+                if(status_percentage =="extra_line"){
+                    rate =1.20;
+                }else if(status_percentage=="optimize"){
+                    rate =1.50;
+                }else if(status_percentage=="overflow"){
+                    flag=0;
+                    rate=0;
+                }
+        }
+        console.log("select customer date befor flag :"+flag);
+
+        if(flag==1){
+            console.log("select customer date after");
+
+            let table = $("#addItemBucketTable table > tbody ");
+            let jsonArr = [];
+
+            table.find('tr').each(function (i) {
+                let $tds = $(this).find('td'),
+                    PredefineId = $tds.eq(0).text(),
+                    FabricDesignID = $tds.eq(3).text(),
+                    ButtonDesignID = $tds.eq(6).text(),
+                    q = $tds.eq(7).text();
+
+                let feed = {PreId: parseInt(PredefineId.trim()), FabricID: parseInt(FabricDesignID.trim()), ButtonID: parseInt(ButtonDesignID.trim()), Quantity: parseInt(q.trim())};
+                if(i>0){
+                    jsonArr.push(feed);
+                }
+            });
+            let ddd = JSON.stringify(jsonArr);
+            console.log("Customer give date JSON :"+ddd);
+            console.log("length is :"+jsonArr.length);
+
+
+            let x =[{
+                ButtonID: 2,
+                FabricID: 20,
+                PreId: 1,
+                Quantity: 1000
+            }, {
+                ButtonID: 2,
+                FabricID: 20,
+                PreId: 1,
+                Quantity: 2000
+            }];
+
+            $.ajax({
+                type: 'POST',
+                url: "http://localhost/Richway-garment-system/createOrderController/priceCalculate",
+                data: {  dataArr:jsonArr, Arrlength:jsonArr.length, rate:rate, key: "priceCal"},
+                success: function(data){
+
+                    $("label[for='EstimateTotalPrice']").text(data);
+                    $("label[for='EstimateAdvance']").text(parseFloat(data)/2);
+                    console.log(data);
+
+                },
+                error       : function() {
+                    console.log("error");
+                }
+            });
+
+        }
+
+
+
+
+    });
+
+
+
+
+    $('#makeInvoiceBtn').click( function() {
 
         let orderArray;
         let order_description =$("#OrderName").val();
-        let order_status =$('#OrderStatus option:selected').val();
-        let order_due_date =$("#DueDate").val();
+        let order_status ="";
+        let order_due_date ="";
+
+
+        if($("input[name='dateType']:checked").val()=="normal"){
+            order_status ="normal";
+            order_due_date = $("label[for='GeneratedDueDate']").html().substring(0, 9);
+        }else{
+            order_status = $("label[for='GeneratedOrderStatus']").html();
+            order_due_date = $("#customerGiveDate").val().substring(0, 9);
+        }
+        console.log("order_due_date :"+order_due_date);
+        console.log("order_status :"+order_status);
+
+
         // let estimate_time =$("label[for='EstimateTime']").html();
         // let order_price =$("label[for='EstimateTotalPrice']").html();
         // let advance_price =$("label[for='EstimateAdvance']").html();
         let estimate_time =0;
         let order_price =0;
         let advance_price =0;
+        let customer_ID =$('#customer option:selected').data('value');
+
+        if(order_status==""){
+            $("label[for='OS']").show();
+            $("label[for='TP']").show();
+            $("label[for='EA']").show();
+
+        }if(order_due_date == ""){
+            $("label[for='DD']").show();
+            $("label[for='TP']").show();
+            $("label[for='EA']").show();
+
+        }if(typeof $('#customer option:selected').data('value') === 'undefined'){
+            $("label[for='AC']").show();
+        }if(order_description==""){
+            $("label[for='OD']").show();
+        }
+        else if(order_status!="" && order_due_date != "" && order_description!="" && typeof $('#customer option:selected').data('value') !== 'undefined') {
+
+            $('#saveToOrder').hide();
+            let x = document.getElementById("invoiceID");
+            if (x.style.display === "none") {
+                x.style.display = "block";
+            }
+            let y = document.getElementById("lastbuttoncupple");
+            if (y.style.display === "none") {
+                y.style.display = "block";
+            }
+
+            let totalprice=100;
+            let paidamount=20;
+            $.ajax({
+                type: 'POST',
+                url: "http://localhost/Richway-garment-system/createOrderController/genarateInvoice2",
+                data: { TotalAmount: totalprice,amountPaid:paidamount, key: "Invoice2"},
+                success: function(data){
+                    $("#invoiceID").html(data);
+
+                },
+                error       : function() {
+                    console.log("error");
+                }
+            });
+
+        }
+    });
+
+    $('#InvoicePopbtn').click( function() {
+
+        let totalprice=100;
+        let paidamount=20;
+        $.ajax({
+            type: 'POST',
+            url: "http://localhost/Richway-garment-system/createOrderController/genarateInvoice2",
+            data: { TotalAmount: totalprice,amountPaid:paidamount, key: "Invoice2"},
+            success: function(data){
+                $("#invoiceID").html(data);
+                // console.log(data);
+
+
+
+
+            },
+            error       : function() {
+                console.log("error");
+            }
+        });
+
+    });
+
+//step 4
+
+    $('#backtoStep3').click( function() {
+        $('#saveToOrder').show();
+        $('#invoiceID').hide();
+        $('#lastbuttoncupple').hide();
+
+
+
+    });
+    $('#stp4Cancelbtn').click( function() {
+        window.location.href = "http://localhost/Richway-garment-system/createOrderController/createOrder"
+
+
+
+
+    });
+
+
+    $("#saveOrder").click(function () {
+
+        let orderArray;
+        let order_description =$("#OrderName").val();
+
+        let order_status ="";
+        let order_due_date ="";
+
+
+        if($("input[name='dateType']:checked").val()=="normal"){
+            order_status ="normal";
+            order_due_date = $("label[for='GeneratedDueDate']").html().substring(0, 9);
+        }else{
+            order_status = $("label[for='GeneratedOrderStatus']").html();
+            order_due_date = $("#customerGiveDate").val().substring(0, 9);
+        }
+        console.log("order_due_date :"+order_due_date);
+        console.log("order_status :"+order_status);
+
+
+        // let estimate_time =$("label[for='EstimateTime']").html();
+        // let order_price =$("label[for='EstimateTotalPrice']").html();
+        // let advance_price =$("label[for='EstimateAdvance']").html();
+        let estimate_time =0;
+        let order_price =$("label[for='EstimateTotalPrice']").html();;
+        let advance_price =$("label[for='EstimateAdvance']").html();;
         let customer_ID =$('#customer option:selected').data('value');
 
         // if(typeof $('#selectcustomerdop option:selected').data('value') === 'undefined'){
@@ -625,17 +898,23 @@ $(document).ready(function () {
         console.log("selectcustomerdopdown >>>>>>:"+customer_ID);
         // let customer_ID =parseInt($("label[for='customerLabel']").html());
 
-        if(order_description=="" ){
-            $("label[for='OD']").show();
-        }if(order_due_date == "" ){
+        if(order_status==""){
+            $("label[for='OS']").show();
+            $("label[for='TP']").show();
+            $("label[for='EA']").show();
+
+        }if(order_due_date == ""){
             $("label[for='DD']").show();
-        }
-        if(typeof $('#customer option:selected').data('value') === 'undefined'){
+            $("label[for='TP']").show();
+            $("label[for='EA']").show();
+
+        }if(typeof $('#customer option:selected').data('value') === 'undefined'){
             $("label[for='AC']").show();
-
+        }if(order_description==""){
+            $("label[for='OD']").show();
         }
+        else if(order_status!="" && order_due_date != "" && order_description!="" && typeof $('#customer option:selected').data('value') !== 'undefined') {
 
-        else {
             // order_ID
             // order_description
             // order_status
@@ -646,7 +925,7 @@ $(document).ready(function () {
             // sales_manager_ID
             // customer_ID
             let orderItemList= [];
-             orderArray =[order_description,"start",order_due_date,parseInt(110),parseInt(500),parseInt(250), parseInt(0),customer_ID];
+             orderArray =[order_description,"start",order_due_date,parseInt(110),parseInt(order_price),parseInt(advance_price), parseInt(0),customer_ID];
 
             let i =0;
              $("#addItemBucketTable table > tbody > tr").each(function () {
@@ -756,17 +1035,10 @@ function assignCustomer() {
 }
 
 
-function selectedCard(ctl){
 
-    $(".choice").removeClass("choice");
-    $(ctl).toggleClass("choice");
-
-
-
-}
 let imgurltemp ="";
 let isbuttonInclude='no';
-function addTemplate() {
+function addTemplateOLD() {
 
     $("#fabricdesigncode").select2("val", "");
     $("#buttondesigncode").select2("val", "");
@@ -830,17 +1102,102 @@ function addTemplate() {
 
     }
 }
+
+function selectedCard(ctl){
+
+    $(".choice").removeClass("choice");
+    $(ctl).toggleClass("choice");
+
+
+
+}
+
+function addTemplate(ctl) {
+
+    $(".choice").removeClass("choice");
+    $(ctl).toggleClass("choice");
+
+    $("#fabricdesigncode").select2("val", "");
+    $("#buttondesigncode").select2("val", "");
+    errorCheck['templateSelect']=1;
+    $("label[for='templateSelect']").hide();
+
+    if($(".option-card").hasClass("choice")){
+        let id =0;
+        let type="";
+        let description="";
+
+
+        $(".choice .selectedDescription").each(function() {
+            description =$(this).val();
+            console.log("description  :"+description);
+
+
+        });
+        $(".choice .template-type").each(function() {
+            type =$(this).val();
+
+
+        });
+
+        $(".choice .preID").each(function() {
+            id =$(this).val();
+            console.log("preID  :"+id);
+
+        });
+        $(".choice .pImageURL").each(function() {
+            imgurltemp =$(this).val();
+            console.log("select image  :"+imgurltemp);
+
+        });
+        // $("label[for='ChooseTemplate']").text(id);
+        $("#ChooseTemplate").val(id);
+        $.ajax({
+            type: 'POST',
+            url: "http://localhost/Richway-garment-system/createOrderController/isbuttoninpredefineCheck",
+            data: { table:type, predefineId: id,  key: "numberofbuttoncheck"},
+            success: function(data){
+
+                // console.log("numberofbuttoncheck  :"+data);
+                if(data>0){
+                    errorCheck['fabricDesign']=0;
+                    errorCheck['buttonDesign']=0;
+                    $("#ButtonDesignDiv").show();
+                    $("label[for='buttonDesign']").show();
+
+                    isbuttonInclude ='yes';
+                    console.log("isbuttonInclude :"+isbuttonInclude);
+                }else{
+                    errorCheck['fabricDesign']=0;
+                    errorCheck['buttonDesign']=1;
+                    isbuttonInclude ='no';
+                    $("#ButtonDesignDiv").hide();
+                }
+            },
+            error       : function() {
+                console.log("error");
+            }
+        });
+
+        $("label[for='TemplateDescription']").text(description);
+        document.querySelector('#PredefineModel').style.display = "none";
+        document.querySelector('body').style.overflow = "auto";
+    }else{
+
+    }
+}
+
+
+
+
 function closeModel() {
     document.querySelector('#PredefineModel').style.display = "none";
     document.querySelector('body').style.overflow = "auto";
 }
 
-function closeNewCutomerPopup() {
-    document.querySelector('#newCustomerForm').style.display = "none";
-    document.querySelector('body').style.overflow = "auto";
-}
+
 function IsEmail(email) {
-    var regex = /^([a-zA-Z0-9_\.\-\+])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+    let regex = /^([a-zA-Z0-9_\.\-\+])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
     if(!regex.test(email)) {
         return false;
     }else{
@@ -849,7 +1206,7 @@ function IsEmail(email) {
 }
 
 function IsName(name) {
-    var regex = /^(([A-Za-z]+[\-\']?)*([A-Za-z]+)?\s)+([A-Za-z]+[\-\']?)*([A-Za-z]+)?$/;
+    let regex = /^(([A-Za-z]+[\-\']?)*([A-Za-z]+)?\s)+([A-Za-z]+[\-\']?)*([A-Za-z]+)?$/;
     if(!regex.test(name)) {
         return false;
     }else{
@@ -895,4 +1252,56 @@ function formatOptions2 (state) {
     // }
 
     return $state;
+}
+
+
+function selectPID(evt,pid,desc) {
+
+    if(evt != null){
+
+        document.getElementById('Select_Design_Category').value = "PID" + pid + " - " + desc;
+
+        document.querySelector('.bg-modal').style.display = "none";
+        document.querySelector('body').style.overflowY = "auto";
+
+        let tmphtml = " <option value=\"\" disabled selected>Select Size</option>";
+        let arr = sizes.split(',');
+        arr.forEach(function(item) {
+            tmphtml += "<option value=\"?\">?</option>".replaceAll("?",item);
+        });
+
+        console.log(tmphtml);
+        document.getElementById('size').innerHTML = tmphtml;
+
+    }
+
+}
+
+
+
+function printdiv(printpage)
+{
+
+    document.querySelector('.invoTop').style.display = "none";
+    var headstr = "<html><head><title></title></head><body>";
+    var footstr = "</body>";
+    var newstr = document.all.item(printpage).innerHTML;
+    var oldstr = document.body.innerHTML;
+    document.body.innerHTML = headstr+newstr+footstr;
+    window.print();
+    document.body.innerHTML = oldstr;
+    return false;
+}
+
+function PrintDive()
+{
+
+    var divContents = document.getElementById("invoiceID").innerHTML;
+    var printWindow = window.open('', '', 'height=1000,width=800');
+    printWindow.document.write('<html><head><title></title>');
+    printWindow.document.write('</head><body >');
+    printWindow.document.write(divContents);
+    printWindow.document.write('</body></html>');
+    printWindow.document.close();
+    printWindow.print();
 }

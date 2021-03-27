@@ -1,7 +1,7 @@
 <?php
 
 
-class createOrderModel extends database{
+class orderCreateModel extends database{
 
     public function getPredefineItemType(){
         if($this->Query("SELECT DISTINCT type FROM predefine")){
@@ -18,7 +18,7 @@ class createOrderModel extends database{
     public function getPredifineCard($type){
 
         if($this->Query("SELECT  * FROM predefine where type=? ",[$type])){
-                return $this->fetchall();
+            return $this->fetchall();
         }
     }
     public function loadDesignTemplateData($type){
@@ -76,14 +76,14 @@ class createOrderModel extends database{
     }
 
 
-        // ["M","1","1","123","0","1"]
-            //order_item_ID
-            //fabric_ID
-            //button_ID
-            //nool_ID
-            //quantity
-            //order_ID
-            //p_ID
+    // ["M","1","1","123","0","1"]
+    //order_item_ID
+    //fabric_ID
+    //button_ID
+    //nool_ID
+    //quantity
+    //order_ID
+    //p_ID
 
     public function orderItemAdd($orderItemArray){
         if($this->Query("INSERT INTO order_item ( size,fabric_ID,button_ID , quantity, order_ID, p_ID) VALUES (?,?,?,?,?,?)",$orderItemArray)){
@@ -118,44 +118,83 @@ class createOrderModel extends database{
 
     public function getFabricUnitPrice($fId){
         if($this->Query("SELECT * FROM predefine_fabric WHERE ID =? ",[$fId])){
-                return $this->fetch()->price;
+            return $this->fetch()->price;
         }else{
-                return -1;
+            return -1;
         }
     }
     public function getButtonUnitPrice($bId){
         if($this->Query("SELECT * FROM predefine_button WHERE ID =? ",[$bId])){
-                    return $this->fetch()->price;
+            return $this->fetch()->price;
         }else{
-                    return -1;
+            return -1;
 
         }
     }
 
-   public function getNoolUnitPrice($fId){
-       if($this->Query("SELECT * FROM predefine_nool WHERE fID =? ",[$fId])){
-                   return $this->fetch()->price;
+    public function getNoolUnitPrice($fId){
+        if($this->Query("SELECT * FROM predefine_nool WHERE fID =? ",[$fId])){
+            return $this->fetch()->price;
         }else{
-                   return -1;
+            return -1;
         }
-   }
+    }
 
-   public function predefineRawMaterialsQuantity($predefineType,$pID,$maxsize){
-       if($this->Query("SELECT * FROM shirt  WHERE p_ID=? AND size=? ",[$pID,$maxsize])){
-                return $this->fetch();
-       }else{
+//    public function predefineRawMaterialsQuantity($predefineType,$pID,$maxsize){
+//        if($this->Query("SELECT * FROM shirt  WHERE p_ID=? AND size=? ",[$pID,$maxsize])){
+//            return $this->fetch();
+//        }else{
+//            return -1;
+//        }
+//    }
+    public function predefineRawMaterialsQuantity($predefineType,$pID,$maxsize){
+
+//        echo("<script>console.log('in model 1: " . json_encode($predefineType) . "');</script>");
+//        echo("<script>console.log('in model 2: " . json_encode($pID) . "');</script>");
+//        echo("<script>console.log('in model 3: " . json_encode($maxsize) . "');</script>");
+
+        if($predefineType="shirt"){
+            if($this->Query("SELECT * FROM shirt  WHERE p_ID=? AND size=?",[$pID,$maxsize])){
+                $arr =$this->fetch();
+//                echo("<script>console.log('PHP in loadSupplierTable contoller: " . json_encode($arr) . "');</script>");
+                return $arr;
+            }else{
                 return -1;
-       }
-   }
+            }
+        }elseif ($predefineType="t_shirt"){
 
-   public function getPredifineDetails($pID){
+        }
+
+
+    }
+
+    public function getPredifineDetails($pID){
         if($this->Query("SELECT * FROM predefine WHERE p_ID=? ",[$pID])){
 
-                        return $this->fetch();
-               }else{
-                        return -1;
-               }
-   }
+            return $this->fetch();
+        }else{
+            return -1;
+        }
+    }
+
+    public function getreceiverRole($loginid){
+//        echo("<script>console.log(' model called: " . json_encode($loginid) . "');</script>");
+
+
+        if($this->Query("SELECT title FROM user_role JOIN per_role_login ON per_role_login.role_ID=user_role.role_ID WHERE per_role_login.ID=?", [$loginid]) ){
+            $result =$this->fetch()->title;
+//            echo("<script>console.log('PHP in getreceiverRole model: " . json_encode($result) . "');</script>");
+            return $result;
+        }
+
+    }
+
+    public function getNotificationRecord($receiver_role){
+        if($this->Query("SELECT read_ids FROM notification WHERE status=1 AND reciver_role=?",[$receiver_role]) ){
+            return $this->fetchall();
+        }
+
+    }
 
 
 

@@ -15,7 +15,7 @@
 
 
     <?php linkCSS("assets/css/salesmanger-orderitemtablecard.css") ?>
-    <?php linkCSS("assets/css/salesmanjor-css/card-template.css") ?>
+<!--    --><?php //linkCSS("assets/css/salesmanjor-css/card-template.css") ?>
 
     <?php linkCSS("assets/css/stock/stock-managestock.css") ?>
     <?php linkCSS("assets/css/stock/pop-window-add-raw-matiral-item.css") ?>
@@ -70,8 +70,9 @@
                 <div style="margin-bottom: 40px;max-width: 800px">
                     <ol class="progtrckr" data-progtrckr-steps="5">
                         <li class="progtrckr-done">Order Processing</li>
-                        <li class="progtrckr-done">Selected Order Items</li>
-                        <li class="progtrckr-todo">Order Description</li>
+                        <li class="progtrckr-done">Order Details</li>
+                        <li class="progtrckr-todo">Order Schedule</li>
+                        <li class="progtrckr-todo">Order Invoice</li>
                     </ol>
                 </div>
                 <div class="flex-row-tab">
@@ -94,7 +95,7 @@
                 <!--                table start-->
 
                 <div class="table-responsive"  id="addItemBucketTable" >
-                    <table class="table align-items-center table-flush"  >
+                    <table id="selectItemTable" class="table align-items-center table-flush"  >
                         <thead class="thead-light">
                         <tr>
                             <th scope="col" style="display: none">Template Id</th>
