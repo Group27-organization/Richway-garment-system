@@ -110,7 +110,7 @@ class manageJobController extends framework {
 
 
 
-//[{"order_item_id":122,"quantity":5000,"p_ID":2},{"order_item_id":103,"quantity":2000,"p_ID":1}]
+//{"order":[{"order_item_id":122,"quantity":5000,"p_ID":2},{"order_item_id":103,"quantity":2000,"p_ID":1}],"cus_date":"2021-04-25"}
 
     //Calculate Order Due Date Process
     public function calculateOrderDueDate(){
@@ -118,24 +118,39 @@ class manageJobController extends framework {
         if(isset($_POST['key'])) {
             if ($_POST['key'] == "manageJobData") {
                 $data = $_POST['data'];
-                $ttt = $this->calculateTotalTailoringTime($data);
+                $orderDetails = $data["order"];
+                $ttt = $this->calculateTotalTailoringTime($orderDetails);
                 $returnData = $this->calculateNormalDueDate($ttt);
                 $normalDueDate = date('Y-m-d H:i:s', $returnData[0] );
-               // echo "Normal Due Date Is: ".$ttt." - ".$normalDueDate." ".json_encode($returnData[1]);
-                //echo json_encode($data);
+
+
+                $cus_date = $data["cus_date"];
+                if(!empty($cus_date)){
+                    //make final customer due date
+                    $cus_date_Day = date('D', strtotime($cus_date));
+                    $workingDayData = $this->manageJobModel->getWorkingDayData($cus_date_Day);
+                    $cus_time = $workingDayData->round1_end;
+                    $final_cus_date = date("Y-m-d H:i:s", strtotime("$cus_date $cus_time"));
+
+                    $data = $this->calculateCustomerDueDate($final_cus_date,0, $ttt);
+                    echo "status: ".$data[2]." use line ids: ".json_encode($data[0])." use line final dates: ".json_encode($data[1]);
+                }
+                else{
+                    echo "Normal Due Date Is: ".$normalDueDate." Used Lines: ".json_encode($returnData[1]);
+                }
             }
         }
     }
 
     public function calculateTotalTailoringTime($data){
-        $ttt = 0;
+        $ttt = 0.0;
         foreach ($data as $item ){
             $lph =  $this->manageJobModel->getLPH($item['p_ID']);
             if($lph == 0) continue;
             $ttt += ($item['quantity'] / $lph);
         }
-        $ttt = ($ttt * 60) + (30 * sizeof($data)); //add 30 minutes interval to start the next job
-        return intval(ceil($ttt));
+        $ttt = $ttt * 60.0; //add 30 minutes interval to start the next job
+        return ceil($ttt);
     }
 
 
@@ -145,13 +160,10 @@ class manageJobController extends framework {
         $normalDueDate = $sortedLinesArr[$arrKeys[0]];
         $normalDueDate = date('Y-m-d H:i:s',$normalDueDate);
 
-
+        $orderStartDate = $this->getOrderStartDate($normalDueDate);
         $useLineIDs = [];
-        $line1FinalizeDate = $this->getFinishedDatetimeFromLine($normalDueDate,$ttt);
-        echo date('Y-m-d H:i:s', $line1FinalizeDate);
-        return;
+        $line1FinalizeDate = $this->getFinishedDatetimeFromLine($orderStartDate,$ttt+30);
         array_push($useLineIDs,$arrKeys[0]);
-
         //code use line 2 to 8
         $preFinalizeDate = $line1FinalizeDate;
         $key = 1;
@@ -167,38 +179,119 @@ class manageJobController extends framework {
         return array($preFinalizeDate,$useLineIDs);
     }
 
-    private function recurDueDateCal($key, $arrKeys, $sortedLinesArr, $ttt, $remainMins){
-        $preLineAvilDate = $sortedLinesArr[$arrKeys[$key-1]];
-        $nextLineAvilDate = $sortedLinesArr[$arrKeys[$key]];
-        $nextLineStartDate = $this->getFinishedDatetimeFromLine($nextLineAvilDate,30);
-        $mins = $this->getFinishedTTT($preLineAvilDate, $nextLineStartDate);
-        $mins = $mins * $key;
-        $mins -= 30;
-        $tttVar = $ttt - ($mins + $remainMins);
-        $tttVar = ceil($tttVar/$key+1);
-        $preFinalizeDate = $this->getFinishedDatetimeFromLine($nextLineStartDate, $tttVar);
 
-        if($preFinalizeDate > $sortedLinesArr[$arrKeys[$key+1]]){
-            //recursion
-            $this->recurDueDateCal($key+1, $arrKeys, $sortedLinesArr, $ttt, $mins);
+    public function calculateCustomerDueDate($final_cus_date,$stdLines,$ttt){
+        if($stdLines == 0){
+            $sortedLinesArr = $this->sortAvailableLines();
+            $status = "normal";
         }else{
-            return array($preFinalizeDate,$key);
+            $sortedLinesArr = $this->sortAvailableExtraLines();
+            $status = "Extra Lines";
         }
+        $arrKeys = array_keys($sortedLinesArr);
+        $normalDueDate = $sortedLinesArr[$arrKeys[0]];
+        $normalDueDate = date('Y-m-d H:i:s',$normalDueDate);
 
-        return 0;
+        $orderStartDate = $this->getOrderStartDate($normalDueDate);
+
+        $TP = $this->getFinishedTTT($orderStartDate, strtotime($final_cus_date));
+        $key = 1;
+        $lastLineTTT = 0;
+        static $cus_date_lineIDs = [];
+        static $cus_date_line_final_dates = [];
+        $inLimit = true;
+        while($ttt > $TP){
+            array_push($cus_date_lineIDs, $arrKeys[$key-1]);
+            array_push($cus_date_line_final_dates, $final_cus_date);
+            if($key > sizeof($arrKeys)-1) {
+                $inLimit = false;
+                $ttt = $ttt - $TP;
+                break;
+            }
+            $normalDueDate = $sortedLinesArr[$arrKeys[$key]];
+            $normalDueDate = date('Y-m-d H:i:s',$normalDueDate);
+            $orderStartDate = $this->getOrderStartDate($normalDueDate);
+            $lastLineTTT = $this->getFinishedTTT($orderStartDate, strtotime($final_cus_date));
+            $TP += $lastLineTTT;
+            ++$key;
+        }
+        if($inLimit){
+            $ttt = $ttt - ($TP - $lastLineTTT);
+            --$key;
+            $normalDueDate = $sortedLinesArr[$arrKeys[$key]];
+            $normalDueDate = date('Y-m-d H:i:s',$normalDueDate);
+            $orderStartDate = $this->getOrderStartDate($normalDueDate);
+            $lastLineFinalDate = $this->getFinishedDatetimeFromLine($orderStartDate, $ttt);
+            $lastLineFinalDate = date('Y-m-d H:i:s',$lastLineFinalDate);
+            array_push($cus_date_lineIDs, $arrKeys[$key]);
+            array_push($cus_date_line_final_dates, $lastLineFinalDate);
+            return array($cus_date_lineIDs, $cus_date_line_final_dates, $status);
+        }else{
+            if($stdLines == 1) {
+                $status = "Optimize";
+                return array(-1,-1,$status);
+            }
+            return $this->calculateCustomerDueDate($final_cus_date, 1, $ttt);
+        }
 
     }
 
-    private function minutes($time){
-        $time = explode(':', $time);
-        return ($time[0]*60) + ($time[1]) + ($time[2]/60);
+    private function recurDueDateCal($key, $arrKeys, $sortedLinesArr, $ttt, $remainMins){
+        $preLineAvilDate = $sortedLinesArr[$arrKeys[$key-1]];
+        $nextLineAvilDate = $sortedLinesArr[$arrKeys[$key]];
+        $preLineAvilDate = date('Y-m-d H:i:s',$preLineAvilDate);
+        $nextLineAvilDate = date('Y-m-d H:i:s',$nextLineAvilDate);
+
+        //already available line but add 2 days to settle the order stock
+        $preLineAvilDate = $this->getOrderStartDate($preLineAvilDate);
+        $nextLineAvilDate = $this->getOrderStartDate($nextLineAvilDate);
+
+        $preLineStartDate = $this->getFinishedDatetimeFromLine($preLineAvilDate,30);
+        $nextLineStartDate = $this->getFinishedDatetimeFromLine($nextLineAvilDate,30);
+        $preLineStartDate = date('Y-m-d H:i:s',$preLineStartDate);
+        $mins = $this->getFinishedTTT($preLineStartDate, $nextLineStartDate);
+        $mins = $mins * $key;
+        $tttVar = $ttt - ($mins + $remainMins);
+        $tttVar = intval(ceil( ( $tttVar/($key+1) ) ));
+        $nextLineStartDate = date('Y-m-d H:i:s',$nextLineStartDate);
+        $preFinalizeDate = $this->getFinishedDatetimeFromLine($nextLineStartDate, $tttVar);
+        if($key < sizeof($arrKeys)-1 && $preFinalizeDate > $sortedLinesArr[$arrKeys[$key+1]]){
+            //recursion
+            return $this->recurDueDateCal($key+1, $arrKeys, $sortedLinesArr, $ttt, $mins);
+        }else{
+            return array($preFinalizeDate,$key+1);
+        }
+
+    }
+
+    private function getOrderStartDate($datetime){
+
+        $d = new DateTime('now');
+        $d->setTimezone(new DateTimeZone("Asia/Colombo"));
+        $today = $d->format('Y-m-d H:i:s');
+
+//        echo "#### ".$datetime." / ".$today." / ".date("a",strtotime($datetime) - strtotime($today))." ####";
+        if(strtotime($datetime) > strtotime("+2 days".$today)){
+            $orderStartDate = $datetime;
+        }
+        else if(strtotime($today) - strtotime($datetime) > 0 ){
+            $orderStartDate = $this->getFinishedDatetimeFromLine($today, 960); // add 2 days from now in minutes
+            $orderStartDate = date("Y-m-d H:i:s", $orderStartDate);
+        }
+        else{
+            $orderStartDate = $this->getFinishedDatetimeFromLine($datetime, 960); // add 2 days to line available date in minutes
+            $orderStartDate = date("Y-m-d H:i:s", $orderStartDate);
+        }
+
+        return $orderStartDate;
+
     }
 
     private function getFinishedTTT($start, $end){
 
-        $startTime = date('H:i:s', $start);
+        $startTime = date('H:i:s', strtotime($start));
         $startTime = strtotime($startTime);
-        $startDay = date('D', $start);
+        $startDay = date('D', strtotime($start));
 
         $workingDayData = $this->manageJobModel->getWorkingDayData($startDay);
         $round1Start = strtotime($workingDayData->round1_start);
@@ -229,41 +322,41 @@ class manageJobController extends framework {
             $round = 4;
         }
 
-        $actualDatetime = $start;
+        $actualDatetime = strtotime($start);
         $time = $startTime;
         $zeroTime = strtotime('00:00:00');
         $minutes = 0;
         while ($end - $actualDatetime > 0){
-            $time = strtotime("+1 minutes".$time);
+            $time = strtotime("+1 minutes",$time);
             if($round == 1 && $time - $round1End > 0) {
                 if($round2Start == $zeroTime){
                     $round = 4;
-                    $time = strtotime("-1 minutes".$time);
+                    $time = strtotime("-1 minutes",$time);
                 }else{
                     $round = 2;
-                    $min = $this->minutes( date('H:i:s', $round2Start - $round1End) );
-                    $time = strtotime("+{$min} minutes".$time);
-                    $minutes++;
+                    $min = ($round2Start - $round1End)/60;
+                    $time = strtotime("+{$min} minutes",$time);
+                    ++$minutes;
                 }
             }
             else if($round == 2 && $time - $round2End > 0){
                 if($round3Start == $zeroTime){
                     $round = 4;
-                    $time = strtotime("-1 minutes".$time);
+                    $time = strtotime("-1 minutes",$time);
                 }else{
                     $round = 3;
-                    $min = $this->minutes( date('H:i:s', $round3Start - $round2End) );
-                    $time = strtotime("+{$min} minutes".$time);
-                    $minutes++;
+                    $min = ($round3Start - $round2End)/60;
+                    $time = strtotime("+{$min} minutes",$time);
+                    ++$minutes;
                 }
             }
             else if($round == 3 && $time - $round3End > 0){
                 if($round4Start == $zeroTime){
-                    $time = strtotime("-1 minutes".$time);
+                    $time = strtotime("-1 minutes",$time);
                 }else{
-                    $min = $this->minutes( date('H:i:s', $round4Start - $round3End) );
-                    $time = strtotime("+{$min} minutes".$time);
-                    $minutes++;
+                    $min = ($round4Start - $round3End)/60;
+                    $time = strtotime("+{$min} minutes",$time);
+                    ++$minutes;
                 }
                 $round = 4;
             }
@@ -288,14 +381,18 @@ class manageJobController extends framework {
                     $round = 4;
                 }else{
                     $round = 1;
-                    $minutes++;
+                    ++$minutes;
                 }
-                $time = strtotime("+1 minutes". $round1Start);
+                $time = strtotime("+1 minutes", $round1Start);
 
+            }else{
+                ++$minutes;
             }
 
+            $time = date('H:i:s', $time);
+            $start = date('Y-m-d', strtotime($start));
             $actualDatetime = strtotime(date('Y-m-d H:i:s', strtotime("$start $time")));
-
+            $time = strtotime($time);
 
         }
 
@@ -304,7 +401,6 @@ class manageJobController extends framework {
     }
 
     private function getFinishedDatetimeFromLine($datetime, $tttTime){
-        echo $tttTime." ";
         $startTime = date('H:i:s', strtotime($datetime));
         $startTime = strtotime($startTime);
         $startDay = date('D', strtotime($datetime));
@@ -337,7 +433,6 @@ class manageJobController extends framework {
         else if($startTime - $round4Start >= 0 && $round4End - $startTime >= 0){
             $round = 4;
         }
-
 
         $time = $startTime;
         $zeroTime = strtotime('00:00:00');
@@ -403,16 +498,20 @@ class manageJobController extends framework {
             }
         }
 
-
         $time = date('H:i:s', $time);
-        $date = $datetime;
+        $date = date('Y-m-d', strtotime($datetime));
         return strtotime(date('Y-m-d H:i:s', strtotime("$date $time")));
 
     }
 
-    //job-shop scheduling (use earliest available lines)
+    //scheduling earliest available lines
     public function sortAvailableLines(){
         return $this->manageJobModel->getSortedAvailableLinesArr();
+    }
+
+    //scheduling earliest available extra lines
+    public function sortAvailableExtraLines(){
+        return $this->manageJobModel->getSortedAvailableExtraLinesArr();
     }
 
     //job-shop scheduling (use earliest available lines)

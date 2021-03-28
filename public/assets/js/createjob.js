@@ -40,7 +40,7 @@ function loadOrderTbl() {
 createJobBtn = document.getElementById("createJob");
 createJobBtn.onclick = function() {
 
-    let jdata = JSON.parse('[{"order_item_id":122,"quantity":5000,"p_ID":2},{"order_item_id":103,"quantity":2000,"p_ID":1}]');
+    let jdata = JSON.parse('{"order":[{"order_item_id":122,"quantity":5000,"p_ID":2},{"order_item_id":103,"quantity":2000,"p_ID":1}],"cus_date":"2021-04-19"}');
 
     $.ajax({
         type: 'POST',

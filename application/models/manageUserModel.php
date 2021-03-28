@@ -95,54 +95,57 @@ class manageUserModel extends database {
 
         //echo("<script>console.log('PHP: mail: " . json_encode($output) . "');</script>");
 
-        if($this->Query($query, $login_data)){
-            echo("<script>console.log('PHP: mail: " . json_encode($login_data) . "');</script>");
-            $clogid = $this->getCurrentAIID();
+        if($this->Query($query, $login_data)) {
 
-            $role_login = [
-                $clogid,
-                $data['roleID'],
-                1
-            ];
+            if ($this->rowCount() > 0) {
 
-            if ($this->Query("INSERT INTO per_role_login (login_ID, role_ID, default_role) VALUES (?,?,?)", $role_login)){
+                echo("<script>console.log('PHP: mail - user-data: " . json_encode($login_data) . "');</script>");
+                $clogid = $this->getCurrentAIID();
 
-                $prlogid = $this->getCurrentAIID();
+                $role_login = [
+                    $clogid,
+                    $data['roleID'],
+                    1
+                ];
 
-                array_push($empData, $prlogid);
+                if ($this->Query("INSERT INTO per_role_login (login_ID, role_ID, default_role) VALUES (?,?,?)", $role_login)) {
 
-                if($role == 'owner') {
-                    if($this->Query("UPDATE owner SET per_role_login_ID = $empData[1] WHERE owner_ID =  '$empData[0]' AND per_role_login_ID IS NULL")){
-                        $output['status'] = true;
+                    $prlogid = $this->getCurrentAIID();
+
+                    array_push($empData, $prlogid);
+
+                    if ($role == 'owner') {
+                        if ($this->Query("UPDATE owner SET per_role_login_ID = $empData[1] WHERE owner_ID =  '$empData[0]' AND per_role_login_ID IS NULL")) {
+                            $output['status'] = true;
+                        }
+                    } else {
+                        if ($this->Query("INSERT INTO $role (emp_ID, per_role_login_ID) VALUES (?,?)", $empData)) {
+                            $output['status'] = true;
+                        }
                     }
+
+
                 }
 
-                if($this->Query("INSERT INTO $role (emp_ID, per_role_login_ID) VALUES (?,?)", $empData)){
-                    $output['status'] = true;
-                }
+                require_once(DOCROOT . "public/services/Exception.php");
 
-            }
+                require_once(DOCROOT . "public/services/PHPMailer.php");
 
-            require_once (DOCROOT . "public/services/Exception.php");
-
-            require_once (DOCROOT . "public/services/PHPMailer.php");
-
-            require_once (DOCROOT . "public/services/SMTP.php");
+                require_once(DOCROOT . "public/services/SMTP.php");
 
 
+                $mail = new PHPMailer(TRUE);
 
-            $mail = new PHPMailer(TRUE);
+                try {
 
-            try {
-
-                $mail->setFrom('info.richwaygarments@gmail.com', 'Richway Garments');
-                $mail->addAddress($data['username']);
-                $mail->IsHTML(true);
-                $mail->Subject = 'One Time Password OTP Confirmation Richway Account';
-                $mail->AddEmbeddedImage(DOCROOT.'public/assets/img/image2.png', 'logo');
-                $message_body = '
+                    $mail->setFrom('info.richwaygarments@gmail.com', 'Richway Garments');
+                    $mail->addAddress($data['username']);
+                    $mail->IsHTML(true);
+                    $mail->Subject = 'One Time Password OTP Confirmation Richway Account';
+                    $mail->AddEmbeddedImage(DOCROOT . 'public/assets/img/image2.png', 'logo');
+                    $message_body = '
             <p>Dear Sir/ Madam,</p>
-			<p>Please use the following OTP <b>'.$user_otp.'</b> to first time login Richway account.</p>
+			<p>Please use the following OTP <b>' . $user_otp . '</b> to first time login Richway account.</p>
 			<br>
 			<p>Thanks & Regards,<br>
             <b>Avishka Fernando<br>
@@ -150,46 +153,45 @@ class manageUserModel extends database {
                Richway Garments (Pvt) Ltd</b></p>
                <br><img src="cid:logo" style="height: auto; width: 100px;"></a>
 			';
-                $mail->Body = $message_body;
+                    $mail->Body = $message_body;
 
-                /* SMTP parameters. */
-                $mail->isSMTP();
-                $mail->Host = 'smtp.gmail.com';
-                $mail->SMTPAuth = TRUE;
-                $mail->SMTPSecure = 'tls';
-                $mail->Username = 'info.richwaygarments@gmail.com';
-                $mail->Password = 'admin@richway2020';
-                $mail->Port = 587;
+                    /* SMTP parameters. */
+                    $mail->isSMTP();
+                    $mail->Host = 'smtp.gmail.com';
+                    $mail->SMTPAuth = TRUE;
+                    $mail->SMTPSecure = 'tls';
+                    $mail->Username = 'info.richwaygarments@gmail.com';
+                    $mail->Password = 'ishara@richway';
+                    $mail->Port = 587;
 
-                /* Disable some SSL checks. */
-                $mail->SMTPOptions = array(
-                    'ssl' => array(
-                        'verify_peer' => false,
-                        'verify_peer_name' => false,
-                        'allow_self_signed' => true
-                    )
-                );
+                    /* Disable some SSL checks. */
+                    $mail->SMTPOptions = array(
+                        'ssl' => array(
+                            'verify_peer' => false,
+                            'verify_peer_name' => false,
+                            'allow_self_signed' => true
+                        )
+                    );
 
-                /* Finally send the mail. */
-                if($mail->send()){
-                    echo("<script>console.log('PHP: email: " . json_encode("dan awe") . "');</script>");
-                    $output['email_msg'] = "mail_sended";
-                    return $output;
+                    echo("<script>console.log('PHP: email: " . json_encode($output) . "');</script>");
+
+                    /* Finally send the mail. */
+                    if ($mail->send()) {
+                        $output['email_msg'] = "mail_sended";
+                        return $output;
+                    } else {
+                        $output['email_msg'] = $mail->ErrorInfo;
+                        return $output;
+                    }
+                } catch (Exception $e) {
+                    echo("<script>console.log('PHP: email: " . $e->errorMessage() . "');</script>");
+                } catch (\Exception $e) {
+                    echo("<script>console.log('PHP: email: " . json_encode("Email send successfully.") . "');</script>");
                 }
-                else{
-                    $output['email_msg'] = $mail->ErrorInfo;
-                    return $output;
-                }
-            }
-            catch (Exception $e)
-            {
-                echo("<script>console.log('PHP: email: " . $e->errorMessage() . "');</script>");
-            }
-            catch (\Exception $e)
-            {
-                echo("<script>console.log('PHP: email: " . json_encode("Email send successfully.") . "');</script>");
-            }
 
+            } else {
+                return $output;
+            }
         }
         else{
             return $output;
@@ -197,6 +199,65 @@ class manageUserModel extends database {
 
     }
 
+    public function getUsername($logID){
+
+        if($this->Query("SELECT user_name from login where login_ID = ?",[$logID])) {
+            if($this->rowCount() > 0){
+                return $this->fetch()->user_name;
+            }
+        }
+        return -1;
+    }
+
+    public function getUserRoles(){
+        if($this->Query("SELECT title from user_role where title <> 'admin'")) {
+            if($this->rowCount() > 0){
+                return $this->fetchall();
+            }
+        }
+        return -1;
+    }
+
+    public function addExtraRoleModel($data){
+
+        $output['status'] = false;
+
+        $empData = [
+            $data['empID'],
+        ];
+
+        $role = $data['extraRole'];
+
+        $roleID = $this->getRoleID($role);
+
+        $role_login = [
+            $data['logID'],
+            $roleID->role_ID,
+            0
+        ];
+
+//        echo("<script>console.log('PHP: extra data " . json_encode($role_login) . "');</script>");
+
+        if ($this->Query("INSERT INTO per_role_login (login_ID, role_ID, default_role) VALUES (?,?,?)", $role_login)) {
+
+            $prlogid = $this->getCurrentAIID();
+
+            array_push($empData, $prlogid);
+
+            if ($role == 'owner') {
+                if ($this->Query("UPDATE owner SET per_role_login_ID = $empData[1] WHERE owner_ID =  '$empData[0]' AND per_role_login_ID IS NULL")) {
+                    $output['status'] = true;
+                }
+            } else {
+                if ($this->Query("INSERT INTO $role (emp_ID, per_role_login_ID) VALUES (?,?)", $empData)) {
+                    $output['status'] = true;
+                }
+            }
+
+        }
+
+        return $output;
+    }
 
     public function getCurrentAIID(){
 

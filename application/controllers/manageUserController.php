@@ -1,8 +1,8 @@
 <?php
 
-//ini_set('display_startup_errors',1);
-//ini_set('display_errors',1);
-//error_reporting(E_ALL);
+ini_set('display_startup_errors',1);
+ini_set('display_errors',1);
+error_reporting(E_ALL);
 
 class manageUserController extends framework {
 
@@ -37,6 +37,15 @@ class manageUserController extends framework {
         return "error";
     }
 
+    public function setExtraRoleSession(){
+        if(isset($_POST['key'])) {
+            if ($_POST['key'] == "manageUserData") {
+                $this->setSession("selected_user_data", array($_POST['logID'],$_POST['role'],$_POST['empID']));
+                return "Successfully set the session.";
+            }
+        }
+        return "error";
+    }
 
     public function loadTable(){
 
@@ -149,6 +158,26 @@ class manageUserController extends framework {
         $this->view("admin/addUser",$data);
     }
 
+    public function addExtraRoleView(){
+
+        $userData = $this->getSession("selected_user_data");
+        $userID =  preg_replace('/\D/', '', $userData[0]);
+        $role =  $userData[1];
+
+        $userRoleArr = $this->manageUserModel->getUserRoles();
+        $username = $this->manageUserModel->getUsername($userID);
+
+        $data = [
+            'username' => $username,
+            'role' => ucwords(str_replace("_"," ",$role)),
+            'roleData' => $userRoleArr
+        ];
+
+        echo("<script>console.log('PHP: role data " . json_encode($data) . "');</script>");
+
+        $this->view("admin/addExtraRole",$data);
+    }
+
     public function addUser(){
 
         $isError = false;
@@ -221,6 +250,68 @@ class manageUserController extends framework {
         }
 
 
+
+    }
+
+
+    public function addExtraRole(){
+
+        $isError = false;
+
+        $userData = $this->getSession("selected_user_data");
+        $userID =  preg_replace('/\D/', '', $userData[0]);
+
+        $selectedExtraRole = $this->input('user_role');
+
+        $extraRoleData = [
+            'logID' => $userID,
+            'empID' => preg_replace('/\D/', '', $userData[2]),
+            'extraRole' => $selectedExtraRole,
+        ];
+
+        if(empty($selectedExtraRole) or empty($userData)){
+            $isError= true;
+        }
+
+        if(!$isError){
+
+            $result = $this->manageUserModel->addExtraRoleModel($extraRoleData);
+
+            if($result['status']){
+
+                $msg = "Extra role successfully added for the User.";
+
+                echo "
+                    <div id=\"alert_msg\" style=\"display: none\">$msg</div>
+                    <script>
+                        const msg = document.getElementById('alert_msg').innerText;
+                        if(!alert(msg)) {
+                            window.location.href = \"http://localhost/Richway-garment-system/manageUserController/index\"
+                        }
+                    </script>
+                ";
+
+            }
+            else{
+                echo '
+            <script>
+                if(!alert("Something went wrong. Please try again!")) {
+                    window.location.href = "http://localhost/Richway-garment-system/manageUserController/addExtraRoleView"
+                }
+            </script>
+            ';
+
+            }
+
+        }else{
+            echo '
+            <script>
+                if(!alert("Required fields are missing!")) {
+                    window.location.href = "http://localhost/Richway-garment-system/manageUserController/addExtraRoleView"
+                }
+            </script>
+            ';
+        }
 
     }
 

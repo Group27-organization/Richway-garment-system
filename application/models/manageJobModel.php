@@ -53,12 +53,81 @@ class manageJobModel extends database {
 
     public function getSortedAvailableLinesArr(){
 
-        if($this->Query("SELECT DISTINCT(line.line_ID) as line_ID FROM line inner join assign on assign.line_ID=line.line_ID")){
+        if($this->Query("SELECT DISTINCT(line.line_ID) as line_ID FROM line WHERE line.	standby_line = 0")){
 
             if($this->rowCount() > 0 ){
 
                 $sortedAvailableLinesArray = [];
                 $lineIds = $this->fetchall();
+
+                $d = new DateTime('now');
+                $d->setTimezone(new DateTimeZone("Asia/Colombo"));
+                $availableTime = $d->format('Y-m-d H:i:s');
+
+                if($this->Query("SELECT DISTINCT line.line_ID FROM line WHERE line.	standby_line = 0 && line.line_ID NOT IN (SELECT DISTINCT assign.line_ID FROM assign)")) {
+
+                    if ($this->rowCount() > 0) {
+
+                        $sortedAvailableLinesArray = [];
+                        $notAssignIDs = $this->fetchall();
+                        foreach ($notAssignIDs as $nalid){
+                            $sortedAvailableLinesArray[$nalid->line_ID] = strtotime($availableTime);
+                        }
+                    }
+                }
+
+                foreach ($lineIds as $lid){
+                    if($this->Query("CALL getSortedAvailableLinesSet($lid->line_ID,@p1)")){
+
+                        if($this->Query("SELECT @p1 AS end_date")) {
+
+                            if ($this->rowCount() > 0) {
+
+                                $data = $this->fetch();
+                                // echo("<script>console.log('PHP: data: " . json_encode($data) . "');</script>");
+                                $sortedAvailableLinesArray[$lid->line_ID] = strtotime($data->end_date);
+                            }
+                        }
+
+                    }
+                }
+                // echo("<script>console.log('PHP: data: " . json_encode($data) . "');</script>");
+                asort($sortedAvailableLinesArray);
+                return $sortedAvailableLinesArray;
+
+            }
+
+        }
+
+
+        return 0;
+    }
+
+
+    public function getSortedAvailableExtraLinesArr(){
+
+        if($this->Query("SELECT DISTINCT(line.line_ID) as line_ID FROM line WHERE line.	standby_line = 1")){
+
+            if($this->rowCount() > 0 ){
+
+                $sortedAvailableLinesArray = [];
+                $lineIds = $this->fetchall();
+
+                $d = new DateTime('now');
+                $d->setTimezone(new DateTimeZone("Asia/Colombo"));
+                $availableTime = $d->format('Y-m-d H:i:s');
+
+                if($this->Query("SELECT DISTINCT line.line_ID FROM line WHERE line.	standby_line = 1 && line.line_ID NOT IN (SELECT DISTINCT assign.line_ID FROM assign)")) {
+
+                    if ($this->rowCount() > 0) {
+
+                        $sortedAvailableLinesArray = [];
+                        $notAssignIDs = $this->fetchall();
+                        foreach ($notAssignIDs as $nalid){
+                            $sortedAvailableLinesArray[$nalid->line_ID] = strtotime($availableTime);
+                        }
+                    }
+                }
 
                 foreach ($lineIds as $lid){
                     if($this->Query("CALL getSortedAvailableLinesSet($lid->line_ID,@p1)")){
