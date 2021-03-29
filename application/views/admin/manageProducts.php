@@ -62,12 +62,12 @@
                     </div>
 
                     <div class="buttons-parent">
-                        <button id="update_design" class="update-prd-button cripple" onclick="createProduct(event,$product)">
+                        <button id="update_design" class="update-prd-button cripple" onclick="addPredefine(event,$product)">
                             <img src="<?php echo BASEURL; ?>/public/assets/img/update_icon.png" style="width: 24px; height: 24px;">
                             <span id="update_design_text"></span>
                         </button>
 
-                        <button id="add_new_design" class="create-button cripple" onclick="createProduct(event,$product)">
+                        <button id="add_new_design" class="create-button cripple" onclick="addPredefine()">
                             <img src="<?php echo BASEURL; ?>/public/assets/img/plus-circle.svg" style="width: 24px; height: 24px;">
                             <span id="add_new_design_text"></span>
                         </button>

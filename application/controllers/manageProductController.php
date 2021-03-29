@@ -273,8 +273,63 @@ class manageProductController extends framework {
             ';
         }
 
+    }
 
 
+
+    public function addPredefineView(){
+        $product =  $this->getSession('selected_product');
+        echo("<script>console.log('PHP in addPredefine: " . json_encode($product) . "');</script>");
+        $data = [
+            'product' => $product
+        ];
+        $this->view("admin/addPredefine",$data);
+
+    }
+
+
+
+
+    public function addPredefine(){
+        $product =  $this->getSession('selected_product');
+        $predefineProduct=[
+            $product,
+            $this->input('HandType'),
+            $this->input('CollarType'),
+            $this->input('NormalTailoringCost'),
+            $this->input('Description'),
+            $this->input('RatePerHourFromLine'),
+            $this->input('MinimumProfitMargin'),
+            $this->input('Style'),
+            $this->input('Sizes'),
+            $this->input('Image_Url'),
+
+        ]
+        ;
+
+
+        if ($this->manageProductModel->addPredefine($predefineProduct)) {
+
+            echo '
+                              <script>
+                                            if(!alert("New predefine product added successfully")) {
+                                                window.location.href = "http://localhost/Richway-garment-system/manageProductController/index"
+                                            }
+                              </script>
+        
+                            ';
+        }
+        else {
+            echo '
+
+                            <script>
+                                        if(!alert("Something went wrong! please try again.")) {
+                                            window.location.href = "http://localhost/Richway-garment-system/manageProductController/addPredefineView"
+                                        }
+                            </script>
+                            ';
+
+        }
     }
 
 

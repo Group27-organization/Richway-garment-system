@@ -60,7 +60,21 @@ function openProduct(evt,product) {
 
 }
 
-function createProduct(){
+function addPredefine(){
+    // let addPredefinebtn, updatePredefinebtn;
+    // addPredefinebtn = document.getElementById("add_new_predefine_text");
+    // updatePredefinebtn = document.getElementById("update_predefine_text");
+    //console.log("shirt");
+    $.ajax({
+        type: 'POST',
+        url: "http://localhost/Richway-garment-system/manageProductController/setNewSession",
+        data: { productName: "shirt",  key: "manageProductData"},
+        success: function(data,status){
+            location.href = "http://localhost/Richway-garment-system/manageProductController/addPredefineView";
+        },
+        error       : function() {
+        }
+    });
 
 }
 
