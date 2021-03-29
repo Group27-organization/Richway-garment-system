@@ -10,11 +10,13 @@
     <?php linkCSS("assets/css/nav.css") ?>
     <?php linkCSS("assets/css/side_nav.css") ?>
     <?php linkCSS("assets/css/admin-manageuser.css") ?>
-    <?php linkCSS("assets/css/accountant-managepayment.css") ?>
-    <?php linkCSS("assets/css/accountant-uploadingExcel.css") ?>
     <?php linkCSS("assets/css/admin-tabview.css") ?>
-    <?php linkCSS("assets/css/admin-adduser.css") ?>
     <?php linkCSS("assets/css/admin-table.css") ?>
+    <?php linkCSS("assets/css/admin-adduserUpdate.css") ?>
+    <?php linkCSS("assets/css/accountant-uploadingExcel.css") ?>
+
+
+
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.8.0/jszip.js"></script>
@@ -127,7 +129,12 @@
         </div>
 
 
-            <div class="tabcontent1">
+
+        <div class="tab-content">
+<!--------------------------------------------Tab Content-------------------------------------------------------------------------------------- -->
+
+
+            <div class="tabcontent">
                 <div class="flex-row-tab">
                     <div class="SearchBtnWap">
                         <div class="search">
@@ -137,14 +144,12 @@
                             </button>
                         </div>
                     </div>
-                    <div class="tabrow">
-                        <div class="BtnWap">
-                            <button id="generate-salary-btn" onclick="location.href" class="create-button" >
-                                Generate Monthly Salary
-                            </button>
-                        </div>
+                    <div class="BtnWap">
+                        <button id="generate-salary-btn" class="three-set-btn2" onclick="">Generate Monthly Salary </button>
                     </div>
+
                 </div><!--flex row-->
+
 
                 <!--                table start-->
 
@@ -188,8 +193,6 @@
                 </div>
 
             </div>
-        </div>
-
         </div>
 
 

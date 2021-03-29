@@ -94,9 +94,9 @@ class AccountantController extends framework
 
                 ";
 
-                foreach ($result as $row) {
+            foreach ($result as $row) {
 
-                    echo "
+                echo "
                             <tr class='tblrow' onclick='selectRow(event)'>
                                 <td >$row->report_id </td>                               
                                 <td>$row->Month</td>
@@ -110,17 +110,17 @@ class AccountantController extends framework
                             </tr>
                         ";
 
-                }
-                echo "
+            }
+            echo "
                         </tbody>
                     </table>
                     
                     ";
 
-            }
-
         }
+
     }
+}
 
 
 
@@ -241,7 +241,7 @@ class AccountantController extends framework
     }
 
     public function loadNotificationTable(){
-        echo("<script>console.log('PHP in acc-notification');</script>");
+          echo("<script>console.log('PHP in acc-notification');</script>");
         if(isset($_POST['key'])) {
             if ($_POST['key'] == "notificationTableDash") {
                 $result = $this->accountantModel->loadNotificationTable();
@@ -285,13 +285,13 @@ class AccountantController extends framework
                         ";
 
                 }
-                echo "
+            echo "
                                     </tbody>
                                 </table>
                                 
-                                ";
+                                ";  
             }
-        }
+            }
 
 
     }
@@ -315,7 +315,7 @@ class AccountantController extends framework
                 if (in_array($loginID, $readIdArr)) {
 
                 }else{
-                    $updateReadIds = $readIds.','.$loginID;
+                  $updateReadIds = $readIds.','.$loginID;
                     $result = $this->accountantModel->readUpdateNotification($updateReadIds,$notificationID);
                 }
 
