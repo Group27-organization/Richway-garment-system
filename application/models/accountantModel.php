@@ -43,8 +43,4 @@ class accountantModel extends database
 
     }
 
-
-
-
-
 }

@@ -2,12 +2,13 @@
 
 
 class supervisorController extends framework{
-
+    private $supervisorModel;
     public function __construct(){
         if(!$this->getSession('userId')){
             $this->redirect("loginController/loginForm");
         }
         $this->helper("link");
+        $this->supervisorModel = $this->model('supervisorModel');
 
     }
 
@@ -16,7 +17,18 @@ class supervisorController extends framework{
     public function index(){
 
         $this->view("supervisor/markAttendance");
+        $this->view("supervisor/loadupdateworkload");
         echo("<script>console.log('PHP in index');</script>");
+    }
+
+    public function setNewSession(){
+        if(isset($_POST['key'])) {
+            if ($_POST['key'] == "workloadUpdate") {
+                $this->setSession("selected_workload", $_POST['ID']);
+                return "Successfully set the session.";
+            }
+        }
+        return "error";
     }
 
 
@@ -24,22 +36,21 @@ class supervisorController extends framework{
         $this->view("supervisor/markAttendance");
     }
 
-    public function updateWorkload(){
+    public function loadupdateWorkload(){
         $this->view("supervisor/updateWorkload");
     }
 
 
-    public function loadUpdateworkloadForm(){
-        $this->view("supervisor/updateWorkloadForm");
-
-    }
 
 
-    public function updateWorkloadTable(){
-        echo("<script>console.log('PHP in ndex');</script>");
-        if(isset($_POST['key'])) {
+    public function updateWorkloadTable()
+    {
+        echo("<script>console.log('PHP in index');</script>");
+        if (isset($_POST['key'])) {
             if ($_POST['key'] == "workloadTableInDash") {
 
+                $result = $this->supervisorModel->workloadTable();
+                echo("<script>console.log('PHP in loadworkloadTable controller: " . json_encode($result) . "');</script>");
 
                 echo "
 
@@ -47,13 +58,12 @@ class supervisorController extends framework{
                         <thead class=\"thead-light\">
                         <tr>
                                                 
-                            <th scope=col>Job Id</th>
+                            <th scope=col>ID</th>
                             <th scope=col>Name</th>           
-                            <th scope=col>Order Id</th>
-                            <th scope=col>Quantity</th>
-                            <th scope=col>Line Id</th>                      
-                            <th scope=col>Current Workload</th> 
-                            <th scope=col>Today Workload</th> 
+                            <th scope=col>Date</th>  
+                            <th scope=col>Line</th>                   
+                            <th scope=col>Current Completed Workload</th> 
+                            <th scope=col>Required Today Workload</th> 
                            
                         </tr>
                         </thead>
@@ -61,53 +71,137 @@ class supervisorController extends framework{
 
                 ";
 
-
-                echo "
-                         <tr>
-                            <td>J12</td>
-                            <td>Saman Perera</td>                          
-                            <td>O12</td>                                                      
-                            <td>10</td>
-                            <td>L12</td>    
-                            <td>34</td>
-                            <td>10</td>                     
-                         
-                        </tr>
-                        <tr>
-                            <td>J32</td>
-                            <td>Kavishka Madushan</td>                           
-                            <td>O12</td>
-                            <td>10</td>
-                            <td>L12</td>    
-                            <td>35</td>
-                            <td>11</td>
-                        </tr>
-                        <tr>
-                            <td>J53</td>
-                            <td>Sadew Amantha</td>                            
-                            <td>O12</td>
-                            <td>10</td>
-                            <td>L12</td>                                
-                            <td>37</td>
-                            <td>15</td>
-                        </tr>
-                        <tr>
-                            <td>J46</td>
-                            <td>Kusal Mendis</td>                            
-                            <td>O12</td>
-                            <td>10</td>
-                            <td>L12</td>    
-                            <td>65</td>
-                            <td>25</td>
-                        </tr>
+                foreach ($result as $row) {
+                    echo "
+                          <tr class='tblrow' onclick='selectRow(event)'>
+                                <td>$row->ID</td>
+                                <td>$row->Name</td>
+                                <td>$row->Date</td>
+                                <td>$row->Line</td>
+                                <td>$row->current_completed_workload</td>
+                                <td>$row->required_workload</td>
+                               
+                              
+                            </tr>
                         ";
 
-            }
-            echo "
+                }
+                echo "
                         </tbody>
                     </table>
                     
                     ";
+            }
+
+
+        }
+    }
+
+    public function loadUpdateworkloadForm(){
+        $ID = $this->getSession('selected_workload');
+
+        $workloadEdit = $this->supervisorModel->updateWorkload($ID);
+        $data = [
+            'data'=>$workloadEdit,
+            'NameError' => '',
+            'DateError' => '',
+            'LineError' => '',
+            'CurrentCompletedWorkloadError' => '',
+            'RemainingWorkloadError' => '',
+            'RequiredTodayWorkloadError' => '',
+            'TodayCompletedWorkloadError' => '',
+
+
+        ];
+        $this->view("supervisor/updateWorkloadForm",$data);
+
+    }
+
+    public function updateWorkload()
+    {
+        $ID= $this->input('hiddenID');
+        $workloadEdit=$this->supervisorModel->updateWorkload($ID);
+        $workloadData = [
+            'Name' => $this->input('Name'),
+            'Date' => $this->input('Date'),
+            'Line' => $this->input('Line'),
+            'CurrentCompletedWorkload' => $this->input('current_completed_workload'),
+            'RemainingWorkload' => $this->input('remaining_workload'),
+            'RequiredTodayWorkload' => $this->input('required_workload'),
+            'TodayCompletedWorkload' => $this->input('today_completed_workload'),
+            'hiddenID' => $this->input('hiddenID'),
+            'data' => $workloadEdit,
+            'NameError' => '',
+            'DateError' => '',
+            'LineError' => '',
+            'CurrentCompletedWorkloadError' => '',
+            'RemainingWorkloadError' => '',
+            'RequiredTodayWorkloadError' => '',
+            'TodayCompletedWorkloadError' => '',
+
+        ];
+
+        echo("<script>console.log('PHP in loadworkloadTable controller: " . json_encode($workloadData) . "');</script>");
+
+
+        if (empty($workloadData['Name'])) {
+            $workloadData['NameError'] = "Name is required";
+        }
+
+        if (empty($workloadData['Date'])) {
+            $workloadData['DateError'] = "Date is required";
+        }
+
+        if (empty($workloadData['Line'])) {
+            $workloadData['LineError'] = "Line is required";
+        }
+
+        if (empty($workloadData['CurrentCompletedWorkload'])) {
+            $workloadData['CurrentCompletedWorkloadError'] = "CurrentCompletedWorkload is required";
+        }
+
+        if (empty($workloadData['RemainingWorkload'])) {
+            $workloadData['RemainingWorkloadError'] = "RemainingWorkload is required";
+        }
+
+        if (empty($workloadData['RequiredTodayWorkload'])) {
+            $workloadData['RequiredTodayWorkloadError'] = "RequiredTodayWorkload is required";
+        }
+
+        if (empty($workloadData['TodayCompletedWorkload'])) {
+            $workloadData['TodayCompletedWorkloadError'] = "TodayCompletedWorkload is required";
+        }
+
+
+        if (empty($workloadData['NameError']) && empty($workloadData['DateError']) && empty($workloadData['LineError']) && empty($workloadData['CurrentCompletedWorkloadError']) && empty($workloadData['RemainingWorkloadError']) && empty($workloadData['RequiredTodayWorkloadError']) && empty($workloadData['TodayCompletedWorkloadError'])) {
+
+
+            if ($this->supervisorModel->editWorkload($workloadData)) {
+
+                echo '
+                      <script>
+                                    if(!alert("workload updated successfully")) {
+                                        window.location.href = "http://localhost/Richway-garment-system/supervisorController/loadupdateWorkload"
+                                    }
+                      </script>
+
+                    ';
+            } else {
+
+                echo '
+ 
+                    <script>
+                    
+                                if(!alert("Something went wrong! please try again.")) {
+                                   window.location.href = "http://localhost/Richway-garment-system/supervisorController/loadUpdateworkloadForm"
+                                }
+                    </script>
+                    ';
+
+            }
+        } else {
+            $this->view("supervisor/updateWorkloadForm", $workloadData);
+
         }
 
 
