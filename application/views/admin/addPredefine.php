@@ -29,7 +29,7 @@
 
         <div class="header-container background-gradient">
             <div class="header-group">
-                <h1 class="text-white">Create a Predefine Product</h1>
+                <h1 class="text-white">Add New <?php echo $data['product']?> Design</h1>
                 <p class="text-lead text-white">Create new item related to the predefine product <?php echo $data['product']?>.</p>
             </div>
             <div class="separator separator-bottom separator-skew zindex-100">
@@ -44,72 +44,53 @@
 
                 <div class="inputfield">
                     <label for="Type">Type</label>
-                    <input type="text" id="Type" maxlength="100" name="Type" class="form-contrall-special" readonly value="<?php echo $data['product'] ?>">
+                    <input type="text" id="Type" maxlength="50" name="Type" class="form-contrall-special" readonly  value="<?php echo $data['product'] ?>">
                 </div>
 
                 <div class="inputfield">
                     <label for="HandType">Hand Type</label>
-                    <input type="text" id="HandType" maxlength="100" name="HandType" class="form-contrall" value="<?php if($data['ButtonCode']) :echo $data['ButtonCode']; endif; ?>">
-                    <label class="error" style="color:red;">
-                        <?php   if($data['DescriptionError']) :echo $data['DescriptionError']; endif; ?>
-                    </label>
+                    <input type="text" id="HandType" maxlength="50" name="HandType" class="form-contrall" required>
                 </div>
 
                 <div class="inputfield">
                     <label for="CollarType">Collar Type</label>
-                    <input type="text"  maxlength="100" id="CollarType" name="CollarType" class="form-contrall" value="<?php if($data['Price']) :echo $data['Price']; endif; ?>">
-                    <label class="error" style="color:red;">
-                        <?php   if($data['priceError']) :echo $data['priceError']; endif; ?>
-                    </label>
+                    <input type="text"  maxlength="50" id="CollarType" name="CollarType" class="form-contrall"required>
                 </div>
+
                 <div class="inputfield">
                     <label for="NormalTailoringCost">Normal Tailoring Cost</label>
-                    <input type="number" min="0.00" step="0.01" maxlength="100" id="NormalTailoringCost" name="NormalTailoringCost" class="form-contrall" value="<?php if($data['Price']) :echo $data['Price']; endif; ?>">
-                    <label class="error" style="color:red;">
-                        <?php   if($data['priceError']) :echo $data['priceError']; endif; ?>
-                    </label>
+                    <input maxlength="13" id="NormalTailoringCost"  name="NormalTailoringCost" class="form-contrall" required >
                 </div>
+
                 <div class="inputfield">
                     <label for="Description">Description</label>
-                    <textarea id="Description" maxlength="250" name="Description" rows="4" cols="50" class="form-contrall" value="<?php if($data['Description']) :echo $data['Description']; endif; ?>"></textarea>
-                    <label class="error" style="color:red;">
-                        <?php   if($data['DescriptionError']) :echo $data['DescriptionError']; endif; ?>
-                    </label>
+                    <textarea id="Description" maxlength="200" name="Description" rows="4" cols="50"  class="form-contrall" required ></textarea>
                 </div>
+
                 <div class="inputfield">
                     <label for="RatePerHourFromLine">Rate Per Hour From Line</label>
-                    <input type="number" min="0.00" step="0.01" maxlength="100" id="RatePerHourFromLine" name="RatePerHourFromLine" class="form-contrall" value="<?php if($data['Price']) :echo $data['Price']; endif; ?>">
-                    <label class="error" style="color:red;">
-                        <?php   if($data['priceError']) :echo $data['priceError']; endif; ?>
-                    </label>
+                    <input maxlength="100" id="RatePerHourFromLine" name="RatePerHourFromLine" class="form-contrall"required>
                 </div>
+
                 <div class="inputfield">
                     <label for="MinimumProfitMargin">Minimum Profit Margin</label>
-                    <input type="number" min="0.00" step="0.01" maxlength="100" id="MinimumProfitMargin" name="MinimumProfitMargin" class="form-contrall" value="<?php if($data['Price']) :echo $data['Price']; endif; ?>">
-                    <label class="error" style="color:red;">
-                        <?php   if($data['priceError']) :echo $data['priceError']; endif; ?>
-                    </label>
+                    <input  maxlength="13" id="MinimumProfitMargin" name="MinimumProfitMargin" class="form-contrall"required>
                 </div>
+
                 <div class="inputfield">
                     <label for="Style">Style</label>
-                    <input type="text" min="0.00" step="0.01" maxlength="100" id="Style" name="Style" class="form-contrall" value="<?php if($data['Price']) :echo $data['Price']; endif; ?>">
-                    <label class="error" style="color:red;">
-                        <?php   if($data['priceError']) :echo $data['priceError']; endif; ?>
-                    </label>
+                    <input type="text" maxlength="50" id="Style" name="Style" class="form-contrall" required>
                 </div>
+
                 <div class="inputfield">
                     <label for="Sizes">Sizes</label>
-                    <input type="number" maxlength="100" id="Sizes" name="Sizes" class="form-contrall" value="<?php if($data['Price']) :echo $data['Price']; endif; ?>">
-                    <label class="error" style="color:red;">
-                        <?php   if($data['priceError']) :echo $data['priceError']; endif; ?>
-                    </label>
+                    <input maxlength="200" id="Sizes" name="Sizes" class="form-contrall" required>
                 </div>
+
                 <div class="inputfield">
-                    <label for="Image_Url">Image Url</label>
-                    <input type="number" min="0.00" step="0.01" maxlength="100" id="Image_Url" name="Image_Url" class="form-contrall" value="<?php if($data['Price']) :echo $data['Price']; endif; ?>">
-                    <label class="error" style="color:red;">
-                        <?php   if($data['priceError']) :echo $data['priceError']; endif; ?>
-                    </label>
+                    <form action="<?php echo BASEURL;?>/manageProductController/uploadImage" method="post" enctype="multipart/form-data" required>
+                        <label for="Sizes">Upload Image</label>
+                        <input type="file" name="fileToUpload" id="fileToUpload">
                 </div>
 
                 <br><div class="inputfield inputbutton">

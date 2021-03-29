@@ -60,11 +60,11 @@ function openEmp(evt,elementID) {
 
 
 }
-
-$("#addEmployee").click(function () {
-    location.href = "http://localhost/Richway-garment-system/manageEmployeeController/addEmployeeform";
-
-});
+//
+// $("#addEmployee").click(function () {
+//     location.href = "http://localhost/Richway-garment-system/manageEmployeeController/addEmployeeform";
+//
+// });
 
 
 function updateEmployee() {

@@ -118,6 +118,14 @@ class manageProductModel extends database {
             return true;
         }
     }
+
+    public function  updatePredefine($UpdatedPredefine){
+        echo("<script>console.log('PHP: " . json_encode($UpdatedPredefine) . "');</script>");
+
+        if($this->Query("UPDATE predefine SET normal_tailoring_cost = ?,description = ?,rate_per_hour_from_line = ?,minimum_profit_margin=?,image_url=? WHERE p_ID= ?",$UpdatedPredefine)){
+            return true;
+        }
+    }
 }
 
 
