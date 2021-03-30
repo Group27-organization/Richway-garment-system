@@ -9,9 +9,14 @@
     <script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <?php linkCSS("assets/css/nav.css") ?>
-    <?php linkCSS("assets/css/calendar.css") ?>
-    <?php linkJS("assets/js/calendar.js") ?>
     <?php linkCSS("assets/css/dashboard.css") ?>
+
+
+    <?php linkJS("assets/js/calender-main.js") ?>
+    <?php linkCSS("assets/css/calender-main.css") ?>
+
+
+
 </head>
 <body>
 
@@ -605,12 +610,11 @@
 
         <div class="flex-box-two-three">
             <div class="fbtt-two" >
-                <div id="lineChart" style="height: auto; width: 100%;"></div>
-
+                <div id="chartContainer" style="height: auto; width: 100%;"></div>
             </div>
             <div class="fbtt-three">
 
-                <h3>Account & Monthly Recurring Revenue Growth</h3>
+                <h3>Account AAAA Monthly Recurring Revenue Growth</h3>
                 <div class="flex-box-reanue-chart">
                     <div class="f-c">
                         <p class="fr1">MRR Growth</p>
@@ -631,29 +635,155 @@
         </div><!--flex-box-two-three-->
 
         <div class="box-container-monthly-sales" >
-
-            <div id="barChart" style="height: auto; width: 100%;"></div>
+                <div id="barChart" style="height: auto; width: 100%;"></div>
         </div>
 
+        <div class="flex-box-two-three">
+            <div class="fbtt-two" >
+<!--                <div id="chartContainer" style="height: auto; width: 100%;"></div>-->
+            </div>
+            <div class="fbtt-three">
+                <h3>Employee</h3>
+                <div id="columChartContainer" style="height: 250px; width: auto;"></div>
+
+            </div>
+        </div><!--flex-box-two-three-->
+<!--line 4-->
+        <div class="flex-box-two-three">
+            <div class="fbtt-two-normal" >
+                <!--                <div id="chartContainer" style="height: auto; width: 100%;"></div>-->
+            </div>
+            <div class="fbtt-two">
+                <h3>Employee</h3>
+
+            </div>
+        </div><!--flex-box-two-three-->
+
+<!-----------------------------------------------owner-------------------------------------------------------->
+
+            <h1>Owner</h1>
 
 
-        <h3 class="calendar-title">Order Calender</h3>
-        <div class="flex-container-calender">
+            <div id="wiget_1" style="background-color: #5E72E4">
+                <div class="cal">
+                    <h3 class="calendar-title">Order Calender</h3>
+                    <style>
+                        #loading {
+                            display: none;
+                            position: absolute;
+                            top: 10px;
+                            right: 10px;
+                        }
 
+                        #calendar {
+                            max-width: 900px;
+                            max-height: 900px;
+                            margin: 0 auto;
+                        }
+                    </style>
+
+                    <div id='loading1' class="loading">loading...</div>
+                    <div id='calendar1' class="calendar"></div>
+                </div>
+
+
+                <div class="flex-box-two-three">
+                    <div class="fbtt-two-normal" >
+                        <!--                    <h1>Employee Count Per Year</h1>-->
+                        <div id="ownerEmpCountLine" style="height: 300px; width: 100%;"></div>
+                    </div>
+                    <div class="fbtt-two-normal">
+                        <!--                    <h1>Employee Type</h1>-->
+                        <div id="ownerEmpPie" style="height: 300px; width: 100%;"></div>
+                    </div>
+                </div>
+
+            </div> <!--wiget_1-->
+<!--------------------------------------- supervisor------------------------------------------------->
+        <h1>Supervisor</h1>
+        <div id="wiget_2" style="background-color: #FFFFFF">
+
+            <div class="box-container-monthly-sales" >
+                <div id="workloadSuper" style="height: auto; width: 100%;"></div>
+            </div>
             <div>
-                <div id="calendar"> </div>
-                <!--calender-->
-
-                <?php linkJS("assets/js/calendar_data.js") ?>
+                <h1>Tabele JobID  ASSIGNLines Job Due Date</h1>
             </div>
 
         </div>
-        <!--lex-container-calender-->
+<!--------------------------------------- stock keeper------------------------------------------------->
+        <h1>Stock Keeper</h1>
+        <div id="wiget_3" style="background-color: deeppink">
+
+            <div class="flex-box-two-three">
+                <div class="fbtt-two-normal" >
+                        <div id="stockMaterialCount" style="height: 300px; width: 100%;"></div>
+                </div>
+                <div class="fbtt-two-normal">
+                    <div id="fabricTypePie" style="height: 300px; width: 100%;"></div>
+
+                </div>
+            </div>
+            <div class="flex-box-two-three">
+                <div class="fbtt-two-normal" >
+                    <div id="buttonColumsC" style="height: 300px; width: 100%;"></div>
+
+                </div>
+                <div class="fbtt-two-normal">
+                    <div id="stockNoolCount" style="height: 300px; width: 100%;"></div>
+
+                </div>
+            </div>
+
+        </div>
+<!--------------------------------------- salesmaneger------------------------------------------------->
+        <h1>Salesmanger</h1>
+        <div id="wiget_3" style="background-color: #2dce89">
+            <div class="cal">
+                <h3 class="calendar-title">Order Calender</h3>
+                <style>
+                    #loading {
+                        display: none;
+                        position: absolute;
+                        top: 10px;
+                        right: 10px;
+                    }
+
+                    #calendar {
+                        max-width: 800px;
+                        max-height: 800px;
+                        margin: 0 auto;
+                    }
+                </style>
+
+                <div id='loading2'>loading...</div>
+                <div id='calendar2' ></div>
+            </div>
+
+        </div>
+
+<!--------------------------------------- accountant------------------------------------------------->
+        <h1>account</h1>
+       <div id="wiget_4" style="background-color: #9c27b0">
+           <div class="box-container-monthly-sales" >
+
+<!--               <div id="salReportMonth" style="height: 300px; width: 100%;"></div>-->
+           </div>
+           <div class="box-container-monthly-sales" >
+               <div id="paymentACGenarateScatter" style="height: 300px; width: 100%;"></div>
+           </div>
+
+
+
+       </div>
+<!--------------------------------------- production manager------------------------------------------------->
+        <h1>Job Calender</h1>
 
     </div><!--right-->
 
 
 </div>
 <?php linkJS("assets/js/js-chart/on_load_charts.js") ?>
+<?php linkJS("assets/js/order-calendar.js") ?>
 </body>
 </html>

@@ -424,10 +424,32 @@ body {
     margin: 15px 2vw;
     z-index: 1;
 }
+.flex-box-two-two{
+    display: flex;
+    gap: 35px;
+    height: 500px;
+    margin: 15px 2vw;
+    z-index: 1;
+}
+
 .fbtt-two{
     flex:2;
     padding: 40px;
     background-color: #172B4D;
+    word-wrap: break-word;
+    border: 1px solid rgba(0,0,0,.05);
+    border-radius: .375rem;
+    background-clip: border-box;
+    box-shadow: 0 0 2rem 0 rgba(136,152,170,.15);
+    transition: 0.3s;
+    display: flex;
+
+    overflow: hidden;
+}
+.fbtt-two-normal{
+    flex:2;
+    padding: 40px;
+    background-color: #fff;
     word-wrap: break-word;
     border: 1px solid rgba(0,0,0,.05);
     border-radius: .375rem;

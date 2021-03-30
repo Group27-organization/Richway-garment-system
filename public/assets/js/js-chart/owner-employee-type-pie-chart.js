@@ -1,30 +1,30 @@
 
 $.ajax({
     type: 'POST',
-    url: "http://localhost/Richway-garment-system/eventCalenderController/employeeGender",
-    data: { key: "gender"},
+    url: "http://localhost/Richway-garment-system/dashbordChartController/employeeCountPerType",
+    data: { key: "empType"},
     dataType: 'json',
 
     success: function (data) {
-        // console.log("scusss this :"+JSON.stringify(data));
+        // console.log("load heeeeeeeeeee :"+data);
+       // console.log("emp pie :"+JSON.stringify(data));
 
-        var chart = new CanvasJS.Chart("chartContainer", {
+
+        let chart = new CanvasJS.Chart("ownerEmpPie", {
             animationEnabled: true,
             title: {
-                text: "Desktop Search Engine Market Share - 2016"
+                text: "Employee Type"
             },
             data: [{
                 type: "pie",
                 startAngle: 240,
                 yValueFormatString: "##0.00\"%\"",
                 indexLabel: "{label} {y}",
-                dataPoints:data
-
-
-
+                dataPoints: data
             }]
         });
         chart.render();
+
 
 
 
@@ -35,8 +35,4 @@ $.ajax({
 
 
 });
-
-
-
-
 

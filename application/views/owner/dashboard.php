@@ -10,7 +10,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <?php linkCSS("assets/css/nav.css") ?>
     <?php linkCSS("assets/css/calendar.css") ?>
-    <?php linkJS("assets/js/calendar.js") ?>
+    <?php linkJS("assets/js/order-calendar.js") ?>
     <?php linkCSS("assets/css/dashboard.css") ?>
 </head>
 <body>
@@ -191,12 +191,12 @@
 
         <div class="flex-box-two-three">
             <div class="fbtt-two" >
-                <div id="lineChart" style="height: auto; width: 100%;"></div>
+                <div id="chartContainer" style="height: auto; width: 100%;"></div>
 
             </div>
             <div class="fbtt-three">
 
-                <h3>Account & Monthly Recurring Revenue Growth</h3>
+                <h3>Account AND Monthly Recurring Revenue Growth</h3>
                 <div class="flex-box-reanue-chart">
                     <div class="f-c">
                         <p class="fr1">MRR Growth</p>

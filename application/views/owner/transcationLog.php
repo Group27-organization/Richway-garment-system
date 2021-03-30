@@ -30,7 +30,7 @@
             <div class="block">
                 <div class="page-header-routetext">
                     <a href="#"><img src="<?php echo BASEURL; ?>/public/assets/img/home%20(2).svg" ></i></a>
-                    <a href="#!" style="color:#8898aa;"> /Manage Payroll</a>
+                    <a href="#!" style="color:#8898aa;"> /Transaction Logs</a>
                 </div>
             </div>
         </div>
@@ -52,7 +52,7 @@
                         </div>
                     </div>
                     <div class="BtnWap">
-                        <!--                        <button id="addRawmaterial" class="three-set-btn1" onclick="openRaw()">Add</button>-->
+<!--                        <button id="addRawmaterial" class="three-set-btn1" onclick="openRaw()">Add</button>-->
 
                         <!--                        <button id="updateRawmaterial" class="three-set-btn2" onclick="updateRM()">Update</button>-->
 
@@ -62,7 +62,7 @@
 
                 <!--                table start-->
 
-                <div class="table-responsive" id="ownerManagePayRoll">
+                <div class="table-responsive" id="transcationLogTable">
 
                 </div>
                 <div class="card-footer">
@@ -114,7 +114,7 @@
 
 
 <?php linkJS("assets/js/table.js") ?>
-<?php linkJS("assets/js/owner-manage-payroll.js") ?>
+<?php linkJS("assets/js/owner-transcationLog-table-load.js") ?>
 
 </body>
 </html>

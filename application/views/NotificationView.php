@@ -13,6 +13,8 @@
     <?php linkCSS("assets/css/admin-manageuser.css") ?>
     <?php linkCSS("assets/css/admin-tabview.css") ?>
     <?php linkCSS("assets/css/admin-table.css") ?>
+    <?php linkCSS("assets/css/w3_model.css") ?>
+
 </head>
 <body>
 
@@ -30,7 +32,7 @@
             <div class="block">
                 <div class="page-header-routetext">
                     <a href="#"><img src="<?php echo BASEURL; ?>/public/assets/img/home%20(2).svg" ></i></a>
-                    <a href="#!" style="color:#8898aa;"> /Manage Payroll</a>
+                    <a href="#!" style="color:#8898aa;"> /Notification</a>
                 </div>
             </div>
         </div>
@@ -62,12 +64,12 @@
 
                 <!--                table start-->
 
-                <div class="table-responsive" id="ownerManagePayRoll">
+                <div class="table-responsive" id="Notification">
 
                 </div>
                 <div class="card-footer">
 
-                    <div class="model-footer" id="employeeMsgView">
+                    <div class="model-footer" id="Notification">
                         <h5>* Please select an employee to get this action!</h5>
                     </div>
 
@@ -114,7 +116,7 @@
 
 
 <?php linkJS("assets/js/table.js") ?>
-<?php linkJS("assets/js/owner-manage-payroll.js") ?>
+<?php linkJS("assets/js/notification.js") ?>
 
 </body>
 </html>
