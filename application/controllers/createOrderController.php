@@ -35,26 +35,7 @@ class createOrderController extends framework{
 
 
     }
-//    public function setPredefineHandType(){
-//
-//        if(isset($_POST['key'])){
-//            if($_POST['key'] == "ItemType"){
-//
-//                $type =strtolower($_POST['ItemType']);
-//                $result = $this->createOrderModel->getHandType($type);
-////                echo("<script>console.log('PHP in loadOrderItemsTable contoller: " . json_encode($result) . "');</script>");
-//
-//                echo ' <option value="0" selected="" disabled="">--SELECT--</option>';
-//                foreach($result as $row){
-//                    //   echo("<script>console.log('PHP in loadOrderItemsTable contoller: " . json_encode($row->button_shape) . "');</script>");
-//                    echo '<option value="'.$row->hand_type.'" data-value="'.$row->hand_type.'">'.$row->hand_type.'</option>';
-//                }
-//            }
-//        }
-//
-//
-//
-//    }
+
 
     public function setPredefineSize(){
 
