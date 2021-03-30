@@ -219,7 +219,7 @@
         <div class="inputfield inputbutton">
             <button type="button" id="addToBucket" class="model-btn2 cripple" style="height: 48px; width:134px ; color: red;border-color: red;">Add To Bucket</button>
             <button type="button" id="nextBtnf1" class="model-btn cripple" style="height: 48px; width:134px ;">Next</button>
-            <button type="button" id="textTime" class="model-btn cripple" style="height: 48px; width:134px ;">Test</button>
+
         </div>
 
 

@@ -103,7 +103,7 @@ class orderCreateModel extends database{
     }
     public function getSalesManagerId($loginId){
 
-        if($this->Query("SELECT ID FROM sales_manager WHERE login_ID =?",[$loginId])){
+        if($this->Query("SELECT sales_manager.ID FROM `sales_manager` JOIN per_role_login ON sales_manager.per_role_login_ID=per_role_login.ID WHERE per_role_login.login_ID=?",[$loginId])){
             return $this->fetch()->ID;
         }
     }
@@ -153,7 +153,7 @@ class orderCreateModel extends database{
 //        echo("<script>console.log('in model 2: " . json_encode($pID) . "');</script>");
 //        echo("<script>console.log('in model 3: " . json_encode($maxsize) . "');</script>");
 
-        if($predefineType="shirt"){
+        if($predefineType=="shirt"){
             if($this->Query("SELECT * FROM shirt  WHERE p_ID=? AND size=?",[$pID,$maxsize])){
                 $arr =$this->fetch();
 //                echo("<script>console.log('PHP in loadSupplierTable contoller: " . json_encode($arr) . "');</script>");
@@ -161,8 +161,14 @@ class orderCreateModel extends database{
             }else{
                 return -1;
             }
-        }elseif ($predefineType="t_shirt"){
-
+        }else{
+            if($this->Query("SELECT * FROM t_shirt   WHERE p_ID=? AND size=?",[$pID,$maxsize])){
+                $arr =$this->fetch();
+//                echo("<script>console.log('PHP in loadSupplierTable contoller: " . json_encode($arr) . "');</script>");
+                return $arr;
+            }else{
+                return -1;
+            }
         }
 
 
@@ -331,7 +337,12 @@ class orderCreateModel extends database{
         }
         return 0;
     }
+    public function getOneCustomer($ID){
+        if($this->Query("SELECT * FROM customer WHERE customer_ID =?",[$ID])){
 
+            return $this->fetch();
+        }
+    }
 
 
 

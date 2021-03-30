@@ -440,6 +440,9 @@ class createOrderController extends framework{
                 $orderItemCart = array();
 
                 $ItemCountCart = array();
+                $ItemCostCart = array();
+
+
 
 
                 for ($x = 0; $x < $length; $x++) {
@@ -493,7 +496,7 @@ class createOrderController extends framework{
 //                echo "\npredefineType details :".$predefineType;
 
                     if($predefineType !="shirt"){
-                        $predefineType = t-shirt;
+                        $predefineType = "t_shirt";
                     }
 
 
@@ -501,7 +504,10 @@ class createOrderController extends framework{
                     $sizes= $predefines->sizes;
                     $array = explode(",", $sizes);
                     $maxsize =end($array);
-//                    echo "\nmaxsize  :".$maxsize;
+//                    echo "\nmaxsize is                       :".$maxsize;
+//                    echo "\npredefineType is                       :".$predefineType;
+//                    echo "\npID is                       :".$pID;
+
 
                     $unitnormal_tailoring_cost =$predefines->normal_tailoring_cost;
 //                    echo "\ntailoring_cost :";
@@ -511,6 +517,13 @@ class createOrderController extends framework{
                     $largeRawMaterialQuantity =$this->createOrderModel->predefineRawMaterialsQuantity($predefineType,$pID,$maxsize);
 //                    echo "\nfabQuantity   :";
 //                    echo $largeRawMaterialQuantity->fabric_quantity;
+//
+//                    echo "\nbutton_quantity   :";
+//                    echo $largeRawMaterialQuantity->button_quantity;
+//
+//                    echo "\nnool_quantity   :";
+//                    echo $largeRawMaterialQuantity->real_thread_quantity;
+
 
 
                     $unit_fabric_quantity =$largeRawMaterialQuantity->fabric_quantity;
@@ -546,16 +559,23 @@ class createOrderController extends framework{
 //                    echo "\ntotal_taileringcost :".$total_taileringcost;
 
                     $profit_margin =$predefines->minimum_profit_margin;
-//                    echo "\nprofit_margin :".$profit_margin;
+//                    echo "\nminimumprofit_margin :".$profit_margin;
                     $status_precentage=1;
 
                     $costperItem =($fabric_totalprice+$button_totalprice+$nool_totalprice+$total_taileringcost)*$profit_margin;
+//                    echo "\ncostperItem :".$costperItem;
+
+
                     $profit_marginfororderItem =$costperItem*$profit_margin;
+//                    echo "\nprofit_marginfororderItem :".$profit_marginfororderItem;
+
+
                     $totalPriceOfOrderItem=$costperItem+$profit_marginfororderItem;
-//                    echo "\ncostperItem :".$totalPriceOfOrderItem;
+//                    echo "\ntotalPrice :".$totalPriceOfOrderItem;
                     array_push($paymentCart, $totalPriceOfOrderItem);
                     array_push($orderItemCart, $pID);
-                    array_push($orderItemCart, $pID);
+                    array_push($ItemCountCart, $ItemqQuntity);
+                    array_push($ItemCostCart, $costperItem);
 
 //                    global $globalPaymentCart; = $paymentCart;
 //                    global  $globalOrderPredefineIdCart = $orderItemCart;
@@ -573,6 +593,13 @@ class createOrderController extends framework{
 
 
                 }
+                $this->setSession(globalPaymentCart,$paymentCart);
+                $this->setSession(globalOrderPredefineIdCart,$orderItemCart);
+                $this->setSession(globalItemQuantityCart,$ItemCountCart);
+                $this->setSession(globalItemCostCart,$ItemCostCart);
+                $this->setSession(globalrate,$rate);
+
+
                 echo array_sum($paymentCart)*$rate ;
 //                echo "total payment :".array_sum($paymentCart);
 //                echo "<pre>";
@@ -587,23 +614,42 @@ class createOrderController extends framework{
         }
     }
 
+
     public function genarateInvoice2(){
 //        echo "".$globalPaymentCart;
 //        echo"".$globalOrderPredefineIdCart;
 //        echo"".$globalItemQuantityCart ;
 
 
-        $result=[1,2,3,4];
-        $globleArrItemPrice=[200,250,300,400];
-        $globleArrItemCout =[108,205,350,88];
+//        $result=[1,2,3,4];
+//        $globleArrItemPrice=[200,250,300,400];
+//        $globleArrItemCout =[108,205,350,88];
+//        $globalItemCost =[108,205,350,88];
 
-        $TotalAmount=$_POST['TotalAmount'];
 
-        $amountpaid=$_POST['amountPaid'];
-        $BalanceDue=$TotalAmount-$amountpaid;
+
+
+
+        $result= $this->getSession(globalOrderPredefineIdCart);
+        $globleArrItemPrice= $this->getSession(globalPaymentCart);
+        $globleArrItemCout = $this->getSession(globalItemQuantityCart);
+        $globalRate =$this->getSession(globalrate);
+
+
+
 
         if(isset($_POST['key'])){
             if(  $_POST['key'] == "Invoice2"){
+
+                $customerId= $_POST['customerID'];
+
+                $customerDetails=$this->createOrderModel->getOneCustomer(intval($customerId));
+                $TotalAmount=$_POST['TotalAmount'];
+                $amountpaid=$_POST['amountPaid'];
+                $orderdueDate=$_POST['orderDuedate'];
+                $BalanceDue=$TotalAmount-$amountpaid;
+
+
                 echo "
                 <style>
         #invoiceID {background-color: #DDEEFF;padding: 15px;border-radius:0px; margin: 0;left: calc(50% - 30vw);
@@ -691,40 +737,59 @@ class createOrderController extends framework{
                 </ol>
             </div>
                         ";
-
+//                echo "Customer details";
+//                echo "<pre>";
+//                print_r($customerDetails);
+//                echo "</pre>";
+//                echo "<pre>";
+//
+//                echo "globalPaymentCart";
+//                echo "<pre>";
+//                print_r(globalPaymentCart);
+//                echo "</pre>";
+//                echo "<pre>";
+//
+//                echo "total item  price";
+//                echo "<pre>";
+//                print_r($globleArrItemPrice);
+//                echo "</pre>";
+//                echo "<pre>";
+//
+//                echo "Item count";
+//                echo "<pre>";
+//                print_r($globleArrItemCout);
+//                echo "</pre>";
+//                echo "<pre>";
 
 
                 echo "
               
                 <header id=\"invoiceheader\">
                <h1 id=\"InvoiceHadername\">Invoice</h1>
-                <address contenteditable style='margin-top:10px '>
-                    <p>Jonathan Neal</p>
-                    <p>101 E. Chapman Ave<br>Orange, CA 92866</p>
-                    <p>(800) 555-1234</p>
+                <address contenteditable style='font-size: medium;>
+                       <p style='margin-top:10px;'>".$customerDetails->name."</p>
+                        <p>".$customerDetails->address."</p>
+                       <p>".$customerDetails->email."</p>
+                       <p>".$customerDetails->contact_no."</p>
                 </address>
+                
+                 
                 </header>
             <article>
-                <h1>Recipient</h1>
-                <address contenteditable>
-                    <p>Richway Garment<br>supervisor</p>
-                </address>
+               
                 ";
 
                 echo "
 
                  <table class=\"tb meta\">
-            <tr>
-                <th><span contenteditable>Invoice</span></th>
-                <td><span contenteditable>101138</span></td>
-            </tr>
+            
             <tr>
                 <th><span contenteditable>Date</span></th>
                 <td><span contenteditable>". date("Y/m/d") ."</span></td>
             </tr>
             <tr>
-                <th><span contenteditable>Amount Due</span></th>
-                <td><span id=\"prefix\" contenteditable></span><span>".$TotalAmount."</span></td>
+                <th><span contenteditable>Order Due Date</span></th>
+                <td><span id=\"prefix\" contenteditable></span><span>".$orderdueDate."</span></td>
             </tr>
         </table>
                     ";
@@ -737,7 +802,7 @@ class createOrderController extends framework{
             <tr>
                 <th><span contenteditable>Item</span></th>
                 <th><span contenteditable>Description</span></th>
-               
+                <th><span contenteditable>Unit Price</span></th>
                 <th><span contenteditable>Quantity</span></th>
                 <th><span contenteditable>Price</span></th>
             </tr>
@@ -753,17 +818,18 @@ class createOrderController extends framework{
 //                    echo("<script>console.log('PHP in predefine ArrItemCout contoller: " . json_encode($globleArrItemCout[$x]) . "');</script>");
 
 
-                   ++$x;
+
                     echo "
                             <tr>
-                                    <td><a class=\"cut\">-</a><span contenteditable>".$predefineDetails->type."</span></td>
+                                    <td><a class=\"cut\"></a><span contenteditable>".$predefineDetails->type."</span></td>
                                     <td><span contenteditable>".$predefineDetails->description."</span></td>
-                                    <td><span contenteditable>".$globleArrItemCout[$x]."</span></td>
+                                    <td><span contenteditable>".floatval($globleArrItemPrice[$x])/floatval($globleArrItemCout[$x])."</span></td>
+                                     <td><span contenteditable>".$globleArrItemCout[$x]."</span></td>
                                     <td><span data-prefix></span><span>".$globleArrItemPrice[$x]."</span></td>
                             </tr>
                         ";
 
-
+                    ++$x;
                 }
                 echo "
                         </tbody>
@@ -777,11 +843,15 @@ class createOrderController extends framework{
 
                 <table class=\"tb balance\">
             <tr>
-                <th><span contenteditable>Total</span></th>
+                <th><span contenteditable>Rate</span></th>
+                <td><span data-prefix></span><span>".$globalRate."</span></td>
+            </tr>
+            <tr>
+                <th><span contenteditable>Total Price</span></th>
                 <td><span data-prefix></span><span>".$TotalAmount."</span></td>
             </tr>
             <tr>
-                <th><span contenteditable>Amount Paid</span></th>
+                <th><span contenteditable>Advance Price</span></th>
                 <td><span data-prefix></span><span contenteditable>".$amountpaid."</span></td>
             </tr>
             <tr>
@@ -891,7 +961,14 @@ class createOrderController extends framework{
             if ($_POST['key'] == "orderArrayS") {
 
                 $orderArray = $_POST['orderArray'];
-//                echo("order array 1".json_encode($orderArray)) ;
+                echo("<script>console.log('PHP in order array contoller: " . json_encode($orderArray) . "');</script>");
+
+
+                //["John Keells","start","2021-04-24","110","82800","41400","0","24"]
+
+
+
+                //                echo("order array 1".json_encode($orderArray)) ;
                 // order_ID             auto
                 //  order_description   0
                 // order_status         1
@@ -910,7 +987,7 @@ class createOrderController extends framework{
 //                echo("<br>login id : ".json_encode($loginID)) ;
 //                $A =$this->createOrderModel->getSalesManagerId(intval($loginID));
                 $orderArray[6] = intval($this->createOrderModel->getSalesManagerId(intval($loginID)));
-//                echo("<br>ge t selsmanger id : ".json_encode($A)) ;
+                echo("<br>ge t selsmanger id : ".json_encode($orderArray[6])) ;
 //                echo("<br>orderArray2:".json_encode($orderArray)) ;
 
               //  echo("orderArray:".json_encode($orderArray)) ;
@@ -921,7 +998,7 @@ class createOrderController extends framework{
 
                     $orderItemList =$_POST['orderItemList'];
 //                    ["M","1","1","123","0","1"]
-                  // echo("orderItemList:".json_encode($orderItemList));
+                   echo("orderItemList:".json_encode($orderItemList));
                     //echo("<script>console.log('PHP in ordet item list: " . json_encode($orderItemList) . "');</script>");
                     foreach ($orderItemList as $row){
 
@@ -1047,10 +1124,10 @@ class createOrderController extends framework{
                     $final_cus_date = date("Y-m-d H:i:s", strtotime("$cus_date $cus_time"));
 
                     $data = $this->calculateCustomerDueDate($final_cus_date,0, $ttt);
-                    echo "status: ".$data[2]." use line ids: ".json_encode($data[0])." use line final dates: ".json_encode($data[1]);
+                    echo $data[2];
                 }
                 else{
-                    echo "Normal Due Date Is: ".$normalDueDate." Used Lines: ".json_encode($returnData[1]);
+                    echo $normalDueDate;
                 }
             }
         }
@@ -1061,7 +1138,7 @@ class createOrderController extends framework{
         $ttt = 0.0;
         foreach ($data as $item ){
             $lph =  $this->createOrderModel->getLPH($item['p_ID']);
-            echo json_encode($lph);
+
             if($lph == 0) continue;
             $ttt += ($item['quantity'] / $lph);
         }

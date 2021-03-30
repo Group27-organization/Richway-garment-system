@@ -13,9 +13,7 @@ $(document).ready(function () {
                 data: {   key: "notifycount"},
                 success: function(data){
                     document.getElementById('notifycount').innerText=parseInt(data);
-                    // console.log("called after time ");
-                    //  console.log("data:"+data);
-                    // alert(data);
+
                 },
                 error       : function() {
                     console.log("error");
@@ -123,7 +121,7 @@ $(document).ready(function () {
         url: "http://localhost/Richway-garment-system/createOrderController/setFabricCode",
         data: {   key: "fabricCode"},
         success: function(data){
-            // console.log("fabrc "+data);
+
             $("#fabricdesigncode").html(data);
 
 
@@ -230,16 +228,12 @@ $(document).ready(function () {
         let flag =1;
         for (const [key, value] of Object.entries(errorCheck)) {
             if(value==0){
-                console.log("value is zero");
+
                 $("label[for="+key+"]").show();
                 flag =0;
             }
-            console.log(key,value);
+
         }
-        console.log("flag is :"+flag);
-
-
-
 
 
         let PredefineId = 0;
@@ -276,15 +270,15 @@ $(document).ready(function () {
            if(flag==1){
                flag =0;
                count =count+1;
-               console.log("count :"+count);
-               alert("Item "+count+"Added!");
+
+               alert(count+" item added to the order cart");
                $("#fabricdesigncode").select2("val", "");
                $("#buttondesigncode").select2("val", "");
 
                for (const [key, value] of Object.entries(errorCheck)) {
                    if(value==1){
                        errorCheck[key]=0;
-                       console.log("value is zero");
+
 
                    }
                }
@@ -349,9 +343,9 @@ $(document).ready(function () {
     });
 //go to step 2
     $("#nextBtnf1").click(function(){
-        console.log("count is :::"+count);
+
         if(count==0){
-            alert("You did not Add any Item To Bucket!");
+            alert("bucket is empty!");
         }else{
             $('input[type=text]').val('');
             $("#createOrderForm1").hide();
@@ -369,7 +363,7 @@ $(document).ready(function () {
 //step 2
 
     $("#itemTableNextTbn").click(function(){
-       // console.log("Item table button cllickd");
+
 
         $("#bucketTable").hide();
         $("#createOrderForm1").hide();
@@ -430,6 +424,11 @@ $(document).ready(function () {
         $("#createOrderForm2").hide();
         $("#header-gradant-form").hide();
         $("#bucketTable").show();
+        $("label[for='EstimateTotalPrice']").text("");
+        $("label[for='EstimateAdvance']").text("");
+        $("label[for='GeneratedDueDate']").text("");
+        $("label[for='GeneratedOrderStatus']").text("");
+
     });
 
 
@@ -475,7 +474,7 @@ $(document).ready(function () {
         url: "http://localhost/Richway-garment-system/createOrderController/setcustomerdropdown",
         data: {   key: "customerdrop"},
         success: function(data){
-            // console.log("fabrc "+data);
+
             $("#customer").html(data);
 
 
@@ -496,7 +495,7 @@ $(document).ready(function () {
 //dynamic validation
 
     $("#customerGiveDate").on("change paste keyup", function() {
-        console.log("customer due date select :"+$(this).val());
+
         let x =$(this).val();
         if($(this).val()){
             $("label[for='CD']").hide();
@@ -515,7 +514,7 @@ $(document).ready(function () {
         }
     });
     $("#OrderName").on("change paste keyup", function() {
-        console.log("orderItemQuantity :"+$(this).val());
+
         let x =$(this).val();
         if($.isNumeric(x)==true){
             $("label[for*='OD']").html("Can't Keep a Number");
@@ -541,7 +540,7 @@ $(document).ready(function () {
     $("#customer").change(function () {
         if(typeof $('#customer option:selected').data('value') === 'undefined'){
             $("label[for='AC']").show();
-            console.log("customer id :undifine");
+
         }else{
             $("label[for='AC']").hide();
         }
@@ -552,79 +551,78 @@ $(document).ready(function () {
     });
 
 
-    //cancel order****************************************
+//genarate normal order due date****************************************
 
     $('#generateNormalDueDate').click( function() {
-        console.log("grnarated normal due date button called");
+
+
+
         let rate =1;
         let flag=1;
         if($("input[name='dateType']:checked").val()=="normal"){
-            console.log(" normal clicked");
-            let flag=1;
-        }else{
-            console.log("customer clicked");
-            let status_percentage=$("label[for='GeneratedOrderStatus']").html();
-            if(status_percentage =="extra_line"){
-                 rate =1.20;
 
-            }else if(status_percentage=="optimize"){
-                rate =1.50;
-            }else if(status_percentage="overflow"){
-                flag=0;
-                rate=0;
-            }
+             flag=1;
+        }else{
+           flag=0;
         }
 
-        console.log("befor flag");
+
         if(flag==1){
-            console.log("flag 1 called");
-            let table = $("#addItemBucketTable table > tbody ");
-            let jsonArr = [];
-
-            table.find('tr').each(function (i) {
-                var $tds = $(this).find('td'),
-                    PredefineId = $tds.eq(0).text(),
-                    FabricDesignID = $tds.eq(3).text(),
-                    ButtonDesignID = $tds.eq(6).text(),
-                    q = $tds.eq(7).text();
-
-                var feed = {PreId: parseInt(PredefineId.trim()), FabricID: parseInt(FabricDesignID.trim()), ButtonID: parseInt(ButtonDesignID.trim()), Quantity: parseInt(q.trim())};
-                if(i>0){
-                    jsonArr.push(feed);
-                }
-            });
-
-            let abc = JSON.stringify(jsonArr);
-            console.log("myJSON :"+abc);
-            console.log( jsonArr.length);
-
-            let x =[{
-                ButtonID: 2,
-                FabricID: 20,
-                PreId: 1,
-                Quantity: 1000
-            }, {
-                ButtonID: 2,
-                FabricID: 20,
-                PreId: 1,
-                Quantity: 2000
-            }];
+            let jdata = JSON.parse('{"order":[{"order_item_id":122,"quantity":5000,"p_ID":2},{"order_item_id":103,"quantity":2000,"p_ID":1}],"cus_date":""}');
 
             $.ajax({
                 type: 'POST',
-                url: "http://localhost/Richway-garment-system/createOrderController/priceCalculate",
-                data: {  dataArr:jsonArr, Arrlength:jsonArr.length, rate:rate, key: "priceCal"},
-                success: function(data){
+                url: "http://localhost/Richway-garment-system/createOrderController/calculateOrderDueDate",
+                data: { data: jdata,  key: "manageJobData"},
+                success: function(data,status){
+                    $("label[for='GeneratedDueDate']").text(data);
 
-                    $("label[for='EstimateTotalPrice']").text(data);
-                    $("label[for='EstimateAdvance']").text(parseFloat(data)/2);
-                    console.log(data);
 
-                    },
+                    let table = $("#addItemBucketTable table > tbody ");
+                    let jsonArr = [];
+
+                    table.find('tr').each(function (i) {
+                        var $tds = $(this).find('td'),
+                            PredefineId = $tds.eq(0).text(),
+                            FabricDesignID = $tds.eq(3).text(),
+                            ButtonDesignID = $tds.eq(6).text(),
+                            q = $tds.eq(7).text();
+
+                        var feed = {PreId: parseInt(PredefineId.trim()), FabricID: parseInt(FabricDesignID.trim()), ButtonID: parseInt(ButtonDesignID.trim()), Quantity: parseInt(q.trim())};
+                        if(i>0){
+                            jsonArr.push(feed);
+                        }
+                    });
+
+                    let abc = JSON.stringify(jsonArr);
+
+
+
+                    $.ajax({
+                        type: 'POST',
+                        url: "http://localhost/Richway-garment-system/createOrderController/priceCalculate",
+                        data: {  dataArr:jsonArr, Arrlength:jsonArr.length, rate:1, key: "priceCal"},
+                        success: function(data){
+
+                            $("label[for='EstimateTotalPrice']").text(data);
+                            $("label[for='EstimateAdvance']").text(parseFloat(data)/2);
+
+
+                        },
+                        error       : function() {
+                            console.log("error");
+                        }
+                    });
+
+
+
+                },
                 error       : function() {
-                    console.log("error");
                 }
             });
+
+
+
 
         }
 
@@ -632,159 +630,115 @@ $(document).ready(function () {
 
     });
 
-    $('#textTime').click( function() {
-        let jdata = JSON.parse('{"order":[{"order_item_id":122,"quantity":5000,"p_ID":2},{"order_item_id":103,"quantity":2000,"p_ID":1}],"cus_date":"2021-05-19"}');
 
-        $.ajax({
-            type: 'POST',
-            url: "http://localhost/Richway-garment-system/createOrderController/calculateOrderDueDate",
-            data: { data: jdata,  key: "manageJobData"},
-            success: function(data,status){
-                console.log(data);
-                alert(data);
-            },
-            error       : function() {
-            }
-        });
-    });
 
 
 //customer give due date
     $('#GeneratedOrderStatusBtn').click( function() {
         let due_date="";
+        let flag=1;
+        $("label[for='EstimateTotalPrice']").text("");
+        $("label[for='EstimateAdvance']").text("");
+        $("label[for='OS']").hide();
+
+
+
         if($("input[name='dateType']:checked").val()=="normal"){
-            let x = $("label[for='GeneratedDueDate']").html();
-            due_date =x.substring(0, 10);
+            flag=0;
+            // let x = $("label[for='GeneratedDueDate']").html();
+            // due_date =x.substring(0, 10);
+
         }else{
+            flag=1;
             let x = $("#customerGiveDate").val();
             due_date =x.substring(0, 10);
-        }
 
+            let table2 = $("#addItemBucketTable table > tbody ");
+            let jsonArr3 = [];
 
-        let table2 = $("#addItemBucketTable table > tbody ");
-        let jsonArr3 = [];
-
-        table2.find('tr').each(function (i) {
-            var $tds = $(this).find('td'),
-                PredefineId = $tds.eq(0).text(),
-                quantity = $tds.eq(7).text();
-
-            var feed = {p_ID: parseInt(PredefineId.trim()), quantity: parseInt(quantity.trim())};
-            if(i>0){
-                jsonArr3.push(feed);
-            }
-        });
-
-
-
-
-
-        let checkStatusArr={
-            "order":jsonArr3,
-            "cus_date":due_date
-        };
-
-        let SJson = JSON.stringify(checkStatusArr);
-         console.log("checkStatusArr    :"+SJson);
-
-        let xx ='{"order":[{"order_item_id":122,"quantity":5000,"p_ID":2},{"order_item_id":103,"quantity":2000,"p_ID":1}],"cus_date":"2021-04-25"}';
-         let jdata = JSON.parse(xx);
-
-        $.ajax({
-            type: 'POST',
-            url: "http://localhost/Richway-garment-system/createOrderController/calculateOrderDueDate",
-            data: {  data:SJson, key: "manageJobData"},
-            success: function(data){
-                console.log("estimate date data:"+data);
-                $("label[for='GeneratedOrderStatus']").text(data);
-
-
-
-            },
-            error       : function() {
-                console.log("error");
-            }
-        });
-
-
-        // let jdata = JSON.parse('{"order":[{"order_item_id":122,"quantity":5000,"p_ID":2},{"order_item_id":103,"quantity":2000,"p_ID":1}],"cus_date":"2021-04-19"}');
-
-        $.ajax({
-            type: 'POST',
-            url: "http://localhost/Richway-garment-system/createOrderController/calculateOrderDueDate",
-            data: { data: jdata,  key: "manageJobData"},
-            success: function(data,status){
-                console.log(data);
-                alert(data);
-            },
-            error       : function() {
-            }
-        });
-
-
-
-
-        let rate =1;
-        let flag=1;
-        if($("input[name='dateType']:checked").val()=="normal"){
-            flag=1;
-        }else{
-            let status_percentage=$("label[for='GeneratedOrderStatus']").html();
-                if(status_percentage =="extra_line"){
-                    rate =1.20;
-                }else if(status_percentage=="optimize"){
-                    rate =1.50;
-                }else if(status_percentage=="overflow"){
-                    flag=0;
-                    rate=0;
-                }
-        }
-        console.log("select customer date befor flag :"+flag);
-
-        if(flag==1){
-            console.log("select customer date after");
-
-            let table = $("#addItemBucketTable table > tbody ");
-            let jsonArr = [];
-
-            table.find('tr').each(function (i) {
-                let $tds = $(this).find('td'),
+            table2.find('tr').each(function (i) {
+                var $tds = $(this).find('td'),
                     PredefineId = $tds.eq(0).text(),
-                    FabricDesignID = $tds.eq(3).text(),
-                    ButtonDesignID = $tds.eq(6).text(),
-                    q = $tds.eq(7).text();
+                    quantity = $tds.eq(7).text();
 
-                let feed = {PreId: parseInt(PredefineId.trim()), FabricID: parseInt(FabricDesignID.trim()), ButtonID: parseInt(ButtonDesignID.trim()), Quantity: parseInt(q.trim())};
+                var feed = {p_ID: parseInt(PredefineId.trim()), quantity: parseInt(quantity.trim())};
                 if(i>0){
-                    jsonArr.push(feed);
+                    jsonArr3.push(feed);
                 }
             });
-            // let ddd = JSON.stringify(jsonArr);
-            // console.log("Customer give date JSON :"+ddd);
-            // console.log("length is :"+jsonArr.length);
 
 
-            let x =[{
-                ButtonID: 2,
-                FabricID: 20,
-                PreId: 1,
-                Quantity: 1000
-            }, {
-                ButtonID: 2,
-                FabricID: 20,
-                PreId: 1,
-                Quantity: 2000
-            }];
+            let checkStatusArr={
+                "order":jsonArr3,
+                "cus_date":due_date
+            };
+
 
             $.ajax({
                 type: 'POST',
-                url: "http://localhost/Richway-garment-system/createOrderController/priceCalculate",
-                data: {  dataArr:jsonArr, Arrlength:jsonArr.length, rate:rate, key: "priceCal"},
+                url: "http://localhost/Richway-garment-system/createOrderController/calculateOrderDueDate",
+                data: {  data:checkStatusArr, key: "manageJobData"},
                 success: function(data){
+                    $("label[for='GeneratedOrderStatus']").text(data);
 
-                    $("label[for='EstimateTotalPrice']").text(data);
-                    $("label[for='EstimateAdvance']").text(parseFloat(data)/2);
-                    console.log(data);
+
+
+                    let rate =1;
+                    if(data.includes("normal")){
+                        rate =1;
+                        console.log("normal type:");
+                    }else if(data.includes("Extra Lines")){
+                        rate =1.20;
+                        console.log("extra type:");
+                    }else{
+                        rate =0;
+                    }
+                    console.log("rate is now in"+rate);
+
+                    let table = $("#addItemBucketTable table > tbody ");
+                    let jsonArr = [];
+
+                    table.find('tr').each(function (i) {
+                        let $tds = $(this).find('td'),
+                            PredefineId = $tds.eq(0).text(),
+                            FabricDesignID = $tds.eq(3).text(),
+                            ButtonDesignID = $tds.eq(6).text(),
+                            q = $tds.eq(7).text();
+
+                        let feed = {PreId: parseInt(PredefineId.trim()), FabricID: parseInt(FabricDesignID.trim()), ButtonID: parseInt(ButtonDesignID.trim()), Quantity: parseInt(q.trim())};
+                        if(i>0){
+                            jsonArr.push(feed);
+                        }
+                    });
+                     let ddd = JSON.stringify(jsonArr);
+
+
+
+                    if(rate==0){
+
+                    }else{
+                       $.ajax({
+                           type: 'POST',
+                           url: "http://localhost/Richway-garment-system/createOrderController/priceCalculate",
+                           data: {  dataArr:jsonArr, Arrlength:jsonArr.length, rate:rate, key: "priceCal"},
+                           success: function(data){
+
+                               $("label[for='EstimateTotalPrice']").text(data);
+                               $("label[for='EstimateAdvance']").text(parseFloat(data)/2);
+                               console.log("estimate total price :"+data);
+
+                           },
+                           error       : function() {
+                               console.log("error");
+                           }
+                       });
+                   }
+
+
+
+
+
+
 
                 },
                 error       : function() {
@@ -792,15 +746,87 @@ $(document).ready(function () {
                 }
             });
 
-        }
+
+        }//end if
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 
     });
+//price calculate
+    $('#generatePrice').click( function() {
+        let status_percentage=$("label[for='GeneratedOrderStatus']").html();
+        // console.log("rate status_percentage now in"+typeof status_percentage);
+
+        if(status_percentage=='normal' ){
+            console.log("rate status_percentage now Im  in");
+            let rate =1;
+            let status_percentage=$("label[for='GeneratedOrderStatus']").html();
+            // console.log("select status_percentage :"+status_percentage);
+            if(status_percentage =="normal"){
+                rate =1;
+            }else if(status_percentage=="Extra Lines"){
+                rate =1.20;
+            }else{
+                rate=0;
+            }
+            // console.log("rate is now in"+rate);
 
 
 
+                // console.log("select customer date after");
+
+                let table = $("#addItemBucketTable table > tbody ");
+                let jsonArr = [];
+
+                table.find('tr').each(function (i) {
+                    let $tds = $(this).find('td'),
+                        PredefineId = $tds.eq(0).text(),
+                        FabricDesignID = $tds.eq(3).text(),
+                        ButtonDesignID = $tds.eq(6).text(),
+                        q = $tds.eq(7).text();
+
+                    let feed = {PreId: parseInt(PredefineId.trim()), FabricID: parseInt(FabricDesignID.trim()), ButtonID: parseInt(ButtonDesignID.trim()), Quantity: parseInt(q.trim())};
+                    if(i>0){
+                        jsonArr.push(feed);
+                    }
+                });
+
+
+
+                $.ajax({
+                    type: 'POST',
+                    url: "http://localhost/Richway-garment-system/createOrderController/priceCalculate",
+                    data: {  dataArr:jsonArr, Arrlength:jsonArr.length, rate:rate, key: "priceCal"},
+                    success: function(data){
+
+                        $("label[for='EstimateTotalPrice']").text(data);
+                        $("label[for='EstimateAdvance']").text(parseFloat(data)/2);
+                        console.log("estimate total price :"+data);
+
+                    },
+                    error       : function() {
+                        console.log("error");
+                    }
+                });
+
+
+        }
+    });
+
+
+//make invoice
 
     $('#makeInvoiceBtn').click( function() {
 
@@ -812,10 +838,10 @@ $(document).ready(function () {
 
         if($("input[name='dateType']:checked").val()=="normal"){
             order_status ="normal";
-            order_due_date = $("label[for='GeneratedDueDate']").html().substring(0, 9);
+            order_due_date = $("label[for='GeneratedDueDate']").html().substring(0, 10);
         }else{
             order_status = $("label[for='GeneratedOrderStatus']").html();
-            order_due_date = $("#customerGiveDate").val().substring(0, 9);
+            order_due_date = $("#customerGiveDate").val().substring(0, 10);
         }
         console.log("order_due_date :"+order_due_date);
         console.log("order_status :"+order_status);
@@ -834,6 +860,10 @@ $(document).ready(function () {
             $("label[for='TP']").show();
             $("label[for='EA']").show();
 
+        }if(order_status.includes("Optimize")){
+            $("label[for='OS']").show();
+
+
         }if(order_due_date == ""){
             $("label[for='DD']").show();
             $("label[for='TP']").show();
@@ -844,7 +874,7 @@ $(document).ready(function () {
         }if(order_description==""){
             $("label[for='OD']").show();
         }
-        else if(order_status!="" && order_due_date != "" && order_description!="" && typeof $('#customer option:selected').data('value') !== 'undefined') {
+        else if(order_status!="" && order_due_date != "" && order_description!="" && typeof $('#customer option:selected').data('value') !== 'undefined' && !order_status.includes("Optimize")) {
 
             $('#saveToOrder').hide();
             let x = document.getElementById("invoiceID");
@@ -856,14 +886,15 @@ $(document).ready(function () {
                 y.style.display = "block";
             }
 
-            let totalprice=100;
-            let paidamount=20;
+            let totalprice=$("label[for='EstimateTotalPrice']").html();
+            let paidamount=$("label[for='EstimateAdvance']").html();;
             $.ajax({
                 type: 'POST',
                 url: "http://localhost/Richway-garment-system/createOrderController/genarateInvoice2",
-                data: { TotalAmount: totalprice,amountPaid:paidamount, key: "Invoice2"},
+                data: { customerID:customer_ID,orderDuedate:order_due_date, TotalAmount: parseFloat(totalprice),amountPaid:parseFloat(paidamount), key: "Invoice2"},
                 success: function(data){
                     $("#invoiceID").html(data);
+
 
                 },
                 error       : function() {
@@ -884,7 +915,7 @@ $(document).ready(function () {
             data: { TotalAmount: totalprice,amountPaid:paidamount, key: "Invoice2"},
             success: function(data){
                 $("#invoiceID").html(data);
-                // console.log(data);
+
 
 
 
@@ -917,7 +948,7 @@ $(document).ready(function () {
 
 
     $("#saveOrder").click(function () {
-
+        console.log("save button click");
         let orderArray;
         let order_description =$("#OrderName").val();
 
@@ -927,32 +958,29 @@ $(document).ready(function () {
 
         if($("input[name='dateType']:checked").val()=="normal"){
             order_status ="normal";
-            order_due_date = $("label[for='GeneratedDueDate']").html().substring(0, 9);
+            order_due_date = $("label[for='GeneratedDueDate']").html().substring(2,12);
         }else{
             order_status = $("label[for='GeneratedOrderStatus']").html();
-            order_due_date = $("#customerGiveDate").val().substring(0, 9);
+            order_due_date = $("#customerGiveDate").val().substring(0,10);
         }
         console.log("order_due_date :"+order_due_date);
         console.log("order_status :"+order_status);
 
 
-        // let estimate_time =$("label[for='EstimateTime']").html();
-        // let order_price =$("label[for='EstimateTotalPrice']").html();
-        // let advance_price =$("label[for='EstimateAdvance']").html();
+
         let estimate_time =0;
         let order_price =$("label[for='EstimateTotalPrice']").html();;
         let advance_price =$("label[for='EstimateAdvance']").html();;
         let customer_ID =$('#customer option:selected').data('value');
-
-        // if(typeof $('#selectcustomerdop option:selected').data('value') === 'undefined'){
-        //     $("label[for='AC']").show();
-        //     console.log("customer dopdown undifine");
-        // }
+        console.log("order_price :"+order_price);
+        console.log("order_status :"+advance_price);
+        console.log("order_status :"+customer_ID);
 
 
 
-        console.log("selectcustomerdopdown >>>>>>:"+customer_ID);
-        // let customer_ID =parseInt($("label[for='customerLabel']").html());
+
+
+
 
         if(order_status==""){
             $("label[for='OS']").show();
@@ -1016,7 +1044,8 @@ $(document).ready(function () {
                 url: "http://localhost/Richway-garment-system/createOrderController/OrderAdd",
                 data: { orderArray: orderArray, orderItemList: orderItemList,  key: "orderArrayS"},
                 success: function(data){
-                    alert("Succesfully Added!")
+                    console.log("success"+data);
+                    alert("Succesfully Added!");
                     if(data=="ok"){
                         alert("Succesfully Added!")
                         window.location.href = "http://localhost/Richway-garment-system/createOrderController/createOrder"
@@ -1025,7 +1054,6 @@ $(document).ready(function () {
                         window.location.href = "http://localhost/Richway-garment-system/createOrderController/createOrder"
 
                     }
-                    //window.location.href = "http://localhost/Richway-garment-system/createOrderController/createOrder"
 
 
 

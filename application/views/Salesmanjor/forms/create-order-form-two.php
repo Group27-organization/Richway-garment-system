@@ -34,7 +34,7 @@
         <div class="inputfield" id="generateOrderStatusDiv">
             <label for="">Generate  Order Status</label>
             <div class="inputbutton">
-                <label for='GeneratedOrderStatus' class="form-contrall-label">testing</label>
+                <label for='GeneratedOrderStatus' class="form-contrall-label"></label>
                 <button id="GeneratedOrderStatusBtn"  type="button"  class="btn2 input2 cripple">Generate</button>
             </div>
             <label for="OS"  class="error" style="color: red; display:none" >This Field Required!</label>
@@ -44,11 +44,20 @@
         <div id="customerNotGiveDateDive" class="inputfield">
             <label>Due Date</label>
             <div class="inputbutton">
-                 <label for='GeneratedDueDate' class="form-contrall-label">testing2</label>
+                 <label for='GeneratedDueDate' class="form-contrall-label"></label>
                  <button id="generateNormalDueDate"  type="button"  class="btn2 input2 cripple">Generate</button>
             </div>
             <label for="ND"  class="error" style="color: red; display:none" >This Field Required!</label>
         </div>
+
+<!--        <div class="inputfield">-->
+<!--            <label>Estimate Total Price</label>-->
+<!--            <div class="inputbutton">-->
+<!--                <label for='EstimateTotalPrice' class="form-contrall-label"></label>-->
+<!--                <button id="generatePrice"  type="button"  class="btn2 input2 cripple">Calculate</button>-->
+<!--            </div>-->
+<!--            <label for="TP"  class="error" style="color: red; display:none" >This Field Required!</label>-->
+<!--        </div>-->
 
         <div class="inputfield">
             <label>Estimate Total Price</label>
@@ -80,7 +89,7 @@
 
         <div class="inputfield inputbutton">
             <button type="button" id="backstep2" class="model-btn2 cripple">Back</button>
-            <button type="button" id="makeInvoiceBtn" class="model-btn2 cripple">Make Invoice</button>
+            <button type="button" id="makeInvoiceBtn" class="model-btn cripple">Make Invoice</button>
 
         </div>
     </div>
@@ -234,9 +243,9 @@
     <div id="lastbuttoncupple" style="display: none;">
         <div class="inputfield inputbutton">
             <button type="button" id="backtoStep3" class="model-btn2 cripple">Back</button>
-            <button type="button" id="stp4Cancelbtn" class="model-btn2 cripple">Cancel</button>
-            <button type="button" id="PrintBtn" class="model-btn2 cripple" onclick="printdiv('invoiceID')">Print</button>
-            <button type="button" id="saveOrder" class="model-btn cripple">Purchase Order</button>
+            <button type="button" id="stp4Cancelbtn" class="model-btn2 cripple" style="background-color: red;border-color:red;color:white ">Cancel</button>
+            <button type="button" id="PrintBtn" class="model-btn2 cripple" style="background-color: orange;border-color:orange;color:white " onclick="printdiv('invoiceID')" disabled>Print</button>
+            <button type="button" id="saveOrder" class="model-btn cripple" style="width: 160px;">Purchase Order</button>
         </div>
     </div>
 </div><!-- createOrderForm2-->
