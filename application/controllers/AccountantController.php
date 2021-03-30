@@ -137,6 +137,8 @@ class AccountantController extends framework
                 $length=count($payment);
                 $presentDays =array();
 
+                echo("<script>console.log('PHP in generate salary: ". json_encode( $length). "');</script>");
+
                 for($x = 0; $x<$length; $x++){
                     array_push($a,$payment[$x]['Date']);
                     array_push($b,$payment[$x]['Emp_Id']);
@@ -169,8 +171,8 @@ class AccountantController extends framework
                     $empID_Days[$emp]=$daysCount;
                 }
 
-                //echo("<script>console.log('PHP in generate salary: ". json_encode($empID_Days). "');</script>");
-                $this->accountantModel->generateMonthlySalary($empID_Days,$payment[1]['Date']);
+                echo("<script>console.log('PHP in generate salary: ". json_encode($payment[1]['Date']). "');</script>");
+                $this->accountantModel->generateMonthlySalary($empID_Days,$payment[1]['Date'],count($date));
 
             }
         }
