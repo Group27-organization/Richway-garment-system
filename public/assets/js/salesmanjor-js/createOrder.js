@@ -13,8 +13,8 @@ $(document).ready(function () {
                 data: {   key: "notifycount"},
                 success: function(data){
                     document.getElementById('notifycount').innerText=parseInt(data);
-                    console.log("called after time ");
-                     console.log("data:"+data);
+                    // console.log("called after time ");
+                    //  console.log("data:"+data);
                     // alert(data);
                 },
                 error       : function() {
@@ -351,7 +351,7 @@ $(document).ready(function () {
     $("#nextBtnf1").click(function(){
         console.log("count is :::"+count);
         if(count==0){
-            alert("You Did not Add any Item To Bucket!");
+            alert("You did not Add any Item To Bucket!");
         }else{
             $('input[type=text]').val('');
             $("#createOrderForm1").hide();
@@ -631,6 +631,24 @@ $(document).ready(function () {
 
 
     });
+
+    $('#textTime').click( function() {
+        let jdata = JSON.parse('{"order":[{"order_item_id":122,"quantity":5000,"p_ID":2},{"order_item_id":103,"quantity":2000,"p_ID":1}],"cus_date":"2021-05-19"}');
+
+        $.ajax({
+            type: 'POST',
+            url: "http://localhost/Richway-garment-system/createOrderController/calculateOrderDueDate",
+            data: { data: jdata,  key: "manageJobData"},
+            success: function(data,status){
+                console.log(data);
+                alert(data);
+            },
+            error       : function() {
+            }
+        });
+    });
+
+
 //customer give due date
     $('#GeneratedOrderStatusBtn').click( function() {
         let due_date="";
@@ -651,14 +669,15 @@ $(document).ready(function () {
                 PredefineId = $tds.eq(0).text(),
                 quantity = $tds.eq(7).text();
 
-            var feed = {PreId: parseInt(PredefineId.trim()), Quantity: parseInt(quantity.trim())};
+            var feed = {p_ID: parseInt(PredefineId.trim()), quantity: parseInt(quantity.trim())};
             if(i>0){
                 jsonArr3.push(feed);
             }
         });
 
-        let s = JSON.stringify(jsonArr3);
-        console.log("jsonArr3 :"+s);
+
+
+
 
         let checkStatusArr={
             "order":jsonArr3,
@@ -666,7 +685,44 @@ $(document).ready(function () {
         };
 
         let SJson = JSON.stringify(checkStatusArr);
-        console.log("checkStatusArr :"+SJson);
+         console.log("checkStatusArr    :"+SJson);
+
+        let xx ='{"order":[{"order_item_id":122,"quantity":5000,"p_ID":2},{"order_item_id":103,"quantity":2000,"p_ID":1}],"cus_date":"2021-04-25"}';
+         let jdata = JSON.parse(xx);
+
+        $.ajax({
+            type: 'POST',
+            url: "http://localhost/Richway-garment-system/createOrderController/calculateOrderDueDate",
+            data: {  data:SJson, key: "manageJobData"},
+            success: function(data){
+                console.log("estimate date data:"+data);
+                $("label[for='GeneratedOrderStatus']").text(data);
+
+
+
+            },
+            error       : function() {
+                console.log("error");
+            }
+        });
+
+
+        // let jdata = JSON.parse('{"order":[{"order_item_id":122,"quantity":5000,"p_ID":2},{"order_item_id":103,"quantity":2000,"p_ID":1}],"cus_date":"2021-04-19"}');
+
+        $.ajax({
+            type: 'POST',
+            url: "http://localhost/Richway-garment-system/createOrderController/calculateOrderDueDate",
+            data: { data: jdata,  key: "manageJobData"},
+            success: function(data,status){
+                console.log(data);
+                alert(data);
+            },
+            error       : function() {
+            }
+        });
+
+
+
 
         let rate =1;
         let flag=1;
@@ -703,9 +759,9 @@ $(document).ready(function () {
                     jsonArr.push(feed);
                 }
             });
-            let ddd = JSON.stringify(jsonArr);
-            console.log("Customer give date JSON :"+ddd);
-            console.log("length is :"+jsonArr.length);
+            // let ddd = JSON.stringify(jsonArr);
+            // console.log("Customer give date JSON :"+ddd);
+            // console.log("length is :"+jsonArr.length);
 
 
             let x =[{

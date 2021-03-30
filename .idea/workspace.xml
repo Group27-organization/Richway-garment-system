@@ -1,33 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="52f54e1d-f9c9-4c5f-a2e2-18186743ac40" name="Default Changelist" comment="update order done with validation">
-      <change afterPath="$PROJECT_DIR$/application/controllers/notificationController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/application/controllers/testUVController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/application/controllers/testYController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/application/models/notificationModel.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/application/models/orderCreateModel.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/application/views/Salesmanjor/forms/billGenarate.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/application/views/Salesmanjor/forms/billGenarate2.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/application/views/Salesmanjor/updateOrderForms.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/js/js-chart/colum_chart.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/js/js-chart/gender_bar_chart.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/js/js-chart/pieChart_tf.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/js/notification.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/js/salesmanjor-js/A.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/js/salesmanjor-js/updateOrder-forms.js" afterDir="false" />
+    <list default="true" id="6822edd8-3662-4ba6-ade8-c0984a6b07cb" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/application/controllers/createOrderController.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/controllers/createOrderController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/models/createOrderModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/models/createOrderModel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/Salesmanjor/components/nav.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/Salesmanjor/components/nav.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/Salesmanjor/createOrder.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/Salesmanjor/createOrder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/models/orderCreateModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/models/orderCreateModel.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/application/views/Salesmanjor/forms/create-order-form-one.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/Salesmanjor/forms/create-order-form-one.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/Salesmanjor/forms/create-order-form-two.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/Salesmanjor/forms/create-order-form-two.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/Salesmanjor/forms/popupTemplateSelect.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/Salesmanjor/forms/popupTemplateSelect.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/dashboard.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/dashboard.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/assets/css/Form.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/Form.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/salesmanjor-css/card-template.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/salesmanjor-css/card-template.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/js/js-chart/on_load_charts.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/js/js-chart/on_load_charts.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/assets/js/salesmanjor-js/createOrder.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/js/salesmanjor-js/createOrder.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
