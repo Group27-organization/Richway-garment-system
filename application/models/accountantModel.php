@@ -75,8 +75,4 @@ class accountantModel extends database
 
 
 
-
-
-
-
 }

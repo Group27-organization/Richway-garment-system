@@ -1,5 +1,5 @@
 
-openEmp(null,'sales_manager');
+openEmp(null,'supervisor');
 
 function openEmp(evt,elementID) {
     let i, tablinks, addEmployeeBtn;
@@ -45,8 +45,8 @@ $(document).ready(function(){
         data: {  key: "workloadTableInDash"},
         dataType: 'html',
         success: function(data){
-            $("#updateDailyWorkloadtable").html(data);
-
+            $("#updateWorkloadtable").html(data);
+            console.log("Table data load"+data);
 
         },
         error       : function() {
@@ -55,11 +55,44 @@ $(document).ready(function(){
         }
     });
 
-    $("#updateworkload").click(function(){
-        location.href = "http://localhost/Richway-garment-system/supervisorController/loadUpdateworkloadForm";
 
-    });
 
 
 });
+
+function updateWorkload() {
+
+    let i, tblrows, workID = "";
+
+    tblrows = document.getElementsByClassName("tblrow");
+    for (i = 0; i < tblrows.length; i++) {
+        if (tblrows[i].className.includes('active-row')) {
+            document.querySelector('#workloadMsgView').style.display = "none";
+            workID = tblrows[i].firstElementChild.innerHTML;
+            jQuery(function ($) {
+
+                $.ajax({
+                    type: 'POST',
+                    url: "http://localhost/Richway-garment-system/supervisorController/setNewSession",
+                    data: {ID: workID, key: "workloadUpdate"},
+                    dataType: 'html',
+                    success: function (data) {
+                        location.href = "http://localhost/Richway-garment-system/supervisorController/loadUpdateworkloadForm";
+                    },
+                    error: function () {
+                        // console.log("update data not  load")
+                        $("#tableParent").html('<br><p>Something went wrong.</p>');
+                    }
+                });
+
+
+            });
+        }
+        else{
+            document.querySelector('#workloadMsgView').style.display = "block";
+        }
+    }
+}
+
+
 

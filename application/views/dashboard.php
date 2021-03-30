@@ -155,7 +155,7 @@
                         </a>
                     </li>
 
-                <!--                    sales manager -->
+                    <!--                    sales manager -->
 
                     <li <?php if($data['data']->create_order){
                         echo "style=\"display:block;\"";
@@ -221,7 +221,7 @@
                         </a>
                     </li>
 
-<!--                    production manger-->
+                    <!--                    production manger-->
 
                     <li <?php if($data['data']->create_job){
                         echo "style=\"display:block;\"";
@@ -288,7 +288,7 @@
                     </li>
 
 
-<!--                    accountant-->
+                    <!--                    accountant-->
 
                     <li <?php if($data['data']->manage_payments){
                         echo "style=\"display:block;\"";
@@ -338,7 +338,7 @@
                         </a>
                     </li>
 
-<!--                    owner-->
+                    <!--                    owner-->
 
                     <li <?php if($data['data']->manage_payroll){
                         echo "style=\"display:block;\"";
@@ -388,7 +388,7 @@
                         </a>
                     </li>
 
-<!--                    Supervisor-->
+                    <!--                    Supervisor-->
 
                     <li <?php if($data['data']->mark_attendance){
                         echo "style=\"display:block;\"";
@@ -422,7 +422,7 @@
                         </a>
                     </li>
 
-<!--                    stock keeper-->
+                    <!--                    stock keeper-->
 
                     <li <?php if($data['data']->stock_issue){
                         echo "style=\"display:block;\"";

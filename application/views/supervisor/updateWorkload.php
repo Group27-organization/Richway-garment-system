@@ -54,19 +54,19 @@
                     </div>
                     <div class="BtnWap">
 
-                        <button id="updateworkload" onclick="updateDailyWorkload()" class="three-set-btn2">Update Daily Workload</button>
+                        <button id="updateWorkload" onclick="updateWorkload() " class="three-set-btn2">Update Daily Workload</button>
 
                     </div>
                 </div><!--flex row-->
 
                 <!--                table start-->
 
-                <div class="table-responsive" id="updateDailyWorkloadtable">
+                <div class="table-responsive" id="updateWorkloadtable">
 
                 </div>
                 <div class="card-footer">
 
-                    <div class="model-footer">
+                    <div class="model-footer" id="workloadMsgView" >
                         <h5>* Please select an Job to get this action!</h5>
                     </div>
 
@@ -111,8 +111,7 @@
 
 </div>
 
-
-
+<?php linkJS("assets/js/supervisor.js") ?>
 <?php linkJS("assets/js/table.js") ?>
 
 </body>
