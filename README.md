@@ -1,1 +1,0 @@
-# Richway-garment-system
