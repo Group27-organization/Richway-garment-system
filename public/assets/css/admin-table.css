@@ -1,0 +1,132 @@
+
+/*new table*/
+
+
+
+
+.card .table {
+    margin-bottom: 0;
+}
+
+.align-items-center {
+    align-items: center!important;
+}
+
+.justify-content-center{
+    justify-content: center!important;
+}
+
+.table {
+    width: 100%;
+    margin-bottom: 1rem;
+    color: #525f7f;
+    background-color: transparent;
+}
+table {
+    border-collapse: collapse;
+}
+*, ::after, ::before {
+    box-sizing: border-box;
+}
+
+table {
+    display: table;
+    border-collapse: separate;
+    box-sizing: border-box;
+    border-spacing: 0;
+    border-color: grey;
+}
+
+thead {
+    display: table-header-group;
+    vertical-align: middle;
+    border-color: inherit;
+}
+
+tr {
+    display: table-row;
+    vertical-align: inherit;
+    border-color: inherit;
+}
+
+.card .table td, .card .table th {
+    padding-right: 1.5rem;
+    padding-left: 1.5rem;
+}
+
+.table.align-items-center td, .table.align-items-center th {
+    vertical-align: middle;
+}
+.table .thead-light th {
+    color: #8898aa;
+    border-color: #e9ecef;
+    background-color: #f6f9fc;
+}
+
+.table thead th {
+    font-size: .65rem;
+    padding-top: .75rem;
+    padding-bottom: .75rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+
+}
+.table thead th {
+    vertical-align: bottom;
+}
+.table-flush td, .table-flush th {
+    border-right: 0;
+    border-left: 0;
+}
+.table td, .table th {
+    font-size: .8125rem;
+    white-space: nowrap;
+}
+.table th {
+    font-weight: 600;
+}
+.table td, .table th {
+    padding: 1rem;
+    vertical-align: top;
+    border-top: 1px solid #e9ecef;
+}
+th {
+    text-align: inherit;
+}
+*, ::after, ::before {
+    box-sizing: border-box;
+}
+
+th {
+    display: table-cell;
+}
+
+tbody {
+    display: table-row-group;
+    vertical-align: middle;
+    border-color: inherit;
+}
+
+
+.active-row {
+    font-weight: bold;
+    color: #525f7f;
+}
+
+.table tbody tr:hover {
+    font-weight: bold;
+    color: #525f7f;
+    cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+
+
+

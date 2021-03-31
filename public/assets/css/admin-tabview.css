@@ -1,0 +1,311 @@
+
+/****************************************tab pane    ************************************************************************/
+
+.flex-row-tab{
+    margin: 20px 25px 30px 25px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+.BtnWap{
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+.SearchBtnWap{
+    flex: 2;
+    display: flex;
+    justify-content: flex-start;
+}
+
+
+
+.search {
+    min-width: 280px;
+    position: relative;
+    display: flex;
+}
+
+.searchTerm {
+    width: 100%;
+    height: 40px;
+    position: relative;
+    transition: all .15s ease;
+    letter-spacing: .025em;
+    text-transform: none;
+    will-change: transform;
+    text-align: start;
+    padding-left: 10px;
+    color: #5e72e4;
+    cursor: pointer;
+    border: 1px solid #5e72e4;
+    background-color: #fff;
+    box-shadow: 0 4px 6px rgba(50,50,93,0.11), 0 1px 3px rgba(0,0,0,0.08);
+    border-radius: .25rem 0 0 .25rem;
+}
+
+.searchTerm:focus{
+    color: #5e72e4;
+    font-weight: bold;
+}
+
+.searchButton {
+    width: 40px;
+    height: 40px;
+    border: 1px solid #5e72e4;
+    background: #5e72e4;
+    text-align: center;
+    color: #fff;
+    border-radius: 0 .25rem .25rem 0;
+    cursor: pointer;
+    font-size: 20px;
+    box-shadow: 0 4px 6px rgba(50,50,93,0.11), 0 1px 3px rgba(0,0,0,0.08);
+}
+
+.searchButton:focus{
+    outline:0;
+}
+
+
+/*Resize the wrap to see the search bar change!*/
+.three-set-btn1{
+    width: 120px;
+    padding: 10px;
+    font-size: .875rem;
+    position: relative;
+    transition: all .15s ease;
+    letter-spacing: .025em;
+    text-transform: none;
+    will-change: transform;
+    text-align: center;
+    cursor: pointer;
+    border-radius: .25rem;
+    color: #fff;
+    border: 1px solid #5e72e4;
+    background-color: #5e72e4;
+    box-shadow: 0 4px 6px rgba(50,50,93,0.11), 0 1px 3px rgba(0,0,0,0.08);
+    line-height: 1.5;
+
+}
+
+.three-set-btn2{
+    margin-left: 15px;
+    width: 120px;
+    padding: 8px;
+    font-size: .875rem;
+    position: relative;
+    transition: all .15s ease;
+    letter-spacing: .025em;
+    text-transform: none;
+    will-change: transform;
+    text-align: center;
+    color: #fff;
+    cursor: pointer;
+    border: 1px solid #fb6340;
+    background-color: #fb6340;
+    box-shadow: 0 4px 6px rgba(50,50,93,0.11), 0 1px 3px rgba(0,0,0,0.08);
+    border-radius: .25rem;
+    line-height: 1.5;
+
+}
+
+.three-set-btn3{
+    margin-left: 15px;
+    width: 120px;
+    padding: 8px;
+    font-size: .875rem;
+    position: relative;
+    transition: all .15s ease;
+    letter-spacing: .025em;
+    text-transform: none;
+    will-change: transform;
+    text-align: center;
+    color: #fff;
+    cursor: pointer;
+    border: 1px solid #f5365c;
+    background-color: #f5365c;
+    box-shadow: 0 4px 6px rgba(50,50,93,0.11), 0 1px 3px rgba(0,0,0,0.08);
+    border-radius: .25rem;
+    line-height: 1.5;
+
+}
+
+/*****************************************************************/
+.tab-content{
+    width: 100%;
+    margin-top: 10px;
+
+}
+
+.tab {
+    background-color: #fff;
+    word-wrap: break-word;
+    border: 0px solid transparent;
+    border-radius: .375rem;
+    background-clip: border-box;
+    box-shadow: 0 0 2rem 0 rgba(136,152,170,.15);
+    overflow: hidden;
+    transition: 0.3s;
+    display: inline-block;
+    margin-bottom: 0;
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+    background-color: inherit;
+    color: #525f7f;
+    float: left;
+    border: 0;
+    outline: none;
+    cursor: pointer;
+    padding: 18px 12px;
+    margin-bottom: 0;
+    font-size: 15px;
+    -webkit-transition: all 0.2s ease-out;
+    transition: all 0.2s ease-out;
+    white-space: nowrap;
+    overflow: hidden;
+
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+    background-color: #f6f9fc;
+    color: #525f7f;
+
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+    color: #ffffff;
+    background-color: #32325d;
+}
+
+/* Style the tab content */
+.tabcontent {
+    height: 600px;
+    margin-top: 0;
+    margin-bottom: 50px;
+    padding: 25px 0 25px 0;
+    background-color: #fff;
+    word-wrap: break-word;
+    border: 1px solid rgba(0,0,0,.05);
+    border-radius: .375rem;
+    background-clip: border-box;
+    box-shadow: 0 0 2rem 0 rgba(136,152,170,.15);
+    overflow: hidden;
+    transition: 0.3s;
+    position: relative;
+
+}
+
+.card-footer {
+    padding: 2rem 1.5rem 0 1.5rem;
+    border-top: 1px solid rgba(0,0,0,.05);
+    background-color: #ffffff;
+    position: absolute;
+    bottom: 30px;
+    left: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.bottom-row{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+
+.justify-content-start {
+    justify-content: flex-start !important;
+}
+
+.pagination {
+    display: flex;
+    padding-left: 0;
+    list-style: none;
+    border-radius: .375rem;
+    margin-bottom: 0!important;
+}
+
+li {
+    display: list-item;
+    text-align: -webkit-match-parent;
+}
+
+.page-item.disabled .page-link {
+    cursor: auto;
+    pointer-events: none;
+    color: #8898aa;
+    border-color: #dee2e6;
+    background-color: #fff;
+}
+.page-item:first-child .page-link {
+    margin-left: 0;
+    border-top-left-radius: .375rem;
+    border-bottom-left-radius: .375rem;
+}
+.page-item .page-link, .page-item span {
+    font-size: .875rem;
+    display: flex;
+    width: 36px;
+    height: 36px;
+    margin: 0 3px;
+    padding: 0;
+    border-radius: 50%!important;
+    align-items: center;
+    justify-content: center;
+}
+.page-link {
+    line-height: 1.25;
+    position: relative;
+    display: block;
+    margin-left: -1px;
+    padding: .5rem .75rem;
+    color: #8898aa;
+    border: 1px solid #dee2e6;
+    background-color: #fff;
+}
+a {
+    text-decoration: none;
+    color: #5e72e4;
+    background-color: transparent;
+}
+
+.page-item.active .page-link {
+    box-shadow: 0 7px 14px rgba(50,50,93,.1), 0 3px 6px rgba(0,0,0,.08);
+}
+.page-item.active .page-link {
+    z-index: 3;
+    color: #fff;
+    border-color: #5e72e4;
+    background-color: #5e72e4;
+}
+.page-item .page-link, .page-item span {
+    font-size: .875rem;
+    display: flex;
+    width: 36px;
+    height: 36px;
+    margin: 0 3px;
+    padding: 0;
+    border-radius: 50%!important;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.model-footer {
+    color: red;
+    display: none;
+    margin-bottom: 20px;
+    align-self: center;
+    text-align: center;
+}
