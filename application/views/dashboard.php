@@ -608,63 +608,10 @@
 
         </div><!--box container-->
 
-        <div class="flex-box-two-three">
-            <div class="fbtt-two" >
-                <div id="chartContainer" style="height: auto; width: 100%;"></div>
-            </div>
-            <div class="fbtt-three">
 
-                <h3>Account AAAA Monthly Recurring Revenue Growth</h3>
-                <div class="flex-box-reanue-chart">
-                    <div class="f-c">
-                        <p class="fr1">MRR Growth</p>
-                        <p class="fr2">$710,015</p>
-                        <p class="fr3">Measure How Fast You’re Growing Monthly Recurring Revenue.</p>
-                    </div>
-                    <div class="s-c">
-                        <p class="fr1">MRR Growth</p>
-                        <p class="fr2">$710,015</p>
-                        <p class="fr3">Measure How Fast You’re Growing Monthly Recurring Revenue.</p>
-                    </div>
-
-                </div>
-
-                <div id="revenueGrowth" style="height: 250px; width: auto;"></div>
-
-            </div>
-        </div><!--flex-box-two-three-->
-
-        <div class="box-container-monthly-sales" >
-                <div id="barChart" style="height: auto; width: 100%;"></div>
-        </div>
-
-        <div class="flex-box-two-three">
-            <div class="fbtt-two" >
-<!--                <div id="chartContainer" style="height: auto; width: 100%;"></div>-->
-            </div>
-            <div class="fbtt-three">
-                <h3>Employee</h3>
-                <div id="columChartContainer" style="height: 250px; width: auto;"></div>
-
-            </div>
-        </div><!--flex-box-two-three-->
-<!--line 4-->
-        <div class="flex-box-two-three">
-            <div class="fbtt-two-normal" >
-                <!--                <div id="chartContainer" style="height: auto; width: 100%;"></div>-->
-            </div>
-            <div class="fbtt-two">
-                <h3>Employee</h3>
-
-            </div>
-        </div><!--flex-box-two-three-->
 
 <!-----------------------------------------------owner-------------------------------------------------------->
-
-            <h1>Owner</h1>
-
-
-            <div id="wiget_1" style="background-color: #5E72E4">
+        <div id="wiget_1" style="background-color: #5E72E4">
                 <div class="cal">
                     <h3 class="calendar-title">Order Calender</h3>
                     <style>
@@ -689,7 +636,6 @@
 
                 <div class="flex-box-two-three">
                     <div class="fbtt-two-normal" >
-                        <!--                    <h1>Employee Count Per Year</h1>-->
                         <div id="ownerEmpCountLine" style="height: 300px; width: 100%;"></div>
                     </div>
                     <div class="fbtt-two-normal">
@@ -711,20 +657,9 @@
                 </div>
 
             </div> <!--wiget_1-->
-<!--------------------------------------- supervisor------------------------------------------------->
-        <h1>Supervisor</h1>
-        <div id="wiget_2" style="background-color: #FFFFFF">
 
-            <div class="box-container-monthly-sales" >
-                <div id="workloadSuper" style="height: auto; width: 100%;"></div>
-            </div>
-            <div>
-                <h1>Tabele JobID  ASSIGNLines Job Due Date</h1>
-            </div>
-
-        </div>
 <!--------------------------------------- stock keeper------------------------------------------------->
-        <h1>Stock Keeper</h1>
+
         <div id="wiget_3" style="background-color: deeppink">
 
             <div class="flex-box-two-three">
@@ -749,7 +684,7 @@
 
         </div>
 <!--------------------------------------- salesmaneger------------------------------------------------->
-        <h1>Salesmanger</h1>
+
         <div id="wiget_3" style="background-color: #2dce89">
             <div class="cal">
                 <h3 class="calendar-title">Order Calender</h3>
@@ -775,19 +710,7 @@
         </div>
 
 <!--------------------------------------- accountant------------------------------------------------->
-        <h1>account</h1>
-       <div id="wiget_4" style="background-color: #9c27b0">
-           <div class="box-container-monthly-sales" >
 
-<!--               <div id="salReportMonth" style="height: 300px; width: 100%;"></div>-->
-           </div>
-           <div class="box-container-monthly-sales" >
-               <div id="paymentACGenarateScatter" style="height: 300px; width: 100%;"></div>
-           </div>
-
-
-
-       </div>
 <!--------------------------------------- production manager------------------------------------------------->
         <h1>Job Calender</h1>
 
