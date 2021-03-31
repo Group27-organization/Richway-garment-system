@@ -1,5 +1,7 @@
 
 prdname = document.getElementById("firsttab").innerHTML.toString().toLowerCase();
+addNewDesignBtn = document.getElementById("add_new_design");
+updateNewDesignBtn=document.getElementById("update_design");
 openProduct(null,prdname);
 
 function openProduct(evt,product) {
@@ -54,15 +56,39 @@ function openProduct(evt,product) {
             }
         });
 
+    addNewDesignBtn.onclick = function() {
 
+        $.ajax({
+            type: 'POST',
+            url: "http://localhost/Richway-garment-system/manageProductController/setNewSession",
+            data: { productName:product ,  key: "manageProductData"},
+            success: function(data,status){
+                location.href = "http://localhost/Richway-garment-system/manageProductController/addPredefineView";
+            },
+            error       : function() {
+            }
+        });
+
+    }
+
+
+    updateNewDesignBtn.onclick=function(){
+        $.ajax({
+            type: 'POST',
+            url: "http://localhost/Richway-garment-system/manageProductController/setNewSession",
+            data: { productName:product ,  key: "manageProductData"},
+            success: function(data,status){
+                location.href = "http://localhost/Richway-garment-system/manageProductController/updatePredefineView";
+            },
+            error       : function() {
+            }
+        });
+    }
 
 
 
 }
 
-function createProduct(){
-
-}
 
 function selectRow(evt,url,size) {
     let i, tblrows;

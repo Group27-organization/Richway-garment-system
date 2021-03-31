@@ -110,6 +110,22 @@ class manageProductModel extends database {
         }
         return -1;
     }
+
+    public function addPredefine($predefineProduct){
+        echo("<script>console.log('PHP: " . json_encode($predefineProduct) . "');</script>");
+        if($this->Query("INSERT INTO predefine(type,hand_type,collar_type,normal_tailoring_cost,description,rate_per_hour_from_line,minimum_profit_margin,style,sizes,image_url) VALUES (?,?,?,?,?,?,?,?,?,?)",$predefineProduct) ) {
+            echo("<script>console.log('PHP: emp" . json_encode($predefineProduct) . "');</script>");
+            return true;
+        }
+    }
+
+    public function  updatePredefine($UpdatedPredefine){
+        echo("<script>console.log('PHP: " . json_encode($UpdatedPredefine) . "');</script>");
+
+        if($this->Query("UPDATE predefine SET normal_tailoring_cost = ?,description = ?,rate_per_hour_from_line = ?,minimum_profit_margin=?,image_url=? WHERE p_ID= ?",$UpdatedPredefine)){
+            return true;
+        }
+    }
 }
 
 
