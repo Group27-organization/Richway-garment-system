@@ -24,7 +24,7 @@ function openEmp(evt,elementID) {
 
         },
         error       : function() {
-            console.log("Table data not  load")
+            // console.log("Table data not  load")
             $("#tableParent").html('<br><p>Something went wrong.</p>');
         }
     });
@@ -41,16 +41,16 @@ $(document).ready(function(){
 
     $.ajax({
         type: 'POST',
-        url: "http://localhost/Richway-garment-system/supervisorController/updateWorkloadTable",
-        data: {  key: "workloadTableInDash"},
+        url: "http://localhost/Richway-garment-system/supervisorController/ongoingJobTable",
+        data: {  key: "ongoingJobTable"},
         dataType: 'html',
         success: function(data){
-            $("#updateWorkloadtable").html(data);
-            console.log("Table data load"+data);
+            $("#ongoingJobTable").html(data);
+            // console.log("Table data load"+data);
 
         },
         error       : function() {
-            console.log("Table data not  load")
+            // console.log("Table data not  load")
             $("#tableParent").html('<br><p>Something went wrong.</p>');
         }
     });
@@ -69,12 +69,14 @@ function updateWorkload() {
         if (tblrows[i].className.includes('active-row')) {
             document.querySelector('#workloadMsgView').style.display = "none";
             workID = tblrows[i].firstElementChild.innerHTML;
-            jQuery(function ($) {
+            let res = workID.substring(3);
+            // console.log("wokID :"+res);
+            // jQuery(function ($) {
 
                 $.ajax({
                     type: 'POST',
                     url: "http://localhost/Richway-garment-system/supervisorController/setNewSession",
-                    data: {ID: workID, key: "workloadUpdate"},
+                    data: {ID: parseInt(res), key: "workloadUpdate"},
                     dataType: 'html',
                     success: function (data) {
                         location.href = "http://localhost/Richway-garment-system/supervisorController/loadUpdateworkloadForm";
@@ -86,7 +88,7 @@ function updateWorkload() {
                 });
 
 
-            });
+            // });
         }
         else{
             document.querySelector('#workloadMsgView').style.display = "block";

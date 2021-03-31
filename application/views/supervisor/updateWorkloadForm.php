@@ -8,6 +8,8 @@
     <?php linkCSS("assets/css/admin-adduser.css") ?>
     <?php linkCSS("assets/css/form.css") ?>
     <?php linkCSS("assets/css/admin-table.css") ?>
+    <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 
 <body>
@@ -34,64 +36,34 @@
         </div>
 
 
-<form action="<?php echo BASEURL;?>/supervisorController/updateWorkload" method="POST" >
+<form action="<?php echo BASEURL;?>/supervisorController/insertWorkload" method="POST" >
     <div class="flexbox-container">
 
 
+        <div class="inputfield">
+            <label for="JOBID">JOB ID</label>
+            <input type="text" id="jobID" name="jobID"  class="form-contrall-readonly" readonly value="J<?php echo $data['data']['jobID'];?>">
+        </div>
 
         <div class="inputfield">
-            <label for="Name">Name</label>
-            <input type="text" id="Name" name="Name"  class="form-contrall-readonly" readonly value="<?php echo $data['data']->Name;?>">
-            <label class="error" style="color:red;">
-                <?php   if($data['NameError']) :echo $data['NameError']; endif; ?>
-            </label>
+            <label for="total">Total Workload Workload</label>
+            <input type="text" id="total" name="total" class="form-contrall-readonly" readonly value="<?php echo $data['data']['total'];?>">
+        </div>
+
+        <div class="inputfield">
+            <label for="current">Current Completed Workload</label>
+            <input type="text" id="current" name="current" class="form-contrall-readonly" readonly value="<?php echo $data['data']['current'];?>">
+        </div>
+
+        <div class="inputfield">
+            <label for="remaining">Remaining Workload</label>
+            <input type="text" id="	remaining" name="remaining" class="form-contrall-readonly" readonly  value="<?php echo $data['data']['remaining'];?>">
         </div>
 
 
         <div class="inputfield">
-            <label for="Date">Date</label>
-            <input type="text" id="Date" name="Date"  class="form-contrall-readonly" readonly value="<?php echo $data['data']->Date;?>">
-            <label class="error" style="color:red;">
-                <?php   if($data['DateError']) :echo $data['DateError']; endif; ?>
-            </label>
-        </div>
-
-        <div class="inputfield">
-            <label for="Line">Line</label>
-            <input type="text" id="Line" name="Line"  class="form-contrall-readonly" readonly value="<?php echo $data['data']->Line;?>">
-            <label class="error" style="color:red;">
-                <?php   if($data['LineError']) :echo $data['LineError']; endif; ?>
-            </label>
-        </div>
-
-        <div class="inputfield">
-            <label for="current_completed_workload">Current Completed Workload</label>
-            <input type="text" id="current_completed_workload" name="current_completed_workload" class="form-contrall-readonly" readonly value="<?php echo $data['data']->current_completed_workload;?>">
-            <label class="error" style="color:red;">
-                <?php   if($data['CurrentCompletedWorkloadError']) :echo $data['CurrentCompletedWorkloadError']; endif; ?>
-            </label>
-        </div>
-
-        <div class="inputfield">
-            <label for="remaining_workload">Remaining Workload</label>
-            <input type="text" id="	remaining_workload" name="remaining_workload" class="form-contrall-readonly" readonly  value="<?php echo $data['data']->remaining_workload;?>">
-            <label class="error" style="color:red;">
-                <?php   if($data['RemainingWorkloadError']) :echo $data['RemainingWorkloadError']; endif; ?>
-            </label>
-        </div>
-
-        <div class="inputfield">
-            <label for="required_workload">Required Today Workload</label>
-            <input type="text" id="required_workload" name="required_workload"  class="form-contrall-readonly" readonly value="<?php echo $data['data']->required_workload;?>">
-            <label class="error" style="color:red;">
-                <?php   if($data['RequiredTodayWorkloadError']) :echo $data['RequiredTodayWorkloadError']; endif; ?>
-            </label>
-        </div>
-
-
-        <div class="inputfield">
-            <label for="today_completed_workload">Today Completed Workload</label>
-            <input type="text" id="today_completed_workload" name="today_completed_workload"   class="form-contrall" value="<?php echo $data['data']->today_completed_workload;?>">
+            <label for="today">Today Completed Workload</label>
+            <input type="text" id="today" name="today"   class="form-contrall" type="number">
             <label class="error" style="color:red;">
                 <?php   if($data['TodayCompletedWorkloadError']) :echo $data['TodayCompletedWorkloadError']; endif; ?>
             </label>
@@ -99,7 +71,7 @@
 
         <br><div class="inputfield inputbutton">
             <input type="submit" value="Update" class="btn cripple">
-            <input type="hidden" name="hiddenID" value="<?php echo $data['data']->ID;?>">
+
         </div>
 
     </div>

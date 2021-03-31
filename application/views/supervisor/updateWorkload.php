@@ -61,7 +61,7 @@
 
                 <!--                table start-->
 
-                <div class="table-responsive" id="updateWorkloadtable">
+                <div class="table-responsive" id="ongoingJobTable">
 
                 </div>
                 <div class="card-footer">
