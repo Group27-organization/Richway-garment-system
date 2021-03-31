@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; font-family: 'Montserrat', sans-serif;
+}
+body{
+  background-color:#F5F5F5;
+}
+
+.flexbox-container {
+  max-width: 600px;
+  margin: 20px auto;
+  background-color: white;
+  padding: 30px;
+  box-shadow: 1px 1px 5px 0px rgba(0,0,0,0.75);
+
+}
+.inputfield {
+  display: flex;
+  background-color: rgba(255, 255, 255, 0.8);
+ /* border: 1px solid rgba(0, 0, 0, 0.8);*/
+  padding: 20px;
+  font-size: 14px;
+  text-align: center;
+}
+.inputfield label,select,input,textarea ,button{
+  flex: 1;
+}
+.filechoose{
+  display: flex;
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  padding: 20px;
+  font-size: 14px;
+  text-align: center;
+}
+.filechoose label{
+ 
+  flex: 1;
+}
+.filechoose div{
+ 
+  flex: 1;
+}
+
+</style>
+</head>
+<body>
+
+<form>
+<div class="flexbox-container">
+    
+    <div class="inputfield">
+        <h2>UPDATE ORDER</h2>
+        
+  </div>
+    <div class="inputfield">
+          <label>Order Id</label>
+          <label for="OrderId">UT6543</label>
+    </div>
+    
+    <div class="inputfield"> 
+          <label>Order Name</label>
+          <label for="OrderName">UKG MR</label>
+        
+    </div>
+
+    <div class="inputfield"> 
+        <label>Order Item</label>
+        <label>
+            <button type="button">Add New Item</button>
+            <button onclick="location.href='updateorderitem.html' " type="button">
+     Update Order Item</button>
+        </label>
+        
+    </div>
+
+
+    <div class="inputfield"> 
+        <label>Item Count</label>
+        <label for="OrderName">10</label>
+    </div>
+    
+    <div class="inputfield"> 
+        <button type="button">Genarate astimate Time</button>
+        <label></label>
+    </div>
+
+    <div class="inputfield"> 
+        
+        <label>Due Date</label>
+        <input type="datetime-local" id="birthdaytime" name="birthdaytime">
+    </div>
+
+    <div class="inputfield">
+        <label>Astimate Total Price:</label>
+       <label>
+        <label for="AstimateTotalPrice">57,899/=</label>
+        <button type="button">View</button>
+       </label>
+  </div>
+
+    <div class="inputfield">
+        <label>Astimate Advance:</label>
+        <label for="AstimateAdvance">27,899/=</label>
+    </div>
+
+    <div class="inputfield">
+        <label for="ItemType">Order Status</label>
+        <select id="Status" name="satus">
+                  <option value="p">Pending</option>
+                  <option value="on">OnGoing</option>
+                  <option value="s">Start</option>
+                  <option value="e">End</option>
+        </select>
+      </div>  
+    <div class="inputfield"> 
+        <input type="submit" value="UPDATE Order">
+     </div> 
+ 
+
+</div>
+ </form>
+</body>
+</html>

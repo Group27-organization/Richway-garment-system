@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="5b72640d-bf5c-47d7-a2e4-b31a501e3709" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/application/controllers/createOrderController.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/controllers/createOrderController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/controllers/testUVController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/controllers/testYController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/models/createOrderModel.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/css/Form.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/Form.css" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="CSS File" />
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="feature/owner-dashboard" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1kUyzrRahfevvEfJRx0B3HS5qzI" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Richway-garment-system-feature-owner-dashboard" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\Richway-garment-system\public\assets\css" />
+      <recent name="C:\xampp\htdocs\Richway-garment-system\application\views\stock" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\Richway-garment-system\application\controllers" />
+      <recent name="C:\xampp\htdocs\Richway-garment-system\application\models" />
+      <recent name="C:\xampp\htdocs\Richway-garment-system\application\views\Salesmanjor\forms" />
+      <recent name="C:\xampp\htdocs\Richway-garment-system\application\views\Salesmanjor" />
+      <recent name="C:\xampp\htdocs\Richway-garment-system\public\assets\js\salesmanjor-js" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="52f54e1d-f9c9-4c5f-a2e2-18186743ac40" name="Default Changelist" comment="" />
+      <created>1605769731110</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1605769731110</updated>
+      <workItem from="1605769732675" duration="32658000" />
+      <workItem from="1605840929976" duration="39677000" />
+      <workItem from="1605925974479" duration="19157000" />
+      <workItem from="1606029714081" duration="1353000" />
+      <workItem from="1606366226374" duration="5429000" />
+      <workItem from="1606622908255" duration="10951000" />
+      <workItem from="1606663402065" duration="17323000" />
+      <workItem from="1606703178147" duration="10407000" />
+      <workItem from="1608003291455" duration="467000" />
+      <workItem from="1608347857548" duration="21000" />
+      <workItem from="1608731228534" duration="2595000" />
+      <workItem from="1610962045946" duration="288000" />
+      <workItem from="1612788982320" duration="13849000" />
+      <workItem from="1612843236521" duration="39076000" />
+      <workItem from="1612931872368" duration="31596000" />
+      <workItem from="1613014678077" duration="16504000" />
+      <workItem from="1616388310070" duration="32961000" />
+      <workItem from="1616471936064" duration="34691000" />
+      <workItem from="1616565460828" duration="17461000" />
+      <workItem from="1616646890202" duration="28482000" />
+      <workItem from="1616737530595" duration="26962000" />
+      <workItem from="1616833400533" duration="5312000" />
+      <workItem from="1616846076473" duration="4402000" />
+      <workItem from="1616861364458" duration="4655000" />
+    </task>
+    <task id="LOCAL-00001" summary="manage stock css updated">
+      <created>1605852511911</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1605852511911</updated>
+    </task>
+    <task id="LOCAL-00002" summary="add fabric,nool,button to stock create without form validation">
+      <created>1606647056860</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1606647056860</updated>
+    </task>
+    <task id="LOCAL-00003" summary="add fabric,nool,button to stock  js form validation form validation added">
+      <created>1606672395249</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1606672395249</updated>
+    </task>
+    <task id="LOCAL-00004" summary="supplier select popup add">
+      <created>1606681392895</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1606681392895</updated>
+    </task>
+    <task id="LOCAL-00005" summary="add item to stock model updated">
+      <created>1606711209691</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1606711209691</updated>
+    </task>
+    <task id="LOCAL-00006" summary="add customer form validation updated using jquery validator plugging .&#10;create order form validation updated using jquery.">
+      <created>1612875790508</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1612875790508</updated>
+    </task>
+    <task id="LOCAL-00007" summary="tests duedate predect function added">
+      <created>1617079345082</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1617079345082</updated>
+    </task>
+    <task id="LOCAL-00008" summary="invoice updated.">
+      <created>1617117538474</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1617117538474</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="manage stock css updated" />
+    <MESSAGE value="add fabric,nool,button to stock create without form validation" />
+    <MESSAGE value="add fabric,nool,button to stock  js form validation form validation added" />
+    <MESSAGE value="supplier select popup add" />
+    <MESSAGE value="add item to stock model updated" />
+    <MESSAGE value="add customer form validation updated using jquery validator plugging .&#10;create order form validation updated using jquery." />
+    <MESSAGE value="tests duedate predect function added" />
+    <MESSAGE value="invoice updated." />
+    <option name="LAST_COMMIT_MESSAGE" value="invoice updated." />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="0" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1617101241205">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="0" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1366.728@0.0.1366.728" timestamp="1617101241205" />
+    <state x="256" y="0" width="827" height="523" key="CommitChangelistDialog2" timestamp="1617117534404">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="256" y="0" width="827" height="523" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1617117534404" />
+    <state x="463" y="105" key="FileChooserDialogImpl" timestamp="1616853119669">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="463" y="105" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1616853119669" />
+    <state x="423" y="86" key="NewPhpClassDialog" timestamp="1616595628416">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="423" y="86" key="NewPhpClassDialog/0.0.1366.728@0.0.1366.728" timestamp="1616595628416" />
+    <state x="517" y="287" key="NewPhpFileDialog" timestamp="1616417530683">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="517" y="287" key="NewPhpFileDialog/0.0.1366.728@0.0.1366.728" timestamp="1616417530683" />
+    <state x="275" y="96" key="Vcs.Push.Dialog.v2" timestamp="1617117573451">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="275" y="96" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1617117573451" />
+    <state x="389" y="97" width="587" height="534" key="find.popup" timestamp="1616330071342">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="389" y="97" width="587" height="534" key="find.popup/0.0.1366.728@0.0.1366.728" timestamp="1616330071342" />
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1616653245804">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1616653245804" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/public/assets/js/manageCustomer.js</url>
+          <line>40</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>
