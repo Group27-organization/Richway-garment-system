@@ -113,13 +113,13 @@
 
     <?php include "components/side_nav.php"; ?>
 
-    <div class="right" id="right">
+    <div class="right" id="right" >
 
         <?php include "components/nav.php"; ?>
 
 
 
-        <div class="page-header">
+        <div class="page-header" style="margin-left: 25px !important;">
             <div class="block">
                 <div class="page-header-routetext">
                     <a href="#"><img src="<?php echo BASEURL; ?>/public/assets/img/home%20(2).svg" ></i></a>
@@ -134,7 +134,7 @@
 <!--------------------------------------------Tab Content-------------------------------------------------------------------------------------- -->
 
 
-            <div class="tabcontent">
+            <div class="tabcontent" style="margin-left: 25px !important; margin-right: 25px !important;">
                 <div class="flex-row-tab">
                     <div class="SearchBtnWap">
 <!--                        <div class="search">-->
@@ -145,7 +145,7 @@
 <!--                        </div>-->
                     </div>
                     <div class="BtnWap">
-                        <button id="generate-salary-btn" class="three-set-btn2" onclick="">Generate Monthly Salary </button>
+                        <button id="generate-salary-btn" class="three-set-btn2" onclick="" style="width: 200px !important;">Generate Monthly Salary </button>
                     </div>
 
                 </div><!--flex row-->
