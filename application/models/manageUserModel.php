@@ -210,7 +210,7 @@ class manageUserModel extends database {
     }
 
     public function getUserRoles(){
-        if($this->Query("SELECT title from user_role where title <> 'admin'")) {
+        if($this->Query("SELECT title from user_role where title <> 'admin' AND title <> 'owner'")) {
             if($this->rowCount() > 0){
                 return $this->fetchall();
             }

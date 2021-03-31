@@ -11,7 +11,6 @@
     <?php linkCSS("assets/css/nav.css") ?>
     <?php linkCSS("assets/css/side_nav.css") ?>
     <?php linkCSS("assets/css/admin-manageuser.css") ?>
-    <?php linkCSS("assets/css/admin-manageproduct.css") ?>
     <?php linkCSS("assets/css/admin-tabview.css") ?>
     <?php linkCSS("assets/css/admin-table.css") ?>
 </head>
@@ -38,21 +37,33 @@
 
 <!--        --------------------------------tab pane start----------------------------------------------------------------------------------------->
 
-        <div class="right-content">
+            <div class="tab-content" >
 
-            <div class="tab-content" style="padding-top: 63px;">
+                <div class="tabrow">
+
+                    <div class="tab">
+
+                      <button id="firsttab" class="tablinks active" onclick="openProduct(event,'pending')">Pending Order</button>
+
+                      <button class="tablinks" onclick="openProduct(event,'ongoing')">Created Jobs</button>
+
+                      <button class="tablinks" onclick="openProduct(event,'completeJob')">Complete Jobs</button>
+
+                      <button class="tablinks" onclick="openProduct(event,'completeOrder')">Complete Orders</button>
+
+
+                    </div>
+
+
+                </div>
 
                 <!--------------------------------------------Tab Content-------------------------------------------------------------------------------------- -->
                 <div id="tabcontentid" class="tabcontent">
 
-                    <div id="product_tabview_msg" class="model-footer">
-                        <h5>* Please select an sub product item to get this action!</h5>
-                    </div>
-
                     <div class="flex-row-tab">
                         <div class="SearchBtnWap">
                             <div class="search">
-                                <input type="text" class="searchTerm" placeholder="#Product ID?">
+                                <input type="text" name="jobSearch" id = "jobSearch" class="searchTerm" placeholder="#Item ID?">
                                 <button type="submit" class="searchButton cripple">
                                     <i class="fa fa-search"></i>
                                 </button>
@@ -69,6 +80,10 @@
 
                     </div>
                     <div class="card-footer">
+
+                        <div class="model-footer" id="jobMsgView" style="display: none">
+                            <h5>* Please select an order item to get this action!</h5>
+                        </div>
 
                         <div class="bottom-row">
 
@@ -105,22 +120,20 @@
 
             </div>
 
-            <div class="side-cards-container" >
+<!--            <div class="side-cards-container" >-->
+<!---->
+<!--                <div id="product_img" class="cardview">-->
+<!--                </div>-->
+<!---->
+<!--                <div class="cardview">-->
+<!--                    <div class="size-container" >-->
+<!--                        <span style="font-size: 60px; font-weight: bold; margin-bottom: -40px">size</span>-->
+<!--                        <h1 style="color: #ffd600;  font-size: 140px; font-weight: bold;" id="product_size"></h1>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!---->
+<!--            </div>-->
 
-                <div id="product_img" class="cardview">
-                </div>
-
-                <div class="cardview">
-                    <div class="size-container" >
-                        <span style="font-size: 60px; font-weight: bold; margin-bottom: -40px">size</span>
-                        <h1 style="color: #ffd600;  font-size: 140px; font-weight: bold;" id="product_size"></h1>
-                    </div>
-                </div>
-
-            </div>
-
-
-        </div>
 
 
     </div><!--right-->
