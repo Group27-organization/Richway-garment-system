@@ -12,13 +12,12 @@
     <?php linkCSS("assets/css/admin-table.css") ?>
     <?php linkCSS("assets/css/admin-adduser.css") ?>
 
-
+    <meta id="nav_item" content="Create Order">
 
     <?php linkCSS("assets/css/salesmanger-orderitemtablecard.css") ?>
 <!--    --><?php //linkCSS("assets/css/salesmanjor-css/card-template.css") ?>
 
-    <?php linkCSS("assets/css/stock/stock-managestock.css") ?>
-    <?php linkCSS("assets/css/stock/pop-window-add-raw-matiral-item.css") ?>
+
     <link href='https://fonts.googleapis.com/css?family=Alegreya+Sans' rel='stylesheet' type='text/css'>
     <?php linkCSS("assets/css/progressbar.css") ?>
 
