@@ -103,8 +103,8 @@ class AccountantController extends framework
                                 <td>$row->total_employee</td>
                                 <td>$row->status</td>
                                 <th>
-                                 <a href='http://localhost/Richway-garment-system/AccountantController/viewSalaryReport?month=$row->Month' class='viewBtn' style='margin: 4px;color: #00B4CC'>View /</a>                                
-                                 <a href='#' class='viewBtn' style='margin: 4px;color:#FF6347'>Send to Approve</a>
+                                 <a href='http://localhost/Richway-garment-system/AccountantController/viewSalaryReport?month=$row->Month' class='viewBtn' style='margin: 4px;color: #00B4CC'>View</a>                                
+                                 
                                 </th>
 
                             </tr>
@@ -325,6 +325,22 @@ class AccountantController extends framework
 
             }
         }
+    }
+
+
+    public function change_status_after_approved(){
+
+        $Date =  $this->getSession('selected_Date');
+      if($this->accountantModel->change_Status($Date)){
+          echo '
+              <script>
+                            if(!alert("Payment Approved successfully")) {
+                                window.location.href = "http://localhost/Richway-garment-system/AccountantController/viewSalaryReport"
+                            }
+              </script>
+
+            ';
+      }
     }
 
 

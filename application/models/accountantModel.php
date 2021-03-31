@@ -73,6 +73,14 @@ class accountantModel extends database
     }
 
 
+    public function change_Status($Date){
+        if($this->Query("UPDATE salary_report SET status = ? WHERE month=?",["Approved",$Date])and$this->Query("UPDATE attendance SET status = ? WHERE month_And_Year=?",["Approved",$Date])){
+            return true;
+        }
+
+    }
+
+
 
 
 }
