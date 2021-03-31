@@ -698,6 +698,18 @@
                     </div>
                 </div>
 
+                <div class="flex-box-two-three">
+                    <div class="fbtt-two-normal" >
+                        <!--                    <h1>Employee Count Per Year</h1>-->
+                        <div id="loadLastYearTopSalesProduct" style="height: 300px; width: 100%;"></div>
+                    </div>
+                    <div class="fbtt-two-normal">
+                                            <h1>Test</h1>
+
+                    </div>
+
+                </div>
+
             </div> <!--wiget_1-->
 <!--------------------------------------- supervisor------------------------------------------------->
         <h1>Supervisor</h1>

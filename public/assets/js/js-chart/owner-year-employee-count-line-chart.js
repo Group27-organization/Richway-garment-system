@@ -1,12 +1,12 @@
 
 $.ajax({
     type: 'POST',
-    url: "http://localhost/Richway-garment-system/dashbordChartController/empCountPerYear",
-    data: { key: "countPerYear"},
-    dataType: 'json',
+    url: "http://localhost/Richway-garment-system/dashbordChartController/loadLastYearTopSalesProduct",
+    data: { key: "loadLastYearTopSalesProduct"},
+    // dataType: 'json',
 
     success: function (data) {
-        // console.log("load xxxxx :"+data);
+        console.log("load xxxxx :"+data);
 
 
         for(let i = 0; i < data.length; i++){

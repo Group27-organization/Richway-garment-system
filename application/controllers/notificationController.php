@@ -27,23 +27,29 @@ class notificationController extends framework{
 
         if(isset($_POST['key'])) {
             if ($_POST['key'] == "notificationTable") {
-                $result = $this->notificationModel->loadNotificationTable();
-                //echo("<script>console.log('PHP in loadSupplierTable contoller: " . json_encode($result) . "');</script>");
+
+
+                $role =$this->getSession('userId')['role'];
+                $result = $this->notificationModel->loadNotificationTable($role);
+
+                echo("<script>console.log('PHP in role  contoller: " . json_encode($role) . "');</script>");
+
+                echo("<script>console.log('PHP in result  contoller: " . json_encode($result) . "');</script>");
 
                 echo "
-                <div id=id01 class=w3-modal>
-                        <div class=w3-modal-content>
-                              <header class=w3-container w3-teal> 
+                <div id=id01 class='w3-modal'>
+                        <div class='w3-modal-content'>
+                              <header class='w3-container w3-teal' style='background-color: #5E72E4 !important;'> 
                                 <span onclick=document.getElementById('id01').style.display='none' 
-                                class=w3-button w3-display-topright>&times;</span>
+                                class='w3-button w3-display-topright'>&times;</span>
                                 <h2>Notification</h2>
                               </header>
-                              <div class=w3-container>
+                              <div class='w3-container'>
                                     <p id='notifyDes'></p>
                                     
                               </div>
-                             <footer class=w3-container w3-teal>
-                                <p>Modal Footer</p>
+                             <footer class='w3-container w3-teal' style='background-color: #5E72E4 !important;'>
+                                <p></p>
                              </footer>
                         </div>
                       

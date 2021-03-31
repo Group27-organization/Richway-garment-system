@@ -4,8 +4,8 @@
 class notificationModel extends database
 {
 
-    public function loadNotificationTable(){
-        if($this->Query("SELECT * FROM notification")){
+    public function loadNotificationTable($role){
+        if($this->Query("SELECT * FROM `notification` WHERE reciver_role =? ORDER BY date DESC",[$role])){
 
             return $this->fetchall();
         }

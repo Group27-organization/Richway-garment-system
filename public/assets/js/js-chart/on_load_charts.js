@@ -1,16 +1,6 @@
 window.onload = function () {
-    $.getScript("assets/js/js-chart/piechart_3d.js", function(){
 
-    });
-    $.getScript("assets/js/js-chart/curve_chart.js", function(){
 
-    });
-    $.getScript("assets/js/js-chart/bar_chart.js", function(){
-
-    });
-    $.getScript("assets/js/js-chart/colum-chart.js", function(){
-
-    });
     $.getScript("assets/js/js-chart/owner-year-employee-count-line-chart.js", function(){
 
     });
@@ -33,6 +23,9 @@ window.onload = function () {
 
     });
     $.getScript("assets/js/js-chart/stock-button-chart.js", function(){
+
+    });
+    $.getScript("assets/js/js-chart/owner-load-top-product-colum-chart.js", function(){
 
     });
 

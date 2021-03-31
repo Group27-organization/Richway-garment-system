@@ -6,7 +6,7 @@ $( document ).ready(function() {
         data: { key: "notificationTable"},
         dataType: 'html',
         success: function (data) {
-            // console.log(data);
+            console.log(data);
             $("#Notification").html(data);
 
 

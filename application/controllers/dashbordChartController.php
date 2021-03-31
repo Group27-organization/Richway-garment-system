@@ -169,6 +169,20 @@ class dashbordChartController extends framework{
         }
     }
 
+    //owner
+    public function loadLastYearTopSalesProduct(){
+        if (isset($_POST['key'])) {
+            if ($_POST['key'] == "loadLastYearTopSalesProduct") {
+
+                $result =$this->dashbordChartModel->loadLastYearTopSalesProduct();
+
+                echo json_encode($result);
+
+            }
+        }
+    }
+
+
 
 
 }

@@ -90,6 +90,14 @@ class dashbordChartModel extends database {
 
     }
 
+    public function loadLastYearTopSalesProduct(){
+        if($this->Query("SELECT SUM(order_item.quantity) AS y,order_item.p_ID AS label FROM order_item JOIN orders ON orders.order_ID =order_item.order_ID WHERE YEAR(orders.start_date) = YEAR(CURDATE()) GROUP BY order_item.p_ID")){
+
+            return $this->fetchall();
+        }
+
+    }
+
 
 
 
