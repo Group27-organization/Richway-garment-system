@@ -1,51 +1,6 @@
 
 $(document).ready(function(){
 
-    // $("#findsupbtn").click(function () {
-    //     $('html, body').animate({
-    //         scrollTop: $("#right").offset().top   //id of div to be scrolled
-    //     }, 1);
-    //
-    //     document.querySelector('#selectsuppliertable').style.display = "flex";
-    //     document.querySelector('body').style.overflow = "hidden";
-    //     ///////////////////////////////////////////customer table load/////////////////////////////////////////////////
-    //
-    //     $.ajax({
-    //         type: 'POST',
-    //         url: "http://localhost/Richway-garment-system/rawMaterialToStockController/loadSupplierTable",
-    //         data: {  key: "supplierinstock"},
-    //         success: function(data){
-    //             $("#suppliertablestock").html(data);
-    //
-    //
-    //         },
-    //         error       : function() {
-    //             $("#suppliertablestock").html('<br><p>Something went wrong.</p>');
-    //         }
-    //     });
-    // });
-
-    // $("#btnsubmitC").click(function(e){
-    //     $(".error").hide();
-    //     if($("#CustomerName").val()==""||jQuery.trim($("#CustomerName").val()).length == 0){
-    //         $("#A").show();
-    //     }
-    //     if($("#Address").val()=="" ||jQuery.trim($("#Address").val()).length == 0){
-    //         $("#B").show();
-    //     }
-    //     if($("#CustomerContactNumber").val()=="" ||jQuery.trim($("#CustomerContactNumber").val()).length == 0||jQuery.trim($("#CustomerContactNumber").val()).length == 10){
-    //         $("#C").show();
-    //     }
-    //
-    //     if($("#gender option:selected").val()=="0") {
-    //         $("#D").show();
-    //     }if ($("#Email").val() == "") {
-    //          $("#E").show();
-    //     }else{
-    //             $("#cstaddForm").submit();
-    //     }
-    //
-    // });
 
     jQuery.validator.addMethod("noSpace", function(value, element) {
         return value.indexOf(" ") < 0 && value != "";
@@ -75,7 +30,6 @@ $(document).ready(function(){
             },
             contact_no: {
                 required: true,
-                number: true,
                 length: 10,
                 noSpace: true
             },
@@ -87,15 +41,7 @@ $(document).ready(function(){
                 email: true
 
             },
-            // weight: {
-            //     required: {
-            //         depends: function(elem) {
-            //             return $("#age").val() > 50
-            //         }
-            //     },
-            //     number: true,
-            //     min: 0
-            // }
+
         },
         messages : {
             name: {
@@ -112,17 +58,13 @@ $(document).ready(function(){
             },
             contact_no: {
                 required: "Please enter your contact number",
-                number: "Please enter your age as a numerical value",
                 length: "Contact Number must be  10 Numbers ",
                 noSpace: "Dont Keep empty spaces "
             },
             email: {
                 email: "The email should be in the format: abc@domain.tld"
             },
-            // weight: {
-            //     required: "People with age over 50 have to enter their weight",
-            //     number: "Please enter your weight as a numerical value"
-            // }
+
         }
     });
 
