@@ -5,6 +5,8 @@
 <meta charset="UTF-8" >
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta id="nav_item" content="Manage Customer">
+    <title>Update Customer</title>
 
     <?php linkCSS("assets/css/nav.css") ?>
     <?php linkCSS("assets/css/side_nav.css") ?>
@@ -26,8 +28,8 @@
 
         <div class="header-container background-gradient">
             <div class="header-group">
-                <h1 class="text-white">Update Customer Form</h1>
-                <p class="text-lead text-white">Update customer</p>
+                <h1 class="text-white">Update Customer</h1>
+                <p class="text-lead text-white">You can update customer's details in here</p>
             </div>
             <div class="separator separator-bottom separator-skew zindex-100">
                 <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
@@ -39,54 +41,76 @@
         <!----------------------------------form start--------------------------------------------------------------------------------------- -->
 
 
- <form  action="<?php echo BASEURL;?>/manageCustomerController/updateCustomer" method="POST" id="addCustomer" >
+ <form  action="<?php echo BASEURL;?>/manageCustomerController/updateCustomer" method="POST"  >
 <div class="flexbox-container">
 
     <div class="inputfield">
-        <h2>Update Customer</h2>
-    </div>
+        <label for="name">Full Name</label>
+        <input type="text" id="name" name="name" class="form-contrall"  value="<?php echo $data['data']->name;?>">
+        <label class="error" style="color:red;">
+            <?php
+            if ($data['nameError']) {
+                echo $data['nameError'];
+            }
 
-      
-    
-      <div class="inputfield">
-          <label for="name">Full Name</label>
-          <input type="text" id="name" name="name" class="form-contrall" value="<?php echo $data->name;?>">
-      
-      </div>
+            elseif($data['nameErrorFormat']) {
+                echo $data['nameErrorFormat'];
+            }
+            ?>
+        </label>
+    </div>
 
       <div class="inputfield">
           <label for="address">Address</label>
-          <input type="text" id="address" name="address" class="form-contrall" value="<?php echo $data->address;?>">
+          <input type="text" id="address" name="address" class="form-contrall" value="<?php echo $data['data']->address;?>">
+          <label class="error" style="color:red;">
+              <?php   if($data['addressError']) :echo $data['addressError']; endif; ?>
+          </label>
 
-      </div> 
+      </div>
 
-      <div class="inputfield">
+    <div class="inputfield">
         <label for="contact_no">Contact Number</label>
-        <input type="tel" id="contact_no" name="contact_no" class="form-contrall" value="<?php echo $data->contact_no;?>">
-
+        <input type="tel" id="contact_no" name="contact_no" class="form-contrall" value="<?php echo $data['data']->contact_no;?>">
         <input type="hidden" name="hiddenID" value="<?php echo $data->customer_ID;?>">
-    </div> 
+        <label class="error" style="color:red;">
+            <?php   if($data['contact_noError']) :echo $data['contact_noError']; endif; ?>
+        </label>
+    </div>
 
     <div class="inputfield">
         <label for="Gender">Gender</label>
-        <input type="text" id="Gender" name="Gender" class="form-contrall" value="<?php echo $data->Gender;?>">
-
+        <input type="text" id="Gender" name="Gender" class="form-contrall" value="<?php echo $data['data']->Gender;?>">
+        <label class="error" style="color:red;">
+            <?php   if($data['GenderError']) :echo $data['GenderError']; endif; ?>
+        </label>
     </div>
-    
+
     <div class="inputfield">
         <label for="email">Email</label>
-        <input type="email" id="email" name="email" class="form-contrall" value="<?php echo $data->email;?>">
+        <input id="email" maxlength="100" name="email" class="form-contrall" value="<?php echo $data['data']->email;?> ">
+        <label class="error" style="color:red;">
 
+            <?php
+            if ($data['emailError']) {
+                echo $data['emailError'];
+            }
+
+            elseif($data['emailErrorFormat']) {
+                echo $data['emailErrorFormat'];
+            }
+            ?>
+        </label>
     </div>
 
-    <br><div class="inputfield inputbutton"> 
-            <input type="submit" value="Update" class="btn cripple">
-    </div> 
+    <br><div class="inputfield inputbutton">
+        <input type="submit" value="Update" class="btn cripple">
+        <input type="hidden" name="hiddenID" value="<?php echo $data['data']->customer_ID;?>">
+    </div>
 
 </div>
-</div>
+
 </form>
-</div>
 </div>
 </body>
 </html>

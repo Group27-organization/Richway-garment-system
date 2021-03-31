@@ -9,6 +9,10 @@ body{
 }
 
 
+.inputbutton .btn{
+    margin-top: 100px !important;
+}
+
 .bg-modal {
     background-color: rgba(0, 0, 0, 0.7);
     width: 100%;
@@ -32,12 +36,19 @@ body{
     padding: 30px 0 30px 0;
     position: relative;
     border-radius: 5px;
-    overflow: hidden;
+
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
+.table-body{
+    max-height: 48vh;
+    margin-bottom: 70px !important;
+    overflow-y: scroll !important;
+
+
+}
 
 .close {
     position: absolute;
@@ -205,6 +216,13 @@ body{
     justify-content: flex-start !important;
 }
 
+.footer-align-items-center{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center !important;
+}
+
 .pagination {
     display: flex;
     padding-left: 0;
@@ -280,45 +298,11 @@ a {
 
 
 .model-footer {
-    color: red;
+    color: #f5365c;
     display: none;
     margin-bottom: 20px;
 }
 
-/*Create ripple effec*/
-
-.cripple {
-    position: relative;
-    overflow: hidden;
-    transform: translate3d(0, 0, 0);
-}
-
-.cripple:after {
-    content: "";
-    display: block;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    pointer-events: none;
-    background-image: radial-gradient(circle, #fff 10%, transparent 10.01%);
-    background-repeat: no-repeat;
-    background-position: 50%;
-    transform: scale(10, 10);
-    opacity: 0;
-    transition: transform .5s, opacity 1s;
-}
-.cripple:hover {
-    opacity: .7;
-    transition: 1s;
-}
-
-.cripple:active:after {
-    transform: scale(0, 0);
-    opacity: .3;
-    transition: 0s;
-}
 
 /*header-container*/
 .header-container{

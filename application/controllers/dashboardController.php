@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 class dashboardController extends framework {
 
@@ -27,6 +27,7 @@ class dashboardController extends framework {
         $roleTitles = $this->getSession('userId')['all_roles'];
         $result = $this->dashboardModel->getUserRoleObject($roleTitles);
         $this->view("dashboard",$result);
+        $this->setSession("userRolesList", $result);
         echo("<script>console.log('PHP idex sup');</script>");
     }
 

@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta id="nav_item" content="Manage Customer">
     <title>Manage Customer</title>
 
     <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
@@ -15,7 +16,7 @@
 
     <?php linkCSS("assets/css/admin-tabview.css") ?>
     <?php linkCSS("assets/css/admin-table.css") ?>
-     <?php linkJS("assets/js/manageCustomer.js"); ?>
+
 </head>
 <body>
 <div class="grid-container">
@@ -52,9 +53,9 @@
                     </div>
                     <div class="BtnWap">
 
-                        <button id="updateSupplier" onclick="updateCustomer()" class="three-set-btn2">Update</button>
+                        <button id="updateCustomer" onclick="updateCustomer()" class="three-set-btn2">Update</button>
 
-                        <button id="deleteSupplier" class="three-set-btn3" onclick="deleteCustomer()">Remove</button>
+                        <button id="deleteCustomer" class="three-set-btn3" onclick="deleteCustomer()">Remove</button>
 
                     </div>
                 </div><!--flex row-->
@@ -66,8 +67,8 @@
                 </div>
                 <div class="card-footer">
 
-                    <div class="model-footer">
-                        <h5>* Please select an order to get this action!</h5>
+                    <div class="model-footer" id="customerMsgView" >
+                        <h5>* Please select a customer to get this action!</h5>
                     </div>
 
                     <div class="bottom-row">
@@ -114,7 +115,7 @@
 </div>
 
 
-<?php linkJS("assets/js/tabview.js") ?>
+<?php linkJS("assets/js/manageCustomer.js"); ?>
 <?php linkJS("assets/js/table.js") ?>
 
 </body>

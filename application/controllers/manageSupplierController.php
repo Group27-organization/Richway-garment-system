@@ -16,11 +16,10 @@ private $manageSupplierModel;
 
     public function index(){
 
-
         $this->view("admin/manageSupplier");
-        echo("<script>console.log('PHP in index');</script>");
+       // echo("<script>console.log('PHP in index');</script>");
 
-        
+
 
     }
 
@@ -38,7 +37,6 @@ private $manageSupplierModel;
 
 
     public function loadSupplierTable(){
-        echo("<script>console.log('PHP in ndex');</script>");
         if(isset($_POST['key'])) {
             if ($_POST['key'] == "supplierTableInDash") {
                 $result = $this->manageSupplierModel->loadSupplierTable();
@@ -86,12 +84,7 @@ private $manageSupplierModel;
     }
 
     public function addSupplierform(){
-
-
         $this->view("admin/addSupplier");
-
-
-        
 
     }
 
@@ -99,16 +92,22 @@ private $manageSupplierModel;
             $id=$_POST['supplierID'];
            if($this->manageSupplierModel->deleteSupplier($id)){
              echo "200";
-
            }
-
-
     }
 
     public function loadupdateSupplierform(){
 
         $supID = $this->getSession('selected_supplier');
-        $data = $this->supplierModel->updateSupplier($supID);
+        $supplierEdit = $this->supplierModel->loadupdateSupplier($supID);
+        $data = [
+            'data'=>$supplierEdit,
+            'nameError'=> '',
+            'nameErrorCheckFormat'=>'',
+            'addressError'=> '',
+            'contact_noError'=> '',
+            'emailError'=>'',
+            'emailErrorFormat'=>'',
+        ];
         $this->view("admin/editSupplierform",$data);
     }
 
@@ -116,7 +115,7 @@ private $manageSupplierModel;
     public function updateSupplier(){
         $supplier_ID=intval($this->input('hiddenID'));
 
-        $supplierEdit=$this->supplierModel->editSupplier( $supplier_ID);
+        $supplierEdit=$this->supplierModel->loadupdateSupplier( $supplier_ID);
         $supplierData = [
             'supplierName'=> $this->input('suplierName'),
             'emailAddress'=>$this->input('Eemailaddress'),
@@ -124,21 +123,41 @@ private $manageSupplierModel;
             'hiddenID'=>$this->input('hiddenID'),
             'address'=>$this->input('address'),
             'contactNo'=>$this->input('contactno'),
+            'nameError'=> '',
+            'nameErrorCheckFormat'=>'',
+            'addressError'=> '',
+            'contact_noError'=> '',
+            'emailError'=>'',
+            'emailErrorFormat'=>'',
 
         ];
 
+        if(empty( $supplierData[ 'supplierName'])){
+            $supplierData['nameError']="Supplier name is required";
+        }
+        if (!preg_match("/^([a-zA-Z' ]+)$/",$supplierData['supplierName'])) {
+            $supplierData['nameErrorCheckFormat']= "Only letters allowed";
+        }
+        if(empty( $supplierData['emailAddress'])){
+            $supplierData['emailError']="Address is required";
+        }
+        if(!filter_var($supplierData['emailAddress'], FILTER_VALIDATE_EMAIL)) {
+            $supplierData['emailErrorFormat'] = "Invalid email address ";
+        }
+        if(empty( $supplierData['address'])){
+            $supplierData['addressError']="Address is required";
+        }
+        if(empty( $supplierData['contactNo'])){
+            $supplierData['contact_noError']="Contact Number is required";
+        }
 
 
-        foreach ($supplierData as $key => $value){
-            if(empty($value)){
-                $isEmpty= true;
-            }
-
+        if(empty($supplierData['nameError'])&&empty($supplierData['nameErrorCheckFormat'])&&empty($supplierData['addressError'])&&empty($supplierData['contact_noError'])&&
+        empty($supplierData['emailError'])&& empty($supplierData['emailErrorFormat'])){
 
             $updateData=[$supplierData['supplierName'],$supplierData['emailAddress'],$supplierData['address'],$supplierData['contactNo'],$supplierData[ 'hiddenID'],];
 
-            if(!$isEmpty){
-                if($this->supplierModel->editSupplier($updateData)){
+            if($this->supplierModel->editSupplier($updateData)){
 
                 echo '
                   <script>
@@ -149,10 +168,10 @@ private $manageSupplierModel;
 
                 ';
 
-                }
+            }
 
-                else {
-                    echo '
+            else {
+                echo '
 
                 <script>
                             if(!alert("Something went wrong! please try again.")) {
@@ -161,21 +180,18 @@ private $manageSupplierModel;
                 </script>
                 ';
 
-                }
-
-            }//if(!isempty)
-            else{
-                echo '
-              <script>
-                  if(!alert("Some required fields are missing!")) {
-                      window.location.href = "http://localhost/Richway-garment-system/editSupplierController/index";
-                  }
-              </script>
-              ';
             }
 
 
         }
+
+
+        else{
+            $this->view("admin/editSupplierform", $supplierData);
+        }
+
+
+
 
     }
 

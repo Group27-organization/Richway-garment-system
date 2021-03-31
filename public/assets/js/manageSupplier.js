@@ -7,13 +7,12 @@ $(document).ready(function(){
         data: {  key: "supplierTableInDash"},
         dataType: 'html',
         success: function(data){
-            $("#supplierTableForManageSupplier").html(data);
-
+            $("#table-responsive-supplierTable").html(data);
 
         },
         error       : function() {
             console.log("Table data not  load")
-            $("#tableParent").html('<br><p>Something went wrong.</p>');
+            $("#table-responsive-supplierTable").html('<br><p>Something went wrong.</p>');
         }
     });
 
@@ -26,11 +25,13 @@ $(document).ready(function(){
 
 function updateSupplier() {
 
-    let i, tblrows, supID = "";
+    let i, tblrows, supID = "",act=false;
 
     tblrows = document.getElementsByClassName("tblrow");
     for (i = 0; i < tblrows.length; i++) {
         if (tblrows[i].className.includes('active-row')) {
+            act = true;
+            document.querySelector('#SupplierMsgView').style.display = "none";
             supID = tblrows[i].firstElementChild.innerHTML;
             jQuery(function ($) {
 
@@ -51,6 +52,11 @@ function updateSupplier() {
             });
         }
     }
+
+    if(!act){
+        document.querySelector('#SupplierMsgView').style.display = "block";
+    }
+
 }
 
 function deleteSupplier() {
@@ -60,6 +66,7 @@ function deleteSupplier() {
     tblrows = document.getElementsByClassName("tblrow");
     for (i = 0; i < tblrows.length; i++) {
         if (tblrows[i].className.includes('active-row')) {
+            document.querySelector('#SupplierMsgView').style.display = "none";
             suppID = tblrows[i].firstElementChild.innerHTML;
             jQuery(function ($) {
                 $.ajax({
@@ -67,7 +74,6 @@ function deleteSupplier() {
                     url: "http://localhost/Richway-garment-system/manageSupplierController/deleteSupplier",
                     data: {supplierID: suppID, key: "supplierDelete"},
                     success: function (data) {
-                       // alert(data);
                         if(parseInt(data)===200){
                             if(!alert("Supplier removed successfully")) {
                                 window.location.href = "http://localhost/Richway-garment-system/manageSupplierController/index"
@@ -83,5 +89,9 @@ function deleteSupplier() {
 
             });
         }
+        else{
+            document.querySelector('#SupplierMsgView').style.display = "block";
+        }
+
     }
 }

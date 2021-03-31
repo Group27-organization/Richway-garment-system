@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Admin Dashboard</title>
+    <meta id="nav_item" content="Manage Employee">
+    <title>Manage Employee</title>
     <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <?php linkCSS("assets/css/nav.css") ?>
@@ -62,18 +63,18 @@
 
                         <button id="updateEmployee" class="three-set-btn2" onclick="updateEmployee()">Update</button>
 
-                        <button class="three-set-btn3">Remove</button>
+                        <button id="deleteEmployee" class="three-set-btn3" onclick="deleteEmployee()">Remove</button>
                     </div>
                 </div><!--flex row-->
 
-<!--                table start-->
+                <!--                table start-->
 
                 <div class="table-responsive" id="table-responsive">
 
                 </div>
                 <div class="card-footer">
 
-                    <div class="model-footer">
+                    <div class="model-footer" id="employeeMsgView" style="display: none">
                         <h5>* Please select an employee to get this action!</h5>
                     </div>
 

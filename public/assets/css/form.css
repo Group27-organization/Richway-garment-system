@@ -29,7 +29,6 @@
 /********************** no change text box value ******************************/
 .flexbox-container  .inputfield .form-contrall-readonly{
     width: 100%;
-    background-color: #E8F0FE;
     padding: 12px;
     cursor: default;
     transition: box-shadow .15s ease;
@@ -38,6 +37,16 @@
     border-radius: .25rem;
 }
 
+.flexbox-container  .inputfield .form-contrall-special{
+    width: 100%;
+    background-color: #E8F0FE;
+    padding: 12px;
+    cursor: default;
+    transition: box-shadow .15s ease;
+    border: 0;
+    box-shadow: 0 1px 3px rgba(50,50,93,.15), 0 1px 0 rgba(0,0,0,.02);
+    border-radius: .25rem;
+}
 
 .flexbox-container  .inputfield .imgebox-contrall{
     border: 1px solid #37A0F6;
@@ -137,6 +146,19 @@
 
 }
 
+select{
+    background: url(http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/br_down.png) no-repeat right #fff;
+    -webkit-appearance:none;
+    -moz-appearance:none;
+    appearance:none;
+    height: 45px;
+    background-position-x: 98%;
+}
+
+.btn .fas {
+    margin-left: 0;
+    margin-right: 8px;
+}
 
 /*************************/
 

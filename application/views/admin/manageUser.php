@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Admin Dashboard</title>
+    <meta id="nav_item" content="Manage User">
+    <title>Manage User</title>
     <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <?php linkCSS("assets/css/nav.css") ?>
@@ -28,7 +29,7 @@
         <div class="page-header">
             <div class="block">
                 <div class="page-header-routetext">
-                    <a href="#"><img src="<?php echo BASEURL; ?>/public/assets/img/home%20(2).svg" ></i></a>
+                    <a href="#"><img src="<?php echo BASEURL; ?>/public/assets/img/home%20(2).svg" ></a>
                     <a href="#!" style="color:#8898aa;"> / Manage User</a>
                 </div>
             </div>
@@ -60,7 +61,7 @@
                     <div class="BtnWap">
                         <button id="adduser" class="three-set-btn1" onclick="location.href"  >Add</button>
 
-                        <button class="three-set-btn2">Update</button>
+                        <button id="addextrarole" class="three-set-btn2" style="width: 150px !important;" onclick="addExtraRole()">Add Extra Role</button>
 
                         <button class="three-set-btn3">Remove</button>
                     </div>
@@ -73,8 +74,8 @@
                 </div>
                 <div class="card-footer">
 
-                    <div class="model-footer">
-                        <h5>* Please select an employee to get this action!</h5>
+                    <div class="model-footer" id="userMsgView" style="display: none">
+                        <h5>* Please select an user to get this action!</h5>
                     </div>
 
                     <div class="bottom-row">
@@ -119,7 +120,7 @@
 </div>
 
 
-<?php linkJS("assets/js/tabview.js") ?>
+<?php linkJS("assets/js/manageuser.js") ?>
 <?php linkJS("assets/js/table.js") ?>
 
 </body>

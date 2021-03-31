@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Admin Dashboard</title>
+    <meta id="nav_item" content="Manage Supplier">
+    <title>Manage Supplier</title>
     <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <?php linkCSS("assets/css/nav.css") ?>
@@ -56,7 +57,7 @@
 
                         <button id="updateSupplier" onclick="updateSupplier()" class="three-set-btn2">Update</button>
 
-                        <button id="deleteSupplier" class="three-set-btn3" onclick="deleteSupplier()">Remove</button>
+                        <button id="deleteSupplier"  onclick="deleteSupplier()" class="three-set-btn3">Remove</button>
                     </div>
                 </div><!--flex row-->
 
@@ -67,8 +68,8 @@
                 </div>
                 <div class="card-footer">
 
-                    <div class="model-footer">
-                        <h5>* Please select an order to get this action!</h5>
+                    <div class="model-footer" id="SupplierMsgView" >
+                        <h5>* Please select a supplier to get this action!</h5>
                     </div>
 
                     <div class="bottom-row">
@@ -115,6 +116,8 @@
 
 
 <?php linkJS("assets/js/table.js") ?>
+
+
 
 </body>
 </html>

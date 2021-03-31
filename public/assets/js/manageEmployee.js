@@ -1,4 +1,3 @@
-
 openEmp(null,'sales_manager');
 addEmployeeBtn = document.getElementById("addEmployee");
 addEmployeeBtn.onclick = function() {
@@ -6,11 +5,11 @@ addEmployeeBtn.onclick = function() {
     $.ajax({
         type: 'POST',
         url: "http://localhost/Richway-garment-system/manageEmployeeController/setNewSession",
-        data: { role: 'sales_manager',  key: "manageEmployeeData"},
-        success: function(data,status){
+        data: {role: 'sales_manager', key: "manageEmployeeData"},
+        success: function (data, status) {
             location.href = "http://localhost/Richway-garment-system/manageEmployeeController/addEmployeeform";
         },
-        error       : function() {
+        error: function () {
         }
     });
 
@@ -43,33 +42,40 @@ function openEmp(evt,elementID) {
 
         }
     }
-        console.log("RRR :"+elementID);
-        $.ajax({
-            type: 'POST',
-            url: "http://localhost/Richway-garment-system/manageEmployeeController/loadTable",
-            data: { employeerole: elementID,  key: "manageEmployeeData2"},
-            dataType: 'html',
-            success: function(data){
-                $("#table-responsive").html(data);
+    console.log("RRR :"+elementID);
+    $.ajax({
+        type: 'POST',
+        url: "http://localhost/Richway-garment-system/manageEmployeeController/loadTable",
+        data: { employeerole: elementID,  key: "manageEmployeeData2"},
+        dataType: 'html',
+        success: function(data){
+            $("#table-responsive").html(data);
 
 
-            },
-            error       : function() {
-                $("#table-responsive").html('<br><p>Something went wrong.</p>');
-            }
-        });
+        },
+        error       : function() {
+            $("#table-responsive").html('<br><p>Something went wrong.</p>');
+        }
+    });
 
 
 }
 
+$("#addEmployee").click(function () {
+    location.href = "http://localhost/Richway-garment-system/manageEmployeeController/addEmployeeform";
+
+});
+
 
 function updateEmployee() {
 
-    let i, tblrows, empID = "";
+    let i, tblrows, empID = "",act=false;
 
     tblrows = document.getElementsByClassName("tblrow");
     for (i = 0; i < tblrows.length; i++) {
         if (tblrows[i].className.includes('active-row')) {
+            act = true;
+            document.querySelector('#employeeMsgView').style.display = "none";
             empID = tblrows[i].firstElementChild.innerHTML;
             jQuery(function ($) {
 
@@ -89,5 +95,45 @@ function updateEmployee() {
 
             });
         }
+    }
+    if(!act){
+        document.querySelector('#employeeMsgView').style.display = "block";
+    }
+}
+
+function deleteEmployee(){
+
+    let i, tblrows, empID = "";
+
+    tblrows = document.getElementsByClassName("tblrow");
+    for (i = 0; i < tblrows.length; i++) {
+        if (tblrows[i].className.includes('active-row')) {
+            document.querySelector('#employeeMsgView').style.display = "none";
+            empID = tblrows[i].firstElementChild.innerHTML;
+            jQuery(function ($) {
+                $.ajax({
+                    type: 'POST',
+                    url: "http://localhost/Richway-garment-system/manageEmployeeController/deleteEmployee",
+                    data: {emp_ID: empID, key: "employeeDelete"},
+                    success: function (data) {
+                        if(parseInt(data)===200){
+                            if(!alert("Employee removed successfully")) {
+                                window.location.href = "http://localhost/Richway-garment-system/manageEmployeeController/index"
+                            }
+                        }
+                    },
+                    error: function () {
+                        // console.log("update data not  load")
+                        $("#tableParent").html('<br><p>Something went wrong.</p>');
+                    }
+                });
+
+
+            });
+        }
+        else{
+            document.querySelector('#employeeMsgView').style.display = "block";
+        }
+
     }
 }

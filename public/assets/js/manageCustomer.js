@@ -22,24 +22,22 @@ $(document).ready(function(){
 
     });
 
-                       
-   
-    $("#deleteCustomer").click(function(){
-        location.href = "http://localhost/Richway-garment-system/manageCustomerController/deleteCustomer";
- 
-     });
- 
+
+
+
 
 
 });
 
 function updateCustomer() {
 
-    let i, tblrows, cusID = "";
+    let i, tblrows, cusID = "",act=false;
 
     tblrows = document.getElementsByClassName("tblrow");
     for (i = 0; i < tblrows.length; i++) {
         if (tblrows[i].className.includes('active-row')) {
+            act = true;
+            document.querySelector('#customerMsgView').style.display = "none";
             cusID = tblrows[i].firstElementChild.innerHTML;
             jQuery(function ($) {
 
@@ -53,7 +51,7 @@ function updateCustomer() {
                     },
                     error: function () {
                         // console.log("update data not  load")
-                       //$("#tableParent").html('<br><p>Something went wrong.</p>');
+                        $("#tableParent").html('<br><p>Something went wrong.</p>');
                     }
                 });
 
@@ -61,6 +59,11 @@ function updateCustomer() {
             });
         }
     }
+
+    if(!act){
+        document.querySelector('#customerMsgView').style.display = "block";
+    }
+
 }
 
 
@@ -72,10 +75,9 @@ function deleteCustomer() {
     tblrows = document.getElementsByClassName("tblrow");
     for (i = 0; i < tblrows.length; i++) {
         if (tblrows[i].className.includes('active-row')) {
+            document.querySelector('#customerMsgView').style.display = "none";
             cust_ID = tblrows[i].firstElementChild.innerHTML;
             jQuery(function ($) {
-                
-
 
                 $.ajax({
                     type: 'POST',
@@ -83,8 +85,11 @@ function deleteCustomer() {
                     data: {customer_ID: cust_ID, key: "customerDelete"},
                     dataType: 'html',
                     success: function (data) {
-                        //alert(data);
-                        // console.log("Table data load"+data);
+                        if(parseInt(data)===200) {
+                            if (!alert("Customer removed successfully")) {
+                                window.location.href = "http://localhost/Richway-garment-system/manageCustomerController/index"
+                            }
+                        }
 
                     },
                     error: function () {
@@ -95,6 +100,9 @@ function deleteCustomer() {
 
 
             });
+        }
+        else{
+            document.querySelector('#customerMsgView').style.display = "block";
         }
     }
 }
