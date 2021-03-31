@@ -14,10 +14,6 @@ class AccountantController extends framework
 
             $this->redirect("loginController/loginForm");
 
-        } elseif ($this->getSession('userId')['role'] != 'admin') {
-            //$this->redirect("somePage");
-            echo "You cannot access this page.";
-            die();
         }
 
         $this->helper("link");
@@ -291,7 +287,7 @@ class AccountantController extends framework
                                     </tbody>
                                 </table>
                                 
-                                ";  
+                                ";
             }
             }
 
