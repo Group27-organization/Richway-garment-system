@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="52f54e1d-f9c9-4c5f-a2e2-18186743ac40" name="Default Changelist" comment="">
+    <list default="true" id="8866e40f-9bb3-4898-9271-23005a7405e2" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/stock/components/side_nav.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/stock/components/side_nav.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/Form.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/Form.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/controllers/stockIssueController.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/controllers/stockIssueController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/models/stockIssueModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/models/stockIssueModel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/css/form.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/form.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,17 +46,17 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\xampp\htdocs\Richway-garment-system\public\assets\js" />
-      <recent name="C:\xampp\htdocs\Richway-garment-system\public\assets\css" />
-      <recent name="C:\xampp\htdocs\Richway-garment-system\application\views\stock" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\xampp\htdocs\Richway-garment-system\public\assets\js" />
       <recent name="C:\xampp\htdocs\Richway-garment-system\application\views\stock" />
       <recent name="C:\xampp\htdocs\Richway-garment-system\application\models" />
       <recent name="C:\xampp\htdocs\Richway-garment-system\application\controllers" />
       <recent name="C:\xampp\htdocs\Richway-garment-system\public\assets\css\stock" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\Richway-garment-system\public\assets\js" />
+      <recent name="C:\xampp\htdocs\Richway-garment-system\public\assets\css" />
+      <recent name="C:\xampp\htdocs\Richway-garment-system\application\views\stock" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -164,6 +165,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="275" y="96" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1616243722523" />
+    <state x="463" y="76" key="git4idea.branch.GitSmartOperationDialog" timestamp="1617214778669">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="463" y="76" key="git4idea.branch.GitSmartOperationDialog/0.0.1366.728@0.0.1366.728" timestamp="1617214778669" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

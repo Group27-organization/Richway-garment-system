@@ -2,7 +2,7 @@
 
 
 class stockIssueController extends framework{
-    private $mangeSupplierModel;
+    private $stockIssueModel;
     public function __construct(){
         if(!$this->getSession('userId')){
             $this->redirect("loginController/loginForm");

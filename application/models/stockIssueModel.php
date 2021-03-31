@@ -10,10 +10,9 @@ class stockIssueModel extends database {
         }
 
     }
-    public function  getRequestJob($status="start"){
+    public function  getRequestJob($status="ongoing"){
         if($this->Query("SELECT 
                                 job.job_ID AS job_ID,
-                                job.name AS name,
                                 job.description AS job_description,
                                 orders.order_ID AS order_ID,
                                 orders.order_description AS order_description,
