@@ -29,54 +29,8 @@ function openEmp(evt,elementID) {
         }
     });
 
-
-
-
 }
-//
-// $(document).ready(function() {
-//
-//     $("#view-salary-report").click(function () {
-//         location.href = "http://localhost/Richway-garment-system/AccountantController/viewSalaryReport";
-//
-//     });
-//
-//     $.ajax({
-//         type: 'POST',
-//         url: "http://localhost/Richway-garment-system/AccountantController/loadSalaryReport",
-//         data: {  key: "salaryReportTableInDash"},
-//         dataType: 'html',
-//         success: function(data){
-//             $("#table-salaryReport").html(data);
-//
-//
-//         },
-//         error       : function() {
-//             console.log("Table data not  load")
-//             $("#tableParent").html('<br><p>Something went wrong.</p>');
-//         }
-//     });
-//
-// });
-//
-//
-//
-// $.ajax({
-//     type: 'POST',
-//     url: "http://localhost/Richway-garment-system/AccountantController/loadSalaryTable",
-//     data: {  key: "payrollTableInDash"},
-//     dataType: 'html',
-//     success: function(data){
-//         $("#table-payroll").html(data);
-//
-//
-//     },
-//     error       : function() {
-//         console.log("Table data not  load")
-//         $("#tableParent").html('<br><p>Something went wrong.</p>');
-//     }
-// });
-//
+
 
 $(document).ready(function(){
 
@@ -95,6 +49,11 @@ $(document).ready(function(){
             console.log("Table data not  load")
             $("#tableParent").html('<br><p>Something went wrong.</p>');
         }
+    });
+
+    $("#save").click(function(){
+        location.href = "http://localhost/Richway-garment-system/AccountantController/change_status_after_approved";
+
     });
 
 

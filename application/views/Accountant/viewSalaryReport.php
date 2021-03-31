@@ -48,11 +48,8 @@
                         </div>
                     </div>
                     <div class="BtnWap">
-
-                        <button id="print" class="three-set-btn3" onclick="print">Print</button>
-                    </div>
-                    <div class="BtnWap">
-                        <button style="" id="send" class="three-set-btn2" onclick="send">Send to Get Approval</button>
+                        <button id="print" class="three-set-btn3">Print</button>
+                        <button style="" id="save" class="three-set-btn2">Approve And Save</button>
                     </div>
                 </div><!--flex row-->
 
