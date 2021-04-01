@@ -97,12 +97,11 @@ class stockIssueController extends framework{
                 <table class='table align-items-center table-flush'>
                         <thead class='thead-light'>
                         <tr>
-                            <th scope=col>Job ID</th>
-                            <th scope=col>Job Name</th>
-                            <th scope=col>Description</th>
-                            <th scope=col>order ID</th>
-                            <th scope=col>order description</th> 
-                            <th scope=col>order Item Id</th>
+                             <th scope=col>Job ID</th>
+                            
+                             <th scope=col>order ID</th>
+                             <th scope=col>order description</th> 
+                             <th scope=col>order Item Id</th>
                             
                            
                             
@@ -119,11 +118,11 @@ class stockIssueController extends framework{
                     echo "
                             <tr class='tblrow' onclick='selectRow(event)'>
                                 <td id='empid' >$row->job_ID  </td>
-                                 <td>$row->name</td>
-                                <td>$row->job_description</td>
-                                <td>$row->order_ID</td>
+                                 
+                            
+                                <td>OID$row->order_ID</td>
                                 <td>$row->order_description</td>
-                                <td>$row->order_item_ID</td>
+                                <td>OITM$row->order_item_ID</td>
                                 
                                 
                             </tr>
