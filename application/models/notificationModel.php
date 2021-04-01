@@ -24,6 +24,12 @@ class notificationModel extends database
         }
     }
 
+    public function removeNotification($id){
+        if($this->Query("UPDATE notification SET read_ids = ? WHERE ID = ?",[$readID,$id])){
+            return true;
+        }
+    }
+
 
 
 

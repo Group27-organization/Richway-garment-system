@@ -64,8 +64,9 @@ class notificationController extends framework{
                                 <td>$row->description</td>
                                 <td>
                                
-                                <button class='viewBtn' style='background-color: snow; color:orange; border: none' onclick='selectRowView(event)'>view</button>
-                                   
+                                <button class='viewBtn' style='background-color: snow; color:orange; border: none; margin-right: 10px;' onclick='selectRowView(event)'>view</button>
+                                <span>|</span>
+                                <button class='viewBtn' style='background-color: snow; color:red; border: none; margin-left: 10px;' onclick='removeNotification(this)'> remove</button>   
                                 </td>
                                 
                             </tr>

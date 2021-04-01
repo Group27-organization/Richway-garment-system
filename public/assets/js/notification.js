@@ -49,3 +49,35 @@ function selectRowView(evt) {
 
     }
 }
+
+function removeNotification(clicked) {
+    // console.log(clicked)
+    $(clicked).parents("tr").remove();
+}
+
+function selectRowView(evt) {
+
+    if (!document.getElementsByTagName || !document.createTextNode) return;
+    var rows = document.getElementById('Notification').getElementsByTagName('tbody')[0].getElementsByTagName('tr');
+    for (i = 0; i < rows.length; i++) {
+        rows[i].onclick = function() {
+            let celldata = this.getElementsByTagName("td")[0];
+
+            // alert(id.innerHTML);
+            $.ajax({
+                type: 'POST',
+                url: "http://localhost/Richway-garment-system/notificationController/loadDescrpition",
+                data: {notificationID: celldata.innerHTML, key: "notificationDescrpition"},
+                dataType: 'html',
+                success: function (data) {
+
+                    alert(data);
+
+                },
+
+
+            });
+        }
+
+    }
+}
