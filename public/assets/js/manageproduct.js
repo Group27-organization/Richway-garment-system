@@ -1,9 +1,11 @@
 
 prdname = document.getElementById("firsttab").innerHTML.toString().toLowerCase();
+addNewDesignBtn = document.getElementById("add_new_design");
+updateNewDesignBtn=document.getElementById("update_design");
 openProduct(null,prdname);
 
 function openProduct(evt,product) {
-    let i, tablinks, addProductBtn ,addnewdesignbtn;
+    let i, tablinks, addProductBtn ,addnewdesignbtn, updatedesignbtn;
 
     if(evt != null){
         tablinks = document.getElementsByClassName("tablinks");
@@ -15,8 +17,11 @@ function openProduct(evt,product) {
     }
 
         addnewdesignbtn = document.getElementById("add_new_design_text");
+        updatedesignbtn = document.getElementById("update_design_text");
         addnewdesignbtn.innerText = "Add New " + product.replaceAll("_","-") + " Design";
+        updatedesignbtn.innerText = "Update " + product.replaceAll("_","-") + " Properties";
         addnewdesignbtn.style.textTransform = "capitalize";
+        updatedesignbtn.style.textTransform = "capitalize";
 
         addProductBtn = document.getElementById("addproduct");
         addProductBtn.onclick = function() {
@@ -51,15 +56,39 @@ function openProduct(evt,product) {
             }
         });
 
+    addNewDesignBtn.onclick = function() {
 
+        $.ajax({
+            type: 'POST',
+            url: "http://localhost/Richway-garment-system/manageProductController/setNewSession",
+            data: { productName:product ,  key: "manageProductData"},
+            success: function(data,status){
+                location.href = "http://localhost/Richway-garment-system/manageProductController/addPredefineView";
+            },
+            error       : function() {
+            }
+        });
+
+    }
+
+
+    updateNewDesignBtn.onclick=function(){
+        $.ajax({
+            type: 'POST',
+            url: "http://localhost/Richway-garment-system/manageProductController/setNewSession",
+            data: { productName:product ,  key: "manageProductData"},
+            success: function(data,status){
+                location.href = "http://localhost/Richway-garment-system/manageProductController/updatePredefineView";
+            },
+            error       : function() {
+            }
+        });
+    }
 
 
 
 }
 
-function createProduct(){
-
-}
 
 function selectRow(evt,url,size) {
     let i, tblrows;

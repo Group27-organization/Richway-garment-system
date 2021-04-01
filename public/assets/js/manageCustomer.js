@@ -31,11 +31,12 @@ $(document).ready(function(){
 
 function updateCustomer() {
 
-    let i, tblrows, cusID = "";
+    let i, tblrows, cusID = "",act=false;
 
     tblrows = document.getElementsByClassName("tblrow");
     for (i = 0; i < tblrows.length; i++) {
         if (tblrows[i].className.includes('active-row')) {
+            act = true;
             document.querySelector('#customerMsgView').style.display = "none";
             cusID = tblrows[i].firstElementChild.innerHTML;
             jQuery(function ($) {
@@ -57,10 +58,12 @@ function updateCustomer() {
 
             });
         }
-        else{
-            document.querySelector('#customerMsgView').style.display = "block";
-        }
     }
+
+    if(!act){
+        document.querySelector('#customerMsgView').style.display = "block";
+    }
+
 }
 
 

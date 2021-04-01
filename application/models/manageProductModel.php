@@ -26,6 +26,32 @@ class manageProductModel extends database {
 
     }
 
+    public function getRemainedSizes($table, $preID){
+
+        // echo("<script>console.log('PHP: " . json_encode($table) . "');</script>");
+
+        if($this->Query("SELECT sizes,size FROM $table INNER JOIN predefine ON $table.p_ID = predefine.p_ID WHERE predefine.p_ID = $preID")){
+
+            if($this->rowCount() > 0 ){
+
+                $data = $this->fetchall();
+                $sizes = explode(",",$data[0]->sizes);
+                //echo("<script>console.log('PHP: " . json_encode($data) . "');</script>");
+                foreach ($data as $row){
+                    unset($sizes[array_search($row->size, $sizes)]);
+                }
+
+                $sizesStr = join(",",$sizes);
+
+                return $sizesStr;
+
+            }
+
+        }
+
+        return  0;
+    }
+
 
     public function getProductTypes(){
         if($this->Query("SELECT DISTINCT type FROM predefine")) {
@@ -83,6 +109,22 @@ class manageProductModel extends database {
             return $this->fetchall();
         }
         return -1;
+    }
+
+    public function addPredefine($predefineProduct){
+        echo("<script>console.log('PHP: " . json_encode($predefineProduct) . "');</script>");
+        if($this->Query("INSERT INTO predefine(type,hand_type,collar_type,normal_tailoring_cost,description,rate_per_hour_from_line,minimum_profit_margin,style,sizes,image_url) VALUES (?,?,?,?,?,?,?,?,?,?)",$predefineProduct) ) {
+            echo("<script>console.log('PHP: emp" . json_encode($predefineProduct) . "');</script>");
+            return true;
+        }
+    }
+
+    public function  updatePredefine($UpdatedPredefine){
+        echo("<script>console.log('PHP: " . json_encode($UpdatedPredefine) . "');</script>");
+
+        if($this->Query("UPDATE predefine SET normal_tailoring_cost = ?,description = ?,rate_per_hour_from_line = ?,minimum_profit_margin=?,image_url=? WHERE p_ID= ?",$UpdatedPredefine)){
+            return true;
+        }
     }
 }
 

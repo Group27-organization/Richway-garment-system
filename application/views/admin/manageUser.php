@@ -61,7 +61,7 @@
                     <div class="BtnWap">
                         <button id="adduser" class="three-set-btn1" onclick="location.href"  >Add</button>
 
-                        <button class="three-set-btn2">Update</button>
+                        <button id="addextrarole" class="three-set-btn2" style="width: 150px !important;" onclick="addExtraRole()">Add Extra Role</button>
 
                         <button class="three-set-btn3">Remove</button>
                     </div>
@@ -74,8 +74,8 @@
                 </div>
                 <div class="card-footer">
 
-                    <div class="model-footer">
-                        <h5>* Please select an employee to get this action!</h5>
+                    <div class="model-footer" id="userMsgView" style="display: none">
+                        <h5>* Please select an user to get this action!</h5>
                     </div>
 
                     <div class="bottom-row">

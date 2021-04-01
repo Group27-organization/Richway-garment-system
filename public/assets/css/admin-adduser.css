@@ -36,12 +36,19 @@ body{
     padding: 30px 0 30px 0;
     position: relative;
     border-radius: 5px;
-    overflow: hidden;
+
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
+.table-body{
+    max-height: 48vh;
+    margin-bottom: 70px !important;
+    overflow-y: scroll !important;
+
+
+}
 
 .close {
     position: absolute;

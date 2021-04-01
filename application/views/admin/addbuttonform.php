@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta id="nav_item" content="Manage Raw Materials">
-    <title>Add New Button</title>
+    <meta id="nav_item" content="Add Button">
+    <title>Add Button</title>
 
     <?php linkCSS("assets/css/nav.css") ?>
     <?php linkCSS("assets/css/side_nav.css") ?>
@@ -25,7 +25,7 @@
 
         <div class="header-container background-gradient">
             <div class="header-group">
-                <h1 class="text-white">Add New Button</h1>
+                <h1 class="text-white">Add Button</h1>
                 <p class="text-lead text-white">You can add button's details in here</p>
             </div>
             <div class="separator separator-bottom separator-skew zindex-100">
@@ -62,13 +62,13 @@
                     </label>
                 </div>
 
-                <!--                <div class="inputfield">-->
-                <!--                    <label for="image">Image</label>-->
-                <!--                    <input type="text" id="image" maxlength="100" name="image" class="form-contrall" value="--><?php //if($data['image']) :echo $data['image']; endif; ?><!--">-->
-                <!--                    <label class="error" style="color:red;">-->
-                <!--                        --><?php //  if($data['imageError']) :echo $data['imageError']; endif; ?>
-                <!--                    </label>-->
-                <!--                </div>-->
+<!--                <div class="inputfield">-->
+<!--                    <label for="image">Image</label>-->
+<!--                    <input type="text" id="image" maxlength="100" name="image" class="form-contrall" value="--><?php //if($data['image']) :echo $data['image']; endif; ?><!--">-->
+<!--                    <label class="error" style="color:red;">-->
+<!--                        --><?php //  if($data['imageError']) :echo $data['imageError']; endif; ?>
+<!--                    </label>-->
+<!--                </div>-->
 
                 <br><div class="inputfield inputbutton">
                     <input type="submit" value="Submit" class="btn cripple">

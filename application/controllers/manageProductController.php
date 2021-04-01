@@ -18,11 +18,6 @@ class manageProductController extends framework {
         $this->redirect("loginController/loginForm");
 
       }
-      elseif ($this->getSession('userId')['role'] != 'admin'){
-          //$this->redirect("somePage");
-          echo "You cannot access this page.";
-          die();
-      }
 
        $this->helper("link");
        $this->manageProductModel = $this->model('manageProductModel');
@@ -62,6 +57,7 @@ class manageProductController extends framework {
                             <th scope=col>Collar Type</th>
                             <th scope=col>Description</th>
                             <th scope=col>Style</th>
+                            <th scope=col></th>
                         </tr>
                         </thead>
                         <tbody>
@@ -91,6 +87,9 @@ class manageProductController extends framework {
                                 <td>$row->collar_type</td>
                                 <td>$row->description</td>
                                 <td>$row->style</td>
+                                 <th>
+                                 <a href='#' class='viewBtn' style='margin: 4px;color: #11cdef'> View </a>
+                                </th>
                                 <td style='display:none;'>$row->image_url</td>
                             </tr>
                         ";
@@ -168,6 +167,9 @@ class manageProductController extends framework {
 
                         $imgurl = str_replace('.png','',$row->image_url);
                         $imgurl = $imgurl."-trans.png";
+// <div id='productSizes' style='display: none'>$row->size</div>
+
+                        $sizesStr = $this->manageProductModel->getRemainedSizes($this->getSession('selected_product'),$row->p_ID);
 
                         echo "
                                 <div class=\"product-container\">
@@ -181,7 +183,7 @@ class manageProductController extends framework {
                                             <h4 id='desc'>$row->description</h4>
                                         </div>
                                         <div class=\"product-bottom\">
-                                            <button type=\"button\" class=\"slctbtn cripple\" onclick=\"selectPID(event,'$row->p_ID','$row->description')\">Select
+                                            <button type=\"button\" class=\"slctbtn cripple\" onclick=\"selectPID(event,'$row->p_ID','$row->description','$sizesStr')\">Select
                                             </button>
                                         </div>
                                     </div>
@@ -271,6 +273,172 @@ class manageProductController extends framework {
             ';
         }
 
+    }
+
+
+
+    public function addPredefineView(){
+        $product =  $this->getSession('selected_product');
+        echo("<script>console.log('PHP in addPredefine: " . json_encode($product) . "');</script>");
+        $data = [
+            'product' => ucwords(str_replace("_","-",$product)),
+        ];
+        $this->view("admin/addPredefine",$data);
+
+    }
+
+
+
+
+    public function addPredefine(){
+        $product =  $this->getSession('selected_product');
+        $predefineProduct=[
+            $product,
+            $this->input('HandType'),
+            $this->input('CollarType'),
+            $this->input('NormalTailoringCost'),
+            $this->input('Description'),
+            $this->input('RatePerHourFromLine'),
+            $this->input('MinimumProfitMargin'),
+            $this->input('Style'),
+            $this->input('Sizes'),
+            $this->input('fileToUpload'),
+
+        ];
+
+
+        if ($this->manageProductModel->addPredefine($predefineProduct)) {
+
+            echo '
+                              <script>
+                                            if(!alert("New predefine product added successfully")) {
+                                                window.location.href = "http://localhost/Richway-garment-system/manageProductController/index"
+                                            }
+                              </script>
+        
+                            ';
+        }
+        else {
+            echo '
+
+                            <script>
+                                        if(!alert("Something went wrong! please try again.")) {
+                                            window.location.href = "http://localhost/Richway-garment-system/manageProductController/addPredefineView"
+                                        }
+                            </script>
+                            ';
+
+        }
+    }
+
+    public function uploadImage(){
+        echo("<script>console.log('PHP in uploadimage: ');</script>");
+        $target_dir = "assets/img";
+        $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+        $uploadOk = 1;
+        $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+
+// Check if image file is a actual image or fake image
+        if(isset($_POST["submit"])) {
+            $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
+            if($check !== false) {
+                echo "File is an image - " . $check["mime"] . ".";
+                $uploadOk = 1;
+            } else {
+                echo "File is not an image.";
+                $uploadOk = 0;
+            }
+        }
+
+// Check if file already exists
+        if (file_exists($target_file)) {
+            echo "Sorry, file already exists.";
+            $uploadOk = 0;
+        }
+
+// Check file size
+        if ($_FILES["fileToUpload"]["size"] > 500000) {
+            echo "Sorry, your file is too large.";
+            $uploadOk = 0;
+        }
+
+// Allow certain file formats
+        if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+            && $imageFileType != "gif" ) {
+            echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+            $uploadOk = 0;
+        }
+
+// Check if $uploadOk is set to 0 by an error
+        if ($uploadOk == 0) {
+            echo "Sorry, your file was not uploaded.";
+// if everything is ok, try to upload file
+        } else {
+            if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+                echo "The file ". htmlspecialchars( basename( $_FILES["fileToUpload"]["name"])). " has been uploaded.";
+            } else {
+                echo "Sorry, there was an error uploading your file.";
+            }
+        }
+
+    }
+
+
+
+
+
+    public function updatePredefineView(){
+        $product =  $this->getSession('selected_product');
+        echo("<script>console.log('PHP in addPredefine: " . json_encode($product) . "');</script>");
+        $data = [
+            'product' => ucwords(str_replace("_","-",$product)),
+        ];
+        $this->view("admin/updatePredefine",$data);
+
+    }
+
+
+
+
+    public function updatePredefine(){
+
+        $product =  $this->getSession('selected_product');
+        $designCat=$this->input('Select_Design_Category');
+        $PID=substr($designCat,3,strpos( $designCat," "));
+
+        $UpdatedPredefine=[
+            $this->input('NormalTailoringCost'),
+            $this->input('Description'),
+            $this->input('RatePerHourFromLine'),
+            $this->input('MinimumProfitMargin'),
+            $this->input('fileToUpload'),
+            number_format($PID),
+
+        ];
+
+
+        if ($this->manageProductModel->updatePredefine($UpdatedPredefine)) {
+
+            echo '
+                              <script>
+                                            if(!alert("New predefine product added successfully")) {
+                                                window.location.href = "http://localhost/Richway-garment-system/manageProductController/index"
+                                            }
+                              </script>
+
+                            ';
+        }
+        else {
+            echo '
+
+                            <script>
+                                        if(!alert("Something went wrong! please try again.")) {
+                                            window.location.href = "http://localhost/Richway-garment-system/manageProductController/addPredefineView"
+                                        }
+                            </script>
+                            ';
+
+        }
 
 
     }

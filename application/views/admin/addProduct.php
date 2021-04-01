@@ -61,8 +61,16 @@
                 <?php
                 foreach($data['table_columns'] as $col):
                     $colname = $col->COLUMN_NAME;
-                    $datatype = $col->DATA_TYPE; ?>
-                    <div class="inputfield">
+                    $datatype = $col->DATA_TYPE;
+                    if($colname == 'size'):?>
+                        <div class="inputfield">
+                        <label for="<?php echo $colname;?>"><?php echo ucfirst($colname)?></label>
+                        <select id="<?php echo $colname;?>"  name="<?php echo $colname;?>" class="form-contrall"  required>
+                            <option value="" disabled selected>Select Size</option>
+                        </select>
+                        </div>
+                    <?php  else: ?>
+                        <div class="inputfield">
                         <label for="<?php echo $colname;?>"><?php echo ucwords(str_replace("_"," ",$colname))?></label>
 
                         <?php if($datatype == 'int' or $datatype == 'double' or $datatype == 'float' or $datatype == 'currency'): ?>
@@ -75,6 +83,7 @@
                             <input type="text" maxlength="20" id="<?php echo $colname;?>" name="<?php echo $colname;?>" class="form-contrall" style=" text-transform: capitalize;" required>
                         <?php endif; ?>
                     </div>
+                <?php   endif; ?>
                 <?php   endforeach; ?>
 
                 <br><div class="inputfield inputbutton">
@@ -187,9 +196,9 @@
                 </div>
                 <div class="card-footer">
 
-                    <div class="model-footer">
-                        <h5>* Please select an employee to assign!</h5>
-                    </div>
+<!--                    <div class="model-footer">-->
+<!--                        <h5>* Please select an employee to assign!</h5>-->
+<!--                    </div>-->
 
                     <div class="bottom-row footer-align-items-center">
 

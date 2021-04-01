@@ -7,12 +7,12 @@ $(document).ready(function(){
         data: {  key: "supplierTableInDash"},
         dataType: 'html',
         success: function(data){
-            $("#supplierTableForManageSupplier").html(data);
+            $("#table-responsive-supplierTable").html(data);
 
         },
         error       : function() {
             console.log("Table data not  load")
-            $("#tableParent").html('<br><p>Something went wrong.</p>');
+            $("#table-responsive-supplierTable").html('<br><p>Something went wrong.</p>');
         }
     });
 
@@ -25,11 +25,12 @@ $(document).ready(function(){
 
 function updateSupplier() {
 
-    let i, tblrows, supID = "";
+    let i, tblrows, supID = "",act=false;
 
     tblrows = document.getElementsByClassName("tblrow");
     for (i = 0; i < tblrows.length; i++) {
         if (tblrows[i].className.includes('active-row')) {
+            act = true;
             document.querySelector('#SupplierMsgView').style.display = "none";
             supID = tblrows[i].firstElementChild.innerHTML;
             jQuery(function ($) {
@@ -50,11 +51,12 @@ function updateSupplier() {
 
             });
         }
-
-        else{
-            document.querySelector('#SupplierMsgView').style.display = "block";
-        }
     }
+
+    if(!act){
+        document.querySelector('#SupplierMsgView').style.display = "block";
+    }
+
 }
 
 function deleteSupplier() {

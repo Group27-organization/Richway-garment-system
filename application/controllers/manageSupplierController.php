@@ -17,9 +17,9 @@ private $manageSupplierModel;
     public function index(){
 
         $this->view("admin/manageSupplier");
-        echo("<script>console.log('PHP in index');</script>");
+       // echo("<script>console.log('PHP in index');</script>");
 
-        
+
 
     }
 
@@ -37,7 +37,6 @@ private $manageSupplierModel;
 
 
     public function loadSupplierTable(){
-        echo("<script>console.log('PHP in ndex');</script>");
         if(isset($_POST['key'])) {
             if ($_POST['key'] == "supplierTableInDash") {
                 $result = $this->manageSupplierModel->loadSupplierTable();

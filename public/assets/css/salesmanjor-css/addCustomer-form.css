@@ -1,0 +1,67 @@
+.flexbox-container {
+
+    left: calc(50% - 30vw);
+
+    width: 60vw;
+
+}
+
+.BtnWap2{
+    padding: 20px;
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+
+.model-btn{
+    height: 43px;
+}
+.model-btn2{
+    height: 43px;
+}
+
+.form-contrall-label{
+    width: 100%;
+    height: 45px;
+    padding: 12px;
+    background: #fff;
+    transition: box-shadow .15s ease;
+    border: 0;
+    box-shadow: 0 1px 3px rgba(50,50,93,.15), 0 1px 0 rgba(0,0,0,.02);
+    border-radius: .25rem;
+}
+/******************************************/
+
+.input2 {
+    margin-left: 10%;
+    width: 43% !important;
+}
+
+.inputbutton{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.inputbutton .btn2{
+    padding: 8px;
+    font-size: .875rem;
+    position: relative;
+    transition: all .15s ease;
+    letter-spacing: .025em;
+    text-transform: none;
+    will-change: transform;
+    text-align: center;
+    color: #5e72e4;
+    cursor: pointer;
+    border: 1px solid #5e72e4;
+    background-color: #fff;
+    box-shadow: 0 4px 6px rgba(50,50,93,0.11), 0 1px 3px rgba(0,0,0,0.08);
+    border-radius: .25rem;
+    line-height: 1.5;
+
+}

@@ -32,7 +32,7 @@
 
                 <form action="<?php echo BASEURL; ?>/loginController/userLogin" method="POST">
                     <div class="loginfield">
-                        <input name="email" required type="email" class="field" placeholder="&#xf0e0;  Email Address" value="<?php if(!empty($data['email'])): echo $data['email']; endif; ?>">
+                        <input name="email" required type="email" class="field" placeholder="&#xf0e0;  Email" value="<?php if(!empty($data['email'])): echo $data['email']; endif; ?>">
                     </div>
                     <div class="error">
                         <?php if(!empty($data['emailError'])): echo $data['emailError']; endif; ?>
@@ -54,7 +54,7 @@
                     <div style="margin-top: 80px"><input name="lginBtn" type="submit" value="Sign In" class="btn"></div>
 
                     <div class="forget">
-                        <a href="#">Forgot Password?</a>
+                        <a href="<?php echo BASEURL; ?>/loginController/forgotPasswordView">Forgot Password?</a>
                     </div>
 
 

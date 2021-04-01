@@ -1,0 +1,144 @@
+
+/*********************************/
+.flexbox-container-popup{
+    font-family:Poppins-Regular ;
+    height:75%;
+    width: 60%;
+    margin: auto;
+    background-color: white;
+    padding: 10px;
+   // box-shadow: 1px 1px 8px -4px rgba(128, 0, 0, 0.6);
+    border-radius: 15px;
+    overflow-y: auto;
+
+}
+
+.flexbox-container-popup  .inputfield2 .form-contrall2{
+    font-family:Poppins-Regular ;
+    width: 100%;
+    border: 1px solid #d5dbd9;
+    padding: 4px;
+    border-radius: 5px;
+    margin-top: 4px;
+
+}
+.inputfield2{
+    margin-bottom: 5px;
+    margin-top: 5px;
+    font-family:Poppins-Regular ;
+
+
+}
+.inputfield2 label{
+    margin-bottom: 4px;
+    margin-top: 4px;
+    opacity: 0.8;
+    padding-left: 0;
+    font-family:Poppins-Regular ;
+    display: flex;
+    justify-content: flex-start;
+
+
+}
+
+.flexbox-container-popup  .inputfield2 .form-contrall:focus {
+    border-color:#37A0F6;
+    background-color: #F5F5F5;
+}
+
+/*******************************************/
+
+
+.inputbutton2{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+}
+
+
+
+#supplierWap{
+    margin-top: 20px;
+}
+
+
+.model-btn-popup{
+    width: 120px;
+    height: 43px;
+    padding: 10px;
+    font-size: .875rem;
+    position: relative;
+    transition: all .15s ease;
+    letter-spacing: .025em;
+    text-transform: none;
+    will-change: transform;
+    text-align: center;
+    cursor: pointer;
+    border-radius: .25rem;
+    color: #fff;
+    border: 1px solid #5e72e4;
+    background-color: #5e72e4;
+    box-shadow: 0 4px 6px rgba(50,50,93,0.11), 0 1px 3px rgba(0,0,0,0.08);
+    line-height: 1.5;
+
+}
+
+.model-btn2-popup{
+    width: 120px;
+    height: 43px;
+    padding: 8px;
+    font-size: .875rem;
+    position: relative;
+    transition: all .15s ease;
+    letter-spacing: .025em;
+    text-transform: none;
+    will-change: transform;
+    text-align: center;
+    color: #5e72e4;
+    cursor: pointer;
+    border: 1px solid #5e72e4;
+    background-color: #fff;
+    box-shadow: 0 4px 6px rgba(50,50,93,0.11), 0 1px 3px rgba(0,0,0,0.08);
+    border-radius: .25rem;
+    line-height: 1.5;
+    margin-right: 15px;
+
+}
+.bottom-row2{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.BtnWap2{
+    padding: 20px;
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+
+
+
+#tableParent-suppliresTable {
+    margin-top: 15px;
+    width: 100%;
+
+}
+#tableParent-suppliresTable .content-table {
+    margin: 0;
+    padding: 0;
+}
+
+/*Create ripple effec*/
+
+
+
+*:focus {
+    outline: none;
+
+}
+
