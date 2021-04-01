@@ -11,7 +11,7 @@ class manageJobModel extends database {
 
 
 
-        if($this->Query("SELECT order_item_ID, quantity, order_item.order_ID, order_description, p_ID, order_due_date, due_date_status FROM orders INNER JOIN order_item ON orders.order_ID = order_item.order_ID WHERE order_item.status = 'pending' ORDER BY order_due_date DESC LIMIT 2")){
+        if($this->Query("SELECT order_item_ID, quantity, order_item.order_ID, order_description, p_ID, order_due_date, due_date_status FROM orders INNER JOIN order_item ON orders.order_ID = order_item.order_ID WHERE order_status = 'pending' ORDER BY order_due_date DESC LIMIT 2")){
 
             if($this->rowCount() > 0 ){
 
@@ -45,7 +45,7 @@ class manageJobModel extends database {
                 $finalData = [];
                 $finalRow = [];
                 foreach ($data as $row){
-                    if($this->Query("SELECT  SUM(today_completed_workload) AS currentComplete FROM `workload` WHERE job_ID=? GROUP BY job_ID",[$row->job_ID])){
+                    if($this->Query("SELECT  SUM(today_completed_workload) AS currentComplete FROM workload WHERE workload.job_ID=? GROUP BY workload.job_ID",[$row->job_ID])){
 
                         if($this->rowCount() > 0 ){
 
@@ -54,6 +54,8 @@ class manageJobModel extends database {
                             $remain = intval($row->quantity) - intval($data1->currentComplete);
 
                             $row->pm_ID = $remain;
+                        }else{
+                            $row->pm_ID = $row->quantity;
                         }
                     }
                 }

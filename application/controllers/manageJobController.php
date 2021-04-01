@@ -93,7 +93,7 @@ class manageJobController extends framework {
                                 <td>OITM$row->order_item_ID</td>
                                 <td>$row->quantity</td>
                                 <td>ORD$row->order_ID</td>
-                                <td>$row->description</td>
+                                <td>$row->order_description</td>
                                 <td>$row->p_ID</td>
                                 <td>$row->order_due_date</td>                           
                                 <td>$row->due_date_status</td>                           

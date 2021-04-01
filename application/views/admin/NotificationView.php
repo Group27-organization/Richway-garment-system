@@ -1,46 +1,45 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Update Workload</title>
-    <meta id="nav_item" content="Update Workload">
+    <meta id="nav_item" content="Notification Manager">
+    <title>Manage Employee</title>
     <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
     <?php linkCSS("assets/css/nav.css") ?>
     <?php linkCSS("assets/css/side_nav.css") ?>
     <?php linkCSS("assets/css/admin-manageuser.css") ?>
     <?php linkCSS("assets/css/admin-tabview.css") ?>
     <?php linkCSS("assets/css/admin-table.css") ?>
-    <?php linkJS("assets/js/supervisor.js"); ?>
 
 </head>
 <body>
 
-
-
 <div class="grid-container">
+
     <?php include "components/side_nav.php"; ?>
 
     <div class="right" id="right">
+
         <?php include "components/nav.php"; ?>
+
+
+
         <div class="page-header">
             <div class="block">
                 <div class="page-header-routetext">
                     <a href="#"><img src="<?php echo BASEURL; ?>/public/assets/img/home%20(2).svg" ></i></a>
-                    <a href="#!" style="color:#8898aa;"> / Update Today Workload</a>
+                    <a href="#!" style="color:#8898aa;"> / Notification Manager</a>
                 </div>
             </div>
         </div>
 
+        <!----------------------------------tab pane start--------------------------------------------------------------------------------------- -->
+
         <div class="tab-content">
-            <!--            <div class="tab">-->
-            <!--                <button class="tablinks active" onclick="openEmp(event, 'RawMaterial')">Raw Material</button>-->
-            <!--                <button class="tablinks" onclick="openEmp(event, 'Tools')">Tools</button>-->
-            <!--                <button class="tablinks" onclick="openEmp(event, 'Machine')">Machine</button>-->
-            <!--            </div>-->
+
 
             <!--------------------------------------------Tab Content-------------------------------------------------------------------------------------- -->
             <div id="tabcontentid" class="tabcontent">
@@ -54,21 +53,23 @@
                         </div>
                     </div>
                     <div class="BtnWap">
+                        <!--                        <button id="addRawmaterial" class="three-set-btn1" onclick="openRaw()">Add</button>-->
 
-                        <button id="updateWorkload" onclick="updateWorkload() " class="three-set-btn2" style="width: 200px!important;">Update Daily Workload</button>
+                        <!--                        <button id="updateRawmaterial" class="three-set-btn2" onclick="updateRM()">Update</button>-->
 
+                        <!--                        <button id="deleteRawmaterial" class="three-set-btn3" onclick="deleteRawMaterial()">Remove</button>-->
                     </div>
                 </div><!--flex row-->
 
                 <!--                table start-->
 
-                <div class="table-responsive" id="ongoingJobTable">
+                <div class="table-responsive" id="Notification">
 
                 </div>
                 <div class="card-footer">
 
-                    <div class="model-footer" id="workloadMsgView" >
-                        <h5>* Please select an Job to get this action!</h5>
+                    <div class="model-footer" id="Notification">
+                        <h5>* Please select an employee to get this action!</h5>
                     </div>
 
                     <div class="bottom-row">
@@ -112,8 +113,9 @@
 
 </div>
 
-<?php linkJS("assets/js/supervisor.js") ?>
+
 <?php linkJS("assets/js/table.js") ?>
+<?php linkJS("assets/js/notification.js") ?>
 
 </body>
 </html>

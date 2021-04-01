@@ -35,9 +35,40 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c46aa12f-87f1-4a50-838b-0650577cbd36" name="Default Changelist" comment="latest combine.">
+      <change afterPath="$PROJECT_DIR$/application/controllers/dashbordChartController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/application/controllers/dashbordChartModel.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/application/controllers/eventCalenderController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/application/controllers/notificationController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/application/models/eventCalenderModel.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/application/models/notificationModel.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/application/views/admin/NotificationView.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/css/calender-main.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/js/calender-main.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/js/js-chart/owner-employee-type-pie-chart.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/js/js-chart/owner-year-employee-count-line-chart.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/js/js-chart/owner-year-top-product-line-chart.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/js/js-chart/stock-button-chart.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/js/js-chart/stock-machine-pie-chart.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/js/js-chart/stock-material-colum-chart.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/js/js-chart/stock-material-colum-pie-chart.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/js/js-chart/stock-nool-colum-chart.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/js/notification.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/js/order-calendar.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/controllers/manageJobController.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/controllers/manageJobController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/models/manageJobModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/models/manageJobModel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/views/Salesmanjor/components/side_nav.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/Salesmanjor/components/side_nav.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/views/admin/components/side_nav.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/admin/components/side_nav.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/application/views/dashboard.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/dashboard.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/views/stock/components/side_nav.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/stock/components/side_nav.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/views/supervisor/components/side_nav.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/supervisor/components/side_nav.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/views/supervisor/updateWorkload.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/supervisor/updateWorkload.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/assets/css/Form.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/Form.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/js/calendar.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/js/calendar_data.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/js/js-chart/on_load_charts.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/js/js-chart/on_load_charts.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/js/salesmanjor-js/A.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/js/salesmanjor-js/createOrder.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/js/salesmanjor-js/createOrder.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,7 +92,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="feature/owner-dashboard" />
+        <entry key="$PROJECT_DIR$" value="test-merge" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -75,22 +106,24 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/application/views/Accountant/components" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/assets/css" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\xampp\htdocs\Richway-garment-system\public\assets\css" />
+      <recent name="D:\xampp\htdocs\Richway-garment-system\public\assets\js" />
+      <recent name="D:\xampp\htdocs\Richway-garment-system\application\models" />
+      <recent name="D:\xampp\htdocs\Richway-garment-system\application\controllers" />
+      <recent name="D:\xampp\htdocs\Richway-garment-system\application\views\admin" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\xampp\htdocs\Richway-garment-system\public\assets\js\js-chart" />
+      <recent name="D:\xampp\htdocs\Richway-garment-system\public\assets\js" />
       <recent name="C:\xampp\htdocs\Richway-garment-system\public\assets\css" />
       <recent name="C:\xampp\htdocs\Richway-garment-system\application\views\stock" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\xampp\htdocs\Richway-garment-system\application\views\Accountant\components" />
-      <recent name="D:\xampp\htdocs\Richway-garment-system\application\views\stock\components" />
-      <recent name="D:\xampp\htdocs\Richway-garment-system\application\views\Salesmanjor\components" />
-      <recent name="C:\xampp\htdocs\Richway-garment-system\application\controllers" />
-      <recent name="C:\xampp\htdocs\Richway-garment-system\application\models" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -266,6 +299,17 @@
           <url>file://$PROJECT_DIR$/public/assets/js/manageCustomer.js</url>
           <line>40</line>
           <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/public/assets/js/salesmanjor-js/createOrder.js</url>
+          <line>590</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/application/views/dashboard.php</url>
+          <line>444</line>
+          <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
