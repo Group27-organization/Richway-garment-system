@@ -1,0 +1,182 @@
+.bg-modal{
+    background-color: rgba(0, 0, 0, 0.7);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    display: none;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    z-index: 3;
+}
+
+.modal-contents{
+    min-height: 500px;
+    max-height: 80vh;
+    width: 800px;
+    background-color: white;
+    text-align: center;
+    padding: 30px;
+    position: relative;
+    border-radius: 5px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.close {
+    position: absolute;
+    top: 0;
+    right: 10px;
+    font-family: Poppins-Regular, serif;
+    font-size: 28px;
+    color: #333;
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+    cursor: pointer;
+}
+.close:hover {
+    color: #666;
+}
+
+/*model content styles*/
+
+.BtnWap{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    margin-right: 40px;
+    position: absolute;
+    bottom: 30px;
+
+}
+
+.SearchBtnWap{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+
+
+
+.search {
+    /*min-width: 280px;*/
+    width: 50%;
+    position: relative;
+    display: flex;
+}
+
+.searchTerm {
+    width: 100%;
+    border: 3px solid #2680EB;
+    border-right: none;
+    padding: 5px;
+    height: 36px;
+    border-radius: 5px 0 0 5px;
+    outline: none;
+    color: #2680EB;
+    box-shadow: 0px 0px 5px -1px rgba(0,0,0,0.75);
+}
+
+.searchTerm:focus{
+    color: #2680EB;
+    border-color:#2680EB;
+    font-weight: bold;
+}
+
+.searchButton{
+    width: 40px;
+    height: 36px;
+    border: 1px solid #00B4CC;
+    background: linear-gradient(to right, #37A0F6 , #2680EB);
+    text-align: center;
+    color: #fff;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    font-size: 20px;
+    box-shadow: 0px 0px 5px -1px rgba(0,0,0,0.75);
+}
+
+/*Resize the wrap to see the search bar change!*/
+.audButton {
+    width: 120px;
+    height: 36px;
+    margin-left: 10px;
+    border: 1px solid #00B4CC;
+    background: linear-gradient(to right, #37A0F6 , #2680eb);
+    text-align: center;
+    color: #fff;
+    border-radius:  5px 5px;
+    cursor: pointer;
+    font-size: 18px;
+    box-shadow: 0px 0px 5px -1px rgba(0,0,0,0.75);
+}
+
+.audButton2 {
+    width: 120px;
+    height: 36px;
+    margin-left: 10px;
+    border: 1px solid #00B4CC;
+    background: #708090;
+    text-align: center;
+    color: #fff;
+    border-radius:  5px 5px;
+    cursor: pointer;
+    font-size: 18px;
+    box-shadow: 0px 0px 5px -1px rgba(0,0,0,0.75);
+}
+
+.searchButton:focus{
+    outline:0;
+}
+.audButton:focus{
+    outline:0;
+}
+
+.model-footer {
+    color: red;
+    display: none;
+}
+
+/*Create ripple effec*/
+
+.cripple {
+    position: relative;
+    overflow: hidden;
+    transform: translate3d(0, 0, 0);
+}
+
+.cripple:after {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    background-image: radial-gradient(circle, #fff 10%, transparent 10.01%);
+    background-repeat: no-repeat;
+    background-position: 50%;
+    transform: scale(10, 10);
+    opacity: 0;
+    transition: transform .5s, opacity 1s;
+}
+.cripple:hover {
+    opacity: .7;
+    transition: 1s;
+}
+
+.cripple:active:after {
+    transform: scale(0, 0);
+    opacity: .3;
+    transition: 0s;
+}
+
